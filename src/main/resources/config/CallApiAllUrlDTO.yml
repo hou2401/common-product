@@ -1,0 +1,46 @@
+callApiUrl:
+  seal: 
+    #创建椭圆印章
+    createEllipseSeal: /atom-sign-all/seal/front/createEllipseSeal
+    #创建圆形印章
+    createCircularSeal: /atom-sign-all/seal/front/createCircularSeal
+    #创建双行人名印章
+    createDoubleRowSeal: /atom-sign-all/seal/front/createDoubleRowSeal
+    #创建单行人名印章
+    createSingleRowSeal: /atom-sign-all/seal/front/createSingleRowSeal
+    #印章透明处理
+    sealLimpid: /atom-sign-all/seal/front/sealLimpid
+  ####################文件服务#####################
+  file:
+    #上传文件
+    upload: /atom-sign-all/fss/upload
+    uploadBase64: /atom-sign-all/fss/uploadBase64
+    #文件删除
+    delete: /atom-sign-all/fss/delete
+    #文件下载
+    download: /atom-sign-all/fss/download
+    downloadBase64: /atom-sign-all/fss/downloadBase64
+####################证书服务#####################
+  cert: 
+    #证书申请
+    apply: /atom-sign-all/cert/apply
+    #证书查询
+    get: /atom-sign-all/cert/get
+    #证书吊销
+    revoke: /atom-sign-all/cert/revoke
+    #证书更新
+    update: /atom-sign-all/cert/update
+##################签章验章######################
+  dsvs: 
+    #PDF签章
+    sign: /atom-sign-all/dsvs/sign
+    #PDF批量签章
+    batchSign:  /atom-sign-all/dsvs/batchSign
+    #PDF验章
+    verifyBase64: /atom-sign-all/dsvs/verifyBase64
+##################文档生产服务######################
+  dgs: 
+    #PDF模板填充
+    pdfFill: /atom-sign-all/dgs/pdfFill   
+    #PDF创建
+    pdfCreate: /atom-sign-all/dgs/pdfCreate
