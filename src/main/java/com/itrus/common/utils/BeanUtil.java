@@ -89,11 +89,11 @@ public class BeanUtil {
 		return params;
 	}
 	
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		CertParams cert = new CertParams();
 		Map<String, Object> map = BeanUtil.toMap(cert);
 		
 		System.out.println(JSON.toJSONString(map));
 		
-	}
+	}*/
 }

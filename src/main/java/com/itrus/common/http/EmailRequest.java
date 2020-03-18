@@ -121,7 +121,7 @@ public class EmailRequest implements Serializable {
 	 * @param args
 	 * @throws MessagingException
 	 */
-	public static void main(String[] args) throws MessagingException {
+	/*public static void main(String[] args) throws MessagingException {
 		
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setUsername("wen_guoxing@itrus.com.cn");
@@ -132,5 +132,5 @@ public class EmailRequest implements Serializable {
 		String [] toEmail = new String[]{"wen_guoxing@itrus.com.cn"};
 		EmailRequest emailUtil = new EmailRequest(mailSender,toEmail,"test","test");
 		emailUtil.send();
-	}
+	}*/
 }

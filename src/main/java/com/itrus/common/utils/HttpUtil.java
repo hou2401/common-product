@@ -125,7 +125,7 @@ public class HttpUtil {
 	public static String doPostJson(String url) throws Exception{
 		return doPostJson(url,null);
 	}
-	public static void main(String[] args) throws Exception{
+	/*public static void main(String[] args) throws Exception{
 		String url="http://tieba.baidu.com/f";
 		Map<String,Object> params=new HashMap<>();
 		params.put("fr", "wwwt");
@@ -133,5 +133,5 @@ public class HttpUtil {
 		Map<String,String> headers=new HashMap<>();
 		headers.put("header111", "header111");
 		System.out.println(HttpUtil.doPost(url,params,headers));
-	}
+	}*/
 }

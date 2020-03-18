@@ -740,7 +740,7 @@ public class HttpTools {
      * @param args
      * @throws Exception
      */
-    public static void main(String[] args) throws Exception {
+   /* public static void main(String[] args) throws Exception {
         long s = System.currentTimeMillis();
         final CountDownLatch cdl = new CountDownLatch(100);
         for (int i = 0; i < 1000; i++) {
@@ -763,6 +763,6 @@ public class HttpTools {
         cdl.await();
         System.out.println(System.currentTimeMillis() - s);
         
-    }
+    }*/
 
 }

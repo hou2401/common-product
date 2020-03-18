@@ -382,10 +382,10 @@ public class SmsRequest{
 		smsUtil.send("http://124.205.224.179:9018/portal/sms/send");
 	}
 
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 
 //		testIxin();
 		//		testOldIxin();
 				testTwy();
-	}
+	}*/
 }
