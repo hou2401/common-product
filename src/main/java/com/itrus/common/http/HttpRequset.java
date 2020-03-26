@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpUrlDTO;
-import com.itrus.common.exception.PersionException;
+import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.utils.HttpTools;
@@ -105,7 +105,7 @@ public class HttpRequset {
 		} else {
 			// TODO：Http调用失败处理
 			log.error(responseEntity.getMessage());
-			throw new PersionException(responseEntity.getMessage());
+			throw new PersionAuthException(responseEntity.getMessage());
 		}
 	}
 
@@ -132,7 +132,7 @@ public class HttpRequset {
 		} else {
 			// TODO：Http调用失败处理
 			log.error(responseEntity.getMessage());
-			throw new PersionException(responseEntity.getMessage());
+			throw new PersionAuthException(responseEntity.getMessage());
 		}
 	}
 	/**

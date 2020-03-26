@@ -44,10 +44,6 @@ public class CommonRequest {
 	@Autowired
 	private CallApiRequest callApiRequest;
 
-	/* private static final CommonRequest REQUEST = new CommonRequest();
-
-    private CommonRequest() { }*/
-
 	/**
 	 *	 公共请求对象
 	 *

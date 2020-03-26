@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.http.entity.ByteArrayEntity;
 
 import com.alibaba.fastjson.JSON;
-import com.itrus.common.exception.PersionException;
+import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.exception.SmsException;
 import com.itrus.common.http.HttpRequset;
 import com.itrus.common.utils.HMACSHA1;
@@ -76,7 +76,7 @@ public class AuthPersionParams extends ServiceParams{
 	 * @return
 	 * @throws SmsException
 	 */
-	public HttpData getData() throws PersionException{
+	public HttpData getData() throws PersionAuthException{
 		HttpData data = HttpData.instance()
 				.addHeader(HttpRequset.CONTENT_SIGNATURE, getSignature())
 				.addHeader(HttpRequset.CONTEXT_TYPE, HttpRequset.CONTEXT_TYPE_JSON)
@@ -108,13 +108,13 @@ public class AuthPersionParams extends ServiceParams{
 	/**
 	 * 天威云签名
 	 * @return
-	 * @throws PersionException
+	 * @throws PersionAuthException
 	 */
-	private String getSignature() throws PersionException{
+	private String getSignature() throws PersionAuthException{
 		try {
 			return ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(getPersonSign(), this.getSecretKey() + this.getServiceCode()));
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			throw new PersionException("发送天威云短信计算签名异常");
+			throw new PersionAuthException("发送天威云短信计算签名异常");
 		}
 	}
 

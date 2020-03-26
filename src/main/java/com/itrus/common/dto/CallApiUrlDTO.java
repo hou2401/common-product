@@ -1,15 +1,9 @@
 package com.itrus.common.dto;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.itrus.common.utils.YmlConfig;
-
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Component
 public class CallApiUrlDTO {
 	@Autowired
@@ -18,28 +12,8 @@ public class CallApiUrlDTO {
 	@Autowired
 	private CallApiPartUrlDTO callApiPartUrlDTO;
 	
-	
-	private boolean alled() throws HttpException {
-		if( "1".equals(getAlled()) || "true".equalsIgnoreCase(getAlled()) ) {
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * 固定配置
-	 * @return
-	 * @throws HttpException 
-	 */
-	private String getAlled() throws HttpException {
-		 String alled =  YmlConfig.get("http.callApi.alled");
-		 log.info("YmlConfig http.callApi.alled={}", alled);
-		 if( StringUtils.trimToNull(alled) == null ) {
-			 throw new HttpException("callApi请求模式，缺少参数配置http.callApi.alled");
-		 }
-		 return alled;
-	}
-	
+	@Autowired
+	private HttpDTO httpDTO;
 	
 	/* ####################印章服务##################### */
 	/**
@@ -48,7 +22,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getCreateEllipseSeal() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getSeal().getCreateEllipseSeal();
 		}
 		return callApiPartUrlDTO.getSeal().getCreateEllipseSeal();
@@ -59,7 +33,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getCreateCircularSeal() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getSeal().getCreateCircularSeal();
 		}
 		return callApiPartUrlDTO.getSeal().getCreateCircularSeal();
@@ -69,7 +43,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getCreateDoubleRowSeal() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getSeal().getCreateDoubleRowSeal();
 		}
 		return callApiPartUrlDTO.getSeal().getCreateDoubleRowSeal();
@@ -80,7 +54,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getCreateSingleRowSeal() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getSeal().getCreateSingleRowSeal();
 		}
 		return callApiPartUrlDTO.getSeal().getCreateSingleRowSeal();
@@ -91,7 +65,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getSealLimpid() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getSeal().getSealLimpid();
 		}
 		return callApiPartUrlDTO.getSeal().getSealLimpid();
@@ -102,13 +76,13 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getFileUpload() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getFile().getUpload();
 		}
 		return callApiPartUrlDTO.getFile().getUpload();
 	}
 	public String getFileUploadBase64() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getFile().getUploadBase64();
 		}
 		return callApiPartUrlDTO.getFile().getUploadBase64();
@@ -118,7 +92,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getFileDelete() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getFile().getDelete();
 		}
 		return callApiPartUrlDTO.getFile().getDelete();
@@ -129,7 +103,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getFileDownload() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getFile().getDownload();
 		}
 		return callApiPartUrlDTO.getFile().getDownload();
@@ -140,7 +114,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getFileDownloadBase64() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getFile().getDownloadBase64();
 		}
 		return callApiPartUrlDTO.getFile().getDownloadBase64();
@@ -152,7 +126,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getCertApply() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getCert().getApply();
 		}
 		return callApiPartUrlDTO.getCert().getApply();
@@ -163,7 +137,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getCertGet() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getCert().getGet();
 		}
 		return callApiPartUrlDTO.getCert().getGet();
@@ -174,7 +148,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getCertRevoke() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getCert().getRevoke();
 		}
 		return callApiPartUrlDTO.getCert().getRevoke();
@@ -185,7 +159,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getCertUpdate() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getCert().getUpdate();
 		}
 		return callApiPartUrlDTO.getCert().getUpdate();
@@ -197,7 +171,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getDsvsSign() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getDsvs().getSign();
 		}
 		return callApiPartUrlDTO.getDsvs().getSign();
@@ -208,7 +182,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getDsvsBatchSign() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getDsvs().getBatchSign();
 		}
 		return callApiPartUrlDTO.getDsvs().getBatchSign();
@@ -219,7 +193,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getDsvsVerifyBase64() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getDsvs().getVerifyBase64();
 		}
 		return callApiPartUrlDTO.getDsvs().getVerifyBase64();
@@ -231,7 +205,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getPdfFill() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getDgs().getPdfFill();
 		}
 		return callApiPartUrlDTO.getDgs().getPdfFill();
@@ -242,7 +216,7 @@ public class CallApiUrlDTO {
 	 * @throws HttpException 
 	 */
 	public String getPdfCreate() throws HttpException {
-		if( alled() ) {
+		if( httpDTO.alled() ) {
 			return callApiUrlAllDTO.getDgs().getPdfCreate();
 		}
 		return callApiPartUrlDTO.getDgs().getPdfCreate();
