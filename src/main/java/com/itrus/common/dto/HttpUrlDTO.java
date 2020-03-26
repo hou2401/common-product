@@ -2,190 +2,109 @@ package com.itrus.common.dto;
 
 import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+import com.itrus.common.dto.atom.Cert;
+import com.itrus.common.dto.atom.Dgs;
+import com.itrus.common.dto.atom.Dsvs;
+import com.itrus.common.dto.atom.File;
+import com.itrus.common.dto.atom.Seal;
 
+
+@PropertySource(value = {"classpath:config/CallApiPartUrlDTO.yml"})
+@ConfigurationProperties(prefix = "callapiurl")
 @Component
-@PropertySource(value = {"classpath:config/HttpUrlDTO.properties"})
 public class HttpUrlDTO {
 	
 	@Autowired
 	private HttpDTO httpDTO;
 
 	/**
-	 * 创建椭圆印章
+	 * 印章相关url集合
 	 */
-	@Value("${http.url.seal.createEllipseSeal}")
-	private String createEllipseSeal;
+	private Seal seal;
 
 	/**
-	 * 创建圆形印章
+	 * 文件处理相关的url地址
 	 */
-	@Value("${http.url.seal.createCircularSeal}")
-	private String createCircularSeal;
-
-
-	/**
-	 * 创建双行人名印章
-	 */
-	@Value("${http.url.seal.createDoubleRowSeal}")
-	private String createDoubleRowSeal;
-	/**
-	 * 创建单行人名印章
-	 */
-	@Value("${http.url.seal.createSingleRowSeal}")
-	private String createSingleRowSeal;
-	/**
-	 * 印章透明处理
-	 */
-	@Value("${http.url.seal.sealLimpid}")
-	private String sealLimpid;
-
-	/**
-	 * 上传文件
-	 */
-	@Value("${http.url.file.upload}")
-	private String fileUpload;
-
-	/**
-	 * 文件base64上传
-	 */
-	@Value("${http.url.file.uploadBase64}")
-	private String fileUploadBase64;
-
-	/**
-	 * #文件删除
-	 */
-	@Value("${http.url.file.delete}")
-	private String fileDelete;
-
-	/**
-	 * 文件下载
-	 */
-	@Value("${http.url.file.download}")
-	private String fileDownload;
-
-	@Value("${http.url.file.downloadBase64}")
-	private String fileDownloadBase64;
+	private File file;
 
 	/**
 	 * ####################证书服务#####################
 	 */
-	/**
-	 * 证书申请
-	 */
-	@Value("${http.url.cert.apply}")
-	private String certApply;
-	/**
-	 * 证书查询
-	 */
-	@Value("${http.url.cert.get}")
-	private String certGet;
-	/**
-	 * 证书吊销
-	 */
-	@Value("${http.url.cert.revoke}")
-	private String certRevoke;
-	/**
-	 * 证书更新
-	 */
-	@Value("${http.url.cert.update}")
-	private String certUpdate;
-
+	private Cert cert;
+	
 	/**
 	##################签章验章######################
 	 * 
 	 */
-	/**
-	 * PDF签章
-	 */
-	@Value("${http.url.dsvs.sign}")
-	private String dsvsSign;
-	/**
-	 * PDF批量签章
-	 */
-	@Value("${http.url.dsvs.batchSign}")
-	private String dsvsBatchSign;
-	/**
-	 * PDF验章
-	 */
-	@Value("${http.url.dsvs.verifyBase64}")
-	private String dsvsVerifyBase64;
-
+	private Dsvs dsvs;
+	
 	/**
 	##################文档生产服务######################
 	 * 
 	 */
-	/**
-	 * PDF模板填充
-	 */
-	@Value("${http.url.dgs.pdfFill}")
-	private String pdfFill;
-	/**
-	 * PDF创建
-	 */
-	@Value("${http.url.dgs.pdfCreate}")
-	private String pdfCreate;
+	private Dgs dgs;
 	
 	
 	public String getCreateEllipseSeal() throws HttpException {
-		return httpDTO.getUrl()+createEllipseSeal;
+		return httpDTO.getUrl()+seal.getCreateCircularSeal();
 	}
 	public String getCreateCircularSeal() throws HttpException {
-		return httpDTO.getUrl()+createCircularSeal;
+		return httpDTO.getUrl()+seal.getCreateCircularSeal();
 	}
 	public String getCreateDoubleRowSeal() throws HttpException {
-		return httpDTO.getUrl()+createDoubleRowSeal;
+		return httpDTO.getUrl()+seal.getCreateDoubleRowSeal();
 	}
 	public String getCreateSingleRowSeal() throws HttpException {
-		return httpDTO.getUrl()+createSingleRowSeal;
+		return httpDTO.getUrl()+seal.getCreateSingleRowSeal();
 	}
 	public String getSealLimpid() throws HttpException {
-		return httpDTO.getUrl()+sealLimpid;
+		return httpDTO.getUrl()+seal.getSealLimpid();
 	}
 	public String getFileUpload() throws HttpException {
-		return httpDTO.getUrl()+fileUpload;
+		return httpDTO.getUrl()+file.getUpload();
 	}
 	public String getFileUploadBase64() throws HttpException {
-		return httpDTO.getUrl()+fileUploadBase64;
+		return httpDTO.getUrl()+file.getUploadBase64();
 	}
 	public String getFileDelete() throws HttpException {
-		return httpDTO.getUrl()+fileDelete;
+		return httpDTO.getUrl()+file.getDelete();
 	}
 	public String getFileDownload() throws HttpException {
-		return httpDTO.getUrl()+fileDownload;
+		return httpDTO.getUrl()+file.getDownload();
 	}
 	public String getFileDownloadBase64() throws HttpException {
-		return httpDTO.getUrl()+fileDownloadBase64;
+		return httpDTO.getUrl()+file.getDownloadBase64();
 	}
 	public String getCertApply() throws HttpException {
-		return httpDTO.getUrl()+certApply;
+		return httpDTO.getUrl()+cert.getApply();
 	}
 	public String getCertGet() throws HttpException {
-		return httpDTO.getUrl()+certGet;
+		return httpDTO.getUrl()+cert.getGet();
 	}
 	public String getCertRevoke() throws HttpException {
-		return httpDTO.getUrl()+certRevoke;
+		return httpDTO.getUrl()+cert.getRevoke();
 	}
 	public String getCertUpdate() throws HttpException {
-		return httpDTO.getUrl()+certUpdate;
+		return httpDTO.getUrl()+cert.getUpdate();
 	}
 	public String getDsvsSign() throws HttpException {
-		return httpDTO.getUrl()+dsvsSign;
+		return httpDTO.getUrl()+dsvs.getSign();
 	}
 	public String getDsvsBatchSign() throws HttpException {
-		return httpDTO.getUrl()+dsvsBatchSign;
+		return httpDTO.getUrl()+dsvs.getBatchSign();
 	}
 	public String getDsvsVerifyBase64() throws HttpException {
-		return httpDTO.getUrl()+dsvsVerifyBase64;
+		return httpDTO.getUrl()+dsvs.getVerifyBase64();
 	}
 	public String getPdfFill() throws HttpException {
-		return httpDTO.getUrl()+pdfFill;
+		return httpDTO.getUrl()+dgs.getPdfFill();
 	}
 	public String getPdfCreate() throws HttpException {
-		return httpDTO.getUrl()+pdfCreate;
+		return httpDTO.getUrl()+dgs.getPdfCreate();
 	}
 	
 }
