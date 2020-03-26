@@ -9,9 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSON;
-import com.itrus.common.params.CertParams;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -80,20 +77,12 @@ public class BeanUtil {
 		if( strings != null ){
 			params = new HashMap<>();
 			for (String str : strings) {
-				List<String> param2 = stringToList(str, regex );
-				if (null != param2 && !param2.isEmpty()) {
-					params.put(param2.get(0), param2.get(1));
+				List<String> p = stringToList(str, regex );
+				if (null != p && !p.isEmpty() && p.size() == 2) {
+					params.put(p.get(0), p.get(1));
 				}
 			}
 		}
 		return params;
 	}
-	
-/*	public static void main(String[] args) {
-		CertParams cert = new CertParams();
-		Map<String, Object> map = BeanUtil.toMap(cert);
-		
-		System.out.println(JSON.toJSONString(map));
-		
-	}*/
 }

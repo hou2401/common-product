@@ -110,14 +110,12 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject createEllipseSeal(Object kvs) throws Exception {
-		log.info("createEllipseSeal is params = {}",JSON.toJSONString(kvs));
 		JSONObject result = null;
 		if(httped()) {
 			result = httpRequset.createEllipseSeal(kvs);
 		}else {
 			result = callApiRequest.createEllipseSeal(kvs);
 		}
-		log.info("createEllipseSeal is result = {}", result);
 		return result;
 	}
 
@@ -129,15 +127,12 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject createCircularSeal( SealParam  sealParam) throws Exception {
-		
-		log.info("createCircularSeal is params = {}",JSON.toJSONString(sealParam));
 		JSONObject result = null;
 		if(httped()) {
 			result= httpRequset.createCircularSeal(sealParam);
 		}else {
 			result = callApiRequest.createCircularSeal(sealParam);
 		}
-		log.info("createCircularSeal is result = {}", result);
 		return result;
 	}
 
@@ -149,7 +144,6 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject createDoubleRowSeal(SealParam  sealParam) throws Exception {
-		log.info("createDoubleRowSeal is params = {}",JSON.toJSONString(sealParam));
 		JSONObject result = null;
 		if(httped()) {
 			throw new Exception("http 方法还未实现");
@@ -157,7 +151,6 @@ public class CommonRequest {
 			
 			result = callApiRequest.createDoubleRowSeal(sealParam);
 		}
-		log.info("createDoubleRowSeal is result = {}", result);
 		return result;
 	}
 
@@ -169,14 +162,12 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject createSingleRowSeal(SealParam sealParam) throws Exception {
-		log.info("createSingleRowSeal is params = {}",JSON.toJSONString(sealParam));
 		JSONObject result = null;
 		if(httped()) {
 			throw new Exception("http 方法还未实现");
 		}else {
 			result =callApiRequest.createSingleRowSeal(sealParam);
 		}
-		log.info("createSingleRowSeal is result = {}", result);
 		return result;
 	}
 
@@ -188,7 +179,6 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject sealLimpid(Object kvs) throws Exception {
-		log.info("sealLimpid is params = {}",JSON.toJSONString(kvs));
 		JSONObject result = null;
 		if(httped()) {
 			throw new Exception("http 方法还未实现");
@@ -196,7 +186,6 @@ public class CommonRequest {
 			
 			result = callApiRequest.sealLimpid(kvs);
 		}
-		log.info("sealLimpid is result = {}", result);
 		return result;
 	}
 	//--------------------------------------------------------------------------------------------------------------------
@@ -213,14 +202,12 @@ public class CommonRequest {
 	 * @throws Exception 
 	 */
 	public JSONObject fileDelete(Long fssId) throws Exception {
-		log.info("fileDelete is fssId = {}",fssId);
 		JSONObject result = null;
 		if(httped()) {
 			return httpRequset.fileDelete(fssId);
 		}else {
 			result =callApiRequest.fileDelete(fssId);
 		}
-		log.info("fileDelete is result = {}", result);
 		return result;
 	}
 	/**
@@ -266,14 +253,12 @@ public class CommonRequest {
 	 * @throws Exception 
 	 */
 	public Result<UploadResponse> upload(String bizType, File file, Integer encryptionType) throws Exception {
-		log.info("upload is bizType = {}, encryptionType={}, file={}",bizType, encryptionType, JSON.toJSONString(file));
 		Result<UploadResponse> result = null;
 		if(httped()) {
 			throw new Exception("http 方法还未实现");
 		}else {
 			result = callApiRequest.upload(bizType, file, encryptionType);
 		}
-		log.info("upload is result = {}", result);
 		return result;
 	}
 
@@ -284,15 +269,12 @@ public class CommonRequest {
 	 * @throws Exception 
 	 */
 	public JSONObject downloadBase64(Long fssId) throws Exception {
-
-		log.info("downloadBase64 is fssId = {}",fssId);
 		JSONObject result = null;
 		if(httped()) {
 			result =  httpRequset.downLoadBase64(fssId);
 		}else {
 			result = callApiRequest.downloadBase64(fssId);
 		}
-		log.info("downloadBase64 is result = {}", result);
 		return result;
 	}
 	
@@ -348,14 +330,12 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject applyCert( CertParams cert ) throws Exception {
-		log.info("applyCert is params = {}",JSON.toJSONString(cert));
 		JSONObject result = null;
 		if(httped()) {
 			result = httpRequset.applyCert(cert);
 		}else {
 			result = callApiRequest.applyCert(cert);
 		}
-		log.info("applyCert is result = {}", result);
 		return result;
 
 	}
@@ -368,14 +348,12 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject updateCert( Object kvs ) throws Exception {
-		log.info("updateCert is params = {}",JSON.toJSONString(kvs));
 		JSONObject result = null;
 		if(httped()) {
 			result =  httpRequset.updateCert(kvs);
 		}else {
 			result = callApiRequest.updateCert(kvs);
 		}
-		log.info("updateCert is result = {}", result);
 		return result;
 
 	}
@@ -393,15 +371,12 @@ public class CommonRequest {
 	 * @throws Exception
 	 */
 	public JSONObject sign(Object kvs) throws Exception {
-		
-		log.info("sign is params = {}",JSON.toJSONString(kvs));
 		JSONObject result = null;
 		if(httped()) {
 			result =  httpRequset.sign(kvs);
 		}else {
 			result = callApiRequest.sign(kvs);
 		}
-		log.info("sign is result = {}", result);
 		return result;
 
 	}
@@ -414,14 +389,12 @@ public class CommonRequest {
 	 * @throws Exception
 	 */
 	public JSONObject batchSign(Object kvs) throws Exception {
-		log.info("batchSign is params = {}",JSON.toJSONString(kvs));
 		JSONObject result = null;
 		if(httped()) {
 			throw new Exception("http 方法还未实现");
 		}else {
 			result = callApiRequest.batchSign(kvs);
 		}
-		log.info("batchSign is result = {}", result);
 		return result;
 	}
 
@@ -431,11 +404,8 @@ public class CommonRequest {
 	 * @return
 	 * @throws Exception 
 	 */
-	public JSONObject auth(AuthPersionParams authPersionParams) throws Exception {
-		log.info("auth is params = {}",JSON.toJSONString(authPersionParams));
-		JSONObject result =  httpRequset.auth(authPersionParams);
-		log.info("auth is result = {}", result);
-		return result;
+	public JSONObject auth3(AuthPersionParams authPersionParams) throws Exception {
+		return  httpRequset.authPersion(authPersionParams);
 	}
 
 }

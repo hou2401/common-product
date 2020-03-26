@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.entity.ByteArrayEntity;
 
 import com.alibaba.fastjson.JSON;
@@ -21,7 +22,7 @@ import lombok.ToString;
 @Data
 @ToString
 @EqualsAndHashCode(callSuper=true)
-public class AuthPersionParams extends ServiceParams{
+public class AuthPersionVideoParams extends ServiceParams{
 
 	/**
 	 * 
@@ -36,21 +37,15 @@ public class AuthPersionParams extends ServiceParams{
 	/**
 	 * 身份证
 	 */
-	private String idCard;
+	private String idnumber;
 
 	/**
 	 * 手机号
 	 */
-	private String mobile;
+	private String videoFile;
 
-	private String selfUrl;
+	private String orderNo;
 
-	private String selfImg;
-
-	private String bankcard;
-	
-	
-	
 
 	/**
 	 * 个人签名
@@ -59,14 +54,17 @@ public class AuthPersionParams extends ServiceParams{
 	 */
 	public String getPersonSign() {
 		StringBuffer persionSign = new StringBuffer();
-		persionSign.append(this.getAppId())
+		persionSign = persionSign.append(this.getAppId())
 		.append(this.getServiceCode())
 		.append(name)
-		.append(idCard)
-		.append(selfUrl)
-		.append(selfImg)
-		.append(bankcard)
-		.append(mobile);
+		.append(idnumber);
+		
+		if( StringUtils.trimToNull(orderNo) != null ) {
+			persionSign = persionSign.append(orderNo);
+		}
+		if( StringUtils.trimToNull(videoFile) != null ) {
+			persionSign = persionSign.append(videoFile);
+		}
 		return persionSign.toString();
 	}
 
@@ -90,17 +88,15 @@ public class AuthPersionParams extends ServiceParams{
 	/**
 	 * 天威云参数
 	 * @return
-	 */
+	 */	
 	private Map<String,String> getParams(){
 		Map<String, String> authParam = new HashMap<>();
 		authParam.put(HttpRequset.APP_ID, this.getAppId());
 		authParam.put(HttpRequset.SERVICE_CODE, this.getServiceCode());
 		authParam.put("name", this.name);
-		authParam.put("idCard", this.idCard);
-		authParam.put("mobile", this.mobile);
-		authParam.put("selfUrl", this.selfUrl);
-		authParam.put("selfImg", this.selfImg);
-		authParam.put("bankcard", this.bankcard);
+		authParam.put("idnumber", this.idnumber);
+		authParam.put("orderNo", this.orderNo);
+		authParam.put("videoFile", this.videoFile);
 		return authParam;
 	}
 
@@ -116,6 +112,51 @@ public class AuthPersionParams extends ServiceParams{
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			throw new PersionException("发送天威云短信计算签名异常");
 		}
+	}
+
+
+	/**
+	 *  熟读获取随机数字
+	 * @param appId
+	 * @param serviceCode
+	 * @param secretKey
+	 * @param name
+	 * @param idnumber
+	 * @param url
+	 */
+	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String name, String idnumber, String url) {
+		super(appId,serviceCode, secretKey, url);
+		this.name = name;
+		this.idnumber = idnumber;
+	}
+	
+	/**
+	 *     静默 or 读书实名认证验证接口
+	 * @param appId
+	 * @param serviceCode
+	 * @param secretKey
+	 * @param name
+	 * @param idnumber
+	 * @param videoFile
+	 * @param orderNo
+	 * @param url
+	 */
+	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String name, String idnumber, String videoFile, String orderNo, String url) {
+		super(appId,serviceCode, secretKey, url);
+		this.name = name;
+		this.idnumber = idnumber;
+		this.videoFile = videoFile;
+		this.orderNo = orderNo;
+	}
+
+
+	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String url) {
+		super(appId, serviceCode, secretKey, url);
+	}
+
+
+	public AuthPersionVideoParams() {
+		super();
 	}
 
 }

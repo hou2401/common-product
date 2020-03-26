@@ -1,4 +1,4 @@
-callApiUrl:
+callapiurl:
   seal: 
     #创建椭圆印章
     createEllipseSeal: /seal/seal/front/createEllipseSeal

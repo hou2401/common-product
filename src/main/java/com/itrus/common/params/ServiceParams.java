@@ -29,6 +29,18 @@ public class ServiceParams implements Serializable{
 	 */
 	private String secretKey;
 	
+	
+	/**
+	 * url
+	 */
+	private String url;
+	
+	/**
+	 * HMAC-SHA1
+	 */
+	public static final  String HMAC_SHA1 = "HMAC-SHA1 ";
+	
+	
 	/**
 	 * 天威云短信授权
 	 */
@@ -38,14 +50,20 @@ public class ServiceParams implements Serializable{
 	/**
 	 * appId
 	 */
-	public static final  String APP_ID = "appId";
+	public static final String APP_ID = "appId";
 	/**
 	 * serviceCode
 	 */
-	public static final  String SERVICE_CODE = "serviceCode";
-	/**
-	 * HMAC-SHA1
-	 */
-	public static final  String HMAC_SHA1 = "HMAC-SHA1 ";
+	public static final String SERVICE_CODE = "serviceCode";
 	
+	public ServiceParams(String appId, String serviceCode, String secretKey, String url) {
+		super();
+		this.appId = appId;
+		this.serviceCode = serviceCode;
+		this.secretKey = secretKey;
+		this.url = url;
+	}
+	public ServiceParams() {
+		super();
+	}
 }

@@ -19,9 +19,9 @@ public class SmsParams extends ServiceParams implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 账号类型
+	 * 账号
 	 */
-	private String account;
+	private String phone;
 	
 	/**
 	 * 发送内容
@@ -32,16 +32,25 @@ public class SmsParams extends ServiceParams implements Serializable{
 	 * 短信签名
 	 */
 	private String signature;
+	
+	
 
-	public SmsParams(String account, String content, String signature) {
+	public SmsParams(String phone, String content, String signature) {
 		super();
-		this.account = account;
+		this.phone = phone;
 		this.content = content;
 		this.signature = signature;
 	}
 
 	public SmsParams() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	public SmsParams(String appId, String serviceCode, String secretKey, String url, String phone, String content,
+			String signature) {
+		super(appId, serviceCode, secretKey, url);
+		this.phone = phone;
+		this.content = content;
+		this.signature = signature;
 	}
 }

@@ -106,13 +106,20 @@ public class SmsRequest{
 	 * 发送短信
 	 * @throws SmsException 
 	 */
-	public void send(String url) throws SmsException{
+	public void send(SmsParams sms ) throws SmsException{
 
+		this.appId = sms.getAppId();
+		this.secretKey = sms.getSecretKey();
+		this.serviceCode = sms.getServiceCode();
+		this.phone = sms.getPhone();
+		this.autograph = sms.getSignature();
+		this.content = sms.getContent();
+		
 		if( serviceCode == null ){
-			sendOld(url);
+			sendOld(sms.getUrl());
 			//			send(url, false);
 		}else{
-			send(url, true);
+			send(sms.getUrl(), true);
 		}
 
 	}
@@ -141,7 +148,9 @@ public class SmsRequest{
 				Integer retCode = jsonObject.getInteger("retCode");
 				if (!Objects.equals(retCode, 1000)) {
 					// TODO:出证申请失败处理
-					throw new SmsException("code="+retCode+":message="+jsonObject.get("retMsg"));
+					String message = String.valueOf(jsonObject.get("retMsg"));
+					log.info("短信发送失败：code={},message={}",retCode,message );
+					throw new SmsException(message);
 				} 
 			}else{
 				log.error("doPost="+doPost);
@@ -287,18 +296,6 @@ public class SmsRequest{
 
 
 
-	public SmsRequest(SmsParams sms) {
-		super();
-		this.appId = sms.getAppId();
-		this.secretKey = sms.getSecretKey();
-		this.serviceCode = sms.getServiceCode();
-		this.phone = sms.getAccount();
-		this.autograph = sms.getSignature();
-		this.content = sms.getContent();
-	}
-
-
-
 	public SmsRequest() {
 		super();
 	}
@@ -341,7 +338,7 @@ public class SmsRequest{
 
 
 
-	@SuppressWarnings("unused")
+/*	@SuppressWarnings("unused")
 	private static void testTwy() throws SmsException {
 		String content ="您好：您的验证码为：CODE。";
 		String appId = "e7a765ff2a2b46";
@@ -380,7 +377,7 @@ public class SmsRequest{
 		//		smsUtil.setServiceCode(serviceCode);
 		smsUtil.setContent(content);
 		smsUtil.send("http://124.205.224.179:9018/portal/sms/send");
-	}
+	}*/
 
 	/*public static void main(String[] args) throws Exception {
 

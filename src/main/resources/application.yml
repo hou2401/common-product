@@ -1,0 +1,42 @@
+server:
+  port: 9090
+  tomcat:
+    max-threads: 1000
+    uriEncoding: utf-8
+    max-http-post-size: 1024000000
+  servlet:
+    session:
+      timeout: 7200
+######  Start 配置注册中心  #######
+    context-path:  /common-product #这是配置项目名称
+    context-parameters:
+      slaveMode: 1
+######  end 配置注册中心  #######
+
+spring:
+  jmx:
+    default-domain: emrweb
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: NON_NULL
+  application:
+    name: product
+  datasource:
+    url: jdbc:mysql://localhost:3306/emr?useUnicode=true&characterEncoding=UTF-8&useSSL=false&nullNamePatternMatchesAll=true&autoReconnect=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+#######################证书信息######################################  
+itrus:
+  cert:
+    oName: 天威诚信服务有限公司
+    ouName: 天威诚信产品研发部
+    raCode: #sm2-itrus
+    validDays: 365 
+    
+    
+http:
+  # 1 或者 true 为采用http方式调用原子服务，其余均为callApi方式
+  httped: 0
+  url: http://124.205.224.180:9339 #当 httped 不为1 或者 true ， 此配置无效，但必须保留 url: 可以不配置任何值
