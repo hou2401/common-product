@@ -150,7 +150,7 @@ public class AuthEnterpriseParams extends ServiceParams{
 	 */
 	private String getSignature() throws EnterpriseAuthException{
 		try {
-			return ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(getEnterpriseSign(), this.getSecretKey() + this.getServiceCode()));
+			return ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(getEnterpriseSign(), this.getSecretKey()));
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			throw new EnterpriseAuthException("发送天威云短信计算签名异常");
 		}

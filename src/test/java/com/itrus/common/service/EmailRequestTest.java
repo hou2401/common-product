@@ -21,9 +21,9 @@ public class EmailRequestTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private EmailRequest smsRequest;
 	
-	@Test(groups = "内部接口", testName = "短信发送", description = "i信短信")
+	@Test(groups = "内部接口", testName = "邮件发送", description = "邮件发送")
 	@Author(names = "wen_guoxing")
-	public void smsSendIxin() throws  EmailException{
+	public void EmailSend() throws  EmailException{
 		
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setUsername("wen_guoxing@itrus.com.cn");

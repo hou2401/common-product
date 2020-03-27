@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.utils.HttpTools;
+import com.itrus.common.utils.HttpUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -115,24 +117,20 @@ public class HttpRequset {
 		不支持视频h5核身功能
 	 * @param doctorQuery
 	 * @return
+	 * @throws PersionAuthException 
 	 * @throws Exception
 	 */
-	public JSONObject authPersion(AuthPersionParams persion) throws Exception {
-		long start = 0L;
-		if (log.isDebugEnabled()) {
-			start = System.currentTimeMillis();
-		}
-		HttpTools.ResponseEntity responseEntity = 
-				HttpTools.post(	 persion.getUrl(), persion.getData(persion.getParams(),persion.getPersonSign()) );
-		if (responseEntity.isOk()) {
-			if (log.isDebugEnabled()) {
-				log.debug("调用[实名认证接口]结果：{}，耗时：{}", responseEntity.getContent(), System.currentTimeMillis() - start);
+	public JSONObject authPersion(AuthPersionParams persion) throws PersionAuthException {
+		try {
+			 String doPost = HttpUtil.doPost(persion.getUrl(), persion.getParams(), persion.getHeader());
+			 if(StringUtils.trimToNull(doPost) != null ) {
+				 return JSON.parseObject(doPost);
+			 }else {
+				throw new PersionAuthException("调用实名服务返回结果为null");
 			}
-			return JSON.parseObject(responseEntity.getContent());
-		} else {
-			// TODO：Http调用失败处理
-			log.error(responseEntity.getMessage());
-			throw new PersionAuthException(responseEntity.getMessage());
+		} catch (Exception e) {
+			log.error(e.getMessage(),e);
+			throw new PersionAuthException(e);
 		}
 	}
 	/**

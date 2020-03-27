@@ -1,6 +1,8 @@
 package com.itrus.common.params;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import org.apache.http.entity.ByteArrayEntity;
@@ -9,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.exception.SmsException;
 import com.itrus.common.http.HttpRequset;
+import com.itrus.common.utils.HMACSHA1;
 import com.itrus.common.utils.HttpTools.HttpData;
 
 import lombok.Data;
@@ -72,13 +75,31 @@ public class ServiceParams implements Serializable{
 	 */
 	public HttpData getData( Map<String,String> params, String signature ) throws PersionAuthException{
 		HttpData data = HttpData.instance()
-				.addHeader(HttpRequset.CONTENT_SIGNATURE, signature)
+				.addHeader(HttpRequset.CONTENT_SIGNATURE, getSignature(signature))
 				.addHeader(HttpRequset.CONTEXT_TYPE, HttpRequset.CONTEXT_TYPE_JSON)
 				.addHeader(HttpRequset.APP_ID, this.getAppId() )
 				.addHeader(HttpRequset.SERVICE_CODE, this.getServiceCode())
 				.setPostEntity(new ByteArrayEntity(JSON.toJSONBytes( params )));
 		return data;
 	}
+	
+	/**
+	 * 天威云签名
+	 * @return
+	 * @throws PersionAuthException
+	 */
+	public String getSignature(String signature) throws PersionAuthException{
+		try {
+			System.out.println("signature==1=="+signature);
+			signature = ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(signature, this.getSecretKey()));
+			System.out.println("signature==2=="+signature);
+			return signature;
+		}
+		catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			throw new PersionAuthException("实名认证签名计算错误");
+		}
+	}
+	
 	
 	public ServiceParams(String appId, String serviceCode, String secretKey, String url) {
 		super();
