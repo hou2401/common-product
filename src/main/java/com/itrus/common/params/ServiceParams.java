@@ -1,6 +1,15 @@
 package com.itrus.common.params;
 
 import java.io.Serializable;
+import java.util.Map;
+
+import org.apache.http.entity.ByteArrayEntity;
+
+import com.alibaba.fastjson.JSON;
+import com.itrus.common.exception.PersionAuthException;
+import com.itrus.common.exception.SmsException;
+import com.itrus.common.http.HttpRequset;
+import com.itrus.common.utils.HttpTools.HttpData;
 
 import lombok.Data;
 import lombok.ToString;
@@ -55,6 +64,21 @@ public class ServiceParams implements Serializable{
 	 * serviceCode
 	 */
 	public static final String SERVICE_CODE = "serviceCode";
+	
+	/**
+	 * 计算天威云 httpData
+	 * @return
+	 * @throws SmsException
+	 */
+	public HttpData getData( Map<String,String> params, String signature ) throws PersionAuthException{
+		HttpData data = HttpData.instance()
+				.addHeader(HttpRequset.CONTENT_SIGNATURE, signature)
+				.addHeader(HttpRequset.CONTEXT_TYPE, HttpRequset.CONTEXT_TYPE_JSON)
+				.addHeader(HttpRequset.APP_ID, this.getAppId() )
+				.addHeader(HttpRequset.SERVICE_CODE, this.getServiceCode())
+				.setPostEntity(new ByteArrayEntity(JSON.toJSONBytes( params )));
+		return data;
+	}
 	
 	public ServiceParams(String appId, String serviceCode, String secretKey, String url) {
 		super();

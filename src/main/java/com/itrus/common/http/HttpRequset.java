@@ -123,7 +123,7 @@ public class HttpRequset {
 			start = System.currentTimeMillis();
 		}
 		HttpTools.ResponseEntity responseEntity = 
-				HttpTools.post(	 persion.getUrl(), persion.getData() );
+				HttpTools.post(	 persion.getUrl(), persion.getData(persion.getParams(),persion.getPersonSign()) );
 		if (responseEntity.isOk()) {
 			if (log.isDebugEnabled()) {
 				log.debug("调用[实名认证接口]结果：{}，耗时：{}", responseEntity.getContent(), System.currentTimeMillis() - start);

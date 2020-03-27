@@ -70,28 +70,11 @@ public class AuthPersionParams extends ServiceParams{
 		return persionSign.toString();
 	}
 
-
-	/**
-	 * 计算天威云 httpData
-	 * @return
-	 * @throws SmsException
-	 */
-	public HttpData getData() throws PersionAuthException{
-		HttpData data = HttpData.instance()
-				.addHeader(HttpRequset.CONTENT_SIGNATURE, getSignature())
-				.addHeader(HttpRequset.CONTEXT_TYPE, HttpRequset.CONTEXT_TYPE_JSON)
-				.addHeader(HttpRequset.APP_ID, this.getAppId() )
-				.addHeader(HttpRequset.SERVICE_CODE, this.getServiceCode())
-				.setPostEntity(new ByteArrayEntity(JSON.toJSONBytes(getParams())));
-		return data;
-	}
-
-
 	/**
 	 * 天威云参数
 	 * @return
 	 */
-	private Map<String,String> getParams(){
+	public Map<String,String> getParams(){
 		Map<String, String> authParam = new HashMap<>();
 		authParam.put(HttpRequset.APP_ID, this.getAppId());
 		authParam.put(HttpRequset.SERVICE_CODE, this.getServiceCode());
@@ -110,7 +93,7 @@ public class AuthPersionParams extends ServiceParams{
 	 * @return
 	 * @throws PersionAuthException
 	 */
-	private String getSignature() throws PersionAuthException{
+	public String getSignature() throws PersionAuthException{
 		try {
 			return ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(getPersonSign(), this.getSecretKey() + this.getServiceCode()));
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
