@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpUrlDTO;
+import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
+import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.utils.HttpTools;
@@ -93,21 +95,17 @@ public class HttpRequset {
 	 * @throws Exception
 	 */
 	public JSONObject authPersionVideo(AuthPersionVideoParams persion) throws Exception {
-		long start = 0L;
-		if (log.isDebugEnabled()) {
-			start = System.currentTimeMillis();
-		}
-		HttpTools.ResponseEntity responseEntity = 
-				HttpTools.post(	 persion.getUrl(), persion.getData() );
-		if (responseEntity.isOk()) {
-			if (log.isDebugEnabled()) {
-				log.debug("调用[实名认证接口]结果：{}，耗时：{}", responseEntity.getContent(), System.currentTimeMillis() - start);
+		String doPost = null;
+		try {
+			 doPost = HttpUtil.doPost(persion.getUrl(), persion.getParams(), persion.getHeader());
+			 if(StringUtils.trimToNull(doPost) != null ) {
+				 return JSON.parseObject(doPost);
+			 }else {
+				throw new PersionAuthException("调用实名服务返回结果为null");
 			}
-			return JSON.parseObject(responseEntity.getContent());
-		} else {
-			// TODO：Http调用失败处理
-			log.error(responseEntity.getMessage());
-			throw new PersionAuthException(responseEntity.getMessage());
+		} catch (Exception e) {
+			log.error("异常错误:{},入参：persion={},返回结果：{}",e.getMessage(),persion.toString(), doPost,e);
+			throw new PersionAuthException(e);
 		}
 	}
 
@@ -121,18 +119,41 @@ public class HttpRequset {
 	 * @throws Exception
 	 */
 	public JSONObject authPersion(AuthPersionParams persion) throws PersionAuthException {
+		String doPost = null;
 		try {
-			 String doPost = HttpUtil.doPost(persion.getUrl(), persion.getParams(), persion.getHeader());
+			 doPost = HttpUtil.doPost(persion.getUrl(), persion.getParams(), persion.getHeader());
 			 if(StringUtils.trimToNull(doPost) != null ) {
 				 return JSON.parseObject(doPost);
 			 }else {
 				throw new PersionAuthException("调用实名服务返回结果为null");
 			}
 		} catch (Exception e) {
-			log.error(e.getMessage(),e);
+			log.error("异常错误:{},入参：persion={},返回结果：{}",e.getMessage(),persion.toString(), doPost,e);
 			throw new PersionAuthException(e);
 		}
 	}
+	
+	/**
+	 * 企业实名认证
+	 * @param enterprise
+	 * @return
+	 * @throws EnterpriseAuthException
+	 */
+	public JSONObject authEnterprise( AuthEnterpriseParams enterprise ) throws EnterpriseAuthException {
+		String doPost = null;
+		try {
+			 doPost = HttpUtil.doPost(enterprise.getUrl(), enterprise.getParams(), enterprise.getHeader());
+			 if(StringUtils.trimToNull(doPost) != null ) {
+				 return JSON.parseObject(doPost);
+			 }else {
+				throw new PersionAuthException("调用实名服务返回结果为null");
+			}
+		} catch (Exception e) {
+			log.error("异常错误:{},入参：enterprise={},返回结果：{}",e.getMessage(),enterprise.toString(), doPost,e);
+			throw new EnterpriseAuthException(e);
+		}
+	}
+	
 	/**
 	 * 图片上传
 	 *

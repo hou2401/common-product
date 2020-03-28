@@ -1,5 +1,7 @@
 package com.itrus.common.params;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.http.HttpRequset;
+import com.itrus.common.utils.HMACSHA1;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -106,6 +109,19 @@ public class AuthPersionParams extends ServiceParams{
 
 	public AuthPersionParams() {
 		super();
+	}
+	
+	@Override
+	public String getSignature(String signature ) throws PersionAuthException {
+		try {
+			System.out.println(signature);
+			signature = ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(signature, this.getSecretKey()));
+			System.out.println(signature);
+			return signature;
+		}
+		catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			throw new PersionAuthException("实名认证签名计算错误");
+		}
 	}
 
 	/**

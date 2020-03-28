@@ -6,7 +6,7 @@ package com.itrus.common.exception;
  * @author wen_guoxing
  *
  */
-public class PersionAuthException extends Exception {
+public class PersionAuthException extends AuthException {
 	private static final long serialVersionUID = 1L;
 	public PersionAuthException() {
 		super();

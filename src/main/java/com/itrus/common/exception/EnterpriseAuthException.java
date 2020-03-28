@@ -6,7 +6,7 @@ package com.itrus.common.exception;
  * @author wen_guoxing
  *
  */
-public class EnterpriseAuthException extends Exception {
+public class EnterpriseAuthException extends AuthException {
 	private static final long serialVersionUID = 1L;
 	public EnterpriseAuthException() {
 		super();

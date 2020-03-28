@@ -15,7 +15,9 @@ import org.springframework.util.Base64Utils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
+import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.CertParams;
 import com.itrus.common.params.UploadParams;
@@ -402,8 +404,20 @@ public class CommonRequest {
 	 * @throws PersionAuthException 
 	 * @throws Exception 
 	 */
-	public JSONObject authPersion(AuthPersionParams authPersionParams) throws PersionAuthException  {
+	public JSONObject auth(AuthPersionParams authPersionParams) throws PersionAuthException  {
 		return  httpRequset.authPersion(authPersionParams);
 	}
+	
+	/**
+	 * 实名服务，手机号3要素
+	 * @param doctorQuery
+	 * @return
+	 * @throws EnterpriseAuthException 
+	 * @throws Exception 
+	 */
+	public JSONObject auth(AuthEnterpriseParams authEnterpriseParams) throws  EnterpriseAuthException  {
+		return  httpRequset.authEnterprise(authEnterpriseParams);
+	}
+	
 
 }

@@ -20,7 +20,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>2.1.0.RELEASE</version>
 				<executions>
 					<execution>
 						<goals>
@@ -86,7 +85,11 @@
 		<httpclient.version>4.5.6</httpclient.version>
 		<okhttp.version>3.10.0</okhttp.version>
 		<apphome.version>4.1.8</apphome.version>
+		<jave.version>1.6.4</jave.version>
 		<atom-sign-api.version>1.1.4</atom-sign-api.version>
+		<springfox-swagger.version>2.9.2</springfox-swagger.version>
+		<tk.mybatis.version>2.1.5</tk.mybatis.version>
+		<tk.mybatis.mapper.version>4.1.5</tk.mybatis.mapper.version>
 	</properties>
 
 	<dependencies>
@@ -106,12 +109,6 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
 			<artifactId>okhttp</artifactId>
 			<version>${okhttp.version}</version>
@@ -127,26 +124,26 @@
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper-spring-boot-starter</artifactId>
 			<scope>compile</scope>
-			<version>2.1.4</version>
+			<version>${tk.mybatis.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper</artifactId>
 			<scope>compile</scope>
-			<version>4.1.4</version>
+			<version>${tk.mybatis.mapper.version}</version>
 		</dependency>
 		<!--接口文档生成工具 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<scope>compile</scope>
-			<version>2.9.2</version>
+			<version>${springfox-swagger.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<scope>compile</scope>
-			<version>2.9.2</version>
+			<version>${springfox-swagger.version}</version>
 		</dependency>
 
 		<!-- 发送邮件 -->
@@ -161,12 +158,6 @@
 			<scope>compile</scope>
 		</dependency>
 		<!-- json -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<scope>compile</scope>
-			<version>1.2.56</version>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -189,6 +180,12 @@
 			<artifactId>apphome</artifactId>
 			<scope>compile</scope>
 			<version>${apphome.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.itrus</groupId>
+			<artifactId>jave</artifactId>
+			<scope>compile</scope>
+			<version>${jave.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
