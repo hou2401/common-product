@@ -80,8 +80,12 @@ public class AuthPersionVideoParams extends ServiceParams{
 		authParam.put(HttpRequset.SERVICE_CODE, this.getServiceCode());
 		authParam.put("name", this.name);
 		authParam.put("idnumber", this.idnumber);
-		authParam.put("orderNo", this.orderNo);
-		authParam.put("videoFile", this.videoFile);
+		if( StringUtils.trimToNull(this.orderNo) != null ) {
+			authParam.put("orderNo", this.orderNo);
+		}
+		if( StringUtils.trimToNull(this.videoFile) != null ) {
+			authParam.put("videoFile", this.videoFile);
+		}
 		return authParam;
 	}
 
@@ -94,7 +98,10 @@ public class AuthPersionVideoParams extends ServiceParams{
 	@Override
 	public String getSignature( String signature) throws PersionAuthException{
 		try {
-			return ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(signature, this.getSecretKey()));
+			System.out.println( signature );
+			signature = ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(signature, this.getSecretKey()));
+			System.out.println( signature );
+			return signature;
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			throw new PersionAuthException("发送天威云短信计算签名异常");
 		}
@@ -134,7 +141,7 @@ public class AuthPersionVideoParams extends ServiceParams{
 	 * @param orderNo
 	 * @param url
 	 */
-	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String url, String name, String idnumber, String videoFile, String orderNo) {
+	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String url, String name, String idnumber, String orderNo, String videoFile) {
 		super(appId,serviceCode, secretKey, url);
 		this.name = name;
 		this.idnumber = idnumber;

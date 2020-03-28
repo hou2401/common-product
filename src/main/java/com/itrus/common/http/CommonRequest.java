@@ -19,6 +19,7 @@ import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthPersionParams;
+import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.params.CertParams;
 import com.itrus.common.params.UploadParams;
 
@@ -398,7 +399,7 @@ public class CommonRequest {
 	}
 
 	/**
-	 * 实名服务，手机号3要素
+	 * 实名服务，2要素/手机号3要素/银行卡3、4要素
 	 * @param doctorQuery
 	 * @return
 	 * @throws PersionAuthException 
@@ -406,6 +407,17 @@ public class CommonRequest {
 	 */
 	public JSONObject auth(AuthPersionParams authPersionParams) throws PersionAuthException  {
 		return  httpRequset.authPersion(authPersionParams);
+	}
+	
+	/**
+	 * 实名服务 video h5，静默，数读接口
+	 * @param doctorQuery
+	 * @return
+	 * @throws PersionAuthException 
+	 * @throws Exception 
+	 */
+	public JSONObject auth(AuthPersionVideoParams authPersionVideoParams) throws PersionAuthException  {
+		return  httpRequset.authPersionVideo(authPersionVideoParams);
 	}
 	
 	/**

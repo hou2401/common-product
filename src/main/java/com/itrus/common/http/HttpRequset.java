@@ -94,7 +94,7 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject authPersionVideo(AuthPersionVideoParams persion) throws Exception {
+	public JSONObject authPersionVideo(AuthPersionVideoParams persion) throws PersionAuthException {
 		String doPost = null;
 		try {
 			 doPost = HttpUtil.doPost(persion.getUrl(), persion.getParams(), persion.getHeader());
