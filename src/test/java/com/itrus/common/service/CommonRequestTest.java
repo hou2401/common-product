@@ -17,7 +17,6 @@ import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.report.Author;
 import com.itrus.common.utils.Img2Base64Util;
-import com.itrus.common.utils.VideoEncodeUtil;
 
 @SpringBootTest(classes = WebApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)// 指定启动类
 public class CommonRequestTest extends AbstractTestNGSpringContextTests {
