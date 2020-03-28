@@ -5,14 +5,11 @@ import org.springframework.context.annotation.Configuration;
 
 import com.itrus.newportal.servlet.ApiServiceServlet;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * ApiService 配置
  *
  * @author ssr
  */
-@Slf4j
 @Configuration
 @ConditionalOnClass(ApiServiceServlet.class)
 public class TWConfig {
