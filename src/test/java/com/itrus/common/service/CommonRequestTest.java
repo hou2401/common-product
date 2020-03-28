@@ -9,8 +9,10 @@ import org.testng.annotations.Test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.WebApplication;
+import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.http.CommonRequest;
+import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.report.Author;
 
@@ -52,7 +54,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	
-	/*@Test(groups = "内部接口", testName = "企业实名认证", description = "企业实名认证")
+	@Test(groups = "内部接口", testName = "企业实名认证", description = "企业实名认证")
 	@Author(names = "wen_guoxing")
 	public void authEnterprise() throws  EnterpriseAuthException{
 		//servicecode  
@@ -78,7 +80,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 				);
 		JSONObject authEnterprise = commonRequest.auth(authEnterpriseParams);
 		Reporter.log(JSON.toJSONString(authEnterprise),true);
-	}*/
+	}
 	
 	
 	
