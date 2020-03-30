@@ -9,6 +9,7 @@ import com.itrus.common.dto.atom.Dgs;
 import com.itrus.common.dto.atom.Dsvs;
 import com.itrus.common.dto.atom.File;
 import com.itrus.common.dto.atom.Seal;
+import com.itrus.common.dto.atom.Uag;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -46,5 +47,10 @@ public class CallApiUrlAllDTO {
 	 * 
 	 */
 	private Dgs dgs;
+	/**
+	##################UAG######################
+	 * 
+	 */
+	private Uag uag;
 	
 }
