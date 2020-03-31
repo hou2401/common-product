@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.WebApplication;
-import com.itrus.common.dto.CallApiPartUrlDTO;
+import com.itrus.common.dto.CallApiAllUrlDTO;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.http.CommonRequest;
@@ -28,7 +28,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	private CommonRequest commonRequest;
 	
 	@Autowired
-	private CallApiPartUrlDTO callApiUrl;
+	private CallApiAllUrlDTO callApiUrl;
 	
 	private final static  String appId = "af346fdaab3848";
 	

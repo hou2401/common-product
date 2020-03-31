@@ -9,7 +9,6 @@ import com.itrus.common.dto.atom.Dgs;
 import com.itrus.common.dto.atom.Dsvs;
 import com.itrus.common.dto.atom.File;
 import com.itrus.common.dto.atom.Seal;
-import com.itrus.common.dto.atom.Uag;
 
 import lombok.Data;
 import lombok.ToString;

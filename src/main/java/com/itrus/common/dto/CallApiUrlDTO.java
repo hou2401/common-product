@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CallApiUrlDTO {
 	@Autowired
-	private CallApiUrlAllDTO callApiUrlAllDTO;
+	private CallApiAllUrlDTO callApiUrlAllDTO;
 
 	@Autowired
 	private CallApiPartUrlDTO callApiPartUrlDTO;
