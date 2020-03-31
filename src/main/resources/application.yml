@@ -41,3 +41,4 @@ http:
   httped: 0
   url: http://124.205.224.180:9339 #当 httped 不为1 或者 true ， 此配置无效，但必须保留 url: 可以不配置任何值
   alled: 0   # 1 或者 true 为原子服务合并版本方式
+  

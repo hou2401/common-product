@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.WebApplication;
+import com.itrus.common.dto.CallApiPartUrlDTO;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.http.CommonRequest;
@@ -26,6 +27,9 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private CommonRequest commonRequest;
 	
+	@Autowired
+	private CallApiPartUrlDTO callApiUrl;
+	
 	private final static  String appId = "af346fdaab3848";
 	
 	private final static String  secretKey = "edf611789ce54938a30dce5b74af7ed9";
@@ -35,6 +39,10 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	@Test(groups = "内部接口", testName = "个人实名认证", description = "个人实名认证")
 	@Author(names = "wen_guoxing")
 	public void authPersion() throws  PersionAuthException{
+		
+		
+		System.out.println(callApiUrl.toString());
+		
 		//servicecode  
 		//两要素  idc0001
 		//手机号三要素 idc0012

@@ -12,10 +12,15 @@ import com.itrus.common.dto.atom.Dsvs;
 import com.itrus.common.dto.atom.File;
 import com.itrus.common.dto.atom.Seal;
 
+import lombok.Data;
+import lombok.ToString;
 
-@PropertySource(value = {"classpath:config/CallApiPartUrlDTO.yml"})
-@ConfigurationProperties(prefix = "callapiurl")
+
+@Data
+@ToString
 @Component
+@ConfigurationProperties(prefix = "callapiurl")
+@PropertySource(value = {"classpath:config/CallApiPartUrlDTO.properties"})
 public class HttpUrlDTO {
 	
 	@Autowired

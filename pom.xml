@@ -52,7 +52,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-					<skip>false</skip>
+					<skip>true</skip>
 				</configuration>
             </plugin>
 			<!-- <plugin>
@@ -91,7 +91,14 @@
 		<tk.mybatis.version>2.1.5</tk.mybatis.version>
 		<tk.mybatis.mapper.version>4.1.5</tk.mybatis.mapper.version>
 	</properties>
-
+<!-- 私有化服务上传jar -->
+	<distributionManagement>
+	    <repository>
+	      <id>maven-itrus-releases</id>
+	      <name>Release Deploy</name>
+	      <url>http://mv.6rencn.com:9191/repository/maven-itrus-releases/</url>
+	    </repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -123,7 +130,7 @@
 		<dependency>
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper-spring-boot-starter</artifactId>
-			<scope>compile</scope>
+			<!-- <scope>compile</scope> -->
 			<version>${tk.mybatis.version}</version>
 		</dependency>
 		<dependency>
