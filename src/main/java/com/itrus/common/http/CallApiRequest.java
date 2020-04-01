@@ -22,6 +22,7 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
+import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.utils.BeanUtil;
 
 import cn.com.itrus.atom.sign.api.constants.FSSConstants;
@@ -448,8 +449,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllOneLevelChildren(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelChildren(), kvs , new ApiUser());
+	public JSONObject findAllOneLevelChildren(UagOrgParams uagOrgParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelChildren(), uagOrgParams , new ApiUser());
 	}
 	/**
 	 *  重置用户密码

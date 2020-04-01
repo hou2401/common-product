@@ -20,6 +20,7 @@ import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
+import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.utils.HttpTools;
 import com.itrus.common.utils.HttpUtil;
 
@@ -365,9 +366,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllOneLevelChildren(Object kvs) throws Exception {
+	public JSONObject findAllOneLevelChildren(UagOrgParams uagOrgParams) throws Exception {
 		
-		return http(kvs, httpUrl.getFindAllOneLevelChildren());
+		return http(uagOrgParams, httpUrl.getFindAllOneLevelChildren());
 	}
 	
 	/**

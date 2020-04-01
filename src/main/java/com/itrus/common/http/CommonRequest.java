@@ -21,6 +21,7 @@ import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.params.CertParams;
+import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.params.UploadParams;
 
 import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
@@ -623,12 +624,12 @@ public class CommonRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject findAllOneLevelChildren( Object object ) throws Exception {
+	public JSONObject findAllOneLevelChildren( UagOrgParams uagOrgParams ) throws Exception {
 		JSONObject result = null;
 		if(httped()) {
-			result = httpRequset.findAllOneLevelChildren(object);
+			result = httpRequset.findAllOneLevelChildren(uagOrgParams);
 		}else {
-			result = callApiRequest.findAllOneLevelChildren(object);
+			result = callApiRequest.findAllOneLevelChildren(uagOrgParams);
 		}
 		return result;
 		
