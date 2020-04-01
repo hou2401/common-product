@@ -352,5 +352,119 @@ public class CallApiRequest {
 	public JSONObject batchSign(Object kvs) throws Exception {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDsvsBatchSign(), BeanUtil.toMap(kvs) , new ApiUser());
 	}
+	
+	/**
+	 * UAG组织架构服务
+	 */
+	//-------------------------------------------------------------------------------------------------------------------------
 
+	/**
+	 * 企业注册
+	 *
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject createAdmin(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCreateAdmin(), kvs , new ApiUser());
+	}
+	/**
+	 * 新增节点
+	 *
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject createUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCreateUtsNode(), kvs , new ApiUser());
+	}
+	
+	/**
+	 * 更新节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject updateUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUpdateUtsNode(), kvs , new ApiUser());
+	}
+	/**
+	 * 升级用户为管理员
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject upgradeAdmin(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUpgradeAdmin(), kvs , new ApiUser());
+	}
+	/**
+	 * 取消管理员权限
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject cancelAdminAuth(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCancelAdminAuth(), kvs , new ApiUser());
+	}
+	/**
+	 * 删除节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject deleteUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeleteUtsNode(), kvs , new ApiUser());
+	}
+	/**
+	 * 重命名节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject renameUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getRenameUtsNode(), kvs , new ApiUser());
+	}
+	/**
+	 * 移动节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject movingUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getMovingUtsNode(), kvs , new ApiUser());
+	}
+	/**
+	 * 根据节点类型查找当前节点下所有节点数据
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject findAllSubLevelUser(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllSubLevelUser(), kvs , new ApiUser());
+	}
+	/**
+	 *  查询节点下所有一级节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject findAllOneLevelNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelNode(), kvs , new ApiUser());
+	}
+	/**
+	 *  查询当前节点下所有下一级节点或加载权限树
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject findAllOneLevelChildren(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelChildren(), kvs , new ApiUser());
+	}
+	/**
+	 *  重置用户密码
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject resetNodePassword(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getResetNodePassword(), kvs , new ApiUser());
+	}
+	/**
+	 *  判断当前用户是否根节点下用户
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject verfyUserExistRootNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getVerfyUserExistRootNode(), kvs , new ApiUser());
+	}
 }

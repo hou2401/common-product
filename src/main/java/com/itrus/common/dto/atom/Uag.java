@@ -24,6 +24,14 @@ public class Uag {
 	 */
 	private String updateUtsNode;
 	/**
+	 * 用户升级管理员
+	 */
+	private String upgradeAdmin;
+	/**
+	 * 取消管理员权限
+	 */
+	private String cancelAdminAuth;
+	/**
 	 * 删除节点 -删除节点用户、部门、子公司都算节点
 	 */
 	private String deleteUtsNode;
@@ -36,8 +44,24 @@ public class Uag {
 	 */
 	private String movingUtsNode;
 	/**
-	 * 查询当前节点下所有下一级节点
+	 * 根据节点类型查找当前节点下所有节点数据
+	 */
+	private String findAllSubLevelUser;
+	/**
+	 * 查询节点下所有一级节点
+	 */
+	private String findAllOneLevelNode;
+	/**
+	 * 查询当前节点下所有下一级节点或加载权限树
 	 */
 	private String findAllOneLevelChildren;
+	/**
+	 * 重置用户密码
+	 */
+	private String resetNodePassword;
+	/**
+	 * 判断当前用户是否根节点下用户
+	 */
+	private String verfyUserExistRootNode;
 
 }

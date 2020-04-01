@@ -222,4 +222,148 @@ public class CallApiUrlDTO {
 		return callApiPartUrlDTO.getDgs().getPdfCreate();
 	}
 
+/*		##################UAG组织架构服务############################### */
+	/**
+	 * 企业注册
+	 * @throws HttpException 
+	 */
+	public String getCreateAdmin() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getCreateAdmin();
+		}
+		return callApiPartUrlDTO.getUag().getCreateAdmin();
+	}
+	
+	/**
+	 * 新增节点
+	 * @throws HttpException 
+	 */
+	public String getCreateUtsNode() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getCreateUtsNode();
+		}
+		return callApiPartUrlDTO.getUag().getCreateUtsNode();
+	}
+
+	/**
+	 * 更新节点
+	 * @throws HttpException 
+	 */
+	public String getUpdateUtsNode() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getUpdateUtsNode();
+		}
+		return callApiPartUrlDTO.getUag().getUpdateUtsNode();
+	}
+
+	/**
+	 * 升级用户为管理员
+	 * @return
+	 */
+	public String getUpgradeAdmin() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getUpgradeAdmin();
+		}
+		return callApiPartUrlDTO.getUag().getUpgradeAdmin();
+	}
+	
+	/**
+	 * 取消管理员权限
+	 * @return
+	 */
+	public String getCancelAdminAuth() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getCancelAdminAuth();
+		}
+		return callApiPartUrlDTO.getUag().getCancelAdminAuth();
+	}
+	
+	/**
+	 * 删除节点
+	 * @return
+	 */
+	public String getDeleteUtsNode() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getDeleteUtsNode();
+		}
+		return callApiPartUrlDTO.getUag().getDeleteUtsNode();
+	}
+	
+	/**
+	 * 重命名节点
+	 * @return
+	 */
+	public String getRenameUtsNode() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getRenameUtsNode();
+		}
+		return callApiPartUrlDTO.getUag().getRenameUtsNode();
+	}
+	
+	/**
+	 * 移动节点
+	 * @return
+	 */
+	public String getMovingUtsNode() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getMovingUtsNode();
+		}
+		return callApiPartUrlDTO.getUag().getMovingUtsNode();
+	}
+	
+	/**
+	 * 根据节点类型查找当前节点下所有节点数据
+	 * @return
+	 */
+	public String getFindAllSubLevelUser() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getFindAllSubLevelUser();
+		}
+		return callApiPartUrlDTO.getUag().getFindAllSubLevelUser();
+	}
+	
+	/**
+	 *查询节点下所有一级节点
+	 * @return
+	 */
+	public String getFindAllOneLevelNode() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getFindAllOneLevelNode();
+		}
+		return callApiPartUrlDTO.getUag().getFindAllOneLevelNode();
+	}
+	
+	/**
+	 *查询当前节点下所有下一级节点或加载权限树
+	 * @return
+	 */
+	public String getFindAllOneLevelChildren() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getFindAllOneLevelChildren();
+		}
+		return callApiPartUrlDTO.getUag().getFindAllOneLevelChildren();
+	}
+	
+	/**
+	 *重置用户密码
+	 * @return
+	 */
+	public String getResetNodePassword() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getResetNodePassword();
+		}
+		return callApiPartUrlDTO.getUag().getResetNodePassword();
+	}
+	
+	/**
+	 *判断当前用户是否根节点下用户
+	 * @return
+	 */
+	public String getVerfyUserExistRootNode() throws HttpException {
+		if( httpDTO.alled() ) {
+			return callApiUrlAllDTO.getUag().getVerfyUserExistRootNode();
+		}
+		return callApiPartUrlDTO.getUag().getVerfyUserExistRootNode();
+	}
+
 }

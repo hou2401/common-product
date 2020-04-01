@@ -431,5 +431,244 @@ public class CommonRequest {
 		return  httpRequset.authEnterprise(authEnterpriseParams);
 	}
 	
+	/**
+	 * UAG组织架构服务
+	 */
+	//-----------------------------------------------------------------------------------------------------------------
+	
+	/**
+	 * 企业注册
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject applyCert( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.createAdmin(object);
+		}else {
+			result = callApiRequest.createAdmin(object);
+		}
+		return result;
+
+	}
+	
+	/**
+	 * 新增节点
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject createUtsNode( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.createUtsNode(object);
+		}else {
+			result = callApiRequest.createUtsNode(object);
+		}
+		return result;
+
+	}
+	
+	/**
+	 * 更新节点
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject updateUtsNode( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.updateUtsNode(object);
+		}else {
+			result = callApiRequest.updateUtsNode(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 升级用户为管理员
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject upgradeAdmin( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.upgradeAdmin(object);
+		}else {
+			result = callApiRequest.upgradeAdmin(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 取消管理员权限
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject cancelAdminAuth( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.cancelAdminAuth(object);
+		}else {
+			result = callApiRequest.cancelAdminAuth(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 删除节点
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject deleteUtsNode( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.deleteUtsNode(object);
+		}else {
+			result = callApiRequest.deleteUtsNode(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 重命名节点
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject renameUtsNode( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.renameUtsNode(object);
+		}else {
+			result = callApiRequest.renameUtsNode(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 移动节点
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject movingUtsNode( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.movingUtsNode(object);
+		}else {
+			result = callApiRequest.movingUtsNode(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 根据节点类型查找当前节点下所有节点数据
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject findAllSubLevelUser( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.findAllSubLevelUser(object);
+		}else {
+			result = callApiRequest.findAllSubLevelUser(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 查询节点下所有一级节点
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject findAllOneLevelNode( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.findAllOneLevelNode(object);
+		}else {
+			result = callApiRequest.findAllOneLevelNode(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 查询当前节点下所有下一级节点或加载权限树
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject findAllOneLevelChildren( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.findAllOneLevelChildren(object);
+		}else {
+			result = callApiRequest.findAllOneLevelChildren(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 重置用户密码
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject resetNodePassword( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.resetNodePassword(object);
+		}else {
+			result = callApiRequest.resetNodePassword(object);
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 判断当前用户是否根节点下用户
+	 *
+	 * @param kvs 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject verfyUserExistRootNode( Object object ) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.verfyUserExistRootNode(object);
+		}else {
+			result = callApiRequest.verfyUserExistRootNode(object);
+		}
+		return result;
+		
+	}
+	
 
 }

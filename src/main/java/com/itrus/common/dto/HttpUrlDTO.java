@@ -11,6 +11,7 @@ import com.itrus.common.dto.atom.Dgs;
 import com.itrus.common.dto.atom.Dsvs;
 import com.itrus.common.dto.atom.File;
 import com.itrus.common.dto.atom.Seal;
+import com.itrus.common.dto.atom.Uag;
 
 import lombok.Data;
 import lombok.ToString;
@@ -52,6 +53,12 @@ public class HttpUrlDTO {
 	 * 
 	 */
 	private Dgs dgs;
+	
+	/**
+	##################UAG组织架构服务######################
+	 * 
+	 */
+	private Uag uag;
 	
 	
 	public String getCreateEllipseSeal() throws HttpException {
@@ -110,6 +117,45 @@ public class HttpUrlDTO {
 	}
 	public String getPdfCreate() throws HttpException {
 		return httpDTO.getUrl()+dgs.getPdfCreate();
+	}
+	public String getCreateAdmin() throws HttpException {
+		return httpDTO.getUrl()+uag.getCreateAdmin();
+	}
+	public String getCreateUtsNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getCreateUtsNode();
+	}
+	public String getUpdateUtsNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getUpdateUtsNode();
+	}
+	public String getUpgradeAdmin() throws HttpException {
+		return httpDTO.getUrl()+uag.getUpgradeAdmin();
+	}
+	public String getCancelAdminAuth() throws HttpException {
+		return httpDTO.getUrl()+uag.getCancelAdminAuth();
+	}
+	public String getDeleteUtsNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getDeleteUtsNode();
+	}
+	public String getRenameUtsNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getRenameUtsNode();
+	}
+	public String getMovingUtsNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getMovingUtsNode();
+	}
+	public String getFindAllSubLevelUser() throws HttpException {
+		return httpDTO.getUrl()+uag.getFindAllSubLevelUser();
+	}
+	public String getFindAllOneLevelNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getFindAllOneLevelNode();
+	}
+	public String getFindAllOneLevelChildren() throws HttpException {
+		return httpDTO.getUrl()+uag.getFindAllOneLevelChildren();
+	}
+	public String getResetNodePassword() throws HttpException {
+		return httpDTO.getUrl()+uag.getResetNodePassword();
+	}
+	public String getVerfyUserExistRootNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getVerfyUserExistRootNode();
 	}
 	
 }
