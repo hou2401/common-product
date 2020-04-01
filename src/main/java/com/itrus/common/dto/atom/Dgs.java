@@ -19,4 +19,24 @@ public class Dgs {
 	 * PDF创建
 	 */
 	private String pdfCreate;
+
+	/**
+	 * 添加文字水印
+	 */
+	private String pdfTextMark;
+
+	/**
+	 * 添加图片水印
+	 */
+	private String pdfImageMark;
+
+	/**
+	 * 添加二维码水印
+	 */
+	private String pdfQrCodeMark;
+
+	/**
+	 * 添加文字和二维码水印
+	 */
+	private String pdfTextAndQrCodeMark;
 }

@@ -118,6 +118,20 @@ public class HttpUrlDTO {
 	public String getPdfCreate() throws HttpException {
 		return httpDTO.getUrl()+dgs.getPdfCreate();
 	}
+	public String getPdfTextMark() throws HttpException {
+		return httpDTO.getUrl()+dgs.getPdfTextMark();
+	}
+	public String getPdfImageMark() throws HttpException {
+		return httpDTO.getUrl()+dgs.getPdfImageMark();
+	}
+	public String getPdfQrCodeMark() throws HttpException {
+		return httpDTO.getUrl()+dgs.getPdfQrCodeMark();
+	}
+	public String getPdfTextAndQrCodeMark() throws HttpException {
+		return httpDTO.getUrl()+dgs.getPdfTextAndQrCodeMark();
+	}
+
+
 	public String getCreateAdmin() throws HttpException {
 		return httpDTO.getUrl()+uag.getCreateAdmin();
 	}
