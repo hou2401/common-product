@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.itrus.common.params.*;
 import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,12 +18,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
-import com.itrus.common.params.AuthEnterpriseParams;
-import com.itrus.common.params.AuthPersionParams;
-import com.itrus.common.params.AuthPersionVideoParams;
-import com.itrus.common.params.CertParams;
-import com.itrus.common.params.UagOrgParams;
-import com.itrus.common.params.UploadParams;
 
 import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
 import cn.com.itrus.atom.sign.api.fss.bean.UploadResponse;
@@ -458,16 +453,16 @@ public class CommonRequest {
 	/**
 	 * 新增节点
 	 *
-	 * @param kvs 请求参数
+	 * @param createUtsNodeParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject createUtsNode( Object object ) throws Exception {
+	public JSONObject createUtsNode( CreateUtsNodeParams createUtsNodeParams ) throws Exception {
 		JSONObject result = null;
 		if(httped()) {
-			result = httpRequset.createUtsNode(object);
+			result = httpRequset.createUtsNode(createUtsNodeParams);
 		}else {
-			result = callApiRequest.createUtsNode(object);
+			result = callApiRequest.createUtsNode(createUtsNodeParams);
 		}
 		return result;
 
