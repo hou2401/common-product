@@ -1,29 +1,27 @@
 package com.itrus.common.http;
 
+import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
+import cn.com.itrus.atom.sign.api.fss.bean.UploadResponse;
+import cn.com.itrus.atom.sign.api.seal.bean.SealParam;
+import cn.com.itrus.atom.sign.common.bean.Result;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.exception.EnterpriseAuthException;
+import com.itrus.common.exception.PersionAuthException;
+import com.itrus.common.params.*;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.itrus.common.params.*;
-import org.apache.http.HttpException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Base64Utils;
-
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.itrus.common.dto.HttpDTO;
-import com.itrus.common.exception.EnterpriseAuthException;
-import com.itrus.common.exception.PersionAuthException;
-
-import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
-import cn.com.itrus.atom.sign.api.fss.bean.UploadResponse;
-import cn.com.itrus.atom.sign.api.seal.bean.SealParam;
-import cn.com.itrus.atom.sign.common.bean.Result;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 公共原子服务调用方法
@@ -426,12 +424,90 @@ public class CommonRequest {
 	public JSONObject auth(AuthEnterpriseParams authEnterpriseParams) throws  EnterpriseAuthException  {
 		return  httpRequset.authEnterprise(authEnterpriseParams);
 	}
+
+
+	//-----------------------------------------------------------------------------------------------------------------------
+	/**
+	 * 添加水印服务
+	 */
+	//-----------------------------------------------------------------------------------------------------------------------
+
+
+	/**
+	 * 添加文本水印服务
+	 *
+	 * @param pdfTextMarkParams
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfTextMarkParams(PdfTextMarkParams pdfTextMarkParams) throws Exception {
+
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.pdfTextMark(pdfTextMarkParams);
+		}else {
+			result = callApiRequest.pdfTextMark(pdfTextMarkParams);
+		}
+		return result;
+	}
+	/**
+	 * 添加图片水印服务
+	 *
+	 * @param pdfImageMarkParams
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfImageMarkParams(PdfImageMarkParams pdfImageMarkParams) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.pdfTextMark(pdfImageMarkParams);
+		}else {
+			result = callApiRequest.pdfTextMark(pdfImageMarkParams);
+		}
+		return result;
+	}
+	/**
+	 * 添加二维码水印服务
+	 *
+	 * @param pdfQrCodeMarkParams
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfQrCodeMarkParams(PdfQrCodeMarkParams pdfQrCodeMarkParams) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.pdfTextMark(pdfQrCodeMarkParams);
+		}else {
+			result = callApiRequest.pdfTextMark(pdfQrCodeMarkParams);
+		}
+		return result;
+	}
+	/**
+	 * 添加文本和二维码水印服务
+	 *
+	 * @param pdfTextAndQrCodeMarkParams
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfTextAndQrCodeMarkParams(PdfTextAndQrCodeMarkParams pdfTextAndQrCodeMarkParams) throws Exception {
+		JSONObject result = null;
+		if(httped()) {
+			result = httpRequset.pdfTextMark(pdfTextAndQrCodeMarkParams);
+		}else {
+			result = callApiRequest.pdfTextMark(pdfTextAndQrCodeMarkParams);
+		}
+		return result;
+	}
+
+
+
+
 	
+	//-----------------------------------------------------------------------------------------------------------------------
 	/**
 	 * UAG组织架构服务
 	 */
-	//-----------------------------------------------------------------------------------------------------------------
-	
+	//-----------------------------------------------------------------------------------------------------------------------
 	/**
 	 * 企业注册
 	 *
