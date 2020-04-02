@@ -12,12 +12,12 @@ public class SearchCondition {
 	/**
 	 * 审核条件   待审核/审核通过/审核拒绝 --check_status
 	 */
-	private Integer[] ifAudited;   // 审核状态 1：审核通过  3：待审核  4：审核拒绝  不填默认查询全部
+	private String[] ifAudited;   // 审核状态 1：审核通过  3：待审核  4：审核拒绝  不填默认查询全部
 	
 	/**
 	 * 查询节点类型  用户/部门/公司
 	 */
-	private Integer[] nodetype;  // 查询节点类型   1：用户  2：部门 3：公司
+	private String[] nodetype;  // 查询节点类型   1：用户  2：部门 3：公司
 	
 	/**
 	 * 是查询树还是查询子节点
@@ -29,7 +29,7 @@ public class SearchCondition {
 	 */
 	private Integer realName;  //1已认证 2未认证 3认证未通过 4联系人已离职 5待审核
 
-	public SearchCondition(Integer[] ifAudited, Integer[] nodetype, Boolean ifLoadNodes, Integer realName) {
+	public SearchCondition(String[] ifAudited, String[] nodetype, Boolean ifLoadNodes, Integer realName) {
 		super();
 		this.ifAudited = ifAudited;
 		this.nodetype = nodetype;

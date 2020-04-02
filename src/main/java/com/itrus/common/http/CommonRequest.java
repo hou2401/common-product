@@ -515,7 +515,7 @@ public class CommonRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject applyCert( Object object ) throws Exception {
+	public JSONObject createAdmin( Object object ) throws Exception {
 		JSONObject result = null;
 		if(httped()) {
 			result = httpRequset.createAdmin(object);
