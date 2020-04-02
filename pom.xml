@@ -12,17 +12,24 @@
 	</parent>
 	<groupId>com.itrus</groupId>
 	<artifactId>common-product</artifactId>
-	<version>1.5.0</version>
+	<version>1.5.2</version>
 	<name>common-product</name>
 	<description>common-product</description>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
+				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<source>${java.version}</source> <!--指明源码用的Jdk版本 -->
 					<target>${java.version}</target> <!--指明打包后的Jdk版本 -->
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<excludes>
+						<exclude>application.yml</exclude>
+						<exclude>log4j2-spring.xml</exclude>
+						<exclude>com/itrus/common/WebApplication.class</exclude>
+					</excludes>
+				<skip>true</skip>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -36,14 +43,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -75,9 +74,14 @@
 	<distributionManagement>
 		<repository>
 			<id>maven-itrus-releases</id>
-			<name>Release Deploy</name>
+			<name>maven-itrus-releases</name>
 			<url>http://mv.6rencn.com:9191/repository/maven-itrus-releases/</url>
 		</repository>
+		<snapshotRepository>
+			<id>maven-itrus-snapshots</id>
+			<name>maven-itrus-snapshots</name>
+			<url>http://mv.6rencn.com:9191/repository/maven-itrus-snapshots/</url>
+		</snapshotRepository>
 	</distributionManagement>
 	<dependencies>
 		<dependency>
