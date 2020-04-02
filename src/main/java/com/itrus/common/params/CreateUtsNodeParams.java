@@ -63,7 +63,7 @@ public class CreateUtsNodeParams implements Serializable {
     /**
      * 父节点id，必填
      */
-    private String parentuuid;
+    private Long parentuuid;
     /**
      * 是否管理员角色："true/false"；必填
      */

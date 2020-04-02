@@ -471,16 +471,16 @@ public class CommonRequest {
 	/**
 	 * 更新节点
 	 *
-	 * @param kvs 请求参数
+	 * @param updateUtsNodeParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject updateUtsNode( Object object ) throws Exception {
+	public JSONObject updateUtsNode( UpdateUtsNodeParams updateUtsNodeParams ) throws Exception {
 		JSONObject result = null;
 		if(httped()) {
-			result = httpRequset.updateUtsNode(object);
+			result = httpRequset.updateUtsNode(updateUtsNodeParams);
 		}else {
-			result = callApiRequest.updateUtsNode(object);
+			result = callApiRequest.updateUtsNode(updateUtsNodeParams);
 		}
 		return result;
 		
