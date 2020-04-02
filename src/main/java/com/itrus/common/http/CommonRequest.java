@@ -677,12 +677,12 @@ public class CommonRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject findAllOneLevelNode( Object object ) throws Exception {
+	public JSONObject findAllOneLevelNode( UagOrgParams uagOrgParams ) throws Exception {
 		JSONObject result = null;
 		if(httped()) {
-			result = httpRequset.findAllOneLevelNode(object);
+			result = httpRequset.findAllOneLevelNode(uagOrgParams);
 		}else {
-			result = callApiRequest.findAllOneLevelNode(object);
+			result = callApiRequest.findAllOneLevelNode(uagOrgParams);
 		}
 		return result;
 		
