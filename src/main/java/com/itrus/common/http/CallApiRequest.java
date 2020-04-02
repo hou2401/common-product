@@ -353,6 +353,51 @@ public class CallApiRequest {
 	public JSONObject batchSign(Object kvs) throws Exception {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDsvsBatchSign(), BeanUtil.toMap(kvs) , new ApiUser());
 	}
+
+	/**
+	 * 添加文字水印
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfTextMark(Object kvs) throws Exception{
+
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfTextMark(), BeanUtil.toMap(kvs), new ApiUser());
+	}
+	/**
+	 * 添加图片水印
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfImageMark(Object kvs) throws Exception{
+
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfImageMark(), BeanUtil.toMap(kvs), new ApiUser());
+	}
+	/**
+	 * 添加二维码水印
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfQrCodeMark(Object kvs) throws Exception{
+
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfQrCodeMark(), BeanUtil.toMap(kvs), new ApiUser());
+	}
+	/**
+	 * 添加文字和二维码水印
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfTextAndQrCodeMark(Object kvs) throws Exception{
+
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfTextAndQrCodeMark(), BeanUtil.toMap(kvs), new ApiUser());
+	}
+
+
+
+
 	
 	/**
 	 * UAG组织架构服务

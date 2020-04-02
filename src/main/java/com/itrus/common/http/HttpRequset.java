@@ -207,6 +207,48 @@ public class HttpRequset {
 	}
 
 	/**
+	 * 添加文本水印
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfTextMark(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getPdfTextMark());
+	}
+	/**
+	 * 添加图片水印
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfImageMark(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getPdfImageMark());
+	}
+
+	/**
+	 * 添加二维码水印
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfQrCodeMark(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getPdfQrCodeMark());
+	}
+
+	/**
+	 * 添加文本和二维码水印
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfTextAndQrCodeMark(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getPdfTextAndQrCodeMark());
+	}
+
+
+
+
+	/**
 	 * http json请求
 	 * @param obj
 	 * @param url
