@@ -1,5 +1,7 @@
 package com.itrus.common.result.uag;
 
+import com.alibaba.fastjson.JSONObject;
+
 import lombok.Getter;
 import lombok.ToString;
 
@@ -23,11 +25,17 @@ public class UagResult {
 	 *
 	 * @param result json对象
 	 */
-	public static boolean isOk(UagResult result) {
+	public static boolean isOk(JSONObject result) {
+		
 		if(result == null ){
 			return false;
 		}
-		return   result.getStatus().equals("0x0000") ? true : false;
+		UagResult uagResult = JSONObject.toJavaObject(result, UagResult.class);
+		if( uagResult == null ) {
+			return false;
+		}
+		
+		return   uagResult.getStatus().equals("0x0000") ? true : false;
 	}
 	
 	/**
@@ -35,7 +43,7 @@ public class UagResult {
 	 *
 	 * @param result json对象
 	 */
-	public static boolean isNotOk(UagResult result) {
+	public static boolean isNotOk(JSONObject result) {
 		return !isOk(result);
 	}
 	
