@@ -20,6 +20,10 @@ public class UagResult {
 	private String message;
 	
 	
+	public static final String defaultMessage = "调用UAG失败";
+	
+	public static final String messageKey = "message";
+	
 	/**
 	 *     请求OK
 	 *

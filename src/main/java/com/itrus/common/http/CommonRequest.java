@@ -32,7 +32,7 @@ import java.util.Map;
 @Slf4j
 @Component
 public class CommonRequest {
-	
+
 	@Autowired
 	private HttpDTO http;
 
@@ -80,7 +80,7 @@ public class CommonRequest {
 	public String getMsg(JSONObject object) {
 		return object.getString("msg") == null ? object.getString("message") : object.getString("msg");
 	}
-	
+
 	/**
 	 * 获取请求消息
 	 *
@@ -105,10 +105,15 @@ public class CommonRequest {
 	 */
 	public JSONObject createEllipseSeal(Object kvs) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.createEllipseSeal(kvs);
-		}else {
-			result = callApiRequest.createEllipseSeal(kvs);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.createEllipseSeal(kvs);
+			}else {
+				result = callApiRequest.createEllipseSeal(kvs);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -122,10 +127,15 @@ public class CommonRequest {
 	 */
 	public JSONObject createCircularSeal( SealParam  sealParam) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result= httpRequset.createCircularSeal(sealParam);
-		}else {
-			result = callApiRequest.createCircularSeal(sealParam);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result= httpRequset.createCircularSeal(sealParam);
+			}else {
+				result = callApiRequest.createCircularSeal(sealParam);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -139,11 +149,16 @@ public class CommonRequest {
 	 */
 	public JSONObject createDoubleRowSeal(SealParam  sealParam) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			throw new Exception("http 方法还未实现");
-		}else {
-			
-			result = callApiRequest.createDoubleRowSeal(sealParam);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				throw new Exception("http 方法还未实现");
+			}else {
+
+				result = callApiRequest.createDoubleRowSeal(sealParam);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -157,10 +172,15 @@ public class CommonRequest {
 	 */
 	public JSONObject createSingleRowSeal(SealParam sealParam) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			throw new Exception("http 方法还未实现");
-		}else {
-			result =callApiRequest.createSingleRowSeal(sealParam);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				throw new Exception("http 方法还未实现");
+			}else {
+				result =callApiRequest.createSingleRowSeal(sealParam);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -174,11 +194,16 @@ public class CommonRequest {
 	 */
 	public JSONObject sealLimpid(Object kvs) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			throw new Exception("http 方法还未实现");
-		}else {
-			
-			result = callApiRequest.sealLimpid(kvs);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				throw new Exception("http 方法还未实现");
+			}else {
+
+				result = callApiRequest.sealLimpid(kvs);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -197,10 +222,15 @@ public class CommonRequest {
 	 */
 	public JSONObject fileDelete(Long fssId) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			return httpRequset.fileDelete(fssId);
-		}else {
-			result =callApiRequest.fileDelete(fssId);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				return httpRequset.fileDelete(fssId);
+			}else {
+				result =callApiRequest.fileDelete(fssId);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -212,30 +242,44 @@ public class CommonRequest {
 	 */
 	public Long upload(UploadParams uploadQuery) throws Exception {
 		//log.info("upload is uploadQuery = {}",uploadQuery.toString());
-		Long ffsId =  upload(uploadQuery.getBizType(), uploadQuery.getFileName(), uploadQuery.getFileBytes(), uploadQuery.getEncryptionType());
-		log.info("upload is result ffsId={}",ffsId);
+		Long ffsId = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			ffsId =  upload(uploadQuery.getBizType(), uploadQuery.getFileName(), uploadQuery.getFileBytes(), uploadQuery.getEncryptionType());
+			if( ffsId != null ) {
+				break;
+			}
+		}
 		return ffsId;
 	}
 	public Long upload(String bizType, String originalFileName, byte[] fileBytes , Integer encryptionType) throws Exception {
-		if(httped()) {
-			Map<String, Object> cearParam = new HashMap<>();
-			cearParam.put("fileBytes", Base64Utils.encodeToString(fileBytes));
-			cearParam.put("bizType", bizType);
-			cearParam.put("fileName", originalFileName);
-			cearParam.put("encryptionType", encryptionType);
-			JSONObject uploadBase64 = httpRequset.uploadBase64(cearParam);
-			String jsonData = uploadBase64.getString("data");
-			JSONObject jsondata = JSON.parseObject(jsonData);
-			String fssId = jsondata.getString("fssId");
-			return Long.valueOf(fssId);
+		Long fssId = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				Map<String, Object> cearParam = new HashMap<>();
+				cearParam.put("fileBytes", Base64Utils.encodeToString(fileBytes));
+				cearParam.put("bizType", bizType);
+				cearParam.put("fileName", originalFileName);
+				cearParam.put("encryptionType", encryptionType);
+				JSONObject uploadBase64 = httpRequset.uploadBase64(cearParam);
+				String jsonData = uploadBase64.getString("data");
+				JSONObject jsondata = JSON.parseObject(jsonData);
+				fssId = jsondata.getLong("fssId");
+				return fssId;
+			}
+			JSONObject jsonObject = callApiRequest.uploadBase64(fileBytes,bizType,originalFileName,encryptionType);
+			if( jsonObject != null ) {
+				if (jsonObject.getInteger("code") == 0) {
+					fssId = jsonObject.getJSONObject("data").getLong("fssId");
+				} else {
+					log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
+					return null;
+				}
+			}
+			if( fssId != null ) {
+				break;
+			}
 		}
-		JSONObject jsonObject = callApiRequest.uploadBase64(fileBytes,bizType,originalFileName,encryptionType);
-		if (jsonObject.getInteger("code") == 0) {
-			return jsonObject.getJSONObject("data").getLong("fssId");
-		} else {
-			log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
-			return null;
-		}
+		return fssId;
 
 	}
 
@@ -248,10 +292,15 @@ public class CommonRequest {
 	 */
 	public Result<UploadResponse> upload(String bizType, File file, Integer encryptionType) throws Exception {
 		Result<UploadResponse> result = null;
-		if(httped()) {
-			throw new Exception("http 方法还未实现");
-		}else {
-			result = callApiRequest.upload(bizType, file, encryptionType);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				throw new Exception("http 方法还未实现");
+			}else {
+				result = callApiRequest.upload(bizType, file, encryptionType);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -264,15 +313,20 @@ public class CommonRequest {
 	 */
 	public JSONObject downloadBase64(Long fssId) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result =  httpRequset.downLoadBase64(fssId);
-		}else {
-			result = callApiRequest.downloadBase64(fssId);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result =  httpRequset.downLoadBase64(fssId);
+			}else {
+				result = callApiRequest.downloadBase64(fssId);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
 	}
-	
-	
+
+
 	/**
 	 * 文件流下载接口
 	/**
@@ -282,34 +336,46 @@ public class CommonRequest {
 	 * @throws Exception
 	 */
 	public  Result<DownloadResponse> download(Long fssId) throws Exception{
-		
-		 Result<DownloadResponse>  result = null;
-		if( httped() ){
-			DownloadResponse  downLoadResponse = new DownloadResponse();
-			InputStream is =  httpRequset.downLoad(fssId);
-			byte[] bytes = input2byte(is);
-			downLoadResponse.setFileBytes( bytes );
-			result = new  Result<DownloadResponse>();
-			result.setCode(0L);
-			result.setData(downLoadResponse);
-		}else{
-			result = callApiRequest.download(fssId);
+
+		Result<DownloadResponse>  result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if( httped() ){
+				DownloadResponse  downLoadResponse = new DownloadResponse();
+				InputStream is =  httpRequset.downLoad(fssId);
+				byte[] bytes = input2byte(is);
+				downLoadResponse.setFileBytes( bytes );
+				result = new  Result<DownloadResponse>();
+				result.setCode(0L);
+				result.setData(downLoadResponse);
+			}else{
+				result = callApiRequest.download(fssId);
+			}
+			if(result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
-	
-    public static final byte[] input2byte(InputStream inStream) throws IOException {
-        ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
-        byte[] buff = new byte[100];
-        int rc = 0;
-        while ((rc = inStream.read(buff, 0, 100)) > 0) {
-            swapStream.write(buff, 0, rc);
-        }
-        byte[] in2b = swapStream.toByteArray();
-        return in2b;
-    }
-	
-	
+
+	public final byte[] input2byte(InputStream inStream) throws IOException {
+
+		byte[] in2b = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
+			byte[] buff = new byte[100];
+			int rc = 0;
+			while ((rc = inStream.read(buff, 0, 100)) > 0) {
+				swapStream.write(buff, 0, rc);
+			}
+			in2b = swapStream.toByteArray();
+			if( in2b != null && in2b.length != 0 ) {
+				break;
+			}
+		}
+		return in2b;
+	}
+
+
 	//-------------------------------------------------------------------------------------------------------------------------
 	/**
 	 * 证书服务
@@ -325,10 +391,15 @@ public class CommonRequest {
 	 */
 	public JSONObject applyCert( CertParams cert ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.applyCert(cert);
-		}else {
-			result = callApiRequest.applyCert(cert);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.applyCert(cert);
+			}else {
+				result = callApiRequest.applyCert(cert);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 
@@ -343,10 +414,15 @@ public class CommonRequest {
 	 */
 	public JSONObject updateCert( Object kvs ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result =  httpRequset.updateCert(kvs);
-		}else {
-			result = callApiRequest.updateCert(kvs);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result =  httpRequset.updateCert(kvs);
+			}else {
+				result = callApiRequest.updateCert(kvs);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 
@@ -366,10 +442,15 @@ public class CommonRequest {
 	 */
 	public JSONObject sign(Object kvs) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result =  httpRequset.sign(kvs);
-		}else {
-			result = callApiRequest.sign(kvs);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result =  httpRequset.sign(kvs);
+			}else {
+				result = callApiRequest.sign(kvs);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 
@@ -384,10 +465,15 @@ public class CommonRequest {
 	 */
 	public JSONObject batchSign(Object kvs) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			throw new Exception("http 方法还未实现");
-		}else {
-			result = callApiRequest.batchSign(kvs);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				throw new Exception("http 方法还未实现");
+			}else {
+				result = callApiRequest.batchSign(kvs);
+			}
+			if( result != null) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -400,9 +486,17 @@ public class CommonRequest {
 	 * @throws Exception 
 	 */
 	public JSONObject auth(AuthPersionParams authPersionParams) throws PersionAuthException  {
-		return  httpRequset.authPersion(authPersionParams);
+
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.authPersion(authPersionParams);
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
 	}
-	
+
 	/**
 	 * 实名服务 video h5，静默，数读接口
 	 * @param doctorQuery
@@ -411,9 +505,17 @@ public class CommonRequest {
 	 * @throws Exception 
 	 */
 	public JSONObject auth(AuthPersionVideoParams authPersionVideoParams) throws PersionAuthException  {
-		return  httpRequset.authPersionVideo(authPersionVideoParams);
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.authPersionVideo(authPersionVideoParams);
+			if( result != null ) {
+				break;
+			}
+
+		}
+		return result;
 	}
-	
+
 	/**
 	 * 实名服务，手机号3要素
 	 * @param doctorQuery
@@ -422,7 +524,15 @@ public class CommonRequest {
 	 * @throws Exception 
 	 */
 	public JSONObject auth(AuthEnterpriseParams authEnterpriseParams) throws  EnterpriseAuthException  {
-		return  httpRequset.authEnterprise(authEnterpriseParams);
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.authEnterprise(authEnterpriseParams);
+			if( result != null ) {
+				break;
+			}
+
+		}
+		return result;
 	}
 
 
@@ -443,10 +553,15 @@ public class CommonRequest {
 	public JSONObject pdfTextMarkParams(PdfTextMarkParams pdfTextMarkParams) throws Exception {
 
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.pdfTextMark(pdfTextMarkParams);
-		}else {
-			result = callApiRequest.pdfTextMark(pdfTextMarkParams);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.pdfTextMark(pdfTextMarkParams);
+			}else {
+				result = callApiRequest.pdfTextMark(pdfTextMarkParams);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -459,10 +574,15 @@ public class CommonRequest {
 	 */
 	public JSONObject pdfImageMarkParams(PdfImageMarkParams pdfImageMarkParams) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.pdfTextMark(pdfImageMarkParams);
-		}else {
-			result = callApiRequest.pdfTextMark(pdfImageMarkParams);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.pdfTextMark(pdfImageMarkParams);
+			}else {
+				result = callApiRequest.pdfTextMark(pdfImageMarkParams);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -475,10 +595,15 @@ public class CommonRequest {
 	 */
 	public JSONObject pdfQrCodeMarkParams(PdfQrCodeMarkParams pdfQrCodeMarkParams) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.pdfTextMark(pdfQrCodeMarkParams);
-		}else {
-			result = callApiRequest.pdfTextMark(pdfQrCodeMarkParams);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.pdfTextMark(pdfQrCodeMarkParams);
+			}else {
+				result = callApiRequest.pdfTextMark(pdfQrCodeMarkParams);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -491,10 +616,15 @@ public class CommonRequest {
 	 */
 	public JSONObject pdfTextAndQrCodeMarkParams(PdfTextAndQrCodeMarkParams pdfTextAndQrCodeMarkParams) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.pdfTextMark(pdfTextAndQrCodeMarkParams);
-		}else {
-			result = callApiRequest.pdfTextMark(pdfTextAndQrCodeMarkParams);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.pdfTextMark(pdfTextAndQrCodeMarkParams);
+			}else {
+				result = callApiRequest.pdfTextMark(pdfTextAndQrCodeMarkParams);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
 	}
@@ -502,7 +632,7 @@ public class CommonRequest {
 
 
 
-	
+
 	//-----------------------------------------------------------------------------------------------------------------------
 	/**
 	 * UAG组织架构服务
@@ -517,15 +647,20 @@ public class CommonRequest {
 	 */
 	public JSONObject createAdmin( RegisteredEnterpriseParams obj ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.createAdmin(obj);
-		}else {
-			result = callApiRequest.createAdmin(obj);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.createAdmin(obj);
+			}else {
+				result = callApiRequest.createAdmin(obj);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
 
 	}
-	
+
 	/**
 	 * 新增节点
 	 *
@@ -535,15 +670,20 @@ public class CommonRequest {
 	 */
 	public JSONObject createUtsNode( CreateUtsNodeParams createUtsNodeParams ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.createUtsNode(createUtsNodeParams);
-		}else {
-			result = callApiRequest.createUtsNode(createUtsNodeParams);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.createUtsNode(createUtsNodeParams);
+			}else {
+				result = callApiRequest.createUtsNode(createUtsNodeParams);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
 
 	}
-	
+
 	/**
 	 * 更新节点
 	 *
@@ -553,15 +693,20 @@ public class CommonRequest {
 	 */
 	public JSONObject updateUtsNode( UpdateUtsNodeParams updateUtsNodeParams ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.updateUtsNode(updateUtsNodeParams);
-		}else {
-			result = callApiRequest.updateUtsNode(updateUtsNodeParams);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.updateUtsNode(updateUtsNodeParams);
+			}else {
+				result = callApiRequest.updateUtsNode(updateUtsNodeParams);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 升级用户为管理员
 	 *
@@ -571,15 +716,20 @@ public class CommonRequest {
 	 */
 	public JSONObject upgradeAdmin( Object object ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.upgradeAdmin(object);
-		}else {
-			result = callApiRequest.upgradeAdmin(object);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.upgradeAdmin(object);
+			}else {
+				result = callApiRequest.upgradeAdmin(object);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 取消管理员权限
 	 *
@@ -589,15 +739,20 @@ public class CommonRequest {
 	 */
 	public JSONObject cancelAdminAuth( Object object ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.cancelAdminAuth(object);
-		}else {
-			result = callApiRequest.cancelAdminAuth(object);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.cancelAdminAuth(object);
+			}else {
+				result = callApiRequest.cancelAdminAuth(object);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 删除节点
 	 *
@@ -607,15 +762,20 @@ public class CommonRequest {
 	 */
 	public JSONObject deleteUtsNode( Object object ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.deleteUtsNode(object);
-		}else {
-			result = callApiRequest.deleteUtsNode(object);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.deleteUtsNode(object);
+			}else {
+				result = callApiRequest.deleteUtsNode(object);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 重命名节点
 	 *
@@ -625,15 +785,20 @@ public class CommonRequest {
 	 */
 	public JSONObject renameUtsNode( Object object ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.renameUtsNode(object);
-		}else {
-			result = callApiRequest.renameUtsNode(object);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.renameUtsNode(object);
+			}else {
+				result = callApiRequest.renameUtsNode(object);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 移动节点
 	 *
@@ -643,15 +808,20 @@ public class CommonRequest {
 	 */
 	public JSONObject movingUtsNode( Object object ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.movingUtsNode(object);
-		}else {
-			result = callApiRequest.movingUtsNode(object);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.movingUtsNode(object);
+			}else {
+				result = callApiRequest.movingUtsNode(object);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 根据节点类型查找当前节点下所有节点数据
 	 *
@@ -661,15 +831,20 @@ public class CommonRequest {
 	 */
 	public JSONObject findAllSubLevelUser( Object object ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.findAllSubLevelUser(object);
-		}else {
-			result = callApiRequest.findAllSubLevelUser(object);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.findAllSubLevelUser(object);
+			}else {
+				result = callApiRequest.findAllSubLevelUser(object);
+			}
+			if( result != null) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 查询节点下所有一级节点
 	 *
@@ -679,15 +854,20 @@ public class CommonRequest {
 	 */
 	public JSONObject findAllOneLevelNode( UagOrgParams uagOrgParams ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.findAllOneLevelNode(uagOrgParams);
-		}else {
-			result = callApiRequest.findAllOneLevelNode(uagOrgParams);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.findAllOneLevelNode(uagOrgParams);
+			}else {
+				result = callApiRequest.findAllOneLevelNode(uagOrgParams);
+			}
+			if(result != null ) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 查询当前节点下所有下一级节点或加载权限树
 	 *
@@ -697,15 +877,20 @@ public class CommonRequest {
 	 */
 	public JSONObject findAllOneLevelChildren( UagOrgParams uagOrgParams ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.findAllOneLevelChildren(uagOrgParams);
-		}else {
-			result = callApiRequest.findAllOneLevelChildren(uagOrgParams);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.findAllOneLevelChildren(uagOrgParams);
+			}else {
+				result = callApiRequest.findAllOneLevelChildren(uagOrgParams);
+			}
+			if(result != null) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 重置用户密码
 	 *
@@ -714,16 +899,22 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject resetNodePassword( Object object ) throws Exception {
+
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.resetNodePassword(object);
-		}else {
-			result = callApiRequest.resetNodePassword(object);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.resetNodePassword(object);
+			}else {
+				result = callApiRequest.resetNodePassword(object);
+			}
+			if( result != null ) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 	/**
 	 * 判断当前用户是否根节点下用户
 	 *
@@ -733,14 +924,19 @@ public class CommonRequest {
 	 */
 	public JSONObject verfyUserExistRootNode( Object object ) throws Exception {
 		JSONObject result = null;
-		if(httped()) {
-			result = httpRequset.verfyUserExistRootNode(object);
-		}else {
-			result = callApiRequest.verfyUserExistRootNode(object);
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.verfyUserExistRootNode(object);
+			}else {
+				result = callApiRequest.verfyUserExistRootNode(object);
+			}
+			if(result != null ) {
+				break;
+			}
 		}
 		return result;
-		
+
 	}
-	
+
 
 }
