@@ -486,8 +486,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllOneLevelNode(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelNode(), kvs , new ApiUser());
+	public JSONObject findAllOneLevelNode(UagOrgParams uagOrgParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelNode(), uagOrgParams , new ApiUser());
 	}
 	/**
 	 *  查询当前节点下所有下一级节点或加载权限树

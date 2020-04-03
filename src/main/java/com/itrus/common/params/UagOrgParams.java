@@ -19,6 +19,11 @@ public class UagOrgParams {
 	 */
 	private String manager;
 	
+	/**
+	 * 查询类型
+	 */
+	private String[] nodetype;
+	
     private SearchCondition searchCondition;
 
 	public UagOrgParams(Long uuid, String manager, SearchCondition searchCondition) {
@@ -26,6 +31,13 @@ public class UagOrgParams {
 		this.uuid = uuid;
 		this.manager = manager;
 		this.searchCondition = searchCondition;
+	}
+	
+	public UagOrgParams(Long uuid, String manager, String[] nodetype) {
+		super();
+		this.uuid = uuid;
+		this.manager = manager;
+		this.nodetype = nodetype;
 	}
 
 	public UagOrgParams() {

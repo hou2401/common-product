@@ -398,9 +398,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllOneLevelNode(Object kvs) throws Exception {
+	public JSONObject findAllOneLevelNode(UagOrgParams uagOrgParams) throws Exception {
 		
-		return http(kvs, httpUrl.getFindAllOneLevelNode());
+		return http(uagOrgParams, httpUrl.getFindAllOneLevelNode());
 	}
 	
 	/**
