@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.util.List;
 
 /**
  * @ClassName PdfTextMarkParams
@@ -60,6 +61,6 @@ public class PdfImageMarkParams implements Serializable {
     /**
      * 坐标数组；如果等于null，则指定一个x=0且y=0的坐标为默认坐标；
      */
-    private Array[] positionList;
+    private List positionArray;
 
 }
