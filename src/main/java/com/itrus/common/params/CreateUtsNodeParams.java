@@ -87,7 +87,7 @@ public class CreateUtsNodeParams implements Serializable {
     /**
      * 系统用户id
      */
-    private String userId;
+    private Long userId;
     /**
      * 审核状态：1表示审核通过，3表示待审核，4表示审核拒绝；必填
      */
