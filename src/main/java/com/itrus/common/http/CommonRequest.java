@@ -66,10 +66,12 @@ public class CommonRequest {
 	 * @param object json对象
 	 */
 	public boolean isOk(JSONObject object) {
-		if(object.get("code") == null || object.get("status") == null){
-			return false;
+		if(object.get("code") != null || object.get("status") != null){
+			return   object.getIntValue("code") == 0 || object.getIntValue("status") == 1 ;
+
 		}
-		return   object.getIntValue("code") == 0 || object.getIntValue("status") == 1 ;
+		return false;
+
 	}
 
 	/**
@@ -121,7 +123,7 @@ public class CommonRequest {
 	/**
 	 * 创建圆形印章
 	 *
-	 * @param kvs 请求参数
+	 * @param sealParam 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -143,7 +145,7 @@ public class CommonRequest {
 	/**
 	 * 创建双行人名印章
 	 *
-	 * @param kvs 请求参数
+	 * @param sealParam 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -166,7 +168,7 @@ public class CommonRequest {
 	/**
 	 * 创建单行人名印章
 	 *
-	 * @param kvs 请求参数
+	 * @param sealParam 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -385,7 +387,7 @@ public class CommonRequest {
 	/**
 	 * 申请证书
 	 *
-	 * @param kvs 请求参数
+	 * @param cert 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -480,7 +482,7 @@ public class CommonRequest {
 
 	/**
 	 * 实名服务，2要素/手机号3要素/银行卡3、4要素
-	 * @param doctorQuery
+	 * @param authPersionParams
 	 * @return
 	 * @throws PersionAuthException 
 	 * @throws Exception 
@@ -499,7 +501,7 @@ public class CommonRequest {
 
 	/**
 	 * 实名服务 video h5，静默，数读接口
-	 * @param doctorQuery
+	 * @param authPersionVideoParams
 	 * @return
 	 * @throws PersionAuthException 
 	 * @throws Exception 
@@ -518,7 +520,7 @@ public class CommonRequest {
 
 	/**
 	 * 实名服务，手机号3要素
-	 * @param doctorQuery
+	 * @param authEnterpriseParams
 	 * @return
 	 * @throws EnterpriseAuthException 
 	 * @throws Exception 
@@ -576,9 +578,9 @@ public class CommonRequest {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.pdfTextMark(pdfImageMarkParams);
+				result = httpRequset.pdfImageMark(pdfImageMarkParams);
 			}else {
-				result = callApiRequest.pdfTextMark(pdfImageMarkParams);
+				result = callApiRequest.pdfImageMark(pdfImageMarkParams);
 			}
 			if(result != null) {
 				break;
@@ -597,9 +599,9 @@ public class CommonRequest {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.pdfTextMark(pdfQrCodeMarkParams);
+				result = httpRequset.pdfQrCodeMark(pdfQrCodeMarkParams);
 			}else {
-				result = callApiRequest.pdfTextMark(pdfQrCodeMarkParams);
+				result = callApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams);
 			}
 			if(result != null) {
 				break;
@@ -618,9 +620,9 @@ public class CommonRequest {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.pdfTextMark(pdfTextAndQrCodeMarkParams);
+				result = httpRequset.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams);
 			}else {
-				result = callApiRequest.pdfTextMark(pdfTextAndQrCodeMarkParams);
+				result = callApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams);
 			}
 			if(result != null) {
 				break;
@@ -641,7 +643,7 @@ public class CommonRequest {
 	/**
 	 * 企业注册
 	 *
-	 * @param kvs 请求参数
+	 * @param obj 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -710,7 +712,7 @@ public class CommonRequest {
 	/**
 	 * 升级用户为管理员
 	 *
-	 * @param kvs 请求参数
+	 * @param object 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -733,7 +735,7 @@ public class CommonRequest {
 	/**
 	 * 取消管理员权限
 	 *
-	 * @param kvs 请求参数
+	 * @param object 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -756,7 +758,7 @@ public class CommonRequest {
 	/**
 	 * 删除节点
 	 *
-	 * @param kvs 请求参数
+	 * @param object 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -779,7 +781,7 @@ public class CommonRequest {
 	/**
 	 * 重命名节点
 	 *
-	 * @param kvs 请求参数
+	 * @param object 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -802,7 +804,7 @@ public class CommonRequest {
 	/**
 	 * 移动节点
 	 *
-	 * @param kvs 请求参数
+	 * @param object 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -825,7 +827,7 @@ public class CommonRequest {
 	/**
 	 * 根据节点类型查找当前节点下所有节点数据
 	 *
-	 * @param kvs 请求参数
+	 * @param object 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -848,7 +850,7 @@ public class CommonRequest {
 	/**
 	 * 查询节点下所有一级节点
 	 *
-	 * @param kvs 请求参数
+	 * @param uagOrgParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -871,7 +873,7 @@ public class CommonRequest {
 	/**
 	 * 查询当前节点下所有下一级节点或加载权限树
 	 *
-	 * @param kvs 请求参数
+	 * @param uagOrgParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -894,7 +896,7 @@ public class CommonRequest {
 	/**
 	 * 重置用户密码
 	 *
-	 * @param kvs 请求参数
+	 * @param object 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -918,7 +920,7 @@ public class CommonRequest {
 	/**
 	 * 判断当前用户是否根节点下用户
 	 *
-	 * @param kvs 请求参数
+	 * @param object 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
