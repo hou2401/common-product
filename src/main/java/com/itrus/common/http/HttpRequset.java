@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpUrlDTO;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
+import com.itrus.common.params.AdminAuthParams;
 import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
@@ -338,9 +339,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject upgradeAdmin(Object kvs) throws Exception {
+	public JSONObject upgradeAdmin(AdminAuthParams adminAuthParams) throws Exception {
 		
-		return http(kvs, httpUrl.getUpgradeAdmin());
+		return http(adminAuthParams, httpUrl.getUpgradeAdmin());
 	}
 	
 	/**
@@ -348,9 +349,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject cancelAdminAuth(Object kvs) throws Exception {
+	public JSONObject cancelAdminAuth(AdminAuthParams adminAuthParams) throws Exception {
 		
-		return http(kvs, httpUrl.getCancelAdminAuth());
+		return http(adminAuthParams, httpUrl.getCancelAdminAuth());
 	}
 	
 	/**
@@ -358,9 +359,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deleteUtsNode(Object kvs) throws Exception {
+	public JSONObject deleteUtsNode(AdminAuthParams adminAuthParams) throws Exception {
 		
-		return http(kvs, httpUrl.getDeleteUtsNode());
+		return http(adminAuthParams, httpUrl.getDeleteUtsNode());
 	}
 	
 	/**

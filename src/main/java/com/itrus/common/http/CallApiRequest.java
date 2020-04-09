@@ -22,6 +22,7 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
+import com.itrus.common.params.AdminAuthParams;
 import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.utils.BeanUtil;
 
@@ -438,24 +439,24 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject upgradeAdmin(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUpgradeAdmin(), kvs , new ApiUser());
+	public JSONObject upgradeAdmin(AdminAuthParams adminAuthParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUpgradeAdmin(), adminAuthParams , new ApiUser());
 	}
 	/**
 	 * 取消管理员权限
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject cancelAdminAuth(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCancelAdminAuth(), kvs , new ApiUser());
+	public JSONObject cancelAdminAuth(AdminAuthParams adminAuthParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCancelAdminAuth(), adminAuthParams , new ApiUser());
 	}
 	/**
 	 * 删除节点
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deleteUtsNode(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeleteUtsNode(), kvs , new ApiUser());
+	public JSONObject deleteUtsNode(AdminAuthParams adminAuthParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeleteUtsNode(), adminAuthParams , new ApiUser());
 	}
 	/**
 	 * 重命名节点

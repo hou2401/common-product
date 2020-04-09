@@ -712,17 +712,17 @@ public class CommonRequest {
 	/**
 	 * 升级用户为管理员
 	 *
-	 * @param object 请求参数
+	 * @param kvs 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject upgradeAdmin( Object object ) throws Exception {
+	public JSONObject upgradeAdmin( AdminAuthParams adminAuthParams ) throws Exception {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.upgradeAdmin(object);
+				result = httpRequset.upgradeAdmin(adminAuthParams);
 			}else {
-				result = callApiRequest.upgradeAdmin(object);
+				result = callApiRequest.upgradeAdmin(adminAuthParams);
 			}
 			if( result != null ) {
 				break;
@@ -735,17 +735,17 @@ public class CommonRequest {
 	/**
 	 * 取消管理员权限
 	 *
-	 * @param object 请求参数
+	 * @param kvs 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject cancelAdminAuth( Object object ) throws Exception {
+	public JSONObject cancelAdminAuth( AdminAuthParams adminAuthParams ) throws Exception {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.cancelAdminAuth(object);
+				result = httpRequset.cancelAdminAuth(adminAuthParams);
 			}else {
-				result = callApiRequest.cancelAdminAuth(object);
+				result = callApiRequest.cancelAdminAuth(adminAuthParams);
 			}
 			if(result != null) {
 				break;
@@ -758,17 +758,17 @@ public class CommonRequest {
 	/**
 	 * 删除节点
 	 *
-	 * @param object 请求参数
+	 * @param kvs 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject deleteUtsNode( Object object ) throws Exception {
+	public JSONObject deleteUtsNode( AdminAuthParams adminAuthParams ) throws Exception {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.deleteUtsNode(object);
+				result = httpRequset.deleteUtsNode(adminAuthParams);
 			}else {
-				result = callApiRequest.deleteUtsNode(object);
+				result = callApiRequest.deleteUtsNode(adminAuthParams);
 			}
 			if(result != null) {
 				break;
@@ -777,6 +777,7 @@ public class CommonRequest {
 		return result;
 
 	}
+
 
 	/**
 	 * 重命名节点
