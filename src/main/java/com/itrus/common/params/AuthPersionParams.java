@@ -5,14 +5,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.http.entity.ByteArrayEntity;
+import org.apache.commons.lang3.StringUtils;
 
-import com.alibaba.fastjson.JSON;
-import com.itrus.common.exception.PersionException;
-import com.itrus.common.exception.SmsException;
+import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.http.HttpRequset;
 import com.itrus.common.utils.HMACSHA1;
-import com.itrus.common.utils.HttpTools.HttpData;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -70,52 +67,72 @@ public class AuthPersionParams extends ServiceParams{
 		return persionSign.toString();
 	}
 
-
-	/**
-	 * 计算天威云 httpData
-	 * @return
-	 * @throws SmsException
-	 */
-	public HttpData getData() throws PersionException{
-		HttpData data = HttpData.instance()
-				.addHeader(HttpRequset.CONTENT_SIGNATURE, getSignature())
-				.addHeader(HttpRequset.CONTEXT_TYPE, HttpRequset.CONTEXT_TYPE_JSON)
-				.addHeader(HttpRequset.APP_ID, this.getAppId() )
-				.addHeader(HttpRequset.SERVICE_CODE, this.getServiceCode())
-				.setPostEntity(new ByteArrayEntity(JSON.toJSONBytes(getParams())));
-		return data;
-	}
-
-
 	/**
 	 * 天威云参数
 	 * @return
 	 */
-	private Map<String,String> getParams(){
-		Map<String, String> authParam = new HashMap<>();
+	public Map<String,Object> getParams(){
+		Map<String, Object> authParam = new HashMap<>();
 		authParam.put(HttpRequset.APP_ID, this.getAppId());
 		authParam.put(HttpRequset.SERVICE_CODE, this.getServiceCode());
 		authParam.put("name", this.name);
 		authParam.put("idCard", this.idCard);
-		authParam.put("mobile", this.mobile);
-		authParam.put("selfUrl", this.selfUrl);
-		authParam.put("selfImg", this.selfImg);
-		authParam.put("bankcard", this.bankcard);
+		if( StringUtils.trimToNull(this.mobile) != null ) {
+			authParam.put("mobile", this.mobile);
+		}
+		if(  StringUtils.trimToNull(this.selfUrl) != null  ) {
+			authParam.put("selfUrl", this.selfUrl);
+		}
+		if(  StringUtils.trimToNull(this.selfImg) != null  ) {
+			authParam.put("selfImg", this.selfImg);
+		}
+		if(  StringUtils.trimToNull(this.bankcard) != null  ) {
+			authParam.put("bankcard", this.bankcard);
+		}
 		return authParam;
 	}
 
+	public AuthPersionParams(String appId, String serviceCode, String secretKey, String url, String name, String idCard,
+			String mobile, String bankcard, String selfUrl, String selfImg) {
+		super(appId, serviceCode, secretKey, url);
+		this.name = name;
+		this.idCard = idCard;
+		this.mobile = mobile;
+		this.bankcard = bankcard;
+		this.selfUrl = selfUrl;
+		this.selfImg = selfImg;
+	}
+
+	public AuthPersionParams(String appId, String serviceCode, String secretKey, String url) {
+		super(appId, serviceCode, secretKey, url);
+	}
+
+	public AuthPersionParams() {
+		super();
+	}
+	
+	@Override
+	public String getSignature(String signature ) throws PersionAuthException {
+		try {
+			System.out.println(signature);
+			signature = ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(signature, this.getSecretKey()));
+			System.out.println(signature);
+			return signature;
+		}
+		catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			throw new PersionAuthException("实名认证签名计算错误");
+		}
+	}
 
 	/**
-	 * 天威云签名
+	 * header
 	 * @return
-	 * @throws PersionException
+	 * @throws PersionAuthException
 	 */
-	private String getSignature() throws PersionException{
-		try {
-			return ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(getPersonSign(), this.getSecretKey() + this.getServiceCode()));
-		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			throw new PersionException("发送天威云短信计算签名异常");
-		}
+	public Map<String,String> getHeader() throws PersionAuthException {
+		HashMap<String, String> hashMap = new HashMap<>();
+		hashMap.put(HttpRequset.CONTENT_SIGNATURE, getSignature(getPersonSign()));
+		return hashMap;
 	}
 
 }

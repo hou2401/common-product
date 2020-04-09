@@ -9,7 +9,7 @@ package com.itrus.common.exception;
  * @date 2019年8月9日
  * @version 1.0
  */
-public class ItrusException extends RuntimeException {
+public class ItrusException extends Exception {
 	private static final long serialVersionUID = -7319532573008583652L;
 
 	/**

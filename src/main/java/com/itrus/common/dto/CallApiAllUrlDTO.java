@@ -9,16 +9,17 @@ import com.itrus.common.dto.atom.Dgs;
 import com.itrus.common.dto.atom.Dsvs;
 import com.itrus.common.dto.atom.File;
 import com.itrus.common.dto.atom.Seal;
+import com.itrus.common.dto.atom.Uag;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.ToString;
 
-@Getter
+@Data
 @ToString
-@PropertySource("classpath:config/CallApiAllUrlDTO.yml")
-@ConfigurationProperties(prefix = "callapiurl")
 @Component
-public class CallApiUrlAllDTO {
+@ConfigurationProperties(prefix = "callapiurl")
+@PropertySource("classpath:config/CallApiAllUrlDTO.properties")
+public class CallApiAllUrlDTO {
 	
 	/**
 	 * 印章相关url集合
@@ -46,5 +47,10 @@ public class CallApiUrlAllDTO {
 	 * 
 	 */
 	private Dgs dgs;
+	/**
+	##################UAG######################
+	 * 
+	 */
+	private Uag uag;
 	
 }

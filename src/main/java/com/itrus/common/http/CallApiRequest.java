@@ -22,6 +22,8 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
+import com.itrus.common.params.AdminAuthParams;
+import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.utils.BeanUtil;
 
 import cn.com.itrus.atom.sign.api.constants.FSSConstants;
@@ -353,4 +355,163 @@ public class CallApiRequest {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDsvsBatchSign(), BeanUtil.toMap(kvs) , new ApiUser());
 	}
 
+	/**
+	 * 添加文字水印
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfTextMark(Object kvs) throws Exception{
+
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfTextMark(), BeanUtil.toMap(kvs), new ApiUser());
+	}
+	/**
+	 * 添加图片水印
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfImageMark(Object kvs) throws Exception{
+
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfImageMark(), BeanUtil.toMap(kvs), new ApiUser());
+	}
+	/**
+	 * 添加二维码水印
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfQrCodeMark(Object kvs) throws Exception{
+
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfQrCodeMark(), BeanUtil.toMap(kvs), new ApiUser());
+	}
+	/**
+	 * 添加文字和二维码水印
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfTextAndQrCodeMark(Object kvs) throws Exception{
+
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfTextAndQrCodeMark(), BeanUtil.toMap(kvs), new ApiUser());
+	}
+
+
+
+
+	
+	/**
+	 * UAG组织架构服务
+	 */
+	//-------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * 企业注册
+	 *
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject createAdmin(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCreateAdmin(), kvs , new ApiUser());
+	}
+	/**
+	 * 新增节点
+	 *
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject createUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCreateUtsNode(), kvs , new ApiUser());
+	}
+	
+	/**
+	 * 更新节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject updateUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUpdateUtsNode(), kvs , new ApiUser());
+	}
+	/**
+	 * 升级用户为管理员
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject upgradeAdmin(AdminAuthParams adminAuthParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUpgradeAdmin(), adminAuthParams , new ApiUser());
+	}
+	/**
+	 * 取消管理员权限
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject cancelAdminAuth(AdminAuthParams adminAuthParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCancelAdminAuth(), adminAuthParams , new ApiUser());
+	}
+	/**
+	 * 删除节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject deleteUtsNode(AdminAuthParams adminAuthParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeleteUtsNode(), adminAuthParams , new ApiUser());
+	}
+	/**
+	 * 重命名节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject renameUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getRenameUtsNode(), kvs , new ApiUser());
+	}
+	/**
+	 * 移动节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject movingUtsNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getMovingUtsNode(), kvs , new ApiUser());
+	}
+	/**
+	 * 根据节点类型查找当前节点下所有节点数据
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject findAllSubLevelUser(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllSubLevelUser(), kvs , new ApiUser());
+	}
+	/**
+	 *  查询节点下所有一级节点
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject findAllOneLevelNode(UagOrgParams uagOrgParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelNode(), uagOrgParams , new ApiUser());
+	}
+	/**
+	 *  查询当前节点下所有下一级节点或加载权限树
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject findAllOneLevelChildren(UagOrgParams uagOrgParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelChildren(), uagOrgParams , new ApiUser());
+	}
+	/**
+	 *  重置用户密码
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject resetNodePassword(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getResetNodePassword(), kvs , new ApiUser());
+	}
+	/**
+	 *  判断当前用户是否根节点下用户
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject verfyUserExistRootNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getVerfyUserExistRootNode(), kvs , new ApiUser());
+	}
 }

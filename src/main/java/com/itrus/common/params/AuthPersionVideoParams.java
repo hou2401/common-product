@@ -6,14 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.entity.ByteArrayEntity;
 
-import com.alibaba.fastjson.JSON;
-import com.itrus.common.exception.PersionException;
-import com.itrus.common.exception.SmsException;
+import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.http.HttpRequset;
 import com.itrus.common.utils.HMACSHA1;
-import com.itrus.common.utils.HttpTools.HttpData;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -45,6 +41,11 @@ public class AuthPersionVideoParams extends ServiceParams{
 	private String videoFile;
 
 	private String orderNo;
+	
+	/**
+	 * 是否视频压缩
+	 */
+	private boolean javed;
 
 
 	/**
@@ -58,7 +59,6 @@ public class AuthPersionVideoParams extends ServiceParams{
 		.append(this.getServiceCode())
 		.append(name)
 		.append(idnumber);
-		
 		if( StringUtils.trimToNull(orderNo) != null ) {
 			persionSign = persionSign.append(orderNo);
 		}
@@ -69,34 +69,23 @@ public class AuthPersionVideoParams extends ServiceParams{
 	}
 
 
-	/**
-	 * 计算天威云 httpData
-	 * @return
-	 * @throws SmsException
-	 */
-	public HttpData getData() throws PersionException{
-		HttpData data = HttpData.instance()
-				.addHeader(HttpRequset.CONTENT_SIGNATURE, getSignature())
-				.addHeader(HttpRequset.CONTEXT_TYPE, HttpRequset.CONTEXT_TYPE_JSON)
-				.addHeader(HttpRequset.APP_ID, this.getAppId() )
-				.addHeader(HttpRequset.SERVICE_CODE, this.getServiceCode())
-				.setPostEntity(new ByteArrayEntity(JSON.toJSONBytes(getParams())));
-		return data;
-	}
-
-
+	
 	/**
 	 * 天威云参数
 	 * @return
 	 */	
-	private Map<String,String> getParams(){
-		Map<String, String> authParam = new HashMap<>();
+	public Map<String,Object> getParams(){
+		Map<String, Object> authParam = new HashMap<>();
 		authParam.put(HttpRequset.APP_ID, this.getAppId());
 		authParam.put(HttpRequset.SERVICE_CODE, this.getServiceCode());
 		authParam.put("name", this.name);
 		authParam.put("idnumber", this.idnumber);
-		authParam.put("orderNo", this.orderNo);
-		authParam.put("videoFile", this.videoFile);
+		if( StringUtils.trimToNull(this.orderNo) != null ) {
+			authParam.put("orderNo", this.orderNo);
+		}
+		if( StringUtils.trimToNull(this.videoFile) != null ) {
+			authParam.put("videoFile", this.videoFile);
+		}
 		return authParam;
 	}
 
@@ -104,15 +93,26 @@ public class AuthPersionVideoParams extends ServiceParams{
 	/**
 	 * 天威云签名
 	 * @return
-	 * @throws PersionException
+	 * @throws PersionAuthException
 	 */
-	private String getSignature() throws PersionException{
+	@Override
+	public String getSignature( String signature) throws PersionAuthException{
 		try {
-			return ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(getPersonSign(), this.getSecretKey() + this.getServiceCode()));
+			System.out.println( signature );
+			signature = ServiceParams.HMAC_SHA1 + java.util.Base64.getEncoder().encodeToString(HMACSHA1.getHmacSHA1(signature, this.getSecretKey()));
+			System.out.println( signature );
+			return signature;
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			throw new PersionException("发送天威云短信计算签名异常");
+			throw new PersionAuthException("发送天威云短信计算签名异常");
 		}
 	}
+	
+	public Map<String,String> getHeader() throws PersionAuthException{
+		Map<String,String > header = new HashMap<>();
+		header.put(HttpRequset.CONTENT_SIGNATURE, getSignature(getPersonSign()));
+		return header;
+	}
+	
 
 
 	/**
@@ -124,7 +124,7 @@ public class AuthPersionVideoParams extends ServiceParams{
 	 * @param idnumber
 	 * @param url
 	 */
-	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String name, String idnumber, String url) {
+	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String url, String name, String idnumber) {
 		super(appId,serviceCode, secretKey, url);
 		this.name = name;
 		this.idnumber = idnumber;
@@ -141,17 +141,12 @@ public class AuthPersionVideoParams extends ServiceParams{
 	 * @param orderNo
 	 * @param url
 	 */
-	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String name, String idnumber, String videoFile, String orderNo, String url) {
+	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String url, String name, String idnumber, String orderNo, String videoFile) {
 		super(appId,serviceCode, secretKey, url);
 		this.name = name;
 		this.idnumber = idnumber;
 		this.videoFile = videoFile;
 		this.orderNo = orderNo;
-	}
-
-
-	public AuthPersionVideoParams(String appId, String serviceCode, String secretKey, String url) {
-		super(appId, serviceCode, secretKey, url);
 	}
 
 

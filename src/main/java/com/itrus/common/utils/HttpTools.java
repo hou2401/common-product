@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-import java.util.concurrent.CountDownLatch;
 
 import javax.net.ssl.SSLContext;
 
@@ -29,7 +28,10 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.config.CookieSpecs;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.*;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
@@ -48,8 +50,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -63,8 +63,6 @@ public class HttpTools {
     private static final CookieStore COOKIE_STORE = new BasicCookieStore();
     private static PoolingHttpClientConnectionManager cm = null; // 连接池管理器
     private static RequestConfig defaultRequestConfig = null; // 请求默认配置
-    private static Logger logger = LoggerFactory.getLogger(HttpTools.class);
-
     public static final boolean COOKIE_ENABLED = false; // 是否开启cookie
     public static final int REQUEST_TIMEOUT = 30 * 1000; // 读取超时 30秒
     public static final int CONN_TIMEOUT = 5 * 1000; // 连接超时 5秒

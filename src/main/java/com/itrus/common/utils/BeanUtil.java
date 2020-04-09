@@ -17,29 +17,37 @@ public class BeanUtil {
 	 * @param obj
 	 * @return
 	 */
-    public static Map<String, Object> toMap(Object obj) {
-        Map<String, Object> map = new HashMap<>();
-        try {
-            BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());
-            PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
-            for (PropertyDescriptor property : propertyDescriptors) {
-                String key = property.getName();
-                if (key.compareToIgnoreCase("class") == 0) {
-                    continue;
-                }
-                Method getter = property.getReadMethod();
-                if(getter!=null) {
-                    Object value=getter.invoke(obj);
-                    map.put(key,value);
-                }
-            }
-        }catch(Exception e) {
-        	log.error(e.toString(),e);
-        }
-        return map;
-    }
-    
-    /**
+	@SuppressWarnings("unchecked")
+	public static Map<String, Object> toMap(Object obj) {
+
+		Map<String, Object> map = new HashMap<>();
+		if( obj !=  null ) {
+			if( obj instanceof Map ) {
+				return (Map<String, Object>) obj;
+			}
+			try {
+				BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());
+				PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+				for (PropertyDescriptor property : propertyDescriptors) {
+					String key = property.getName();
+					if (key.compareToIgnoreCase("class") == 0) {
+						continue;
+					}
+					Method getter = property.getReadMethod();
+					if(getter!=null) {
+						Object value=getter.invoke(obj);
+						map.put(key,value);
+					}
+				}
+			}catch(Exception e) {
+				log.error(e.toString(),e);
+				return map;
+			}
+		}
+		return map;
+	}
+
+	/**
 	 * <p>Title: stringToList</p>  
 	 * <p>Description: String to List </p>  
 	 * @author wen_guoxing  
@@ -66,7 +74,7 @@ public class BeanUtil {
 
 		return null;
 	}
-	
+
 	/**
 	 * 将list转换为 map
 	 * @param strings
