@@ -389,9 +389,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllSubLevelUser(Object kvs) throws Exception {
+	public JSONObject findAllSubLevelUser(UagOrgParams uagOrgParams) throws Exception {
 		
-		return http(kvs, httpUrl.getFindAllSubLevelUser());
+		return http(uagOrgParams, httpUrl.getFindAllSubLevelUser());
 	}
 	
 	/**

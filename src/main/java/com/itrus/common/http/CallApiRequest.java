@@ -479,8 +479,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllSubLevelUser(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllSubLevelUser(), kvs , new ApiUser());
+	public JSONObject findAllSubLevelUser(UagOrgParams uagOrgParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllSubLevelUser(), uagOrgParams , new ApiUser());
 	}
 	/**
 	 *  查询节点下所有一级节点
