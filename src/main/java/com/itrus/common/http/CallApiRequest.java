@@ -23,6 +23,7 @@ import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
 import com.itrus.common.params.AdminAuthParams;
+import com.itrus.common.params.CreateUtsNodeParams;
 import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.utils.BeanUtil;
 
@@ -422,8 +423,8 @@ public class CallApiRequest {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject createUtsNode(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCreateUtsNode(), kvs , new ApiUser());
+	public JSONObject createUtsNode(CreateUtsNodeParams createUtsNodeParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCreateUtsNode(), createUtsNodeParams , new ApiUser());
 	}
 	
 	/**
