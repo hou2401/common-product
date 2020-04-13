@@ -1,27 +1,42 @@
 package com.itrus.common.http;
 
-import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
-import cn.com.itrus.atom.sign.api.fss.bean.UploadResponse;
-import cn.com.itrus.atom.sign.api.seal.bean.SealParam;
-import cn.com.itrus.atom.sign.common.bean.Result;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.itrus.common.dto.HttpDTO;
-import com.itrus.common.exception.EnterpriseAuthException;
-import com.itrus.common.exception.PersionAuthException;
-import com.itrus.common.params.*;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.Base64Utils;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.http.HttpException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Base64Utils;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.exception.EnterpriseAuthException;
+import com.itrus.common.exception.PersionAuthException;
+import com.itrus.common.params.AdminAuthParams;
+import com.itrus.common.params.AuthEnterpriseParams;
+import com.itrus.common.params.AuthPersionParams;
+import com.itrus.common.params.AuthPersionVideoParams;
+import com.itrus.common.params.CertParams;
+import com.itrus.common.params.CreateUtsNodeParams;
+import com.itrus.common.params.PdfImageMarkParams;
+import com.itrus.common.params.PdfQrCodeMarkParams;
+import com.itrus.common.params.PdfTextAndQrCodeMarkParams;
+import com.itrus.common.params.PdfTextMarkParams;
+import com.itrus.common.params.RegisteredEnterpriseParams;
+import com.itrus.common.params.UagOrgParams;
+import com.itrus.common.params.UpdateUtsNodeParams;
+import com.itrus.common.params.UploadParams;
+
+import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
+import cn.com.itrus.atom.sign.api.fss.bean.UploadResponse;
+import cn.com.itrus.atom.sign.api.seal.bean.SealParam;
+import cn.com.itrus.atom.sign.common.bean.Result;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 公共原子服务调用方法
