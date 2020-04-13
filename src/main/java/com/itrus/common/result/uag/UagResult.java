@@ -2,10 +2,10 @@ package com.itrus.common.result.uag;
 
 import com.alibaba.fastjson.JSONObject;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.ToString;
 
-@Getter
+@Data
 @ToString
 public class UagResult {
 	
@@ -34,12 +34,12 @@ public class UagResult {
 		if(result == null ){
 			return false;
 		}
-		UagResult uagResult = JSONObject.toJavaObject(result, UagResult.class);
+		UagResult uagResult = JSONObject.parseObject(result.toJSONString(), UagResult.class);
 		if( uagResult == null ) {
 			return false;
 		}
 		
-		return   uagResult.getStatus().equals("0x0000") ? true : false;
+		return   "0x0000".equals(uagResult.getStatus()) ? true : false;
 	}
 	
 	/**
@@ -49,6 +49,24 @@ public class UagResult {
 	 */
 	public static boolean isNotOk(JSONObject result) {
 		return !isOk(result);
+	}
+	
+	
+	/**
+	 *  是否存在
+	 *
+	 * @param result json对象
+	 */
+	public static boolean isExist(JSONObject result) {
+		if(result == null ){
+			return false;
+		}
+		UagResult uagResult = JSONObject.parseObject(result.toJSONString(), UagResult.class);
+		if( uagResult == null ) {
+			return false;
+		}
+		
+		return   "0x0001".equals(uagResult.getStatus()) ? true : false;
 	}
 	
 }

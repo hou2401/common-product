@@ -1,6 +1,7 @@
 package com.itrus.common.result.uag;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -9,11 +10,18 @@ import lombok.ToString;
  *
  */
 @ToString
-@Getter
+@Data
+@EqualsAndHashCode(callSuper=true)
 public class RegisteredEnterpriseResult extends UagResult{
 
-	private Long orguuid;
+	/**
+	 * 根节点组织id
+	 */
+	private Long rootuuid;
 	
+	/**
+	 * 管理员id
+	 */
 	private Long adminuuid;
 	
 	
