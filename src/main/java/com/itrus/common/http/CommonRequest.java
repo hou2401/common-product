@@ -847,13 +847,13 @@ public class CommonRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject findAllSubLevelUser( Object object ) throws Exception {
+	public JSONObject findAllSubLevelUser( UagOrgParams uagOrgParams ) throws Exception {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.findAllSubLevelUser(object);
+				result = httpRequset.findAllSubLevelUser(uagOrgParams);
 			}else {
-				result = callApiRequest.findAllSubLevelUser(object);
+				result = callApiRequest.findAllSubLevelUser(uagOrgParams);
 			}
 			if( result != null) {
 				break;

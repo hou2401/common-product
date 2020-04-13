@@ -21,6 +21,7 @@ import com.itrus.common.params.AdminAuthParams;
 import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
+import com.itrus.common.params.CreateUtsNodeParams;
 import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.utils.HttpTools;
 import com.itrus.common.utils.HttpUtil;
@@ -319,9 +320,9 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject createUtsNode(Object kvs) throws Exception {
+	public JSONObject createUtsNode(CreateUtsNodeParams createUtsNodeParams) throws Exception {
 		
-		return http(kvs, httpUrl.getCreateUtsNode());
+		return http(createUtsNodeParams, httpUrl.getCreateUtsNode());
 	}
 
 	/**
@@ -389,9 +390,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllSubLevelUser(Object kvs) throws Exception {
+	public JSONObject findAllSubLevelUser(UagOrgParams uagOrgParams) throws Exception {
 		
-		return http(kvs, httpUrl.getFindAllSubLevelUser());
+		return http(uagOrgParams, httpUrl.getFindAllSubLevelUser());
 	}
 	
 	/**
