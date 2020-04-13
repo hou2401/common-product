@@ -17,7 +17,7 @@ import lombok.ToString;
 @Data
 @ToString
 @Component
-@ConfigurationProperties(prefix = "callapiurl")
+@ConfigurationProperties(prefix = "callapiurlpart")
 @PropertySource("classpath:config/CallApiPartUrlDTO.properties")
 public class CallApiPartUrlDTO {
 	
