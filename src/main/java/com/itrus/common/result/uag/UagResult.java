@@ -1,5 +1,7 @@
 package com.itrus.common.result.uag;
 
+import java.io.Serializable;
+
 import com.alibaba.fastjson.JSONObject;
 
 import lombok.Data;
@@ -7,8 +9,13 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class UagResult {
+public class UagResult implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * 返回状态
 	 */
