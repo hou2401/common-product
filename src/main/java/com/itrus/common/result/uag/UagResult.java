@@ -1,14 +1,23 @@
 package com.itrus.common.result.uag;
 
-import com.alibaba.fastjson.JSONObject;
+import java.io.Serializable;
 
+import com.alibaba.fastjson.JSONObject;
+import com.itrus.common.dto.atom.Cert;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 
-@Getter
+@Data
 @ToString
-public class UagResult {
+public class UagResult implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * 返回状态
 	 */

@@ -22,14 +22,14 @@ public class SearchCondition {
 	/**
 	 * 是查询树还是查询子节点
 	 */
-	private Boolean ifLoadNodes;
+	private String ifLoadNodes;
 	
 	/**
 	 * 用户认证状态 
 	 */
 	private Integer realName;  //1已认证 2未认证 3认证未通过 4联系人已离职 5待审核
 
-	public SearchCondition(String[] ifAudited, String[] nodetype, Boolean ifLoadNodes, Integer realName) {
+	public SearchCondition(String[] ifAudited, String[] nodetype, String ifLoadNodes, Integer realName) {
 		super();
 		this.ifAudited = ifAudited;
 		this.nodetype = nodetype;
