@@ -54,5 +54,19 @@ public class CertParams implements Serializable {
      * 证书扩展信息
      */
     private JSON extJson;
-	
+
+	public CertParams(String o, String ou, String cn, String raCode, Integer validDays, JSON extJson) {
+		super();
+		this.o = o;
+		this.ou = ou;
+		this.cn = cn;
+		this.raCode = raCode;
+		this.validDays = validDays;
+		this.extJson = extJson;
+	}
+
+	public CertParams() {
+		super();
+	}
+    
 }

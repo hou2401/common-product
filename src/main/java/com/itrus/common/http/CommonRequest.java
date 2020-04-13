@@ -106,6 +106,20 @@ public class CommonRequest {
 	public int getCode(JSONObject object) {
 		return object.getIntValue("code");
 	}
+	
+	
+	/**
+	 * 获取请求消息
+	 *
+	 * @param object json对象
+	 * @return 
+	 */
+	public  JSONObject getData (JSONObject object) {
+		if( object == null ) {
+			return null;
+		}
+		return (JSONObject) object.get("data");
+	}
 
 	/**
 	 * 

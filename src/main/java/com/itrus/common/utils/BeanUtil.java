@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -36,7 +38,17 @@ public class BeanUtil {
 					Method getter = property.getReadMethod();
 					if(getter!=null) {
 						Object value=getter.invoke(obj);
-						map.put(key,value);
+						if(value == null ) {
+							continue;
+						}
+						if(value instanceof String ) {
+							String v = (String) value;
+							if(StringUtils.isNotBlank(v)) {
+								map.put(key,value);
+							}
+						}else {
+							map.put(key,value);
+						}
 					}
 				}
 			}catch(Exception e) {
