@@ -970,5 +970,28 @@ public class CommonRequest {
 
 	}
 
+	
+	/**
+	 * 判断当前用户是否根节点下用户
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject deleteRootChild( Object object ) throws Exception {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.deleteRootChild(object);
+			}else {
+				result = callApiRequest.deleteRootChild(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
 
 }

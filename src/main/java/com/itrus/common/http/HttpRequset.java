@@ -435,4 +435,14 @@ public class HttpRequset {
 		return http(kvs, httpUrl.getVerfyUserExistRootNode());
 	}
 
+	/**
+	 * 删除总公司节点
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject deleteRootChild(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getDeleteRootChild());
+	}
+
 }

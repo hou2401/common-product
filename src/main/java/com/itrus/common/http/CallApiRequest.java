@@ -515,4 +515,14 @@ public class CallApiRequest {
 	public JSONObject verfyUserExistRootNode(Object kvs) throws Exception {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getVerfyUserExistRootNode(), kvs , new ApiUser());
 	}
+	/**
+	 * 删除根节点
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject deleteRootChild(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getVerfyUserExistRootNode(), kvs , new ApiUser());
+	}
 }

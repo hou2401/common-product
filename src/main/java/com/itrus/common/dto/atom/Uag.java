@@ -63,5 +63,10 @@ public class Uag {
 	 * 判断当前用户是否根节点下用户
 	 */
 	private String verfyUserExistRootNode;
+	
+	/**
+	 * 删除根节点
+	 */
+	private String deleteRootChild;
 
 }

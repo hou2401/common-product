@@ -457,5 +457,17 @@ public class CallApiUrlDTO {
         }
         return callApiPartUrlDTO.getUag().getVerfyUserExistRootNode();
     }
+    
+    /**
+     * 判断当前用户是否根节点下用户
+     *
+     * @return
+     */
+    public String getDeleteRootChild() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getDeleteRootChild();
+        }
+        return callApiPartUrlDTO.getUag().getDeleteRootChild();
+    }
 
 }

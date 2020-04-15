@@ -172,4 +172,8 @@ public class HttpUrlDTO {
 		return httpDTO.getUrl()+uag.getVerfyUserExistRootNode();
 	}
 	
+	public String getDeleteRootChild() throws HttpException {
+		return httpDTO.getUrl()+uag.getDeleteRootChild();
+	}
+	
 }

@@ -1,9 +1,10 @@
 package com.itrus.common.params;
 
-import lombok.Data;
-import lombok.ToString;
+import com.itrus.common.params.uag.BaseUagParams;
 
-import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * <p>
@@ -15,17 +16,11 @@ import java.io.Serializable;
  */
 @Data
 @ToString
-public class AdminAuthParams implements Serializable {
-    private static final long serialVersionUID = 1L;
+@EqualsAndHashCode(callSuper=true)
+public class AdminAuthParams extends BaseUagParams{/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * 管理员账户，必填
-     */
-    private String manager;
-
-   /**
-    * 组织id
-    */
-    private Long uuid;
 
 }
