@@ -523,6 +523,6 @@ public class CallApiRequest {
 	 * @throws  
 	 */
 	public JSONObject deleteRootChild(Object kvs) throws Exception {
-		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getVerfyUserExistRootNode(), kvs , new ApiUser());
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getDeleteRootChild(), kvs , new ApiUser());
 	}
 }
