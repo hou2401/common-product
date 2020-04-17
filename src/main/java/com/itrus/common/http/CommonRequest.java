@@ -488,6 +488,29 @@ public class CommonRequest {
 	}
 
 	/**
+	 * PDF签章
+	 *
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject signMap(Map kvs) throws Exception {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result =  httpRequset.sign(kvs);
+			}else {
+				result = callApiRequest.signMap(kvs);
+			}
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
 	 * PDF批量签章
 	 *
 	 * @param kvs
@@ -565,6 +588,8 @@ public class CommonRequest {
 		}
 		return result;
 	}
+
+
 
 
 	//-----------------------------------------------------------------------------------------------------------------------
@@ -741,7 +766,7 @@ public class CommonRequest {
 	/**
 	 * 升级用户为管理员
 	 *
-	 * @param kvs 请求参数
+	 * @param adminAuthParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -764,7 +789,7 @@ public class CommonRequest {
 	/**
 	 * 取消管理员权限
 	 *
-	 * @param kvs 请求参数
+	 * @param adminAuthParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -787,7 +812,7 @@ public class CommonRequest {
 	/**
 	 * 删除节点
 	 *
-	 * @param kvs 请求参数
+	 * @param adminAuthParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */

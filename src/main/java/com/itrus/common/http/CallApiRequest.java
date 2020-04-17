@@ -345,6 +345,17 @@ public class CallApiRequest {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDsvsSign(), BeanUtil.toMap(kvs), new ApiUser());
 	}
 
+    /**
+     * PDF签章
+     *
+     * @param kvs 不能是map对象
+     * @return
+     * @throws Exception
+     */
+    public JSONObject signMap(Map kvs) throws Exception {
+        return (JSONObject) getApiService().callApi(callApiUrlDTO.getDsvsSign(), kvs, new ApiUser());
+    }
+
 	/**
 	 * PDF批量签章
 	 *
