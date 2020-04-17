@@ -59,7 +59,7 @@ public class CallApiRequest {
 	 * getApiService()
 	 * @return
 	 */
-	private  ApiService getApiService() {
+	public ApiService getApiService() {
 		// apphome 中获取
 		ApiService apiService  =  (ApiService) getRequest().getServletContext().getAttribute("__apiservice__");
 		if( apiService == null ) {
