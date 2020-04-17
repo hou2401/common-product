@@ -1,4 +1,4 @@
-package com.itrus.common.service;
+package com.itrus.common.service.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,9 +30,9 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	@Autowired
 	private CallApiAllUrlDTO callApiUrl;
 	
-	private final static  String appId = "af346fdaab3848";
+	private final static  String appId = "a929cd69afae46";
 	
-	private final static String  secretKey = "edf611789ce54938a30dce5b74af7ed9";
+	private final static String  secretKey = "7d837a8f7b164c8887802cc94815b6db";
 	
 	private final static String url = "http://demo-open.itruscloud.com/apigate/authapi";
 	
@@ -139,6 +139,47 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	
-	
+	@Test(groups = "内部接口", testName = "企业法人四要素认证", description = "企业实名认证")
+	@Author(names = "wen_guoxing")
+	public void authEnterpriselegalPersonAuth() throws  EnterpriseAuthException{
+		//servicecode  
+		//工商信息 idb0003
+		// 企业法人四要素 idb0031
+		//type ET_PE:企业   ET_SE:个体工商户  OU:企事业单位 （orgCode 必传， id_code  不一定 ）
+		
+		/*//String appId,
+		 *  String serviceCode, 
+		 *  String secretKey, 
+		 *  String url, 
+		 *  String name,
+		String type, 
+		String idCode, 
+		String orgCode, 
+		String legalName, 
+		String legalId, 
+		String legalUrl,
+		String legalImg, 
+		String agentName, String agentId, String agentUrl, String agentImg*/
+		AuthEnterpriseParams authEnterpriseParams = new AuthEnterpriseParams(
+				appId, 
+				"idb0033", 
+				secretKey, 
+				url+"/enterprise/authIden", 
+				"北京天威诚信电子商务服务有限公司", 
+				"ET_PE", 
+				"911101088020176153", 
+				null, 
+				"张强", 
+				"220724198701155432", 
+				null, 
+				null, 
+				null, 
+				null, 
+				null, 
+				null
+				);
+		JSONObject authEnterprise = commonRequest.auth(authEnterpriseParams);
+		Reporter.log(JSON.toJSONString(authEnterprise),true);
+	}
 	
 }
