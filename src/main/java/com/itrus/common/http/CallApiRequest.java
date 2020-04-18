@@ -328,6 +328,18 @@ public class CallApiRequest {
 	public JSONObject updateCert( Object kvs ) throws Exception {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCertUpdate(), BeanUtil.toMap(kvs), new ApiUser());
 	}
+
+    //-----------------------------------------------------------------------------------------------------------------------
+    /**
+     * 文档生成服务
+     */
+    //-----------------------------------------------------------------------------------------------------------------------
+
+    public JSONObject pdfFill(Map kvs) throws  Exception{
+        return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdfFill(),kvs, new ApiUser());
+    }
+
+
 	//-----------------------------------------------------------------------------------------------------------------------
 	/**
 	 * 签章验章服务
