@@ -199,13 +199,22 @@ public class HttpRequset {
 
 	/**
 	 * 签章
-	 * @param uploadQuery
-	 * @param uploadImageUrl
+	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
 	public JSONObject sign(Object kvs) throws Exception {
 		return http(kvs, httpUrl.getDsvsSign());
+	}
+
+	/**
+	 * pdf生成
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject pdfFill(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getPdfFill());
 	}
 
 	/**
