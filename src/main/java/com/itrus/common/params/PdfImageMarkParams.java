@@ -57,7 +57,14 @@ public class PdfImageMarkParams implements Serializable {
      * 水印图片放在PDF上的高度；如果等于null，则为水印图片默认高度；
      */
     private Float height;
-
+    /**
+     * 对齐方式的枚举的字符串参数；范围：LEFT_BOTTOM，LEFT_TOP，RIGHT_BOTTOM，RIGHT_TOP，CENTER，TILED，STRET；接口会根据参数生成对应的坐标；（如果align和positionArray同时为空，则默认一个x=0且y=0的坐标）
+     */
+    private String align;
+    /**
+     * 边距；如果等于null或者小于0，默认为30；
+     */
+    private Float margin;
     /**
      * 坐标数组；如果等于null，则指定一个x=0且y=0的坐标为默认坐标；
      */
