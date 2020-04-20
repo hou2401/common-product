@@ -12,7 +12,7 @@
 	</parent>
 	<groupId>com.itrus</groupId>
 	<artifactId>common-product</artifactId>
-	<version>1.5.5</version>
+	<version>1.5.6</version>
 	<name>common-product</name>
 	<description>common-product</description>
 	<build>
