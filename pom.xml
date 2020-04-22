@@ -65,8 +65,11 @@
 		<okhttp.version>3.10.0</okhttp.version>
 		<apphome.version>4.1.11</apphome.version>
 		<jave.version>1.6.4</jave.version>
+		<poi.version>3.17</poi.version>
 		<atom-sign-api.version>1.1.4</atom-sign-api.version>
 		<springfox-swagger.version>2.9.2</springfox-swagger.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-beanutils.version>1.8.3</commons-beanutils.version>
 		<tk.mybatis.version>2.1.5</tk.mybatis.version>
 		<tk.mybatis.mapper.version>4.1.5</tk.mybatis.mapper.version>
 	</properties>
@@ -87,6 +90,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -98,23 +102,26 @@
 					<artifactId>spring-boot-starter-logging</artifactId>
 				</exclusion>
 			</exclusions>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
 			<artifactId>okhttp</artifactId>
 			<version>${okhttp.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+			<scope>compile</scope>
 		</dependency>
 
 		<!--通用mapper -->
 		<dependency>
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper-spring-boot-starter</artifactId>
-			<!-- <scope>compile</scope> -->
+			<scope>compile</scope>
 			<version>${tk.mybatis.version}</version>
 		</dependency>
 		<dependency>
@@ -210,28 +217,27 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>3.17</version>
+			<version>${poi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
-			<version>3.17</version>
+			<version>${poi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
-			<version>3.2.1</version>
+			<version>${commons-collections.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.8.3</version>
+			<version>${commons-beanutils.version}</version>
 		</dependency>
 	</dependencies>
 </project>
