@@ -15,18 +15,13 @@ server:
 
 spring:
   jmx:
-    default-domain: emrweb
+    default-domain: product
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: NON_NULL
   application:
     name: product
-  datasource:
-    url: jdbc:mysql://localhost:3306/emr?useUnicode=true&characterEncoding=UTF-8&useSSL=false&nullNamePatternMatchesAll=true&autoReconnect=true&serverTimezone=GMT%2B8
-    username: root
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
 #######################证书信息######################################  
 itrus:
   cert:

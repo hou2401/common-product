@@ -8,9 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.itrus.api.common.ApiService;
 import com.itrus.newportal.servlet.ApiServiceServlet;
-import com.itrus.newportal.servlet.AppHomeServiceImpl;
 import com.itrus.newportal.servlet.AppHomeServlet.ApiServiceImpl;
 
 /**
@@ -22,7 +20,7 @@ import com.itrus.newportal.servlet.AppHomeServlet.ApiServiceImpl;
 @ConditionalOnClass(ApiServiceServlet.class)
 public class ApiServiceConfig {
 
-	//	private static final ApiServiceServlet API_SERVLET = new ApiServiceServlet();
+	private static  WebApplicationContext webApplicationConnect;
 	/**
 	 * 获取ApiServiceServlet
 	 *
@@ -33,8 +31,6 @@ public class ApiServiceConfig {
 		ApiServiceImpl apiService  =  (ApiServiceImpl) getRequest().getServletContext().getAttribute("__apiservice__");
 		return  apiService;
 	}
-
-	private static  WebApplicationContext webApplicationConnect;
 
 	@Autowired
 	public void setSysUserRoleService(WebApplicationContext webApplicationConnect) {
