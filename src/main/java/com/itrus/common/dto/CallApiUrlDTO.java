@@ -133,6 +133,18 @@ public class CallApiUrlDTO {
         }
         return callApiPartUrlDTO.getFile().getDownloadBase64();
     }
+    /**
+     * 文档转换
+     *
+     * @throws HttpException
+     */
+    public String getWord2Pdfs() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getFile().getWord2Pdfs();
+        }
+        return callApiPartUrlDTO.getFile().getWord2Pdfs();
+    }
+
     /* ####################证书服务##################### */
 
     /**

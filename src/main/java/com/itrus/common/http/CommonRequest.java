@@ -406,6 +406,17 @@ public class CommonRequest {
 		return in2b;
 	}
 
+	/**
+	 * 文档转换
+	 * @param data
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject word2Pdfs(byte[] data) throws Exception {
+
+		return callApiRequest.word2Pdfs(data);
+	}
+
 
 	//-------------------------------------------------------------------------------------------------------------------------
 	/**

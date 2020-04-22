@@ -300,6 +300,18 @@ public class CallApiRequest {
 	}
 
 
+	/***
+	 * 下载文件
+	 * @param data 文件存储标识
+	 * @return 文件内容
+	 * @throws Exception
+	 */
+	public JSONObject word2Pdfs(byte[] data) throws Exception {
+		Map<String,String> params = new HashMap<>();
+		params.put("file",Base64Utils.encodeToString(data));
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getWord2Pdfs(), params, new ApiUser());
+	}
+
 
 	//-------------------------------------------------------------------------------------------------------------------------
 	/**

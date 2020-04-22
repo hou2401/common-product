@@ -32,4 +32,8 @@ public class File {
 	private String download;
 
 	private String downloadBase64;
+	/**
+	 * 文档转换
+	 */
+	private String word2Pdfs;
 }
