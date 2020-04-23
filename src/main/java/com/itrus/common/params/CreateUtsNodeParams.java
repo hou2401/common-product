@@ -1,9 +1,9 @@
 package com.itrus.common.params;
 
+import java.io.Serializable;
+
 import lombok.Data;
 import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
  * <p>
@@ -110,5 +110,10 @@ public class CreateUtsNodeParams implements Serializable {
      * 子公司别名
      */
     private String orgaliases;
+    
+    /**
+     * 是否是超级管理员  默认0，不是，   1是超级管理员
+     */
+    private String ifRoot = "0";
 
 }

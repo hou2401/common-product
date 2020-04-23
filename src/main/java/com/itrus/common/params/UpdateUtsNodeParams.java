@@ -1,6 +1,7 @@
 package com.itrus.common.params;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -13,8 +14,13 @@ import lombok.ToString;
  */
 @Data
 @ToString
+@EqualsAndHashCode(callSuper=true)
 public class UpdateUtsNodeParams extends CreateUtsNodeParams {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 要修改的节点uuid
      */
     private Long uuid;
