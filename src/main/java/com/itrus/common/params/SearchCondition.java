@@ -25,9 +25,26 @@ public class SearchCondition {
 	private String ifLoadNodes;
 	
 	/**
+	 * 默认需要显示超级管理员
+	 * 0不显示
+	 */
+	private String ifRoot="1";
+	
+	/**
 	 * 用户认证状态 
 	 */
 	private Integer realName;  //1已认证 2未认证 3认证未通过 4联系人已离职 5待审核
+	
+	
+	public SearchCondition(String[] ifAudited, String[] nodetype, String ifLoadNodes, Integer realName, String ifRoot) {
+		super();
+		this.ifAudited = ifAudited;
+		this.nodetype = nodetype;
+		this.ifLoadNodes = ifLoadNodes;
+		this.realName = realName;
+		this.ifRoot = ifRoot;
+	}
+	
 
 	public SearchCondition(String[] ifAudited, String[] nodetype, String ifLoadNodes, Integer realName) {
 		super();
