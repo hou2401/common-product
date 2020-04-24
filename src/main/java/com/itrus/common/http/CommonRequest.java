@@ -744,6 +744,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject createAdmin( RegisteredEnterpriseParams obj ) throws Exception {
+		log.info("企业注册根节点入参："+JSON.toJSONString(obj));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -767,6 +768,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject createUtsNode( CreateUtsNodeParams createUtsNodeParams ) throws Exception {
+		log.info("新增节点入参："+JSON.toJSONString(createUtsNodeParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -790,6 +792,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject updateUtsNode( UpdateUtsNodeParams updateUtsNodeParams ) throws Exception {
+		log.info("更新节点入参："+JSON.toJSONString(updateUtsNodeParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -813,6 +816,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject upgradeAdmin( AdminAuthParams adminAuthParams ) throws Exception {
+		log.info("升级用户为管理员入参："+JSON.toJSONString(adminAuthParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -836,6 +840,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject cancelAdminAuth( AdminAuthParams adminAuthParams ) throws Exception {
+		log.info("取消管理员权限入参："+JSON.toJSONString(adminAuthParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -859,6 +864,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject deleteUtsNode( AdminAuthParams adminAuthParams ) throws Exception {
+		log.info("删除节点入参："+JSON.toJSONString(adminAuthParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -883,6 +889,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject renameUtsNode( Object object ) throws Exception {
+		log.info("重命名节点入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -906,6 +913,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject movingUtsNode( Object object ) throws Exception {
+		log.info("移动节点入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -929,6 +937,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject findAllSubLevelUser( UagOrgParams uagOrgParams ) throws Exception {
+		log.info("1.11 根据节点类型查找当前节点下所有节点数据入参："+JSON.toJSONString(uagOrgParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -952,6 +961,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject findAllOneLevelNode( UagOrgParams uagOrgParams ) throws Exception {
+		log.info("1.12 查询节点下所有一级节点入参："+JSON.toJSONString(uagOrgParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -975,6 +985,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject findAllOneLevelChildren( UagOrgParams uagOrgParams ) throws Exception {
+		log.info("1.13 查询当前节点下所有子节点或根据管理员权限加载树入参："+JSON.toJSONString(uagOrgParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -998,7 +1009,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject resetNodePassword( Object object ) throws Exception {
-
+		log.info("重置用户密码入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -1022,6 +1033,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject verfyUserExistRootNode( Object object ) throws Exception {
+		log.info("判断当前用户是否根节点下用户入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -1046,6 +1058,7 @@ public class CommonRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject deleteRootChild( Object object ) throws Exception {
+		log.info("判断当前用户是否根节点下用户入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
