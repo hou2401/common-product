@@ -103,6 +103,10 @@ public class CreateUtsNodeParams implements Serializable {
      * 部门编号或子公司统一代码；必填
      */
     private String deptcode;
+    /**
+     * 是否为特殊部门
+     */
+    private Boolean ifSuperManagerPermission;
 
 
     /*******************新增子公司*******************/
