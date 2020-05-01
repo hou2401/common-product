@@ -63,13 +63,21 @@ public class EmailRequest implements Serializable {
 			message.setSubject(email.getSuject());// 设置邮件主题
 			message.setText(email.getContent(), email.getHtml());
 			//附件不能是文件夹只能是带后缀的文件，不适合太大，不然会导致发送邮件时间过长 建议不超过 1M
-			for(File file : email.getListFile()) {
-				message.addAttachment( MimeUtility.encodeText(file.getName(),"gb2312","B"), file);//文件流附件防止附件名称中文乱码
+			if(email.getFile() != null) {//文件流附件防止附件名称中文乱码
+				message.addAttachment( MimeUtility.encodeText(email.getFile().getName(),"gb2312","B"), email.getFile());
 			}
-			for(ByteParams byteParams : email.getBytes()) {
+			if(email.getByteParams() != null) {//文件流附件防止附件名称中文乱码
+				File file = new File(email.getByteParams().getFileName());
+				ByteFileUtil.copyByteToFile(email.getByteParams().getBytes(), file);
+				message.addAttachment( MimeUtility.encodeText(email.getByteParams().getFileName(),"gb2312","B"), file);
+			}
+			for(File file : email.getListFile()) {//文件流附件防止附件名称中文乱码
+				message.addAttachment( MimeUtility.encodeText(file.getName(),"gb2312","B"), file);
+			}
+			for(ByteParams byteParams : email.getBytes()) {//byte[]附件防止附件名称中文乱码
 				File file = new File(byteParams.getFileName());
 				ByteFileUtil.copyByteToFile(byteParams.getBytes(), file);
-				message.addAttachment( MimeUtility.encodeText(byteParams.getFileName(),"gb2312","B"), file);//byte[]附件防止附件名称中文乱码
+				message.addAttachment( MimeUtility.encodeText(byteParams.getFileName(),"gb2312","B"), file);
 			}
 			mailSender.send(mimeMessage);
 		} catch (MessagingException | UnsupportedEncodingException e) {

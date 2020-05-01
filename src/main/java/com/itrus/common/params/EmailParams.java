@@ -36,6 +36,15 @@ public class EmailParams implements Serializable{
 	 */
 	private String suject;
 	/**
+	 * 文件流
+	 */
+	private File file;
+	
+	/**
+	 * byte[]
+	 */
+	private ByteParams byteParams;
+	/**
 	 * 文件流集合
 	 */
 	private List<File> listFile = new ArrayList<>();
@@ -73,7 +82,25 @@ public class EmailParams implements Serializable{
 	}
 	
 	/**
-	 * 带附件
+	 * 带单独附件
+	 * @param email
+	 * @param content
+	 * @param suject
+	 * @param html
+	 * @param mailSender
+	 */
+	public EmailParams(String[] email, String content, String suject, Boolean html, JavaMailSenderImpl  mailSender,File file,ByteParams byteParams) {
+		super();
+		this.email = email;
+		this.content = content;
+		this.suject = suject;
+		this.html = html;
+		this.mailSender = mailSender;
+		this.file = file;
+		this.byteParams = byteParams;
+	}
+	/**
+	 * 带批量附件
 	 * @param email
 	 * @param content
 	 * @param suject
