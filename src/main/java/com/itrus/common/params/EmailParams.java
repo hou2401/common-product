@@ -1,6 +1,9 @@
 package com.itrus.common.params;
 
+import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
@@ -32,6 +35,15 @@ public class EmailParams implements Serializable{
 	 * 主题
 	 */
 	private String suject;
+	/**
+	 * 文件流集合
+	 */
+	private List<File> listFile = new ArrayList<>();
+	
+	/**
+	 * byte[] 集合
+	 */
+	private List<ByteParams> bytes = new ArrayList<>();
 	
 	/**
 	 * 邮件服务器
@@ -43,6 +55,14 @@ public class EmailParams implements Serializable{
 	 */
 	private Boolean html;
 
+	/**
+	 * 不带附件
+	 * @param email
+	 * @param content
+	 * @param suject
+	 * @param html
+	 * @param mailSender
+	 */
 	public EmailParams(String[] email, String content, String suject, Boolean html, JavaMailSenderImpl  mailSender) {
 		super();
 		this.email = email;
@@ -50,6 +70,25 @@ public class EmailParams implements Serializable{
 		this.suject = suject;
 		this.html = html;
 		this.mailSender = mailSender;
+	}
+	
+	/**
+	 * 带附件
+	 * @param email
+	 * @param content
+	 * @param suject
+	 * @param html
+	 * @param mailSender
+	 */
+	public EmailParams(String[] email, String content, String suject, Boolean html, JavaMailSenderImpl  mailSender,List<File> listFile,List<ByteParams> bytes) {
+		super();
+		this.email = email;
+		this.content = content;
+		this.suject = suject;
+		this.html = html;
+		this.mailSender = mailSender;
+		this.listFile = listFile;
+		this.bytes = bytes;
 	}
 
 	public EmailParams() {

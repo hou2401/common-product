@@ -1,17 +1,20 @@
 package com.itrus.common.http;
 
+import java.io.File;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
-
 import com.itrus.common.exception.EmailException;
+import com.itrus.common.params.ByteParams;
 import com.itrus.common.params.EmailParams;
+import com.itrus.common.utils.ByteFileUtil;
 
 import lombok.Data;
 
@@ -54,14 +57,21 @@ public class EmailRequest implements Serializable {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 		MimeMessageHelper message;
 		try {
-			message = new MimeMessageHelper(mimeMessage, true,
-					"UTF-8");// 防止出现中文乱码，
+			message = new MimeMessageHelper(mimeMessage, true,"UTF-8");// 防止出现中文乱码，
 			message.setFrom(mailSender.getUsername());// 设置发送方地址
 			message.setTo(email.getEmail());// 设置接收方的email地址
 			message.setSubject(email.getSuject());// 设置邮件主题
 			message.setText(email.getContent(), email.getHtml());
+			for(File file : email.getListFile()) {
+				message.addAttachment( MimeUtility.encodeText(file.getName(),"gb2312","B"), file);//文件流附件防止附件名称中文乱码
+			}
+			for(ByteParams byteParams : email.getBytes()) {
+				File file = new File(byteParams.getFileName());
+				ByteFileUtil.copyByteToFile(byteParams.getBytes(), file);
+				message.addAttachment( MimeUtility.encodeText(byteParams.getFileName(),"gb2312","B"), file);//byte[]附件防止附件名称中文乱码
+			}
 			mailSender.send(mimeMessage);
-		} catch (MessagingException e) {
+		} catch (MessagingException | UnsupportedEncodingException e) {
 			throw new EmailException(e);
 		}
 	}
