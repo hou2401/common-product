@@ -62,6 +62,7 @@ public class EmailRequest implements Serializable {
 			message.setTo(email.getEmail());// 设置接收方的email地址
 			message.setSubject(email.getSuject());// 设置邮件主题
 			message.setText(email.getContent(), email.getHtml());
+			//附件不能是文件夹只能是带后缀的文件，不适合太大，不然会导致发送邮件时间过长 建议不超过 1M
 			for(File file : email.getListFile()) {
 				message.addAttachment( MimeUtility.encodeText(file.getName(),"gb2312","B"), file);//文件流附件防止附件名称中文乱码
 			}
