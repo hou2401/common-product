@@ -38,3 +38,11 @@ http:
   url: http://124.205.224.180:9339 #当 httped 不为1 或者 true ， 此配置无效，但必须保留 url: 可以不配置任何值
   alled: 0   # 1 或者 true 为原子服务合并版本方式
   
+taskExecutor:
+  coreSize: 10 #核心线程数 --线程池基本大小
+  maxSize: 10 #最大线程数
+  queueCapacity: 10 #线程队列容量
+  keepAliveSeconds: 10000 #线程活跃时间
+  threadName: task-concurrent-work #线程池名称
+  waitForJobsToCompleteOnShutdown: true #所有任务结束后是否关闭线程池
+  

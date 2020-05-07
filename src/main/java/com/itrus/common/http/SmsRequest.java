@@ -9,8 +9,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.entity.ByteArrayEntity;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
@@ -98,9 +101,9 @@ public class SmsRequest{
 	 * 默认采用天威云的方式发送短信
 	 */
 	private boolean sendTwy = true;
-
-
-
+	
+	@Resource(name="taskExecutor")
+    private TaskExecutor taskExecutor; //sping 2.0最新线程池功能
 
 	/**
 	 * 发送短信
@@ -123,6 +126,25 @@ public class SmsRequest{
 		}
 
 	}
+	
+	/**
+     * 异步发送短信
+     * 
+     * @param email
+     */
+    public void sendSmsByAsynchronousMode(final SmsParams sms){
+    	
+    	taskExecutor.execute(new Runnable(){
+	        public void run(){
+				try {
+					send(sms);
+		        } catch (Exception e) {
+	            	 log.info("----------------发送短信异常，异常原因：-------------------------");
+	            	 log.error(e.getMessage());
+		        }
+			}
+        });
+    }
 
 
 
