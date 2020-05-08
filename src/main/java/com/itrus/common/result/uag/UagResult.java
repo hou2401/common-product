@@ -73,7 +73,8 @@ public class UagResult implements Serializable{
 			return false;
 		}
 		
-		return   "0x0001".equals(uagResult.getStatus()) ? true : false;
+		return   "0x00014".equals(uagResult.getStatus()) ? 
+				true : "0x00015".equals(uagResult.getStatus()) ? true: false;
 	}
 	
 }
