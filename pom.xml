@@ -70,8 +70,6 @@
 		<springfox-swagger.version>2.9.2</springfox-swagger.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
-		<tk.mybatis.version>2.1.5</tk.mybatis.version>
-		<tk.mybatis.mapper.version>4.1.5</tk.mybatis.mapper.version>
 	</properties>
 	<!-- 私有化服务上传jar -->
 	<distributionManagement>
