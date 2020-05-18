@@ -10,7 +10,6 @@ import java.security.NoSuchAlgorithmException;
  * @since 1.0
  */
 public class HMACSHA1 {
-	
 	public static byte[] getHmacSHA1(String data, String key) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		byte[] ipadArray = new byte[64];
 		byte[] opadArray = new byte[64];

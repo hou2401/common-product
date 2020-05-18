@@ -8,7 +8,7 @@ import com.itrus.newportal.servlet.ApiServiceServlet;
 /**
  * ApiService 配置
  *
- * @author ssr
+ * @author wen-guoxing
  */
 @Configuration
 @ConditionalOnClass(ApiServiceServlet.class)

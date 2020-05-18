@@ -14,7 +14,7 @@ import java.io.IOException;
 * @date 2019年8月9日
 * @version 1.0
  */
-public class FileTest {
+public class FileUtil {
 
 	public static void main(String[] args) throws IOException {
 
