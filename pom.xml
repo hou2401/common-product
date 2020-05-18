@@ -161,6 +161,12 @@
 			<artifactId>apphome</artifactId>
 			<scope>compile</scope>
 			<version>${apphome.version}</version>
+			<exclusions>
+                <exclusion>
+                    <groupId>org.mybatis</groupId>
+                    <artifactId>mybatis</artifactId>
+                </exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.itrus</groupId>
