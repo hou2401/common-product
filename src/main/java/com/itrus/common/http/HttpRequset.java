@@ -15,10 +15,12 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpUrlDTO;
+import com.itrus.common.exception.AuthException;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.params.AdminAuthParams;
 import com.itrus.common.params.AuthEnterpriseParams;
+import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.params.CreateUtsNodeParams;
@@ -154,6 +156,153 @@ public class HttpRequset {
 		} catch (Exception e) {
 			log.error("异常错误:{},入参：enterprise={},返回结果：{}",e.getMessage(),enterprise.toString(), doPost,e);
 			throw new EnterpriseAuthException(e);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject bankList( AuthParams authParams ) throws AuthException {
+		String doPost = null;
+		try {
+			 doPost = HttpUtil.doPost(authParams.getUrl(), new HashMap<>(0), new HashMap<>(0));
+			 if(StringUtils.trimToNull(doPost) != null ) {
+				 return JSON.parseObject(doPost);
+			 }else {
+				throw new AuthException("调用实名服务返回结果为null");
+			}
+		} catch (Exception e) {
+			log.error("银行列表查询失败:",e);
+			throw new AuthException("银行列表查询失败");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject provinceList( AuthParams authParams ) throws AuthException {
+		String doPost = null;
+		try {
+			doPost = HttpUtil.doPost(authParams.getUrl(), new HashMap<>(0), new HashMap<>(0));
+			if(StringUtils.trimToNull(doPost) != null ) {
+				return JSON.parseObject(doPost);
+			}else {
+				throw new AuthException("调用实名服务返回结果为null");
+			}
+		} catch (Exception e) {
+			log.error("获取银行省份信息失败:",e);
+			throw new AuthException("获取银行省份信息失败");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject cityList( AuthParams authParams ) throws AuthException {
+		String doPost = null;
+		try {
+			doPost = HttpUtil.doPost(authParams.getUrl(), authParams.getCityList(), authParams.getNullHeaders());
+			if(StringUtils.trimToNull(doPost) != null ) {
+				return JSON.parseObject(doPost);
+			}else {
+				throw new AuthException("调用实名服务返回结果为null");
+			}
+		} catch (Exception e) {
+			log.error("获取银行城市失败:",e);
+			throw new AuthException("获取银行城市失败");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject branchBankList( AuthParams authParams ) throws AuthException {
+		String doPost = null;
+		try {
+			doPost = HttpUtil.doPost(authParams.getUrl(), authParams.getBranchBankList(), authParams.getNullHeaders());
+			if(StringUtils.trimToNull(doPost) != null ) {
+				return JSON.parseObject(doPost);
+			}else {
+				throw new AuthException("调用实名服务返回结果为null");
+			}
+		} catch (Exception e) {
+			log.error("获取付款银行支行信息失败:",e);
+			throw new AuthException("获取付款银行支行信息失败");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject payBank( AuthParams authParams ) throws AuthException {
+		String doPost = null;
+		try {
+			doPost = HttpUtil.doPost(authParams.getUrl(), authParams.getPayBankParams(), authParams.getNullHeaders());
+			if(StringUtils.trimToNull(doPost) != null ) {
+				return JSON.parseObject(doPost);
+			}else {
+				throw new AuthException("调用实名服务返回结果为null");
+			}
+		} catch (Exception e) {
+			log.error("获取付款银行支行信息失败:",e);
+			throw new AuthException("获取付款银行支行信息失败");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject queryPayBank( AuthParams authParams ) throws AuthException {
+		String doPost = null;
+		try {
+			doPost = HttpUtil.doPost(authParams.getUrl(), authParams.getQueryAmount(), authParams.getNullHeaders());
+			if(StringUtils.trimToNull(doPost) != null ) {
+				return JSON.parseObject(doPost);
+			}else {
+				throw new AuthException("调用实名服务返回结果为null");
+			}
+		} catch (Exception e) {
+			log.error("获取付款银行支行信息失败:",e);
+			throw new AuthException("获取付款银行支行信息失败");
+		}
+	}
+	
+	/**
+	 * 
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject verifyPayBank( AuthParams authParams ) throws AuthException {
+		String doPost = null;
+		try {
+			doPost = HttpUtil.doPost(authParams.getUrl(), authParams.getQueryAmount(), authParams.getNullHeaders());
+			if(StringUtils.trimToNull(doPost) != null ) {
+				return JSON.parseObject(doPost);
+			}else {
+				throw new AuthException("调用实名服务返回结果为null");
+			}
+		} catch (Exception e) {
+			log.error("获取付款银行支行信息失败:",e);
+			throw new AuthException("获取付款银行支行信息失败");
 		}
 	}
 	
