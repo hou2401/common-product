@@ -15,10 +15,12 @@ import org.springframework.util.Base64Utils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.exception.AuthException;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.params.AdminAuthParams;
 import com.itrus.common.params.AuthEnterpriseParams;
+import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.params.CertParams;
@@ -573,9 +575,16 @@ public class CommonRequest {
 		}
 		return result;
 	}
+	
+	//-----------------------------------------------------------------------------------------------------------------------
+	/**
+	 * 实名服务
+	 */
+	//-----------------------------------------------------------------------------------------------------------------------
+
 
 	/**
-	 * 实名服务，2要素/手机号3要素/银行卡3、4要素
+	 * 实名服务，2要素/手机号3要素/银行卡3、4要素 --个人实名
 	 * @param authPersionParams
 	 * @return
 	 * @throws PersionAuthException 
@@ -613,7 +622,7 @@ public class CommonRequest {
 	}
 
 	/**
-	 * 实名服务，手机号3要素
+	 * 实名服务，手机号3要素  --企业实名
 	 * @param authEnterpriseParams
 	 * @return
 	 * @throws EnterpriseAuthException 
@@ -630,9 +639,125 @@ public class CommonRequest {
 		}
 		return result;
 	}
-
-
-
+	
+	/**
+	 * 查询银行列表
+	 * @param url 完整路径 从数据库里面查询
+	 * @return
+	 * @throws AuthException 
+	 */
+	public JSONObject bankList(AuthParams authParams) throws AuthException {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.bankList(authParams);
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * 查询省/直辖市列表
+	 * @param url 完整路径 从数据库里面查询
+	 * @return
+	 * @throws AuthException 
+	 */
+	public JSONObject provinceList(AuthParams authParams) throws AuthException {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.provinceList(authParams);
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * 查询市/区列表
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject cityList(AuthParams authParams) throws AuthException {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.cityList(authParams);
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * 查询支行列表
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject branchBankList(AuthParams authParams) throws AuthException {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.branchBankList(authParams);
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * 企业对公银行账户打款
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject payBank(AuthParams authParams) throws AuthException {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.payBank(authParams);
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * 账户打款查询
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject queryPayBank(AuthParams authParams) throws AuthException {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.queryPayBank(authParams);
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * 打款金额验证
+	 * @param authParams
+	 * @return
+	 * @throws AuthException
+	 */
+	public JSONObject verifyPayBank(AuthParams authParams) throws AuthException {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			result =  httpRequset.verifyPayBank(authParams);
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+	}
 
 	//-----------------------------------------------------------------------------------------------------------------------
 	/**
