@@ -50,6 +50,11 @@ public class SearchCondition {
 	 */
 	private Integer pageIndex;
 	
+	/**
+	 * 1精确查 2 模糊查 默认精确查询
+	 */
+	private String queryMode = "1";
+	
 	public SearchCondition(String[] ifAudited, String[] nodeType, String joinState) {
 		super();
 		this.ifAudited = ifAudited;

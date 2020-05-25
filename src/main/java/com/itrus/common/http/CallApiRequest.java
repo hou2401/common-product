@@ -22,6 +22,7 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
+import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.BeanUtil;
@@ -508,8 +509,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptAdd(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptAdd(), kvs , new ApiUser());
+	public JSONObject deptAdd(DeptParams deptParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptAdd(), deptParams , new ApiUser());
 	}
 	/**
 	 * 更新部门
@@ -524,8 +525,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptSearchInfo(Object obj) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptSearchInfo(), obj , new ApiUser());
+	public JSONObject deptSearchInfo(DeptParams deptParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptSearchInfo(), deptParams , new ApiUser());
 	}
 	/**
 	 *  部门删除

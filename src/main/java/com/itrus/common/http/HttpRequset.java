@@ -22,6 +22,7 @@ import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
+import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.HttpTools;
@@ -538,9 +539,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptAdd(Object kvs) throws Exception {
+	public JSONObject deptAdd(DeptParams deptParams) throws Exception {
 		
-		return http(kvs, httpUrl.getDeptAdd());
+		return http(deptParams, httpUrl.getDeptAdd());
 	}
 	
 	/**
@@ -558,9 +559,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptSearchInfo(Object obj) throws Exception {
+	public JSONObject deptSearchInfo(DeptParams deptParams) throws Exception {
 		
-		return http(obj, httpUrl.getDeptSearchInfo());
+		return http(deptParams, httpUrl.getDeptSearchInfo());
 	}
 	
 	/**

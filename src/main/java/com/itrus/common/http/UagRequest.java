@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 
@@ -277,14 +278,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject deptAdd( Object object ) throws Exception {
-		log.info("创建部门入参："+JSON.toJSONString(object));
+	public JSONObject deptAdd( DeptParams deptParams ) throws Exception {
+		log.info("创建部门入参："+JSON.toJSONString(deptParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.deptAdd(object);
+				result = httpRequset.deptAdd(deptParams);
 			}else {
-				result = callApiRequest.deptAdd(object);
+				result = callApiRequest.deptAdd(deptParams);
 			}
 			if(result != null) {
 				break;
@@ -325,14 +326,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject deptSearchInfo( Object obj ) throws Exception {
-		log.info("插叙部门详情信息入参："+JSON.toJSONString(obj));
+	public JSONObject deptSearchInfo( DeptParams deptParams ) throws Exception {
+		log.info("插叙部门详情信息入参："+JSON.toJSONString(deptParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.deptSearchInfo(obj);
+				result = httpRequset.deptSearchInfo(deptParams);
 			}else {
-				result = callApiRequest.deptSearchInfo(obj);
+				result = callApiRequest.deptSearchInfo(deptParams);
 			}
 			if( result != null) {
 				break;

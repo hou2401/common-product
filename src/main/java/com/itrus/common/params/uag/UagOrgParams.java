@@ -19,11 +19,6 @@ public class UagOrgParams {
 	 */
 	private String manager;
 	
-	/**
-	 * 1精确查 2 模糊查 默认精确查询
-	 */
-	private String queryMode = "1";
-	
     private SearchCondition searchCondition;
 
 	public UagOrgParams(Long uuid, String manager, SearchCondition searchCondition) {
