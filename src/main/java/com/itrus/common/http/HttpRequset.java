@@ -22,6 +22,7 @@ import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
+import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.HttpTools;
 import com.itrus.common.utils.HttpUtil;
@@ -597,9 +598,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject entAll(Object kvs) throws Exception {
+	public JSONObject entAll(UagOrgParams uagOrgParams) throws Exception {
 		
-		return http(kvs, httpUrl.getEntAll());
+		return http(uagOrgParams, httpUrl.getEntAll());
 	}
 
 	/**

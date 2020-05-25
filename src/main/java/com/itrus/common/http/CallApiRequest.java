@@ -22,6 +22,7 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
+import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.BeanUtil;
 
@@ -555,8 +556,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject entAll(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntAll(), kvs , new ApiUser());
+	public JSONObject entAll(UagOrgParams uagOrgParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntAll(), uagOrgParams , new ApiUser());
 	}
 	/**
 	 * 查询部门下全部节点信息
