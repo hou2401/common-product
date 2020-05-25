@@ -1,4 +1,4 @@
-package com.itrus.common.params;
+package com.itrus.common.params.uag;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
@@ -20,9 +20,9 @@ public class UagOrgParams {
 	private String manager;
 	
 	/**
-	 * 查询类型
+	 * 1精确查 2 模糊查 默认精确查询
 	 */
-	private String[] nodetype;
+	private String queryMode = "1";
 	
     private SearchCondition searchCondition;
 
@@ -31,13 +31,6 @@ public class UagOrgParams {
 		this.uuid = uuid;
 		this.manager = manager;
 		this.searchCondition = searchCondition;
-	}
-	
-	public UagOrgParams(Long uuid, String manager, String[] nodetype) {
-		super();
-		this.uuid = uuid;
-		this.manager = manager;
-		this.nodetype = nodetype;
 	}
 
 	public UagOrgParams() {

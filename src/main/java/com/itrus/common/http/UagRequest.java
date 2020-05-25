@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 
 import lombok.extern.slf4j.Slf4j;
@@ -420,14 +421,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject entAll( Object object ) throws Exception {
-		log.info("查询企业下全部节点信息入参："+JSON.toJSONString(object));
+	public JSONObject entAll( UagOrgParams uagOrgParams ) throws Exception {
+		log.info("查询企业下全部节点信息入参："+JSON.toJSONString(uagOrgParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.entAll(object);
+				result = httpRequset.entAll(uagOrgParams);
 			}else {
-				result = callApiRequest.entAll(object);
+				result = callApiRequest.entAll(uagOrgParams);
 			}
 			if(result != null ) {
 				break;
