@@ -18,13 +18,10 @@ import com.itrus.common.dto.HttpUrlDTO;
 import com.itrus.common.exception.AuthException;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
-import com.itrus.common.params.AdminAuthParams;
 import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
-import com.itrus.common.params.CreateUtsNodeParams;
-import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.utils.HttpTools;
 import com.itrus.common.utils.HttpUtil;
 
@@ -462,145 +459,296 @@ public class HttpRequset {
 	}
 	
 	/**
-	 * 企业注册
+	 * 用户注册
 	 * @param cert
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject createAdmin(Object kvs) throws Exception {
+	public JSONObject userRegister(Object kvs) throws Exception {
 		
-		return http(kvs, httpUrl.getCreateAdmin());
+		return http(kvs, httpUrl.getUserRegister());
+	}
+	
+	/**
+	 * 用户更新
+	 * @param cert
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject userUpdate(Object kvs) throws Exception {
+		
+		return http(kvs, httpUrl.getUserUpdate());
 	}
 
 	/**
-	 * 新增节点
+	 * 用户详细信息查询
 	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject createUtsNode(CreateUtsNodeParams createUtsNodeParams) throws Exception {
+	public JSONObject userSearchInfo(Object obj) throws Exception {
 		
-		return http(createUtsNodeParams, httpUrl.getCreateUtsNode());
+		return http(obj, httpUrl.getUserSearchInfo());
 	}
 
 	/**
-	 * 更新节点
+	 * 用户更新/重置/忘记密码
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject updateUtsNode(Object kvs) throws Exception {
+	public JSONObject resetPassWd(Object kvs) throws Exception {
 
-		return http(kvs, httpUrl.getUpdateUtsNode());
-	}
-
-	/**
-	 * 升级用户为管理员
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject upgradeAdmin(AdminAuthParams adminAuthParams) throws Exception {
-		
-		return http(adminAuthParams, httpUrl.getUpgradeAdmin());
-	}
-	
-	/**
-	 * 取消管理员权限
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject cancelAdminAuth(AdminAuthParams adminAuthParams) throws Exception {
-		
-		return http(adminAuthParams, httpUrl.getCancelAdminAuth());
-	}
-	
-	/**
-	 * 删除节点
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject deleteUtsNode(AdminAuthParams adminAuthParams) throws Exception {
-		
-		return http(adminAuthParams, httpUrl.getDeleteUtsNode());
-	}
-	
-	/**
-	 * 重命名节点
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject renameUtsNode(Object kvs) throws Exception {
-		
-		return http(kvs, httpUrl.getRenameUtsNode());
-	}
-	
-	/**
-	 * 移动节点
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject movingUtsNode(Object kvs) throws Exception {
-		
-		return http(kvs, httpUrl.getMovingUtsNode());
-	}
-	
-	/**
-	 * 根据节点类型查找当前节点下所有节点数据
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject findAllSubLevelUser(UagOrgParams uagOrgParams) throws Exception {
-		
-		return http(uagOrgParams, httpUrl.getFindAllSubLevelUser());
-	}
-	
-	/**
-	 * 查询节点下所有一级节点
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject findAllOneLevelNode(UagOrgParams uagOrgParams) throws Exception {
-		
-		return http(uagOrgParams, httpUrl.getFindAllOneLevelNode());
-	}
-	
-	/**
-	 * 查询当前节点下所有下一级节点或加载权限树
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject findAllOneLevelChildren(UagOrgParams uagOrgParams) throws Exception {
-		
-		return http(uagOrgParams, httpUrl.getFindAllOneLevelChildren());
-	}
-	
-	/**
-	 * 重置用户密码
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject resetNodePassword(Object kvs) throws Exception {
-		
-		return http(kvs, httpUrl.getResetNodePassword());
-	}
-	
-	/**
-	 * 判断当前用户是否根节点下用户
-	 * @param kvs
-	 * @return
-	 */
-	public JSONObject verfyUserExistRootNode(Object kvs) throws Exception {
-		
-		return http(kvs, httpUrl.getVerfyUserExistRootNode());
+		return http(kvs, httpUrl.getResetPassWd());
 	}
 
 	/**
-	 * 删除总公司节点
+	 * 创建企业
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entAdd(Object obj) throws Exception {
+		
+		return http(obj, httpUrl.getEntAdd());
+	}
+	
+	/**
+	 * 更新企业
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entUpdate(Object obj) throws Exception {
+		
+		return http(obj, httpUrl.getEntUpdate());
+	}
+	
+	/**
+	 * 企业详细信息查询
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entSearchInfo(Object obj) throws Exception {
+		
+		return http(obj, httpUrl.getEntSearchInfo());
+	}
+	
+	/**
+	 * 创建部门
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject deptAdd(Object kvs) throws Exception {
+		
+		return http(kvs, httpUrl.getDeptAdd());
+	}
+	
+	/**
+	 * 更新部门
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject deptUpdate(Object kvs) throws Exception {
+		
+		return http(kvs, httpUrl.getDeptUpdate());
+	}
+	
+	/**
+	 * 查询部门详情信息
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject deptSearchInfo(Object obj) throws Exception {
+		
+		return http(obj, httpUrl.getDeptSearchInfo());
+	}
+	
+	/**
+	 * 部门删除
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject deptDelete(Object obj) throws Exception {
+		
+		return http(obj, httpUrl.getDeptDelete());
+	}
+	
+	/**
+	 * 查询企业下一级节点信息
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entSearchOneNode(Object obj) throws Exception {
+		
+		return http(obj, httpUrl.getEntSearchOneNode());
+	}
+	
+	/**
+	 * 查询部门下一级节点信息
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject deptSearchOneNode(Object kvs) throws Exception {
+		
+		return http(kvs, httpUrl.getDeptSearchOneNode());
+	}
+	
+	/**
+	 * 查询企业下全部节点信息
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entAll(Object kvs) throws Exception {
+		
+		return http(kvs, httpUrl.getEntAll());
+	}
+
+	/**
+	 * 查询部门下全部节点信息
 	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject deleteRootChild(Object kvs) throws Exception {
-		return http(kvs, httpUrl.getDeleteRootChild());
+	public JSONObject deptAll(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getDeptAll());
+	}
+	
+	/**
+	 * 查询当前用户加入的企业列表
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject findJoinCompanys(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getFindJoinCompanys());
+	}
+	
+	/**
+	 * 批量导入
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject betchImport(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getBetchImport());
+	}
+	
+	/**
+	 * 移除邀约用户
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject removeUser(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getRemoveUser());
+	}
+	
+	/**
+	 * 用户切换企业
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject switchEnterprise(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getSwitchEnterprise());
+	}
+	
+	/**
+	 * 企业邀请用户
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject joinEnterprise(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getJoinEnterprise());
+	}
+	
+	/**
+	 * 口令认证
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject passwdAuth(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getPasswdAuth());
+	}
+	
+	/**
+	 * 获取短信验证码
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject getVerificationCode(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getGetVerificationCode());
+	}
+	
+	/**
+	 * 验证短信验证码
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject verifySmsCodeAuth(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getVerifySmsCodeAuth());
+	}
+	
+	/**
+	 * 退出单点登录
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject logout(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getLogout());
+	}
+	
+	/**
+	 * 添加扩展属性
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject extendedAdd(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getExtendedAdd());
+	}
+	
+	/**
+	 * 查询当前节点下uuid集合
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject findChildUuidList(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getFindChildUuidList());
+	}
+	
+	/**
+	 * 用户授权接口
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject grantAuth(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getGrantAuth());
+	}
+	
+	/**
+	 *  根据手机号或uuid集合查询用户信息
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject findUserInfoByUuidList(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getFindUserInfoByUuidList());
+	}
+	
+	/**
+	 *  全量查询企业和用户信息
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject findAllEnterpriseAndUser(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getFindAllEnterpriseAndUser());
 	}
 
 }

@@ -22,9 +22,6 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
-import com.itrus.common.params.AdminAuthParams;
-import com.itrus.common.params.CreateUtsNodeParams;
-import com.itrus.common.params.UagOrgParams;
 import com.itrus.common.utils.BeanUtil;
 
 import cn.com.itrus.atom.sign.api.constants.FSSConstants;
@@ -442,122 +439,272 @@ public class CallApiRequest {
 	//-------------------------------------------------------------------------------------------------------------------------
 
 	/**
-	 * 企业注册
+	 * 用户注册
 	 *
 	 * @param kvs 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject createAdmin(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCreateAdmin(), kvs , new ApiUser());
+	public JSONObject userRegister(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUserRegister(), kvs , new ApiUser());
 	}
 	/**
-	 * 新增节点
+	 * 用户更新
 	 *
 	 * @param kvs 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject createUtsNode(CreateUtsNodeParams createUtsNodeParams) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCreateUtsNode(), createUtsNodeParams , new ApiUser());
+	public JSONObject userUpdate(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUserUpdate(), kvs , new ApiUser());
+	}
+	/**
+	 * 用户详细信息查询
+	 *
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject userSearchInfo(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUserSearchInfo(), obj , new ApiUser());
 	}
 	
 	/**
-	 * 更新节点
+	 * 用户更新/重置/忘记密码
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject updateUtsNode(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUpdateUtsNode(), kvs , new ApiUser());
+	public JSONObject resetPassWd(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getResetPassWd(), kvs , new ApiUser());
 	}
 	/**
-	 * 升级用户为管理员
+	 * 创建企业
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject upgradeAdmin(AdminAuthParams adminAuthParams) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUpgradeAdmin(), adminAuthParams , new ApiUser());
+	public JSONObject entAdd(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntAdd(), obj , new ApiUser());
 	}
 	/**
-	 * 取消管理员权限
+	 * 更新企业
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject cancelAdminAuth(AdminAuthParams adminAuthParams) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getCancelAdminAuth(), adminAuthParams , new ApiUser());
+	public JSONObject entUpdate(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntUpdate(), obj , new ApiUser());
 	}
 	/**
-	 * 删除节点
+	 * 企业详细信息查询
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deleteUtsNode(AdminAuthParams adminAuthParams) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeleteUtsNode(), adminAuthParams , new ApiUser());
+	public JSONObject entSearchInfo(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntSearchInfo(), obj , new ApiUser());
 	}
 	/**
-	 * 重命名节点
+	 * 创建部门
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject renameUtsNode(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getRenameUtsNode(), kvs , new ApiUser());
+	public JSONObject deptAdd(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptAdd(), kvs , new ApiUser());
 	}
 	/**
-	 * 移动节点
+	 * 更新部门
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject movingUtsNode(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getMovingUtsNode(), kvs , new ApiUser());
+	public JSONObject deptUpdate(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptUpdate(), kvs , new ApiUser());
 	}
 	/**
-	 * 根据节点类型查找当前节点下所有节点数据
+	 * 查询部门详情信息
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllSubLevelUser(UagOrgParams uagOrgParams) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllSubLevelUser(), uagOrgParams , new ApiUser());
+	public JSONObject deptSearchInfo(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptSearchInfo(), obj , new ApiUser());
 	}
 	/**
-	 *  查询节点下所有一级节点
+	 *  部门删除
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllOneLevelNode(UagOrgParams uagOrgParams) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelNode(), uagOrgParams , new ApiUser());
+	public JSONObject deptDelete(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptDelete(), obj , new ApiUser());
 	}
 	/**
-	 *  查询当前节点下所有下一级节点或加载权限树
+	 *  查询企业下一级节点信息
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject findAllOneLevelChildren(UagOrgParams uagOrgParams) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllOneLevelChildren(), uagOrgParams , new ApiUser());
+	public JSONObject entSearchOneNode(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntSearchOneNode(), obj , new ApiUser());
 	}
 	/**
-	 *  重置用户密码
+	 *  查询部门下一级节点信息
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject resetNodePassword(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getResetNodePassword(), kvs , new ApiUser());
+	public JSONObject deptSearchOneNode(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptSearchOneNode(), kvs , new ApiUser());
 	}
 	/**
-	 *  判断当前用户是否根节点下用户
+	 *  查询企业下全部节点信息
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject verfyUserExistRootNode(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getVerfyUserExistRootNode(), kvs , new ApiUser());
+	public JSONObject entAll(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntAll(), kvs , new ApiUser());
 	}
 	/**
-	 * 删除根节点
+	 * 查询部门下全部节点信息
 	 * @param object
 	 * @return
 	 * @throws Exception 
 	 * @throws  
 	 */
-	public JSONObject deleteRootChild(Object kvs) throws Exception {
-		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getDeleteRootChild(), kvs , new ApiUser());
+	public JSONObject deptAll(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptAll(), kvs , new ApiUser());
+	}
+	/**
+	 * 查询当前用户加入的企业列表
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject findJoinCompanys(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindJoinCompanys(), kvs , new ApiUser());
+	}
+	/**
+	 * 查询当前用户加入的企业列表
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject betchImport(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getBetchImport(), kvs , new ApiUser());
+	}
+	/**
+	 * 移除邀约用户
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject removeUser(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getRemoveUser(), kvs , new ApiUser());
+	}
+	/**
+	 * 用户切换企业
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject switchEnterprise(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getSwitchEnterprise(), kvs , new ApiUser());
+	}
+	/**
+	 * 企业邀请用户
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject joinEnterprise(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getJoinEnterprise(), kvs , new ApiUser());
+	}
+	/**
+	 * 口令认证
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject passwdAuth(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getPasswdAuth(), kvs , new ApiUser());
+	}
+	/**
+	 * 获取短信验证码
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject getVerificationCode(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getGetVerificationCode(), kvs , new ApiUser());
+	}
+	/**
+	 * 验证短信验证码
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject verifySmsCodeAuth(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getVerifySmsCodeAuth(), kvs , new ApiUser());
+	}
+	/**
+	 * 退出单点登录
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject logout(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getLogout(), kvs , new ApiUser());
+	}
+	/**
+	 * 添加扩展属性
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject extendedAdd(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getExtendedAdd(), kvs , new ApiUser());
+	}
+	/**
+	 * 查询当前节点下uuid集合
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject findChildUuidList(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindChildUuidList(), kvs , new ApiUser());
+	}
+	/**
+	 * 用户授权接口
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject grantAuth(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getGrantAuth(), kvs , new ApiUser());
+	}
+	/**
+	 * 根据手机号或uuid集合查询用户信息
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject findUserInfoByUuidList(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindUserInfoByUuidList(), kvs , new ApiUser());
+	}
+	/**
+	 *全量查询企业和用户信息
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject findAllEnterpriseAndUser(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllEnterpriseAndUser(), kvs , new ApiUser());
 	}
 }

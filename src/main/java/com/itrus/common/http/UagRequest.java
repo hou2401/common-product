@@ -1,0 +1,799 @@
+package com.itrus.common.http;
+
+import org.apache.http.HttpException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.itrus.common.dto.HttpDTO;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 公共原子服务调用方法
+ *
+ * @author han_yanhui
+ * @date 2020-2-25 12:04:04
+ **/
+@Slf4j
+@Component
+public class UagRequest {
+
+	@Autowired
+	private HttpDTO http;
+
+	@Autowired
+	private HttpRequset httpRequset;
+
+	@Autowired
+	private CallApiRequest callApiRequest;
+
+	/**
+	 *	 公共请求对象
+	 *
+	 * @return 返回实例
+	 */
+	/*public static CommonRequest getInstance() {
+        return REQUEST;
+    }*/
+
+	/**
+	 * 是否是http调用模式
+	 * @return
+	 * @throws HttpException 
+	 */
+	private boolean httped() throws HttpException {
+		return http.httped();
+	}
+
+	/**
+	 *     请求是否OK
+	 *
+	 * @param object json对象
+	 */
+	public boolean isOk(JSONObject object) {
+		if(object.get("code") != null || object.get("status") != null){
+			return   object.getIntValue("code") == 0 || object.getIntValue("status") == 1 ;
+
+		}
+		return false;
+
+	}
+
+	/**
+	 * 获取请求消息
+	 *
+	 * @param object json对象
+	 */
+	public String getMsg(JSONObject object) {
+		return object.getString("msg") == null ? object.getString("message") : object.getString("msg");
+	}
+
+	/**
+	 * 获取请求消息
+	 *
+	 * @param object json对象
+	 */
+	public int getCode(JSONObject object) {
+		return object.getIntValue("code");
+	}
+	
+	
+	/**
+	 * 获取请求消息
+	 *
+	 * @param object json对象
+	 * @return 
+	 */
+	public  JSONObject getData (JSONObject object) {
+		if( object == null ) {
+			return null;
+		}
+		return (JSONObject) object.get("data");
+	}
+
+	//-----------------------------------------------------------------------------------------------------------------------
+	/**
+	 * UAG组织架构服务
+	 */
+	//-----------------------------------------------------------------------------------------------------------------------
+	
+	/**
+	   * 用户注册
+	 *
+	 * @param obj 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject userRegister( Object obj ) throws Exception {
+		log.info("用户注册入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.userRegister(obj);
+			}else {
+				result = callApiRequest.userRegister(obj);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+	
+	/**
+	 * 用户更新
+	 *
+	 * @param obj 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject userUpdate( Object obj ) throws Exception {
+		log.info("用户更新入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.userUpdate(obj);
+			}else {
+				result = callApiRequest.userUpdate(obj);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 用户详细信息查询
+	 *
+	 * @param createUtsNodeParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject userSearchInfo( Object obj ) throws Exception {
+		log.info("用户详细信息入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.userSearchInfo(obj);
+			}else {
+				result = callApiRequest.userSearchInfo(obj);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 用户更新/重置/忘记密码
+	 *
+	 * @param updateUtsNodeParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject resetPassWd( Object obj ) throws Exception {
+		log.info("用户更新/重置/忘记密码入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.resetPassWd(obj);
+			}else {
+				result = callApiRequest.resetPassWd(obj);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 创建企业
+	 *
+	 * @param adminAuthParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject entAdd( Object obj ) throws Exception {
+		log.info("创建企业入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.entAdd(obj);
+			}else {
+				result = callApiRequest.entAdd(obj);
+			}
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 更新企业
+	 *
+	 * @param adminAuthParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject entUpdate( Object obj ) throws Exception {
+		log.info("更新企业入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.entUpdate(obj);
+			}else {
+				result = callApiRequest.entUpdate(obj);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 企业详细信息查询
+	 *
+	 * @param adminAuthParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject entSearchInfo( Object obj ) throws Exception {
+		log.info("企业详细信息查询入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.entSearchInfo(obj);
+			}else {
+				result = callApiRequest.entSearchInfo(obj);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+
+	/**
+	 * 创建部门
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject deptAdd( Object object ) throws Exception {
+		log.info("创建部门入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.deptAdd(object);
+			}else {
+				result = callApiRequest.deptAdd(object);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 更新部门
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject deptUpdate( Object object ) throws Exception {
+		log.info("更新部门入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.deptUpdate(object);
+			}else {
+				result = callApiRequest.deptUpdate(object);
+			}
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 查询部门详情信息
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject deptSearchInfo( Object obj ) throws Exception {
+		log.info("插叙部门详情信息入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.deptSearchInfo(obj);
+			}else {
+				result = callApiRequest.deptSearchInfo(obj);
+			}
+			if( result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 部门删除
+	 *
+	 * @param uagOrgParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject deptDelete( Object obj ) throws Exception {
+		log.info("部门删除入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.deptDelete(obj);
+			}else {
+				result = callApiRequest.deptDelete(obj);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 查询企业下一级节点信息
+	 *
+	 * @param uagOrgParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject entSearchOneNode( Object obj ) throws Exception {
+		log.info("查询企业下一级节点信息入参："+JSON.toJSONString(obj));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.entSearchOneNode(obj);
+			}else {
+				result = callApiRequest.entSearchOneNode(obj);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 查询部门下一级节点信息
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject deptSearchOneNode( Object object ) throws Exception {
+		log.info("查询部门下一级节点信息入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.deptSearchOneNode(object);
+			}else {
+				result = callApiRequest.deptSearchOneNode(object);
+			}
+			if( result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	/**
+	 * 查询企业下全部节点信息
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject entAll( Object object ) throws Exception {
+		log.info("查询企业下全部节点信息入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.entAll(object);
+			}else {
+				result = callApiRequest.entAll(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
+	
+	/**
+	 * 查询部门下全部节点信息
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject deptAll( Object object ) throws Exception {
+		log.info("查询部门下全部节点信息入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.deptAll(object);
+			}else {
+				result = callApiRequest.deptAll(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
+	
+	/**
+	 * 查询当前用户加入的企业列表
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject findJoinCompanys( Object object ) throws Exception {
+		log.info("查询当前用户加入的企业列表入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.findJoinCompanys(object);
+			}else {
+				result = callApiRequest.findJoinCompanys(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 批量导入
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject betchImport( Object object ) throws Exception {
+		log.info("批量导入入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.betchImport(object);
+			}else {
+				result = callApiRequest.betchImport(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 移除邀约用户
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject removeUser( Object object ) throws Exception {
+		log.info("批量导入入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.removeUser(object);
+			}else {
+				result = callApiRequest.removeUser(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 用户切换企业
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject switchEnterprise( Object object ) throws Exception {
+		log.info("用户切换企业入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.switchEnterprise(object);
+			}else {
+				result = callApiRequest.switchEnterprise(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 企业邀请用户
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject joinEnterprise( Object object ) throws Exception {
+		log.info("企业邀请用户入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.joinEnterprise(object);
+			}else {
+				result = callApiRequest.joinEnterprise(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 口令认证(密码登录)
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject passwdAuth( Object object ) throws Exception {
+		log.info("口令认证入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.passwdAuth(object);
+			}else {
+				result = callApiRequest.passwdAuth(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 获取短信验证码
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject getVerificationCode( Object object ) throws Exception {
+		log.info("获取短信验证码入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.getVerificationCode(object);
+			}else {
+				result = callApiRequest.getVerificationCode(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 验证短信验证码
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject verifySmsCodeAuth( Object object ) throws Exception {
+		log.info("验证短信验证码入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.verifySmsCodeAuth(object);
+			}else {
+				result = callApiRequest.verifySmsCodeAuth(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 退出单点登录
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject logout( Object object ) throws Exception {
+		log.info("退出单点登录入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.logout(object);
+			}else {
+				result = callApiRequest.logout(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 添加扩展属性
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject extendedAdd( Object object ) throws Exception {
+		log.info("添加扩展属性入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.extendedAdd(object);
+			}else {
+				result = callApiRequest.extendedAdd(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 查询当前节点下uuid集合
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject findChildUuidList( Object object ) throws Exception {
+		log.info("查询当前节点下uuid集合入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.findChildUuidList(object);
+			}else {
+				result = callApiRequest.findChildUuidList(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 用户授权接口
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject grantAuth( Object object ) throws Exception {
+		log.info("用户授权接口入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.grantAuth(object);
+			}else {
+				result = callApiRequest.grantAuth(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 根据手机号或uuid集合查询用户信息
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject findUserInfoByUuidList( Object object ) throws Exception {
+		log.info("用户授权接口入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.findUserInfoByUuidList(object);
+			}else {
+				result = callApiRequest.findUserInfoByUuidList(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 全量查询企业和用户信息
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject findAllEnterpriseAndUser( Object object ) throws Exception {
+		log.info("用户授权接口入参："+JSON.toJSONString(object));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.findAllEnterpriseAndUser(object);
+			}else {
+				result = callApiRequest.findAllEnterpriseAndUser(object);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+
+}

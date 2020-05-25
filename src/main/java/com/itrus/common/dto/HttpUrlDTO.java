@@ -132,48 +132,92 @@ public class HttpUrlDTO {
 	}
 
 
-	public String getCreateAdmin() throws HttpException {
-		return httpDTO.getUrl()+uag.getCreateAdmin();
+	public String getUserRegister() throws HttpException {
+		return httpDTO.getUrl()+uag.getUserRegister();
 	}
-	public String getCreateUtsNode() throws HttpException {
-		return httpDTO.getUrl()+uag.getCreateUtsNode();
+	public String getUserUpdate() throws HttpException {
+		return httpDTO.getUrl()+uag.getUserUpdate();
 	}
-	public String getUpdateUtsNode() throws HttpException {
-		return httpDTO.getUrl()+uag.getUpdateUtsNode();
+	public String getUserSearchInfo() throws HttpException {
+		return httpDTO.getUrl()+uag.getUserSearchInfo();
 	}
-	public String getUpgradeAdmin() throws HttpException {
-		return httpDTO.getUrl()+uag.getUpgradeAdmin();
+	public String getResetPassWd() throws HttpException {
+		return httpDTO.getUrl()+uag.getResetPassWd();
 	}
-	public String getCancelAdminAuth() throws HttpException {
-		return httpDTO.getUrl()+uag.getCancelAdminAuth();
+	public String getEntAdd() throws HttpException {
+		return httpDTO.getUrl()+uag.getEntAdd();
 	}
-	public String getDeleteUtsNode() throws HttpException {
-		return httpDTO.getUrl()+uag.getDeleteUtsNode();
+	public String getEntUpdate() throws HttpException {
+		return httpDTO.getUrl()+uag.getEntUpdate();
 	}
-	public String getRenameUtsNode() throws HttpException {
-		return httpDTO.getUrl()+uag.getRenameUtsNode();
+	public String getEntSearchInfo() throws HttpException {
+		return httpDTO.getUrl()+uag.getEntSearchInfo();
 	}
-	public String getMovingUtsNode() throws HttpException {
-		return httpDTO.getUrl()+uag.getMovingUtsNode();
+	public String getDeptAdd() throws HttpException {
+		return httpDTO.getUrl()+uag.getDeptAdd();
 	}
-	public String getFindAllSubLevelUser() throws HttpException {
-		return httpDTO.getUrl()+uag.getFindAllSubLevelUser();
+	public String getDeptUpdate() throws HttpException {
+		return httpDTO.getUrl()+uag.getDeptUpdate();
 	}
-	public String getFindAllOneLevelNode() throws HttpException {
-		return httpDTO.getUrl()+uag.getFindAllOneLevelNode();
+	public String getDeptSearchInfo() throws HttpException {
+		return httpDTO.getUrl()+uag.getDeptSearchInfo();
 	}
-	public String getFindAllOneLevelChildren() throws HttpException {
-		return httpDTO.getUrl()+uag.getFindAllOneLevelChildren();
+	public String getDeptDelete() throws HttpException {
+		return httpDTO.getUrl()+uag.getDeptDelete();
 	}
-	public String getResetNodePassword() throws HttpException {
-		return httpDTO.getUrl()+uag.getResetNodePassword();
+	public String getEntSearchOneNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getEntSearchOneNode();
 	}
-	public String getVerfyUserExistRootNode() throws HttpException {
-		return httpDTO.getUrl()+uag.getVerfyUserExistRootNode();
+	public String getDeptSearchOneNode() throws HttpException {
+		return httpDTO.getUrl()+uag.getDeptSearchOneNode();
 	}
-	
-	public String getDeleteRootChild() throws HttpException {
-		return httpDTO.getUrl()+uag.getDeleteRootChild();
+	public String getEntAll() throws HttpException {
+		return httpDTO.getUrl()+uag.getEntAll();
+	}
+	public String getDeptAll() throws HttpException {
+		return httpDTO.getUrl()+uag.getDeptAll();
+	}
+	public String getFindJoinCompanys() throws HttpException {
+		return httpDTO.getUrl()+uag.getFindJoinCompanys();
+	}
+	public String getBetchImport() throws HttpException {
+		return httpDTO.getUrl()+uag.getBetchImport();
+	}
+	public String getRemoveUser() throws HttpException {
+		return httpDTO.getUrl()+uag.getRemoveUser();
+	}
+	public String getSwitchEnterprise() throws HttpException {
+		return httpDTO.getUrl()+uag.getSwitchEnterprise();
+	}
+	public String getJoinEnterprise() throws HttpException {
+		return httpDTO.getUrl()+uag.getJoinEnterprise();
+	}
+	public String getPasswdAuth() throws HttpException {
+		return httpDTO.getUrl()+uag.getPasswdAuth();
+	}
+	public String getGetVerificationCode() throws HttpException {
+		return httpDTO.getUrl()+uag.getGetVerificationCode();
+	}
+	public String getVerifySmsCodeAuth() throws HttpException {
+		return httpDTO.getUrl()+uag.getVerifySmsCodeAuth();
+	}
+	public String getLogout() throws HttpException {
+		return httpDTO.getUrl()+uag.getLogout();
+	}
+	public String getExtendedAdd() throws HttpException {
+		return httpDTO.getUrl()+uag.getLogout();
+	}
+	public String getFindChildUuidList() throws HttpException {
+		return httpDTO.getUrl()+uag.getFindChildUuidList();
+	}
+	public String getGrantAuth() throws HttpException {
+		return httpDTO.getUrl()+uag.getGrantAuth();
+	}
+	public String getFindUserInfoByUuidList() throws HttpException {
+		return httpDTO.getUrl()+uag.getFindUserInfoByUuidList();
+	}
+	public String getFindAllEnterpriseAndUser() throws HttpException {
+		return httpDTO.getUrl()+uag.getFindAllEnterpriseAndUser();
 	}
 	
 }

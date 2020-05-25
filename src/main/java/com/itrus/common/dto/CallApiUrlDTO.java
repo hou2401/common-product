@@ -315,171 +315,351 @@ public class CallApiUrlDTO {
     /*		##################UAG组织架构服务############################### */
 
     /**
-     * 企业注册
+            * 用户注册
      *
      * @throws HttpException
      */
-    public String getCreateAdmin() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getCreateAdmin();
-        }
-        return callApiPartUrlDTO.getUag().getCreateAdmin();
-    }
-
-    /**
-     * 新增节点
-     *
-     * @throws HttpException
-     */
-    public String getCreateUtsNode() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getCreateUtsNode();
-        }
-        return callApiPartUrlDTO.getUag().getCreateUtsNode();
-    }
-
-    /**
-     * 更新节点
-     *
-     * @throws HttpException
-     */
-    public String getUpdateUtsNode() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getUpdateUtsNode();
-        }
-        return callApiPartUrlDTO.getUag().getUpdateUtsNode();
-    }
-
-    /**
-     * 升级用户为管理员
-     *
-     * @return
-     */
-    public String getUpgradeAdmin() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getUpgradeAdmin();
-        }
-        return callApiPartUrlDTO.getUag().getUpgradeAdmin();
-    }
-
-    /**
-     * 取消管理员权限
-     *
-     * @return
-     */
-    public String getCancelAdminAuth() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getCancelAdminAuth();
-        }
-        return callApiPartUrlDTO.getUag().getCancelAdminAuth();
-    }
-
-    /**
-     * 删除节点
-     *
-     * @return
-     */
-    public String getDeleteUtsNode() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getDeleteUtsNode();
-        }
-        return callApiPartUrlDTO.getUag().getDeleteUtsNode();
-    }
-
-    /**
-     * 重命名节点
-     *
-     * @return
-     */
-    public String getRenameUtsNode() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getRenameUtsNode();
-        }
-        return callApiPartUrlDTO.getUag().getRenameUtsNode();
-    }
-
-    /**
-     * 移动节点
-     *
-     * @return
-     */
-    public String getMovingUtsNode() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getMovingUtsNode();
-        }
-        return callApiPartUrlDTO.getUag().getMovingUtsNode();
-    }
-
-    /**
-     * 根据节点类型查找当前节点下所有节点数据
-     *
-     * @return
-     */
-    public String getFindAllSubLevelUser() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getFindAllSubLevelUser();
-        }
-        return callApiPartUrlDTO.getUag().getFindAllSubLevelUser();
-    }
-
-    /**
-     * 查询节点下所有一级节点
-     *
-     * @return
-     */
-    public String getFindAllOneLevelNode() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getFindAllOneLevelNode();
-        }
-        return callApiPartUrlDTO.getUag().getFindAllOneLevelNode();
-    }
-
-    /**
-     * 查询当前节点下所有下一级节点或加载权限树
-     *
-     * @return
-     */
-    public String getFindAllOneLevelChildren() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getFindAllOneLevelChildren();
-        }
-        return callApiPartUrlDTO.getUag().getFindAllOneLevelChildren();
-    }
-
-    /**
-     * 重置用户密码
-     *
-     * @return
-     */
-    public String getResetNodePassword() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getResetNodePassword();
-        }
-        return callApiPartUrlDTO.getUag().getResetNodePassword();
-    }
-
-    /**
-     * 判断当前用户是否根节点下用户
-     *
-     * @return
-     */
-    public String getVerfyUserExistRootNode() throws HttpException {
-        if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getVerfyUserExistRootNode();
-        }
-        return callApiPartUrlDTO.getUag().getVerfyUserExistRootNode();
+    public String getUserRegister() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getUserRegister();
+    	}
+    	return callApiPartUrlDTO.getUag().getUserRegister();
     }
     
     /**
-     * 判断当前用户是否根节点下用户
+             * 用户更新
+     *
+     * @throws HttpException
+     */
+    public String getUserUpdate() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getUserUpdate();
+        }
+        return callApiPartUrlDTO.getUag().getUserUpdate();
+    }
+
+    /**
+            * 用户详细信息查询
+     *
+     * @throws HttpException
+     */
+    public String getUserSearchInfo() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getUserSearchInfo();
+        }
+        return callApiPartUrlDTO.getUag().getUserSearchInfo();
+    }
+
+    /**
+            *用户更新/重置/忘记密码
+     *
+     * @throws HttpException
+     */
+    public String getResetPassWd() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getResetPassWd();
+        }
+        return callApiPartUrlDTO.getUag().getResetPassWd();
+    }
+
+    /**
+         * 创建企业
      *
      * @return
      */
-    public String getDeleteRootChild() throws HttpException {
+    public String getEntAdd() throws HttpException {
         if (httpDTO.alled()) {
-            return callApiUrlAllDTO.getUag().getDeleteRootChild();
+            return callApiUrlAllDTO.getUag().getEntAdd();
         }
-        return callApiPartUrlDTO.getUag().getDeleteRootChild();
+        return callApiPartUrlDTO.getUag().getEntAdd();
+    }
+
+    /**
+            * 更新企业
+     *
+     * @return
+     */
+    public String getEntUpdate() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getEntUpdate();
+        }
+        return callApiPartUrlDTO.getUag().getEntUpdate();
+    }
+
+    /**
+            * 企业详细信息查询
+     *
+     * @return
+     */
+    public String getEntSearchInfo() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getEntSearchInfo();
+        }
+        return callApiPartUrlDTO.getUag().getEntSearchInfo();
+    }
+
+    /**
+            * 创建部门
+     *
+     * @return
+     */
+    public String getDeptAdd() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getDeptAdd();
+        }
+        return callApiPartUrlDTO.getUag().getDeptAdd();
+    }
+
+    /**
+            * 更新部门
+     *
+     * @return
+     */
+    public String getDeptUpdate() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getDeptUpdate();
+        }
+        return callApiPartUrlDTO.getUag().getDeptUpdate();
+    }
+
+    /**
+            * 查询部门详情信息
+     *
+     * @return
+     */
+    public String getDeptSearchInfo() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getDeptSearchInfo();
+        }
+        return callApiPartUrlDTO.getUag().getDeptSearchInfo();
+    }
+
+    /**
+             * 部门删除
+     *
+     * @return
+     */
+    public String getDeptDelete() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getDeptDelete();
+        }
+        return callApiPartUrlDTO.getUag().getDeptDelete();
+    }
+
+    /**
+            * 查询企业下一级节点信息
+     *
+     * @return
+     */
+    public String getEntSearchOneNode() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getEntSearchOneNode();
+        }
+        return callApiPartUrlDTO.getUag().getEntSearchOneNode();
+    }
+
+    /**
+            * 查询部门下一级节点信息
+     *
+     * @return
+     */
+    public String getDeptSearchOneNode() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getDeptSearchOneNode();
+        }
+        return callApiPartUrlDTO.getUag().getDeptSearchOneNode();
+    }
+
+    /**
+             * 查询企业下全部节点信息
+     *
+     * @return
+     */
+    public String getEntAll() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getEntAll();
+        }
+        return callApiPartUrlDTO.getUag().getEntAll();
+    }
+    
+    /**
+             * 查询部门下全部节点信息
+     *
+     * @return
+     */
+    public String getDeptAll() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getDeptAll();
+        }
+        return callApiPartUrlDTO.getUag().getDeptAll();
+    }
+    
+    /**
+            * 查询当前用户加入的企业列表
+     *
+     * @return
+     */
+    public String getFindJoinCompanys() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getFindJoinCompanys();
+    	}
+    	return callApiPartUrlDTO.getUag().getFindJoinCompanys();
+    }
+    
+    /**
+             * 批量导入
+     *
+     * @return
+     */
+    public String getBetchImport() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getBetchImport();
+    	}
+    	return callApiPartUrlDTO.getUag().getBetchImport();
+    }
+    
+    /**
+             * 移除邀约用户
+     *
+     * @return
+     */
+    public String getRemoveUser() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getRemoveUser();
+    	}
+    	return callApiPartUrlDTO.getUag().getRemoveUser();
+    }
+    
+    /**
+             * 用户切换企业
+     *
+     * @return
+     */
+    public String getSwitchEnterprise() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getSwitchEnterprise();
+    	}
+    	return callApiPartUrlDTO.getUag().getSwitchEnterprise();
+    }
+    
+    /**
+             * 企业邀请用户
+     *
+     * @return
+     */
+    public String getJoinEnterprise() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getJoinEnterprise();
+    	}
+    	return callApiPartUrlDTO.getUag().getJoinEnterprise();
+    }
+    
+    /**
+             * 口令认证
+     *
+     * @return
+     */
+    public String getPasswdAuth() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getPasswdAuth();
+    	}
+    	return callApiPartUrlDTO.getUag().getPasswdAuth();
+    }
+    
+    /**
+             * 获取短信验证码
+     *
+     * @return
+     */
+    public String getGetVerificationCode() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getGetVerificationCode();
+    	}
+    	return callApiPartUrlDTO.getUag().getGetVerificationCode();
+    }
+    
+    /**
+            * 验证短信验证码
+     *
+     * @return
+     */
+    public String getVerifySmsCodeAuth() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getVerifySmsCodeAuth();
+    	}
+    	return callApiPartUrlDTO.getUag().getVerifySmsCodeAuth();
+    }
+    
+    /**
+             * 退出单点登录
+     *
+     * @return
+     */
+    public String getLogout() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getLogout();
+    	}
+    	return callApiPartUrlDTO.getUag().getLogout();
+    }
+    
+    /**
+             * 添加扩展属性
+     *
+     * @return
+     */
+    public String getExtendedAdd() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getExtendedAdd();
+    	}
+    	return callApiPartUrlDTO.getUag().getExtendedAdd();
+    }
+    
+    /**
+            * 查询当前节点下uuid集合
+     *
+     * @return
+     */
+    public String getFindChildUuidList() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getFindChildUuidList();
+    	}
+    	return callApiPartUrlDTO.getUag().getFindChildUuidList();
+    }
+    
+    /**
+             * 用户授权接口
+     *
+     * @return
+     */
+    public String getGrantAuth() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getGrantAuth();
+    	}
+    	return callApiPartUrlDTO.getUag().getGrantAuth();
+    }
+    
+    /**
+             *根据手机号或uuid集合查询用户信息
+     *
+     * @return
+     */
+    public String getFindUserInfoByUuidList() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getFindUserInfoByUuidList();
+    	}
+    	return callApiPartUrlDTO.getUag().getFindUserInfoByUuidList();
+    }
+    
+    /**
+             *全量查询企业和用户信息
+     *
+     * @return
+     */
+    public String getFindAllEnterpriseAndUser() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getFindAllEnterpriseAndUser();
+    	}
+    	return callApiPartUrlDTO.getUag().getFindAllEnterpriseAndUser();
     }
 
 }

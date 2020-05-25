@@ -12,61 +12,135 @@ import lombok.ToString;
 @ToString
 public class Uag {
 	/**
-	 * 企业注册 -包含注册企业超级管理员
+	 * 用户注册
 	 */
-	private String createAdmin;
+	private String userRegister;
 	/**
-	 * 新增节点 -新增节点分为新增用户、新增子公司、新增部门三种情况
+	 * 用户更新
 	 */
-	private String createUtsNode;
+	private String userUpdate;
 	/**
-	 * 更新节点 -更新节点可分为更新更新用户、更新子公司、更新部门三种情况
+	 * 用户详细信息查询
 	 */
-	private String updateUtsNode;
+	private String userSearchInfo;
 	/**
-	 * 用户升级管理员
+	 * 用户更新/重置/忘记密码
 	 */
-	private String upgradeAdmin;
+	private String resetPassWd;
 	/**
-	 * 取消管理员权限
+	 *创建企业
 	 */
-	private String cancelAdminAuth;
+	private String entAdd;
 	/**
-	 * 删除节点 -删除节点用户、部门、子公司都算节点
+	 * 更新企业
 	 */
-	private String deleteUtsNode;
+	private String entUpdate;
 	/**
-	 * 重命名节点  -用户、子公司、部门都可以节点重命名
+	 * 企业详细信息查询
 	 */
-	private String renameUtsNode;
+	private String entSearchInfo;
 	/**
-	 * 移动节点 -属于更换用户部门
+	 * 创建部门
 	 */
-	private String movingUtsNode;
+	private String deptAdd;
 	/**
-	 * 根据节点类型查找当前节点下所有节点数据
+	 * 更新部门
 	 */
-	private String findAllSubLevelUser;
+	private String deptUpdate;
 	/**
-	 * 查询节点下所有一级节点
+	 * 部门详细信息查询
 	 */
-	private String findAllOneLevelNode;
+	private String deptSearchInfo;
 	/**
-	 * 查询当前节点下所有下一级节点或加载权限树
+	 * 删除部门
 	 */
-	private String findAllOneLevelChildren;
+	private String deptDelete;
 	/**
-	 * 重置用户密码
+	 * 查询企业下一级节点信息
 	 */
-	private String resetNodePassword;
+	private String entSearchOneNode;
 	/**
-	 * 判断当前用户是否根节点下用户
+	 * 查询部门下一级节点信息
 	 */
-	private String verfyUserExistRootNode;
+	private String deptSearchOneNode;
+	/**
+	 * 查询企业下全部节点信息
+	 */
+	private String entAll;
 	
 	/**
-	 * 删除根节点
+	 * 查询部门下所有节点信息
 	 */
-	private String deleteRootChild;
+	private String deptAll;
+	
+	/**
+	 * 查询当前用户加入的企业列表
+	 */
+	private String findJoinCompanys;
+	
+	/**
+	 * 批量导入
+	 */
+	private String betchImport;
+	
+	/**
+	 * 移除邀约用户
+	 */
+	private String removeUser;
+	
+	/**
+	 * 用户切换企业
+	 */
+	private String switchEnterprise;
+	
+	/**
+	 * 企业邀请用户
+	 */
+	private String joinEnterprise;
+	
+	/**
+	 * 口令认证
+	 */
+	private String passwdAuth;
+	
+	/**
+	 * 获取短信验证码
+	 */
+	private String getVerificationCode;
+	
+	/**
+	 * 短信验证码认证
+	 */
+	private String verifySmsCodeAuth;
+	
+	/**
+	 * 单点退出接口
+	 */
+	private String logout;
+	
+	/**
+	 * 添加扩展属性
+	 */
+	private String extendedAdd;
+	
+	/**
+	 * 查询当前节点下uuid集合
+	 */
+	private String findChildUuidList;
+	
+	/**
+	 * 用户授权接口
+	 */
+	private String grantAuth;
+	
+	/**
+	 * 根据手机号或uuid集合查询用户信息
+	 */
+	private String findUserInfoByUuidList;
+	
+	/**
+	 * 全量查询企业和用户信息
+	 */
+	private String findAllEnterpriseAndUser;
 
 }
