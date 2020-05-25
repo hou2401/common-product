@@ -517,8 +517,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptUpdate(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptUpdate(), kvs , new ApiUser());
+	public JSONObject deptUpdate(DeptParams deptParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptUpdate(), deptParams , new ApiUser());
 	}
 	/**
 	 * 查询部门详情信息
@@ -533,8 +533,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptDelete(Object obj) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptDelete(), obj , new ApiUser());
+	public JSONObject deptDelete(DeptParams deptParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptDelete(), deptParams , new ApiUser());
 	}
 	/**
 	 *  查询企业下一级节点信息

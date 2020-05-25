@@ -49,12 +49,23 @@ public class DeptParams {
      */
     private Long uuid;
     
+    private Boolean mode = true;
+    
 
 	public DeptParams(String manager, Long parentUuid, String parentType, String deptName, String deptCode, String deptType) {
 		super();
 		this.manager = manager;
 		this.parentUuid = parentUuid;
 		this.parentType = parentType;
+		this.deptName = deptName;
+		this.deptCode = deptCode;
+		this.deptType = deptType;
+	}
+	
+	public DeptParams(String manager, Long uuid, String deptName, String deptCode, String deptType) {
+		super();
+		this.manager = manager;
+		this.uuid = uuid;
 		this.deptName = deptName;
 		this.deptCode = deptCode;
 		this.deptType = deptType;

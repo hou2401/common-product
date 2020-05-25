@@ -302,14 +302,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject deptUpdate( Object object ) throws Exception {
-		log.info("更新部门入参："+JSON.toJSONString(object));
+	public JSONObject deptUpdate( DeptParams deptParams ) throws Exception {
+		log.info("更新部门入参："+JSON.toJSONString(deptParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.deptUpdate(object);
+				result = httpRequset.deptUpdate(deptParams);
 			}else {
-				result = callApiRequest.deptUpdate(object);
+				result = callApiRequest.deptUpdate(deptParams);
 			}
 			if( result != null ) {
 				break;
@@ -350,14 +350,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject deptDelete( Object obj ) throws Exception {
-		log.info("部门删除入参："+JSON.toJSONString(obj));
+	public JSONObject deptDelete( DeptParams deptParams ) throws Exception {
+		log.info("部门删除入参："+JSON.toJSONString(deptParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.deptDelete(obj);
+				result = httpRequset.deptDelete(deptParams);
 			}else {
-				result = callApiRequest.deptDelete(obj);
+				result = callApiRequest.deptDelete(deptParams);
 			}
 			if(result != null ) {
 				break;

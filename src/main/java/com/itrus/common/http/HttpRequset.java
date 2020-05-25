@@ -549,9 +549,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptUpdate(Object kvs) throws Exception {
+	public JSONObject deptUpdate(DeptParams deptParams) throws Exception {
 		
-		return http(kvs, httpUrl.getDeptUpdate());
+		return http(deptParams, httpUrl.getDeptUpdate());
 	}
 	
 	/**
@@ -569,9 +569,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptDelete(Object obj) throws Exception {
+	public JSONObject deptDelete(DeptParams deptParams) throws Exception {
 		
-		return http(obj, httpUrl.getDeptDelete());
+		return http(deptParams, httpUrl.getDeptDelete());
 	}
 	
 	/**
