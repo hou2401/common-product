@@ -22,6 +22,7 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
+import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.BeanUtil;
 
 import cn.com.itrus.atom.sign.api.constants.FSSConstants;
@@ -694,8 +695,8 @@ public class CallApiRequest {
 	 * @throws Exception 
 	 * @throws  
 	 */
-	public JSONObject findUserInfoByUuidList(Object kvs) throws Exception {
-		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindUserInfoByUuidList(), kvs , new ApiUser());
+	public JSONObject findUserInfoByUuidList(UserListParams params) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindUserInfoByUuidList(), params , new ApiUser());
 	}
 	/**
 	 *全量查询企业和用户信息

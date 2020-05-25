@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.params.uag.UserListParams;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -755,14 +757,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject findUserInfoByUuidList( Object object ) throws Exception {
-		log.info("用户授权接口入参："+JSON.toJSONString(object));
+	public JSONObject findUserInfoByUuidList( UserListParams params ) throws Exception {
+		log.info("用户授权接口入参："+JSON.toJSONString(params));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.findUserInfoByUuidList(object);
+				result = httpRequset.findUserInfoByUuidList(params);
 			}else {
-				result = callApiRequest.findUserInfoByUuidList(object);
+				result = callApiRequest.findUserInfoByUuidList(params);
 			}
 			if(result != null ) {
 				break;

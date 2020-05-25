@@ -22,6 +22,7 @@ import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
+import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.HttpTools;
 import com.itrus.common.utils.HttpUtil;
 
@@ -737,8 +738,8 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject findUserInfoByUuidList(Object kvs) throws Exception {
-		return http(kvs, httpUrl.getFindUserInfoByUuidList());
+	public JSONObject findUserInfoByUuidList(UserListParams params) throws Exception {
+		return http(params, httpUrl.getFindUserInfoByUuidList());
 	}
 	
 	/**
