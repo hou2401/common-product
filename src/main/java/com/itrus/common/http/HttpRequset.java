@@ -23,6 +23,7 @@ import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.params.uag.DeptParams;
+import com.itrus.common.params.uag.EntListParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.HttpTools;
@@ -620,8 +621,8 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject findJoinCompanys(Object kvs) throws Exception {
-		return http(kvs, httpUrl.getFindJoinCompanys());
+	public JSONObject findJoinCompanys(EntListParams entListParams) throws Exception {
+		return http(entListParams, httpUrl.getFindJoinCompanys());
 	}
 	
 	/**

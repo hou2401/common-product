@@ -23,6 +23,7 @@ import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
 import com.itrus.common.params.uag.DeptParams;
+import com.itrus.common.params.uag.EntListParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.BeanUtil;
@@ -577,8 +578,8 @@ public class CallApiRequest {
 	 * @throws Exception 
 	 * @throws  
 	 */
-	public JSONObject findJoinCompanys(Object kvs) throws Exception {
-		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindJoinCompanys(), kvs , new ApiUser());
+	public JSONObject findJoinCompanys(EntListParams entListParams) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindJoinCompanys(), entListParams , new ApiUser());
 	}
 	/**
 	 * 查询当前用户加入的企业列表
