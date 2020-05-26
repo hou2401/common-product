@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<!-- springboot依赖的父工程，使用的 springboot2.0.3.RELEASE版本 -->
@@ -29,7 +28,7 @@
 						<exclude>log4j2-spring.xml</exclude>
 						<exclude>com/itrus/common/WebApplication.class</exclude>
 					</excludes>
-				<skip>true</skip>
+					<skip>true</skip>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -89,6 +88,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 			<scope>compile</scope>
 			<optional>true</optional>
 		</dependency>
@@ -185,7 +190,7 @@
 			<scope>compile</scope>
 			<optional>true</optional>
 		</dependency>
-		
+
 		<!-- 添加APPHOME -->
 		<dependency>
 			<groupId>com.itrus.newportal</groupId>
@@ -194,10 +199,10 @@
 			<version>${apphome.version}</version>
 			<optional>true</optional>
 			<exclusions>
-                <exclusion>
-                    <groupId>org.mybatis</groupId>
-                    <artifactId>mybatis</artifactId>
-                </exclusion>
+				<exclusion>
+					<groupId>org.mybatis</groupId>
+					<artifactId>mybatis</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -207,7 +212,7 @@
 			<optional>true</optional>
 			<version>${apiservice.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>cn.com.itrus.atom.sign</groupId>
 			<artifactId>atom-sign-api</artifactId>
@@ -228,7 +233,7 @@
 			<scope>compile</scope>
 			<optional>true</optional>
 		</dependency>
-		
+
 		<!--接口文档生成工具 -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -252,13 +257,13 @@
 			<artifactId>httpmime</artifactId>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- 发送邮件 -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 			<scope>compile</scope>
 		</dependency>
-		
+
 	</dependencies>
 </project>

@@ -781,14 +781,13 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject findAllEnterpriseAndUser( Object object ) throws Exception {
-		log.info("用户授权接口入参："+JSON.toJSONString(object));
+	public JSONObject findAllEnterpriseAndUser(Object obj ) throws Exception {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.findAllEnterpriseAndUser(object);
+				result = httpRequset.findAllEnterpriseAndUser(obj);
 			}else {
-				result = callApiRequest.findAllEnterpriseAndUser(object);
+				result = callApiRequest.findAllEnterpriseAndUser(obj);
 			}
 			if(result != null ) {
 				break;

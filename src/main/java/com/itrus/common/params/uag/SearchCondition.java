@@ -1,4 +1,4 @@
-package com.itrus.common.params;
+package com.itrus.common.params.uag;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;

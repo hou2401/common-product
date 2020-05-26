@@ -1,5 +1,7 @@
 package com.itrus.common.params;
 
+import com.itrus.common.params.uag.SearchCondition;
+
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
