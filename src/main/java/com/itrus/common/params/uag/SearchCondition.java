@@ -17,7 +17,7 @@ public class SearchCondition {
 	/**
 	 * 查询节点类型  用户/部门/公司
 	 */
-	private String[] nodetype;  // 查询节点类型   1：用户  2：部门 3：公司
+	private String[] nodeType;  // 查询节点类型   1：用户  2：部门 3：公司
 	
 	/**
 	 * 是查询树还是查询子节点
@@ -35,11 +35,16 @@ public class SearchCondition {
 	 */
 	private Integer realName;  //1已认证 2未认证 3认证未通过 4联系人已离职 5待审核
 	
+	/**
+	 * 加入状态
+	 */
+	private String joinState;
+	
 	
 	public SearchCondition(String[] ifAudited, String[] nodetype, String ifLoadNodes, Integer realName, String ifRoot) {
 		super();
 		this.ifAudited = ifAudited;
-		this.nodetype = nodetype;
+		this.nodeType = nodetype;
 		this.ifLoadNodes = ifLoadNodes;
 		this.realName = realName;
 		this.ifRoot = ifRoot;
@@ -49,7 +54,7 @@ public class SearchCondition {
 	public SearchCondition(String[] ifAudited, String[] nodetype, String ifLoadNodes, Integer realName) {
 		super();
 		this.ifAudited = ifAudited;
-		this.nodetype = nodetype;
+		this.nodeType = nodetype;
 		this.ifLoadNodes = ifLoadNodes;
 		this.realName = realName;
 	}

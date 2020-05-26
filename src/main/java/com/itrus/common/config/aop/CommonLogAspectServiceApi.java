@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Aspect
 @Component
 @Slf4j
-public class LogAspectServiceApi {
+public class CommonLogAspectServiceApi {
 	
 	
 	
@@ -53,7 +53,7 @@ public class LogAspectServiceApi {
 			log.info("请求类方法:" + joinPoint.getSignature());
 			log.info("请求类方法参数:" + JSONObject.toJSONString(joinPoint.getArgs(),true) );
 		} catch (Exception e) { 
-			log.error("###LogAspectServiceApi.class methodBefore() ### ERROR:", e); 
+			log.error("###CommonLogAspectServiceApi.class methodBefore() ### ERROR:", e); 
 		} 
 		log.info("===============请求内容==============="); 
 	} 
@@ -64,7 +64,7 @@ public class LogAspectServiceApi {
 		try { 
 			log.info("Response内容:" + JSONObject.toJSONString(o)); 
 		} catch (Exception e) {
-			log.error("###LogAspectServiceApi.class methodAfterReturing() ### ERROR:", e);
+			log.error("###CommonLogAspectServiceApi.class methodAfterReturing() ### ERROR:", e);
 		}
 		log.info("--------------返回内容----------------");  
 	}
