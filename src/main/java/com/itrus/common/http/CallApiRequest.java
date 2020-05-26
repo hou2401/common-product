@@ -22,6 +22,9 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
+import com.itrus.common.params.uag.DeptParams;
+import com.itrus.common.params.uag.EntListParams;
+import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.BeanUtil;
 
@@ -507,32 +510,32 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptAdd(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptAdd(), kvs , new ApiUser());
+	public JSONObject deptAdd(DeptParams deptParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptAdd(), deptParams , new ApiUser());
 	}
 	/**
 	 * 更新部门
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptUpdate(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptUpdate(), kvs , new ApiUser());
+	public JSONObject deptUpdate(DeptParams deptParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptUpdate(), deptParams , new ApiUser());
 	}
 	/**
 	 * 查询部门详情信息
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptSearchInfo(Object obj) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptSearchInfo(), obj , new ApiUser());
+	public JSONObject deptSearchInfo(DeptParams deptParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptSearchInfo(), deptParams , new ApiUser());
 	}
 	/**
 	 *  部门删除
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptDelete(Object obj) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptDelete(), obj , new ApiUser());
+	public JSONObject deptDelete(DeptParams deptParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDeptDelete(), deptParams , new ApiUser());
 	}
 	/**
 	 *  查询企业下一级节点信息
@@ -555,8 +558,8 @@ public class CallApiRequest {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject entAll(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntAll(), kvs , new ApiUser());
+	public JSONObject entAll(UagOrgParams uagOrgParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntAll(), uagOrgParams , new ApiUser());
 	}
 	/**
 	 * 查询部门下全部节点信息
@@ -575,8 +578,8 @@ public class CallApiRequest {
 	 * @throws Exception 
 	 * @throws  
 	 */
-	public JSONObject findJoinCompanys(Object kvs) throws Exception {
-		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindJoinCompanys(), kvs , new ApiUser());
+	public JSONObject findJoinCompanys(EntListParams entListParams) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindJoinCompanys(), entListParams , new ApiUser());
 	}
 	/**
 	 * 查询当前用户加入的企业列表

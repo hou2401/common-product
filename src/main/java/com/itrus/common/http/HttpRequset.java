@@ -22,6 +22,9 @@ import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
+import com.itrus.common.params.uag.DeptParams;
+import com.itrus.common.params.uag.EntListParams;
+import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.utils.HttpTools;
 import com.itrus.common.utils.HttpUtil;
@@ -537,9 +540,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptAdd(Object kvs) throws Exception {
+	public JSONObject deptAdd(DeptParams deptParams) throws Exception {
 		
-		return http(kvs, httpUrl.getDeptAdd());
+		return http(deptParams, httpUrl.getDeptAdd());
 	}
 	
 	/**
@@ -547,9 +550,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptUpdate(Object kvs) throws Exception {
+	public JSONObject deptUpdate(DeptParams deptParams) throws Exception {
 		
-		return http(kvs, httpUrl.getDeptUpdate());
+		return http(deptParams, httpUrl.getDeptUpdate());
 	}
 	
 	/**
@@ -557,9 +560,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptSearchInfo(Object obj) throws Exception {
+	public JSONObject deptSearchInfo(DeptParams deptParams) throws Exception {
 		
-		return http(obj, httpUrl.getDeptSearchInfo());
+		return http(deptParams, httpUrl.getDeptSearchInfo());
 	}
 	
 	/**
@@ -567,9 +570,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject deptDelete(Object obj) throws Exception {
+	public JSONObject deptDelete(DeptParams deptParams) throws Exception {
 		
-		return http(obj, httpUrl.getDeptDelete());
+		return http(deptParams, httpUrl.getDeptDelete());
 	}
 	
 	/**
@@ -597,9 +600,9 @@ public class HttpRequset {
 	 * @param kvs
 	 * @return
 	 */
-	public JSONObject entAll(Object kvs) throws Exception {
+	public JSONObject entAll(UagOrgParams uagOrgParams) throws Exception {
 		
-		return http(kvs, httpUrl.getEntAll());
+		return http(uagOrgParams, httpUrl.getEntAll());
 	}
 
 	/**
@@ -618,8 +621,8 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject findJoinCompanys(Object kvs) throws Exception {
-		return http(kvs, httpUrl.getFindJoinCompanys());
+	public JSONObject findJoinCompanys(EntListParams entListParams) throws Exception {
+		return http(entListParams, httpUrl.getFindJoinCompanys());
 	}
 	
 	/**
