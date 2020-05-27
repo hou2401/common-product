@@ -441,18 +441,18 @@ public class UagRequest {
 	/**
 	 * 查询部门下全部节点信息
 	 *
-	 * @param object 请求参数
+	 * @param uagOrgParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject deptAll( Object object ) throws Exception {
-		log.info("查询部门下全部节点信息入参："+JSON.toJSONString(object));
+	public JSONObject deptAll( UagOrgParams uagOrgParams ) throws Exception {
+		log.info("查询部门下全部节点信息入参："+JSON.toJSONString(uagOrgParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.deptAll(object);
+				result = httpRequset.deptAll(uagOrgParams);
 			}else {
-				result = callApiRequest.deptAll(object);
+				result = callApiRequest.deptAll(uagOrgParams);
 			}
 			if(result != null ) {
 				break;
