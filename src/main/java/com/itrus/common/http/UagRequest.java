@@ -8,7 +8,13 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
-
+import com.itrus.common.params.uag.DeptParams;
+import com.itrus.common.params.uag.EntListParams;
+import com.itrus.common.params.uag.GrantAuthParams;
+import com.itrus.common.params.uag.SwicthParams;
+import com.itrus.common.params.uag.UagOrgParams;
+import com.itrus.common.params.uag.UserListParams;
+import com.itrus.common.params.uag.UserParams;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -541,14 +547,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject switchEnterprise( Object object ) throws Exception {
-		log.info("用户切换企业入参："+JSON.toJSONString(object));
+	public JSONObject switchEnterprise( SwicthParams swicthParams ) throws Exception {
+		log.info("用户切换企业入参："+JSON.toJSONString(swicthParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.switchEnterprise(object);
+				result = httpRequset.switchEnterprise(swicthParams);
 			}else {
-				result = callApiRequest.switchEnterprise(object);
+				result = callApiRequest.switchEnterprise(swicthParams);
 			}
 			if(result != null ) {
 				break;

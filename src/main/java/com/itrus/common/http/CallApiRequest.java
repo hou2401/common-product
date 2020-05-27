@@ -25,6 +25,7 @@ import com.itrus.common.dto.CallApiUrlDTO;
 import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.EntListParams;
 import com.itrus.common.params.uag.GrantAuthParams;
+import com.itrus.common.params.uag.SwicthParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.params.uag.UserParams;
@@ -610,8 +611,8 @@ public class CallApiRequest {
 	 * @throws Exception 
 	 * @throws  
 	 */
-	public JSONObject switchEnterprise(Object kvs) throws Exception {
-		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getSwitchEnterprise(), kvs , new ApiUser());
+	public JSONObject switchEnterprise(SwicthParams swicthParams) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getSwitchEnterprise(), swicthParams , new ApiUser());
 	}
 	/**
 	 * 企业邀请用户
