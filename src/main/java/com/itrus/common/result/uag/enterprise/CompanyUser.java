@@ -75,4 +75,12 @@ public class CompanyUser implements Serializable{
 	 * 公司邮箱
 	 */
 	private String companyEmail;
+	/**
+	 * 所属部门或企业组织uuid
+	 */
+	private String orgUuid;
+	/**
+	 * 所属部门名称或企业简称
+	 */
+	private String orgName;
 }
