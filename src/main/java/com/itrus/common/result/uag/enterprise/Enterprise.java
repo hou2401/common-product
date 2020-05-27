@@ -1,11 +1,17 @@
 package com.itrus.common.result.uag.enterprise;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.Set;
 
 import lombok.Data;
 
 @Data
-public class Enterprise {
+public class Enterprise implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 企业全称
@@ -17,13 +23,14 @@ public class Enterprise {
 	 */
 	private String orgCode;
 	
+	
 	/**
 	 * 简称集合实体
 	 */
-	private List<OrgAlias> orgAliasList;
+	private Set<OrgAlias> orgAliasList;
 	
 	/**
 	 * 企业用户集合
 	 */
-	private List<CompanyUser> companyUserList;
+	private Set<CompanyUser> companyUserList;
 }
