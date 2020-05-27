@@ -38,7 +38,24 @@ public class SearchCondition {
 	/**
 	 * 加入状态
 	 */
-	private String joinState;
+	private String[] joinState;
+    /**
+     * 姓名或者手机号
+     */
+	private String phoneOrDisplayName;
+    /**
+     * 查询方式：1精确查询、2模糊查询 （不传默认精确查）
+     */
+	private String queryMode;
+
+    /**
+     * 分页参数-每页显示记录数
+     */
+	private Integer pageSize;
+    /**
+     * 分页参数-当前第几页
+     */
+	private Integer pageIndex;
 	
 	
 	public SearchCondition(String[] ifAudited, String[] nodetype, String ifLoadNodes, Integer realName, String ifRoot) {
