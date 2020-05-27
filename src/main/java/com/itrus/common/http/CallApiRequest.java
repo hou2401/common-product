@@ -24,8 +24,10 @@ import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
 import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.EntListParams;
+import com.itrus.common.params.uag.GrantAuthParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
+import com.itrus.common.params.uag.UserParams;
 import com.itrus.common.utils.BeanUtil;
 
 import cn.com.itrus.atom.sign.api.constants.FSSConstants;
@@ -459,8 +461,8 @@ public class CallApiRequest {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject userUpdate(Object kvs) throws Exception {
-		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUserUpdate(), kvs , new ApiUser());
+	public JSONObject userUpdate(UserParams userParams) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUserUpdate(), userParams , new ApiUser());
 	}
 	/**
 	 * 用户详细信息查询
@@ -688,8 +690,8 @@ public class CallApiRequest {
 	 * @throws Exception 
 	 * @throws  
 	 */
-	public JSONObject grantAuth(Object kvs) throws Exception {
-		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getGrantAuth(), kvs , new ApiUser());
+	public JSONObject grantAuth(GrantAuthParams authParams) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getGrantAuth(), authParams , new ApiUser());
 	}
 	/**
 	 * 根据手机号或uuid集合查询用户信息

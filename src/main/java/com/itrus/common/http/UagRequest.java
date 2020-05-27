@@ -9,8 +9,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
 import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.EntListParams;
+import com.itrus.common.params.uag.GrantAuthParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
+import com.itrus.common.params.uag.UserParams;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -134,14 +136,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject userUpdate( Object obj ) throws Exception {
-		log.info("用户更新入参："+JSON.toJSONString(obj));
+	public JSONObject userUpdate( UserParams userParams ) throws Exception {
+		log.info("用户更新入参："+JSON.toJSONString(userParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.userUpdate(obj);
+				result = httpRequset.userUpdate(userParams);
 			}else {
-				result = callApiRequest.userUpdate(obj);
+				result = callApiRequest.userUpdate(userParams);
 			}
 			if(result != null) {
 				break;
@@ -736,14 +738,14 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject grantAuth( Object object ) throws Exception {
-		log.info("用户授权接口入参："+JSON.toJSONString(object));
+	public JSONObject grantAuth( GrantAuthParams authParams ) throws Exception {
+		log.info("用户授权接口入参："+JSON.toJSONString(authParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.grantAuth(object);
+				result = httpRequset.grantAuth(authParams);
 			}else {
-				result = callApiRequest.grantAuth(object);
+				result = callApiRequest.grantAuth(authParams);
 			}
 			if(result != null ) {
 				break;

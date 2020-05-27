@@ -24,8 +24,10 @@ import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.EntListParams;
+import com.itrus.common.params.uag.GrantAuthParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
+import com.itrus.common.params.uag.UserParams;
 import com.itrus.common.utils.HttpTools;
 import com.itrus.common.utils.HttpUtil;
 
@@ -479,9 +481,9 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject userUpdate(Object kvs) throws Exception {
+	public JSONObject userUpdate(UserParams userParams) throws Exception {
 		
-		return http(kvs, httpUrl.getUserUpdate());
+		return http(userParams, httpUrl.getUserUpdate());
 	}
 
 	/**
@@ -731,8 +733,8 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject grantAuth(Object kvs) throws Exception {
-		return http(kvs, httpUrl.getGrantAuth());
+	public JSONObject grantAuth(GrantAuthParams authParams) throws Exception {
+		return http(authParams, httpUrl.getGrantAuth());
 	}
 	
 	/**
