@@ -1,5 +1,6 @@
 package com.itrus.common.http;
 
+import com.itrus.common.params.uag.*;
 import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -7,12 +8,6 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
-import com.itrus.common.params.uag.DeptParams;
-import com.itrus.common.params.uag.EntListParams;
-import com.itrus.common.params.uag.GrantAuthParams;
-import com.itrus.common.params.uag.UagOrgParams;
-import com.itrus.common.params.uag.UserListParams;
-import com.itrus.common.params.uag.UserParams;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -373,18 +368,18 @@ public class UagRequest {
 	/**
 	 * 查询企业下一级节点信息
 	 *
-	 * @param uagOrgParams 请求参数
+	 * @param searchOneNodeParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject entSearchOneNode( Object obj ) throws Exception {
-		log.info("查询企业下一级节点信息入参："+JSON.toJSONString(obj));
+	public JSONObject entSearchOneNode( SearchOneNodeParams searchOneNodeParams ) throws Exception {
+		log.info("查询企业下一级节点信息入参："+JSON.toJSONString(searchOneNodeParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.entSearchOneNode(obj);
+				result = httpRequset.entSearchOneNode(searchOneNodeParams);
 			}else {
-				result = callApiRequest.entSearchOneNode(obj);
+				result = callApiRequest.entSearchOneNode(searchOneNodeParams);
 			}
 			if(result != null) {
 				break;
@@ -397,18 +392,18 @@ public class UagRequest {
 	/**
 	 * 查询部门下一级节点信息
 	 *
-	 * @param object 请求参数
+	 * @param searchOneNodeParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject deptSearchOneNode( Object object ) throws Exception {
-		log.info("查询部门下一级节点信息入参："+JSON.toJSONString(object));
+	public JSONObject deptSearchOneNode( SearchOneNodeParams searchOneNodeParams ) throws Exception {
+		log.info("查询部门下一级节点信息入参："+JSON.toJSONString(searchOneNodeParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.deptSearchOneNode(object);
+				result = httpRequset.deptSearchOneNode(searchOneNodeParams);
 			}else {
-				result = callApiRequest.deptSearchOneNode(object);
+				result = callApiRequest.deptSearchOneNode(searchOneNodeParams);
 			}
 			if( result != null ) {
 				break;
