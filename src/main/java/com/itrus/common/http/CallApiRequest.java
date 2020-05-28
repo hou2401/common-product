@@ -317,6 +317,19 @@ public class CallApiRequest {
 	}
 
 
+	/***
+	 * 下载文件
+	 * @param data 文件存储标识
+	 * @return 文件内容
+	 * @throws Exception
+	 */
+	public JSONObject pdf2png(byte[] data) throws Exception {
+		Map<String,String> params = new HashMap<>();
+		params.put("file",Base64Utils.encodeToString(data));
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getPdf2png(), params, new ApiUser());
+	}
+
+
 	//-------------------------------------------------------------------------------------------------------------------------
 	/**
 	 * 证书服务
