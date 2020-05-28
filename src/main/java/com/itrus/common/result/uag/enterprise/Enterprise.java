@@ -1,7 +1,11 @@
 package com.itrus.common.result.uag.enterprise;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+
+import com.itrus.common.utils.PublicUtil;
 
 import lombok.Data;
 
@@ -33,4 +37,22 @@ public class Enterprise implements Serializable{
 	 * 企业用户集合
 	 */
 	private Set<CompanyUser> companyUserList;
+	
+	
+	private Map<String,CompanyUser> companyUserMap;
+	
+	
+	/**
+	 * list转成map
+	 * @return
+	 */
+	public Map<String,CompanyUser> getCompanyUserMap(){
+		if( PublicUtil.isNotEmpty(companyUserList.isEmpty()) ){
+			companyUserMap = new HashMap<>(companyUserList.size());
+			for (CompanyUser companyUser : companyUserList) {
+				companyUserMap.put(companyUser.getIdCard(), companyUser);
+			}
+		}
+		return companyUserMap;
+	}
 }
