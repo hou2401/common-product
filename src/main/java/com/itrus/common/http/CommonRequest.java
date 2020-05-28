@@ -78,7 +78,7 @@ public class CommonRequest {
 	 * @param object json对象
 	 */
 	public boolean isOk(JSONObject object) {
-		if(object.get("code") != null || object.get("status") != null){
+		if( object != null && (object.get("code") != null || object.get("status") != null)){
 			return   object.getIntValue("code") == 0 || object.getIntValue("status") == 1 ;
 
 		}
