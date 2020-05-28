@@ -75,4 +75,40 @@ public class CompanyUser implements Serializable{
 	 * 公司邮箱
 	 */
 	private String companyEmail;
+
+//	@Override
+//	public boolean equals(Object obj) {
+//		//用身份证号来判断是不是同一个人
+//		if( obj instanceof CompanyUser){
+//			String idCard = ((CompanyUser) obj).getIdCard();
+//			if( idCard != null ){
+//				return idCard.equals(this.idCard);
+//			}else{
+//				return false;
+//			}
+//			
+//		}
+//		return false;
+//	}
+//
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + ((code == null) ? 0 : code.hashCode());
+//		result = prime * result + ((companyEmail == null) ? 0 : companyEmail.hashCode());
+//		result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
+//		result = prime * result + ((email == null) ? 0 : email.hashCode());
+//		result = prime * result + ((idCard == null) ? 0 : idCard.hashCode());
+//		result = prime * result + ((joinState == null) ? 0 : joinState.hashCode());
+//		result = prime * result + ((passWd == null) ? 0 : passWd.hashCode());
+//		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+//		result = prime * result + ((position == null) ? 0 : position.hashCode());
+//		result = prime * result + ((realName == null) ? 0 : realName.hashCode());
+//		result = prime * result + ((sex == null) ? 0 : sex.hashCode());
+//		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+//		return result;
+//	}
+	
+	
 }
