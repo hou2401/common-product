@@ -36,4 +36,8 @@ public class File {
 	 * 文档转换
 	 */
 	private String word2Pdfs;
+	/**
+	 * pdf转换png
+	 */
+	private String pdf2png;
 }

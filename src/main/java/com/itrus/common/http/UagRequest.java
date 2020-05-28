@@ -157,18 +157,18 @@ public class UagRequest {
 	/**
 	 * 用户详细信息查询
 	 *
-	 * @param createUtsNodeParams 请求参数
+	 * @param userSearchInfoParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject userSearchInfo( Object obj ) throws Exception {
-		log.info("用户详细信息入参："+JSON.toJSONString(obj));
+	public JSONObject userSearchInfo( UserSearchInfoParams userSearchInfoParams ) throws Exception {
+		log.info("用户详细信息入参："+JSON.toJSONString(userSearchInfoParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.userSearchInfo(obj);
+				result = httpRequset.userSearchInfo(userSearchInfoParams);
 			}else {
-				result = callApiRequest.userSearchInfo(obj);
+				result = callApiRequest.userSearchInfo(userSearchInfoParams);
 			}
 			if(result != null) {
 				break;
@@ -567,18 +567,18 @@ public class UagRequest {
 	/**
 	 * 企业邀请用户
 	 *
-	 * @param object 请求参数
+	 * @param joinEnterpriseParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject joinEnterprise( Object object ) throws Exception {
-		log.info("企业邀请用户入参："+JSON.toJSONString(object));
+	public JSONObject joinEnterprise( JoinEnterpriseParams joinEnterpriseParams ) throws Exception {
+		log.info("企业邀请用户入参："+JSON.toJSONString(joinEnterpriseParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.joinEnterprise(object);
+				result = httpRequset.joinEnterprise(joinEnterpriseParams);
 			}else {
-				result = callApiRequest.joinEnterprise(object);
+				result = callApiRequest.joinEnterprise(joinEnterpriseParams);
 			}
 			if(result != null ) {
 				break;
