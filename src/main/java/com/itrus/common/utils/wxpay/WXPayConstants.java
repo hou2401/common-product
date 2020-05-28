@@ -22,6 +22,27 @@ public class WXPayConstants {
     public static final String HMACSHA256 = "HMAC-SHA256";
     public static final String MD5 = "MD5";
 
+    /**
+     * 币种
+     */
+    public static final String CNY = "CNY";
+
+    /**
+     * 支付方式
+     */
+//  JSAPI支付（或小程序支付）
+    public static final String JSAPI = "JSAPI";
+//    Native支付
+    public static final String NATIVE = "NATIVE";
+//    app支付
+    public static final String APP = "APP";
+//    H5支付
+    public static final String MWEB = "MWEB";
+//    付款码支付
+    public static final String MICROPAY = "MICROPAY";
+
+
+
     public static final String FIELD_SIGN = "sign";
     public static final String FIELD_SIGN_TYPE = "sign_type";
 

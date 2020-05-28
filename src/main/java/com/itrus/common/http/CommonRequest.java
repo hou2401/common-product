@@ -414,6 +414,10 @@ public class CommonRequest {
 		return callApiRequest.word2Pdfs(data);
 	}
 
+	public JSONObject pdf2png(byte[] data)throws Exception{
+		return callApiRequest.pdf2png(data);
+	}
+
 
 	//-------------------------------------------------------------------------------------------------------------------------
 	/**

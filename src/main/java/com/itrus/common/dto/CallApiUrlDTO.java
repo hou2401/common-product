@@ -145,6 +145,18 @@ public class CallApiUrlDTO {
         return callApiPartUrlDTO.getFile().getWord2Pdfs();
     }
 
+    /**
+     * 文档转换
+     *
+     * @throws HttpException
+     */
+    public String getPdf2png() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getFile().getPdf2png();
+        }
+        return callApiPartUrlDTO.getFile().getPdf2png();
+    }
+
     /* ####################证书服务##################### */
 
     /**
