@@ -25,6 +25,7 @@ import com.itrus.common.params.AuthPersionVideoParams;
 import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.EntListParams;
 import com.itrus.common.params.uag.GrantAuthParams;
+import com.itrus.common.params.uag.SwicthParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.params.uag.UserParams;
@@ -653,8 +654,8 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject switchEnterprise(Object kvs) throws Exception {
-		return http(kvs, httpUrl.getSwitchEnterprise());
+	public JSONObject switchEnterprise(SwicthParams swicthParams) throws Exception {
+		return http(swicthParams, httpUrl.getSwitchEnterprise());
 	}
 	
 	/**
