@@ -3,7 +3,7 @@ package com.itrus.common.result.uag.enterprise;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.TreeSet;
 
 import com.itrus.common.utils.PublicUtil;
 
@@ -16,7 +16,7 @@ public class Enterprise implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	/**
 	 * 企业全称
 	 */
@@ -31,12 +31,12 @@ public class Enterprise implements Serializable{
 	/**
 	 * 简称集合实体
 	 */
-	private Set<OrgAlias> orgAliasList;
+	private TreeSet<OrgAlias> orgAliasList;
 	
 	/**
 	 * 企业用户集合
 	 */
-	private Set<CompanyUser> companyUserList;
+	private TreeSet<CompanyUser> companyUserList;
 	
 	
 	private Map<String,CompanyUser> companyUserMap;
