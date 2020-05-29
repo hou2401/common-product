@@ -495,18 +495,18 @@ public class UagRequest {
 	/**
 	 * 批量导入
 	 *
-	 * @param object 请求参数
+	 * @param betchImportParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject betchImport( Object object ) throws Exception {
-		log.info("批量导入入参："+JSON.toJSONString(object));
+	public JSONObject betchImport( BetchImportParams betchImportParams ) throws Exception {
+		log.info("批量导入入参："+JSON.toJSONString(betchImportParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.betchImport(object);
+				result = httpRequset.betchImport(betchImportParams);
 			}else {
-				result = callApiRequest.betchImport(object);
+				result = callApiRequest.betchImport(betchImportParams);
 			}
 			if(result != null ) {
 				break;
@@ -519,18 +519,18 @@ public class UagRequest {
 	/**
 	 * 移除邀约用户
 	 *
-	 * @param object 请求参数
+	 * @param removeUserParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject removeUser( Object object ) throws Exception {
-		log.info("批量导入入参："+JSON.toJSONString(object));
+	public JSONObject removeUser( RemoveUserParams removeUserParams ) throws Exception {
+		log.info("批量导入入参："+JSON.toJSONString(removeUserParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.removeUser(object);
+				result = httpRequset.removeUser(removeUserParams);
 			}else {
-				result = callApiRequest.removeUser(object);
+				result = callApiRequest.removeUser(removeUserParams);
 			}
 			if(result != null ) {
 				break;
