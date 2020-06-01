@@ -19,17 +19,19 @@ public class UagResult implements Serializable{
 	/**
 	 * 返回状态
 	 */
-	private String status;
+	private String code;
 	
 	/**
 	 * 返回消息
 	 */
-	private String message;
+	private String msg;
+	
+	private JSONObject data;
 	
 	
 	public static final String defaultMessage = "调用UAG失败";
 	
-	public static final String messageKey = "message";
+	public static final String messageKey = "msg";
 	
 	/**
 	 *     请求OK
@@ -46,7 +48,7 @@ public class UagResult implements Serializable{
 			return false;
 		}
 		
-		return   "0x0000".equals(uagResult.getStatus()) ? true : false;
+		return   "0x0000".equals(uagResult.getCode()) ? true : false;
 	}
 	
 	/**
@@ -65,16 +67,14 @@ public class UagResult implements Serializable{
 	 * @param result json对象
 	 */
 	public static boolean isExist(JSONObject result) {
-		if(result == null ){
-			return false;
+		if( isOk(result)){
+			//1001  手机号已经存在
+			UagResult uagResult = JSONObject.parseObject(result.toJSONString(), UagResult.class);
+			return   "1001".equals(uagResult.getCode()) ? 
+					true : false;
 		}
-		UagResult uagResult = JSONObject.parseObject(result.toJSONString(), UagResult.class);
-		if( uagResult == null ) {
-			return false;
-		}
+		return false;
 		
-		return   "0x00014".equals(uagResult.getStatus()) ? 
-				true : "0x00015".equals(uagResult.getStatus()) ? true: false;
 	}
 	
 }
