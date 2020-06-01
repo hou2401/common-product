@@ -35,6 +35,8 @@ public class UagResult implements Serializable{
 	
 	public static final String messageKey = "msg";
 	
+	public static final String DATA_KEY = "data";
+	
 	/**
 	 *     请求OK
 	 *

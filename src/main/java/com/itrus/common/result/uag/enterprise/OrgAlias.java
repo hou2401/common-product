@@ -10,7 +10,7 @@ import lombok.Data;
  *
  */
 @Data
-public class OrgAlias implements Serializable{
+public class OrgAlias implements Comparable<OrgAlias>,Serializable{
 
 	/**
 	 * 
@@ -21,30 +21,36 @@ public class OrgAlias implements Serializable{
 	 * 企业简称
 	 */
 	private String orgAlias;
-	
+
 	/**
 	 * 审核状态
 	 */
 	private String ifAudited;
-	
+
 	/**
 	 * 企业实名状态
 	 */
 	private String realName;
-	
-	
+
+
 	/**
 	 * 创建人
 	 */
 	private String createdBy;
-	
+
 	/**
 	 * 企业uuid
 	 */
 	private Long uuid;
-	
+
 	/**
 	 * 父节点id
 	 */
 	private Long parentUuid;
+
+	@Override
+	public int compareTo(OrgAlias o) {
+		return 0;
+	}
+
 }

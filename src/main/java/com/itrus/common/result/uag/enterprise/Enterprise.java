@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
 
+import com.itrus.common.result.uag.user.UserInfoAll;
 import com.itrus.common.utils.PublicUtil;
 
 import lombok.Data;
@@ -36,20 +37,20 @@ public class Enterprise implements Serializable{
 	/**
 	 * 企业用户集合
 	 */
-	private TreeSet<CompanyUser> companyUserList;
+	private TreeSet<UserInfoAll> companyUserList;
 	
 	
-	private Map<String,CompanyUser> companyUserMap;
+	private Map<String,UserInfoAll> companyUserMap;
 	
 	
 	/**
 	 * list转成map
 	 * @return
 	 */
-	public Map<String,CompanyUser> getCompanyUserMap(){
+	public Map<String,UserInfoAll> getCompanyUserMap(){
 		if( PublicUtil.isNotEmpty(companyUserList.isEmpty()) ){
 			companyUserMap = new HashMap<>(companyUserList.size());
-			for (CompanyUser companyUser : companyUserList) {
+			for (UserInfoAll companyUser : companyUserList) {
 				companyUserMap.put(companyUser.getIdCard(), companyUser);
 			}
 		}
