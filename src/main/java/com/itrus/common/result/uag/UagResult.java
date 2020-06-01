@@ -2,6 +2,8 @@ package com.itrus.common.result.uag;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.alibaba.fastjson.JSONObject;
 
 import lombok.Data;
@@ -76,5 +78,20 @@ public class UagResult implements Serializable{
 		return false;
 		
 	}
+	
+	/**
+	 * 获取响应失败提示语
+	 */
+	public static String getMessage(JSONObject jsonObject) {
+		if(jsonObject == null) {
+			return defaultMessage;
+		}
+		String string = jsonObject.getString("msg");
+		if(StringUtils.isNotBlank(string)) {
+			return string;
+		}
+		return defaultMessage;
+	}
+	
 	
 }
