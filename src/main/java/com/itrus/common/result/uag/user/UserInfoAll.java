@@ -1,4 +1,4 @@
-package com.itrus.common.result.uag.enterprise;
+package com.itrus.common.result.uag.user;
 
 import java.io.Serializable;
 
@@ -11,11 +11,16 @@ import lombok.Data;
  *
  */
 @Data
-public class CompanyUser implements Serializable{
+public class UserInfoAll implements Comparable<UserInfoAll>, Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 用户uuid
+	 */
+	private Long uuid;
 
 	/**
 	 * 用户名
@@ -38,6 +43,11 @@ public class CompanyUser implements Serializable{
 	private String email;
 	
 	/**
+	 * 用户状态
+	 */
+	private String satate;
+	
+	/**
 	 * 实名状态
 	 */
 	private String realName;
@@ -55,6 +65,25 @@ public class CompanyUser implements Serializable{
 	 * 性别
 	 */
 	private String sex;
+	
+	/**
+	 * 默认企业超管，用户是某个企业的超管，下面uuid，是管理某个企业的uuid
+	 */
+	private Long defaultOrganizationUuid;
+	
+	/**
+	 * 所属部门或企业组织uuid
+	 */
+	private String orgUuid;
+	/**
+	 * 所属部门名称或企业简称
+	 */
+	private String orgName;
+	
+	/**
+	 * 所属上级是部门还是企业", ##"0"代表企业，"2"代表部门
+	 */
+	private String orgType;
 	
 	/**
 	 * 状态
@@ -75,12 +104,9 @@ public class CompanyUser implements Serializable{
 	 * 公司邮箱
 	 */
 	private String companyEmail;
-	/**
-	 * 所属部门或企业组织uuid
-	 */
-	private String orgUuid;
-	/**
-	 * 所属部门名称或企业简称
-	 */
-	private String orgName;
+	
+	@Override
+	public int compareTo(UserInfoAll o) {
+		return 0;
+	}
 }

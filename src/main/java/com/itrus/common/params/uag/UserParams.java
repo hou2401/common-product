@@ -83,5 +83,16 @@ public class UserParams {
     public UserParams() {
         super();
     }
+    /***
+     * 用户注册
+     * @param phone
+     * @param passwd
+     */
+    public UserParams(String phone, String passwd){
+    	super();
+    	this.phone = phone;
+    	this.passwd = passwd;
+    }
 
+    
 }

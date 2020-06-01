@@ -1,6 +1,8 @@
 package com.itrus.common.params.uag;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -15,6 +17,8 @@ import java.io.Serializable;
  */
 @Data
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class JoinEnterpriseParams implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
