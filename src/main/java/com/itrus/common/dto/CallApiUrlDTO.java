@@ -673,5 +673,20 @@ public class CallApiUrlDTO {
     	}
     	return callApiPartUrlDTO.getUag().getFindAllEnterpriseAndUser();
     }
+    
+    /**
+     *全量查询企业和用户信息
+     *
+     * @return
+     */
+    public String getFindSuperManagerForCompany() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getFindSuperManagerForCompany();
+    	}
+    	return callApiPartUrlDTO.getUag().getFindSuperManagerForCompany();
+    }
+    
+    
+    
 
 }

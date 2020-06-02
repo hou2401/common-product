@@ -58,9 +58,15 @@ public class UserInfoAll implements Comparable<UserInfoAll>, Serializable{
 	private String displayName;
 	
 	/**
-	 * 身份证号
+	 * 证件号
 	 */
-	private String idCard;
+	private String idCardNum;
+	
+	/**
+	 * 证件类型
+	 * 证件类型，与idCardNum同时存在。0-居民身份证，1-护照，2-港澳居民来往内地通行证，3-台湾居民内地通行证
+	 */
+	private String idCardType;
 	/**
 	 * 性别
 	 */
@@ -107,7 +113,7 @@ public class UserInfoAll implements Comparable<UserInfoAll>, Serializable{
 	
 	@Override
 	public int compareTo(UserInfoAll o) {
-		return this.idCard.compareTo(o.idCard);
+		return this.displayName.compareTo(o.displayName);
 	}
 
 	@Override
@@ -144,10 +150,15 @@ public class UserInfoAll implements Comparable<UserInfoAll>, Serializable{
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (idCard == null) {
-			if (other.idCard != null)
+		if (idCardNum == null) {
+			if (other.idCardNum != null)
 				return false;
-		} else if (!idCard.equals(other.idCard))
+		} else if (!idCardNum.equals(other.idCardNum))
+			return false;
+		if (idCardType == null) {
+			if (other.idCardType != null)
+				return false;
+		} else if (!idCardType.equals(other.idCardType))
 			return false;
 		if (joinState == null) {
 			if (other.joinState != null)
@@ -221,7 +232,8 @@ public class UserInfoAll implements Comparable<UserInfoAll>, Serializable{
 		result = prime * result + ((defaultOrganizationUuid == null) ? 0 : defaultOrganizationUuid.hashCode());
 		result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((idCard == null) ? 0 : idCard.hashCode());
+		result = prime * result + ((idCardNum == null) ? 0 : idCardNum.hashCode());
+		result = prime * result + ((idCardType == null) ? 0 : idCardType.hashCode());
 		result = prime * result + ((joinState == null) ? 0 : joinState.hashCode());
 		result = prime * result + ((orgName == null) ? 0 : orgName.hashCode());
 		result = prime * result + ((orgType == null) ? 0 : orgType.hashCode());
@@ -236,4 +248,5 @@ public class UserInfoAll implements Comparable<UserInfoAll>, Serializable{
 		result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
 		return result;
 	}
+
 }

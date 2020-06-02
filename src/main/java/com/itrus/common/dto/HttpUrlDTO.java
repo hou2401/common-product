@@ -220,4 +220,9 @@ public class HttpUrlDTO {
 		return httpDTO.getUrl()+uag.getFindAllEnterpriseAndUser();
 	}
 	
+	public String getFindSuperManagerForCompany() throws HttpException {
+		return httpDTO.getUrl()+uag.getFindSuperManagerForCompany();
+	}
+	
+	
 }
