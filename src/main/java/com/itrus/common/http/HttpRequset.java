@@ -758,4 +758,14 @@ public class HttpRequset {
 		return http(kvs, httpUrl.getFindAllEnterpriseAndUser());
 	}
 
+	/**
+	 * 全量查询企业和用户信息
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject findSuperManagerForCompany(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getFindSuperManagerForCompany());
+	}
+
 }

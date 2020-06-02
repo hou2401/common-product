@@ -143,4 +143,8 @@ public class Uag {
 	 */
 	private String findAllEnterpriseAndUser;
 
+	/**
+	 * 获取企业下超管列表
+	 */
+	private String findSuperManagerForCompany;
 }

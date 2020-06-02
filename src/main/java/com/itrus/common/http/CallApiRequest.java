@@ -727,4 +727,16 @@ public class CallApiRequest {
 	public JSONObject findAllEnterpriseAndUser(Object kvs) throws Exception {
 		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindAllEnterpriseAndUser(), kvs , new ApiUser());
 	}
+	
+	/**
+	 *获取企业下超管列表
+	 * @param object
+	 * @return
+	 * @throws Exception 
+	 * @throws  
+	 */
+	public JSONObject findSuperManagerForCompany(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindSuperManagerForCompany(), kvs , new ApiUser());
+	}
+	
 }

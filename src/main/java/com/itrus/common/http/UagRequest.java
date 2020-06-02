@@ -802,5 +802,29 @@ public class UagRequest {
 		return result;
 		
 	}
+	
+	
+	/**
+	 * 全量查询企业和用户信息
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject findSuperManagerForCompany(Object obj ) throws Exception {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.findSuperManagerForCompany(obj);
+			}else {
+				result = callApiRequest.findSuperManagerForCompany(obj);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
 
 }

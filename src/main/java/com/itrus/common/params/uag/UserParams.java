@@ -30,9 +30,14 @@ public class UserParams {
     private String displayName;
 
     /**
-     * 身份证号
+     * 证件号
      */
-    private String idCard;
+    private String idCardNum;
+    
+    /**
+     * 证件类型
+     */
+    private String idCardType;
 
     /**
      * 用户个人邮箱
@@ -83,5 +88,16 @@ public class UserParams {
     public UserParams() {
         super();
     }
+    /***
+     * 用户注册
+     * @param phone
+     * @param passwd
+     */
+    public UserParams(String phone, String passwd){
+    	super();
+    	this.phone = phone;
+    	this.passwd = passwd;
+    }
 
+    
 }
