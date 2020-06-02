@@ -50,7 +50,61 @@ public class OrgAlias implements Comparable<OrgAlias>,Serializable{
 
 	@Override
 	public int compareTo(OrgAlias o) {
-		return 0;
+		return this.orgAlias.compareTo(o.orgAlias);
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrgAlias other = (OrgAlias) obj;
+		if (createdBy == null) {
+			if (other.createdBy != null)
+				return false;
+		} else if (!createdBy.equals(other.createdBy))
+			return false;
+		if (ifAudited == null) {
+			if (other.ifAudited != null)
+				return false;
+		} else if (!ifAudited.equals(other.ifAudited))
+			return false;
+		if (orgAlias == null) {
+			if (other.orgAlias != null)
+				return false;
+		} else if (!orgAlias.equals(other.orgAlias))
+			return false;
+		if (parentUuid == null) {
+			if (other.parentUuid != null)
+				return false;
+		} else if (!parentUuid.equals(other.parentUuid))
+			return false;
+		if (realName == null) {
+			if (other.realName != null)
+				return false;
+		} else if (!realName.equals(other.realName))
+			return false;
+		if (uuid == null) {
+			if (other.uuid != null)
+				return false;
+		} else if (!uuid.equals(other.uuid))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((createdBy == null) ? 0 : createdBy.hashCode());
+		result = prime * result + ((ifAudited == null) ? 0 : ifAudited.hashCode());
+		result = prime * result + ((orgAlias == null) ? 0 : orgAlias.hashCode());
+		result = prime * result + ((parentUuid == null) ? 0 : parentUuid.hashCode());
+		result = prime * result + ((realName == null) ? 0 : realName.hashCode());
+		result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
+		return result;
+	}
 }
