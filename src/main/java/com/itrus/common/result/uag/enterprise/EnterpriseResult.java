@@ -3,6 +3,7 @@ package com.itrus.common.result.uag.enterprise;
 import java.io.Serializable;
 import java.util.Map;
 
+import com.itrus.common.dto.uag.dto.enterprise.Enterprise;
 import com.itrus.common.result.uag.UagResult;
 
 import lombok.Data;

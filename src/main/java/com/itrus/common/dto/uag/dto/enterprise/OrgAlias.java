@@ -1,4 +1,4 @@
-package com.itrus.common.result.uag.enterprise;
+package com.itrus.common.dto.uag.dto.enterprise;
 
 import java.io.Serializable;
 

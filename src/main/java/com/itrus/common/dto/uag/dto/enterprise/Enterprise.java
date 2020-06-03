@@ -1,11 +1,11 @@
-package com.itrus.common.result.uag.enterprise;
+package com.itrus.common.dto.uag.dto.enterprise;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeSet;
 
-import com.itrus.common.result.uag.user.UserInfoAll;
+import com.itrus.common.dto.uag.dto.user.UserInfoAll;
 import com.itrus.common.utils.PublicUtil;
 
 import lombok.Data;
