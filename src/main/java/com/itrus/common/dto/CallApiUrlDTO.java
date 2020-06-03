@@ -685,8 +685,18 @@ public class CallApiUrlDTO {
     	}
     	return callApiPartUrlDTO.getUag().getFindSuperManagerForCompany();
     }
-    
-    
+
+    /**
+     * 查询企业下全部节点信息
+     *
+     * @return
+     */
+    public String getentLoadTree() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getEntLoadTree();
+        }
+        return callApiPartUrlDTO.getUag().getEntLoadTree();
+    }
     
 
 }

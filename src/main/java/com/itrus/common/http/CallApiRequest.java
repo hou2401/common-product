@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.itrus.common.params.uag.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.stereotype.Component;
@@ -22,13 +23,6 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
-import com.itrus.common.params.uag.DeptParams;
-import com.itrus.common.params.uag.EntListParams;
-import com.itrus.common.params.uag.GrantAuthParams;
-import com.itrus.common.params.uag.SwicthParams;
-import com.itrus.common.params.uag.UagOrgParams;
-import com.itrus.common.params.uag.UserListParams;
-import com.itrus.common.params.uag.UserParams;
 import com.itrus.common.utils.BeanUtil;
 
 import cn.com.itrus.atom.sign.api.constants.FSSConstants;
@@ -738,5 +732,14 @@ public class CallApiRequest {
 	public JSONObject findSuperManagerForCompany(Object kvs) throws Exception {
 		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getFindSuperManagerForCompany(), kvs , new ApiUser());
 	}
-	
+
+	/**
+	 * 加载企业树
+	 * @param entLoadTreeParams
+	 * @return
+	 */
+	public JSONObject entLoadTree(EntLoadTreeParams entLoadTreeParams)throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getentLoadTree(), entLoadTreeParams , new ApiUser());
+
+	}
 }

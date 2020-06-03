@@ -147,4 +147,10 @@ public class Uag {
 	 * 获取企业下超管列表
 	 */
 	private String findSuperManagerForCompany;
+
+	/**
+	 * 加载企业树
+	 */
+	private String entLoadTree;
+
 }

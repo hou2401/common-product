@@ -7,7 +7,9 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.itrus.common.params.uag.*;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpException;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,13 +24,6 @@ import com.itrus.common.params.AuthEnterpriseParams;
 import com.itrus.common.params.AuthParams;
 import com.itrus.common.params.AuthPersionParams;
 import com.itrus.common.params.AuthPersionVideoParams;
-import com.itrus.common.params.uag.DeptParams;
-import com.itrus.common.params.uag.EntListParams;
-import com.itrus.common.params.uag.GrantAuthParams;
-import com.itrus.common.params.uag.SwicthParams;
-import com.itrus.common.params.uag.UagOrgParams;
-import com.itrus.common.params.uag.UserListParams;
-import com.itrus.common.params.uag.UserParams;
 import com.itrus.common.utils.HttpTools;
 import com.itrus.common.utils.HttpUtil;
 
@@ -767,5 +762,12 @@ public class HttpRequset {
 	public JSONObject findSuperManagerForCompany(Object kvs) throws Exception {
 		return http(kvs, httpUrl.getFindSuperManagerForCompany());
 	}
-
+	/**
+	 * 加载企业树
+	 * @param entLoadTreeParams
+	 * @return
+	 */
+	public JSONObject entLoadTree(EntLoadTreeParams entLoadTreeParams) throws Exception {
+		return http(entLoadTreeParams, httpUrl.getentLoadTree());
+	}
 }

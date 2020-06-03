@@ -223,6 +223,8 @@ public class HttpUrlDTO {
 	public String getFindSuperManagerForCompany() throws HttpException {
 		return httpDTO.getUrl()+uag.getFindSuperManagerForCompany();
 	}
-	
-	
+
+	public String getentLoadTree() throws HttpException {
+		return httpDTO.getUrl()+uag.getEntLoadTree();
+	}
 }

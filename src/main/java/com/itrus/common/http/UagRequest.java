@@ -443,6 +443,31 @@ public class UagRequest {
 
 	}
 
+
+	/**
+	 * 加载企业树
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject entLoadTree( EntLoadTreeParams entLoadTreeParams ) throws Exception {
+		log.info("查询企业下全部节点信息入参："+JSON.toJSONString(entLoadTreeParams));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.entLoadTree(entLoadTreeParams);
+			}else {
+				result = callApiRequest.entLoadTree(entLoadTreeParams);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
+
 	
 	/**
 	 * 查询部门下全部节点信息
