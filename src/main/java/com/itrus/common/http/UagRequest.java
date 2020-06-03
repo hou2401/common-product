@@ -253,18 +253,18 @@ public class UagRequest {
 	/**
 	 * 企业详细信息查询
 	 *
-	 * @param adminAuthParams 请求参数
+	 * @param entSearchInfoParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject entSearchInfo( Object obj ) throws Exception {
-		log.info("企业详细信息查询入参："+JSON.toJSONString(obj));
+	public JSONObject entSearchInfo( EntSearchInfoParams entSearchInfoParams ) throws Exception {
+		log.info("企业详细信息查询入参："+JSON.toJSONString(entSearchInfoParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.entSearchInfo(obj);
+				result = httpRequset.entSearchInfo(entSearchInfoParams);
 			}else {
-				result = callApiRequest.entSearchInfo(obj);
+				result = callApiRequest.entSearchInfo(entSearchInfoParams);
 			}
 			if(result != null) {
 				break;
