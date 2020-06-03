@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.Objects;
+
 @ApiModel(description = "请求UAG查询加载企业树实体")
 @ToString
 @Data
@@ -19,7 +21,7 @@ public class EntLoadTreeParams {
     private String manager;
 
     /**
-     * 用户姓名ss
+     * 用户姓名
      */
     private String displayName;
 
@@ -48,4 +50,30 @@ public class EntLoadTreeParams {
      * 用户认证状态
      */
     private String realName;  // 可选 0未实名 1已实名
+
+    public EntLoadTreeParams() {
+    }
+
+    public EntLoadTreeParams(Long uuid, String manager, String[] nodeType) {
+        this.uuid = uuid;
+        this.manager = manager;
+        this.nodeType = nodeType;
+    }
+
+    public EntLoadTreeParams(Long uuid, String manager, Boolean ifRoot, String[] joinState, String[] ifAudited, String realName) {
+        this.uuid = uuid;
+        this.manager = manager;
+        this.ifRoot = ifRoot;
+        this.joinState = joinState;
+        this.ifAudited = ifAudited;
+        this.realName = realName;
+    }
+
+    public EntLoadTreeParams(Long uuid, String manager, String[] joinState, String[] ifAudited, String realName) {
+        this.uuid = uuid;
+        this.manager = manager;
+        this.joinState = joinState;
+        this.ifAudited = ifAudited;
+        this.realName = realName;
+    }
 }
