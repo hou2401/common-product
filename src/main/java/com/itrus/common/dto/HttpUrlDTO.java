@@ -192,6 +192,9 @@ public class HttpUrlDTO {
 	public String getJoinEnterprise() throws HttpException {
 		return httpDTO.getUrl()+uag.getJoinEnterprise();
 	}
+	public String getReJoinEnterprise() throws HttpException {
+		return httpDTO.getUrl()+uag.getReJoinEnterprise();
+	}
 	public String getPasswdAuth() throws HttpException {
 		return httpDTO.getUrl()+uag.getPasswdAuth();
 	}

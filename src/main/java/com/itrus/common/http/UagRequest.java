@@ -612,6 +612,30 @@ public class UagRequest {
 		return result;
 		
 	}
+
+	/**
+	 * 编辑企业成员邀请信息，重新发起邀请
+	 *
+	 * @param reJoinEnterpriseParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject reJoinEnterprise( ReJoinEnterpriseParams reJoinEnterpriseParams ) throws Exception {
+		log.info("重新企业邀请用户入参："+JSON.toJSONString(reJoinEnterpriseParams));
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.reJoinEnterprise(reJoinEnterpriseParams);
+			}else {
+				result = callApiRequest.reJoinEnterprise(reJoinEnterpriseParams);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+
+	}
 	
 	/**
 	 * 口令认证(密码登录)

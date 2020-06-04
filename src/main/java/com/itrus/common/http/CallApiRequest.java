@@ -631,6 +631,17 @@ public class CallApiRequest {
 	public JSONObject joinEnterprise(Object kvs) throws Exception {
 		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getJoinEnterprise(), kvs , new ApiUser());
 	}
+
+	/**
+	 * 重新邀请企业用户
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 * @throws
+	 */
+	public JSONObject reJoinEnterprise(Object kvs) throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getReJoinEnterprise(), kvs , new ApiUser());
+	}
 	/**
 	 * 口令认证
 	 * @param object

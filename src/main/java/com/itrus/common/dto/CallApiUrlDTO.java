@@ -565,6 +565,18 @@ public class CallApiUrlDTO {
     	}
     	return callApiPartUrlDTO.getUag().getJoinEnterprise();
     }
+
+    /**
+     * 重新邀请企业用户
+     *
+     * @return
+     */
+    public String getReJoinEnterprise() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getReJoinEnterprise();
+        }
+        return callApiPartUrlDTO.getUag().getReJoinEnterprise();
+    }
     
     /**
              * 口令认证

@@ -34,6 +34,10 @@ public class JoinEnterpriseParams implements Serializable {
      */
     private Long uuid;
     /**
+     * 加入的组织类型，0-企业，2-部门
+     */
+    private String type;
+    /**
      * 真实姓名
      */
     private String displayName;

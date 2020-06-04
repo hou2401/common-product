@@ -662,6 +662,15 @@ public class HttpRequset {
 	public JSONObject joinEnterprise(Object kvs) throws Exception {
 		return http(kvs, httpUrl.getJoinEnterprise());
 	}
+	/**
+	 * 重新邀请企业用户
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject reJoinEnterprise(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getReJoinEnterprise());
+	}
 	
 	/**
 	 * 口令认证

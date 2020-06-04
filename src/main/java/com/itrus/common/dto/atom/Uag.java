@@ -99,6 +99,11 @@ public class Uag {
 	private String joinEnterprise;
 	
 	/**
+	 * 重新邀请企业用户
+	 */
+	private String reJoinEnterprise;
+	
+	/**
 	 * 口令认证
 	 */
 	private String passwdAuth;
