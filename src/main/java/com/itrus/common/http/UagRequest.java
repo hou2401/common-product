@@ -915,17 +915,17 @@ public class UagRequest {
 	/**
 	 * 更新用户企业内信息
 	 *
-	 * @param object 请求参数
+	 * @param userParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject updateUserInfoInEnterprise(Object obj ) throws Exception {
+	public JSONObject updateUserInfoInEnterprise(UserParams userParams ) throws Exception {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.updateUserInfoInEnterprise(obj);
+				result = httpRequset.updateUserInfoInEnterprise(userParams);
 			}else {
-				result = callApiRequest.updateUserInfoInEnterprise(obj);
+				result = callApiRequest.updateUserInfoInEnterprise(userParams);
 			}
 			if(result != null ) {
 				break;
