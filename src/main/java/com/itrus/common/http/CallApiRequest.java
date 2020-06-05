@@ -791,4 +791,14 @@ public class CallApiRequest {
 		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getUpdateUserInfoInEnterprise(), obj , new ApiUser());
 		
 	}
+	
+	/**
+	 * 员工从指定企业离职接口
+	 * @param entLoadTreeParams
+	 * @return
+	 */
+	public JSONObject userDimission(Object obj)throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getUserDimission(), obj , new ApiUser());
+		
+	}
 }

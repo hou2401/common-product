@@ -820,4 +820,15 @@ public class HttpRequset {
 		return http(kvs, httpUrl.getUpdateUserInfoInEnterprise());
 	}
 	
+	
+	/**
+	 * 员工从指定企业离职接口
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject userDimission(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getUserDimission());
+	}
+	
 }

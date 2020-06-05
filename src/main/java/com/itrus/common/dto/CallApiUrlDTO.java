@@ -759,5 +759,17 @@ public class CallApiUrlDTO {
     	return callApiPartUrlDTO.getUag().getUpdateUserInfoInEnterprise();
     }
     
+    /**
+     * 员工从指定企业离职接口
+     *
+     * @return
+     */
+    public String getUserDimission() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getUserDimission();
+    	}
+    	return callApiPartUrlDTO.getUag().getUserDimission();
+    }
+    
 
 }

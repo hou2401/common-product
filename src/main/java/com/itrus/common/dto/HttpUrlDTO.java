@@ -240,4 +240,7 @@ public class HttpUrlDTO {
 	public String getUpdateUserInfoInEnterprise() throws HttpException {
 		return httpDTO.getUrl()+uag.getUpdateUserInfoInEnterprise();
 	}
+	public String getUserDimission() throws HttpException {
+		return httpDTO.getUrl()+uag.getUserDimission();
+	}
 }
