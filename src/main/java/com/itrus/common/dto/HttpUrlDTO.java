@@ -150,6 +150,9 @@ public class HttpUrlDTO {
 	public String getEntUpdate() throws HttpException {
 		return httpDTO.getUrl()+uag.getEntUpdate();
 	}
+	public String getEntDelete() throws HttpException {
+		return httpDTO.getUrl()+uag.getEntDelete();
+	}
 	public String getEntSearchInfo() throws HttpException {
 		return httpDTO.getUrl()+uag.getEntSearchInfo();
 	}
@@ -222,12 +225,19 @@ public class HttpUrlDTO {
 	public String getFindAllEnterpriseAndUser() throws HttpException {
 		return httpDTO.getUrl()+uag.getFindAllEnterpriseAndUser();
 	}
-	
 	public String getFindSuperManagerForCompany() throws HttpException {
 		return httpDTO.getUrl()+uag.getFindSuperManagerForCompany();
 	}
-
 	public String getentLoadTree() throws HttpException {
 		return httpDTO.getUrl()+uag.getEntLoadTree();
+	}
+	public String getUpdateAuth() throws HttpException {
+		return httpDTO.getUrl()+uag.getUpdateAuth();
+	}
+	public String getJoinToEnterprise() throws HttpException {
+		return httpDTO.getUrl()+uag.getJoinToEnterprise();
+	}
+	public String getUpdateUserInfoInEnterprise() throws HttpException {
+		return httpDTO.getUrl()+uag.getUpdateUserInfoInEnterprise();
 	}
 }

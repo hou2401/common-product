@@ -36,6 +36,10 @@ public class Uag {
 	 */
 	private String entUpdate;
 	/**
+	 * 删除企业
+	 */
+	private String entDelete;
+	/**
 	 * 企业详细信息查询
 	 */
 	private String entSearchInfo;
@@ -157,5 +161,20 @@ public class Uag {
 	 * 加载企业树
 	 */
 	private String entLoadTree;
+	
+	/**
+	 * 实名用户接口
+	 */
+	private String updateAuth;
+	
+	/**
+	 * 用户同意加入企业
+	 */
+	private String joinToEnterprise;
+	
+	/**
+	 * 更新用户企业内信息接口
+	 */
+	private String updateUserInfoInEnterprise;
 
 }

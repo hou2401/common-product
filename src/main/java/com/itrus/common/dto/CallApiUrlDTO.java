@@ -397,6 +397,18 @@ public class CallApiUrlDTO {
         }
         return callApiPartUrlDTO.getUag().getEntUpdate();
     }
+    
+    /**
+     * 删除企业
+     *
+     * @return
+     */
+    public String getEntDelete() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getEntDelete();
+    	}
+    	return callApiPartUrlDTO.getUag().getEntDelete();
+    }
 
     /**
             * 企业详细信息查询
@@ -708,6 +720,43 @@ public class CallApiUrlDTO {
             return callApiUrlAllDTO.getUag().getEntLoadTree();
         }
         return callApiPartUrlDTO.getUag().getEntLoadTree();
+    }
+    
+    
+    /**
+     * 实名用户接口
+     *
+     * @return
+     */
+    public String getUpdateAuth() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getUpdateAuth();
+    	}
+    	return callApiPartUrlDTO.getUag().getUpdateAuth();
+    }
+    
+    /**
+     * 用户同意加入企业
+     *
+     * @return
+     */
+    public String getJoinToEnterprise() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getJoinToEnterprise();
+    	}
+    	return callApiPartUrlDTO.getUag().getJoinToEnterprise();
+    }
+    
+    /**
+     * 更新用户企业内信息
+     *
+     * @return
+     */
+    public String getUpdateUserInfoInEnterprise() throws HttpException {
+    	if (httpDTO.alled()) {
+    		return callApiUrlAllDTO.getUag().getUpdateUserInfoInEnterprise();
+    	}
+    	return callApiPartUrlDTO.getUag().getUpdateUserInfoInEnterprise();
     }
     
 

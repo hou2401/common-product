@@ -508,6 +508,14 @@ public class CallApiRequest {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntUpdate(), obj , new ApiUser());
 	}
 	/**
+	 * 删除企业
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entDelete(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntDelete(), obj , new ApiUser());
+	}
+	/**
 	 * 企业详细信息查询
 	 * @param kvs
 	 * @return
@@ -752,5 +760,35 @@ public class CallApiRequest {
 	public JSONObject entLoadTree(EntLoadTreeParams entLoadTreeParams)throws Exception {
 		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getentLoadTree(), entLoadTreeParams , new ApiUser());
 
+	}
+	
+	/**
+	 * 实名用户接口
+	 * @param entLoadTreeParams
+	 * @return
+	 */
+	public JSONObject updateAuth(Object obj)throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getUpdateAuth(), obj , new ApiUser());
+		
+	}
+	
+	/**
+	 * 用户同意加入企业
+	 * @param entLoadTreeParams
+	 * @return
+	 */
+	public JSONObject joinToEnterprise(Object obj)throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getJoinToEnterprise(), obj , new ApiUser());
+		
+	}
+	
+	/**
+	 * 更新用户企业内信息
+	 * @param entLoadTreeParams
+	 * @return
+	 */
+	public JSONObject updateUserInfoInEnterprise(Object obj)throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getUpdateUserInfoInEnterprise(), obj , new ApiUser());
+		
 	}
 }

@@ -9,7 +9,6 @@ import java.util.Map;
 
 import com.itrus.common.params.uag.*;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpException;
 import org.apache.http.entity.StringEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -524,6 +523,16 @@ public class HttpRequset {
 	}
 	
 	/**
+	 * 删除企业
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entDelete(Object obj) throws Exception {
+		
+		return http(obj, httpUrl.getEntDelete());
+	}
+	
+	/**
 	 * 企业详细信息查询
 	 * @param kvs
 	 * @return
@@ -771,6 +780,7 @@ public class HttpRequset {
 	public JSONObject findSuperManagerForCompany(Object kvs) throws Exception {
 		return http(kvs, httpUrl.getFindSuperManagerForCompany());
 	}
+	
 	/**
 	 * 加载企业树
 	 * @param entLoadTreeParams
@@ -779,4 +789,35 @@ public class HttpRequset {
 	public JSONObject entLoadTree(EntLoadTreeParams entLoadTreeParams) throws Exception {
 		return http(entLoadTreeParams, httpUrl.getentLoadTree());
 	}
+	
+	/**
+	 * 实名用户接口
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject updateAuth(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getUpdateAuth());
+	}
+	
+	/**
+	 * 用户同意加入企业
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject joinToEnterprise(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getJoinToEnterprise());
+	}
+	
+	/**
+	 * 更新用户企业内信息
+	 * @param kvs
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject updateUserInfoInEnterprise(Object kvs) throws Exception {
+		return http(kvs, httpUrl.getUpdateUserInfoInEnterprise());
+	}
+	
 }

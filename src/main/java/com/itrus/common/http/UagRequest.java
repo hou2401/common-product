@@ -5,7 +5,6 @@ import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
 import com.itrus.common.params.uag.DeptParams;
@@ -15,7 +14,6 @@ import com.itrus.common.params.uag.SwicthParams;
 import com.itrus.common.params.uag.UagOrgParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.params.uag.UserParams;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 公共原子服务调用方法
@@ -23,7 +21,6 @@ import lombok.extern.slf4j.Slf4j;
  * @author han_yanhui
  * @date 2020-2-25 12:04:04
  **/
-@Slf4j
 @Component
 public class UagRequest {
 
@@ -114,7 +111,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject userRegister( Object obj ) throws Exception {
-		log.info("用户注册入参："+JSON.toJSONString(obj));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -138,7 +134,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject userUpdate( UserParams userParams ) throws Exception {
-		log.info("用户更新入参："+JSON.toJSONString(userParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -162,7 +157,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject userSearchInfo( UserSearchInfoParams userSearchInfoParams ) throws Exception {
-		log.info("用户详细信息入参："+JSON.toJSONString(userSearchInfoParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -186,7 +180,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject resetPassWd( Object obj ) throws Exception {
-		log.info("用户更新/重置/忘记密码入参："+JSON.toJSONString(obj));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -210,7 +203,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject entAdd( Object obj ) throws Exception {
-		log.info("创建企业入参："+JSON.toJSONString(obj));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -234,7 +226,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject entUpdate( Object obj ) throws Exception {
-		log.info("更新企业入参："+JSON.toJSONString(obj));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -249,6 +240,29 @@ public class UagRequest {
 		return result;
 
 	}
+	
+	/**
+	 * 删除企业 ---慎用
+	 *
+	 * @param adminAuthParams 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject entDelete( Object obj ) throws Exception {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.entDelete(obj);
+			}else {
+				result = callApiRequest.entDelete(obj);
+			}
+			if(result != null) {
+				break;
+			}
+		}
+		return result;
+		
+	}
 
 	/**
 	 * 企业详细信息查询
@@ -258,7 +272,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject entSearchInfo( EntSearchInfoParams entSearchInfoParams ) throws Exception {
-		log.info("企业详细信息查询入参："+JSON.toJSONString(entSearchInfoParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -283,7 +296,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject deptAdd( DeptParams deptParams ) throws Exception {
-		log.info("创建部门入参："+JSON.toJSONString(deptParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -307,7 +319,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject deptUpdate( DeptParams deptParams ) throws Exception {
-		log.info("更新部门入参："+JSON.toJSONString(deptParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -331,7 +342,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject deptSearchInfo( DeptParams deptParams ) throws Exception {
-		log.info("插叙部门详情信息入参："+JSON.toJSONString(deptParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -355,7 +365,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject deptDelete( DeptParams deptParams ) throws Exception {
-		log.info("部门删除入参："+JSON.toJSONString(deptParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -379,7 +388,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject entSearchOneNode( SearchOneNodeParams searchOneNodeParams ) throws Exception {
-		log.info("查询企业下一级节点信息入参："+JSON.toJSONString(searchOneNodeParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -403,7 +411,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject deptSearchOneNode( SearchOneNodeParams searchOneNodeParams ) throws Exception {
-		log.info("查询部门下一级节点信息入参："+JSON.toJSONString(searchOneNodeParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -427,7 +434,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject entAll( UagOrgParams uagOrgParams ) throws Exception {
-		log.info("查询企业下全部节点信息入参："+JSON.toJSONString(uagOrgParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -452,7 +458,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject entLoadTree( EntLoadTreeParams entLoadTreeParams ) throws Exception {
-		log.info("查询企业下全部节点信息入参："+JSON.toJSONString(entLoadTreeParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -477,7 +482,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject deptAll( UagOrgParams uagOrgParams ) throws Exception {
-		log.info("查询部门下全部节点信息入参："+JSON.toJSONString(uagOrgParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -501,7 +505,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject findJoinCompanys( EntListParams entListParams ) throws Exception {
-		log.info("查询当前用户加入的企业列表入参："+JSON.toJSONString(entListParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -525,7 +528,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject betchImport( BetchImportParams betchImportParams ) throws Exception {
-		log.info("批量导入入参："+JSON.toJSONString(betchImportParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -549,7 +551,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject removeUser( RemoveUserParams removeUserParams ) throws Exception {
-		log.info("批量导入入参："+JSON.toJSONString(removeUserParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -573,7 +574,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject switchEnterprise( SwicthParams swicthParams ) throws Exception {
-		log.info("用户切换企业入参："+JSON.toJSONString(swicthParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -597,7 +597,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject joinEnterprise( JoinEnterpriseParams joinEnterpriseParams ) throws Exception {
-		log.info("企业邀请用户入参："+JSON.toJSONString(joinEnterpriseParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -621,7 +620,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject reJoinEnterprise( ReJoinEnterpriseParams reJoinEnterpriseParams ) throws Exception {
-		log.info("重新企业邀请用户入参："+JSON.toJSONString(reJoinEnterpriseParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -645,7 +643,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject passwdAuth( Object object ) throws Exception {
-		log.info("口令认证入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -669,7 +666,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject getVerificationCode( Object object ) throws Exception {
-		log.info("获取短信验证码入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -693,7 +689,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject verifySmsCodeAuth( Object object ) throws Exception {
-		log.info("验证短信验证码入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -717,7 +712,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject logout( Object object ) throws Exception {
-		log.info("退出单点登录入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -741,7 +735,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject extendedAdd( Object object ) throws Exception {
-		log.info("添加扩展属性入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -765,7 +758,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject findChildUuidList( Object object ) throws Exception {
-		log.info("查询当前节点下uuid集合入参："+JSON.toJSONString(object));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -789,7 +781,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject grantAuth( GrantAuthParams authParams ) throws Exception {
-		log.info("用户授权接口入参："+JSON.toJSONString(authParams));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -813,7 +804,6 @@ public class UagRequest {
 	 * @throws Exception 抛出异常
 	 */
 	public JSONObject findUserInfoByUuidList( UserListParams params ) throws Exception {
-		log.info("用户授权接口入参："+JSON.toJSONString(params));
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
@@ -867,6 +857,75 @@ public class UagRequest {
 				result = httpRequset.findSuperManagerForCompany(obj);
 			}else {
 				result = callApiRequest.findSuperManagerForCompany(obj);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 实名用户接口
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject updateAuth(Object obj ) throws Exception {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.updateAuth(obj);
+			}else {
+				result = callApiRequest.updateAuth(obj);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 用户同意加入企业
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject joinToEnterprise(Object obj ) throws Exception {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.joinToEnterprise(obj);
+			}else {
+				result = callApiRequest.joinToEnterprise(obj);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 更新用户企业内信息
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject updateUserInfoInEnterprise(Object obj ) throws Exception {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.updateUserInfoInEnterprise(obj);
+			}else {
+				result = callApiRequest.updateUserInfoInEnterprise(obj);
 			}
 			if(result != null ) {
 				break;
