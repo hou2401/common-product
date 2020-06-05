@@ -777,8 +777,8 @@ public class CallApiRequest {
 	 * @param entLoadTreeParams
 	 * @return
 	 */
-	public JSONObject joinToEnterprise(Object obj)throws Exception {
-		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getJoinToEnterprise(), obj , new ApiUser());
+	public JSONObject joinToEnterprise(JoinToEntParams joinToEntParams)throws Exception {
+		return  (JSONObject) getApiService().callApi(callApiUrlDTO.getJoinToEnterprise(), joinToEntParams , new ApiUser());
 		
 	}
 	

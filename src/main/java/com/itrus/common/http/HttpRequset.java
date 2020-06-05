@@ -806,8 +806,8 @@ public class HttpRequset {
 	 * @return
 	 * @throws Exception
 	 */
-	public JSONObject joinToEnterprise(Object kvs) throws Exception {
-		return http(kvs, httpUrl.getJoinToEnterprise());
+	public JSONObject joinToEnterprise(JoinToEntParams joinToEntParams) throws Exception {
+		return http(joinToEntParams, httpUrl.getJoinToEnterprise());
 	}
 	
 	/**

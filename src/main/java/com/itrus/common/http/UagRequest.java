@@ -896,13 +896,13 @@ public class UagRequest {
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject joinToEnterprise(Object obj ) throws Exception {
+	public JSONObject joinToEnterprise(JoinToEntParams joinToEntParams ) throws Exception {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.joinToEnterprise(obj);
+				result = httpRequset.joinToEnterprise(joinToEntParams);
 			}else {
-				result = callApiRequest.joinToEnterprise(obj);
+				result = callApiRequest.joinToEnterprise(joinToEntParams);
 			}
 			if(result != null ) {
 				break;
