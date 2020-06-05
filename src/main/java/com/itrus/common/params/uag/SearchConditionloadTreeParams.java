@@ -38,5 +38,7 @@ public class SearchConditionloadTreeParams {
     /**
      * 用户认证状态
      */
-    private String realName;  // 可选 0未实名 1已实名
+    private String realName;  // 可选 0未实名 1已实名\
+
+    private String queryMode;//1精确查 2 模糊查 默认精确查询
 }
