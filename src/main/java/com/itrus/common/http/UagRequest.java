@@ -938,17 +938,17 @@ public class UagRequest {
 	/**
 	 * 员工从指定企业离职接口
 	 *
-	 * @param object 请求参数
+	 * @param userDimissionParams 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
-	public JSONObject userDimission(Object obj ) throws Exception {
+	public JSONObject userDimission(UserDimissionParams userDimissionParams ) throws Exception {
 		JSONObject result = null;
 		for (int i = 0; i < http.getRetryCount(); i++) {
 			if(httped()) {
-				result = httpRequset.userDimission(obj);
+				result = httpRequset.userDimission(userDimissionParams);
 			}else {
-				result = callApiRequest.userDimission(obj);
+				result = callApiRequest.userDimission(userDimissionParams);
 			}
 			if(result != null ) {
 				break;
