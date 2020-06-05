@@ -3,8 +3,8 @@ package com.itrus.common.result.uag.enterprise;
 import java.io.Serializable;
 import java.util.Map;
 
-import com.itrus.common.dto.uag.dto.enterprise.Enterprise;
 import com.itrus.common.result.uag.UagResult;
+import com.itrus.common.result.uag.dto.enterprise.Enterprise;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

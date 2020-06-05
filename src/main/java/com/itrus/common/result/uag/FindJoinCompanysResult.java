@@ -1,6 +1,6 @@
 package com.itrus.common.result.uag;
 
-import com.itrus.common.dto.uag.dto.user.UserInfoAll;
+import com.itrus.common.result.uag.dto.enterprise.user.UserInfoAll;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
