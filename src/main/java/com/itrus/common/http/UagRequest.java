@@ -934,5 +934,28 @@ public class UagRequest {
 		return result;
 		
 	}
+	
+	/**
+	 * 员工从指定企业离职接口
+	 *
+	 * @param object 请求参数
+	 * @return 返回创建结果
+	 * @throws Exception 抛出异常
+	 */
+	public JSONObject userDimission(Object obj ) throws Exception {
+		JSONObject result = null;
+		for (int i = 0; i < http.getRetryCount(); i++) {
+			if(httped()) {
+				result = httpRequset.userDimission(obj);
+			}else {
+				result = callApiRequest.userDimission(obj);
+			}
+			if(result != null ) {
+				break;
+			}
+		}
+		return result;
+		
+	}
 
 }

@@ -176,5 +176,10 @@ public class Uag {
 	 * 更新用户企业内信息接口
 	 */
 	private String updateUserInfoInEnterprise;
+	
+	/**
+	 * 员工从指定企业离职接口
+	 */
+	private String userDimission;
 
 }
