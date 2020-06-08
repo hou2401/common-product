@@ -65,7 +65,7 @@ public class CommonLogAspectServiceApi {
 					//ServletResponse不能序列化 从入参里排除，否则报异常：java.lang.IllegalStateException: getOutputStream() has already been called for this response
 					continue;
 				}
-				arguments.add(args);
+				arguments.add(args[i]);
 			}
 			if (arguments != null && !(arguments.isEmpty())) {
 				log.info("请求类方法参数:" + JSONObject.toJSONString(arguments) );
