@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Map;
 
 import com.itrus.common.result.uag.UagResult;
-import com.itrus.common.result.uag.dto.enterprise.Enterprise;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,6 +21,12 @@ public class EnterpriseResult extends UagResult implements Serializable{
 	/**
 	 * 企业全称
 	 */
-	private Map<String,Enterprise> enterpriseMap;
+	private Map<String,Object> enterpriseMap;
+	
+	
+	public Map<String,Object>  getEnterpriseMap(){
+		enterpriseMap = (Map<String,Object>) super.getData();
+		return enterpriseMap;
+	}
 	
 }

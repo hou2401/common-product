@@ -74,6 +74,11 @@ public class UserParams {
      * 扩展字段
      */
     private UserExtParams ext;
+    
+    /**
+     * 用户激活状态
+     */
+    private boolean  enabled;
 
 
     public UserParams(Long parentUuid, Long uuid, UserExtParams ext, Long targetUuid) {
@@ -97,7 +102,18 @@ public class UserParams {
     	super();
     	this.phone = phone;
     	this.passwd = passwd;
+    	this.enabled = true;
     }
-
+    /***
+     * 用户注册
+     * @param phone
+     * @param passwd
+     */
+    public UserParams(String phone, String passwd, boolean enabled ){
+    	super();
+    	this.phone = phone;
+    	this.passwd = passwd;
+    	this.enabled = enabled;
+    }
     
 }
