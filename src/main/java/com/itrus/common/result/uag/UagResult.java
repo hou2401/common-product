@@ -37,22 +37,18 @@ public class UagResult implements Serializable{
 	
 	public static final String DATA_KEY = "data";
 	
+	private static final String CODE_KEY = "code";
+	
 	/**
 	 *     请求OK
 	 *
 	 * @param result json对象
 	 */
 	public static boolean isOk(JSONObject result) {
-		
 		if(result == null ){
 			return false;
 		}
-		UagResult uagResult = JSONObject.parseObject(result.toJSONString(), UagResult.class);
-		if( uagResult == null ) {
-			return false;
-		}
-		
-		return   "0x0000".equals(uagResult.getCode()) ? true : false;
+		return   "0x0000".equals(result.get(CODE_KEY)) ? true : false;
 	}
 	
 	/**
@@ -73,8 +69,7 @@ public class UagResult implements Serializable{
 	public static boolean isExist(JSONObject result) {
 		if( isOk(result)){
 			//1001  手机号已经存在
-			UagResult uagResult = JSONObject.parseObject(result.toJSONString(), UagResult.class);
-			return   "1001".equals(uagResult.getCode()) ? 
+			return   "1001".equals(result.get(CODE_KEY)) ? 
 					true : false;
 		}
 		return false;

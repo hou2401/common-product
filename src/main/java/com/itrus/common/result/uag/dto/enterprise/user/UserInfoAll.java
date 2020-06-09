@@ -21,6 +21,11 @@ public class UserInfoAll extends UserInfoBase implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * 企业关联关系表中的数据库id
+	 */
+	private Long id;
+	
+	/**
 	 * 状态
 	 */
 	private String joinState;

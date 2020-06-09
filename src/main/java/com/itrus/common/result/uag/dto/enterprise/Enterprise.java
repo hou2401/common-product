@@ -48,7 +48,7 @@ public class Enterprise implements Serializable{
 	 * @return
 	 */
 	public Map<String,UserInfoAll> getCompanyUserMap(){
-		if( PublicUtil.isNotEmpty(userInfoAllSet.isEmpty()) ){
+		if( userInfoAllSet != null && PublicUtil.isNotEmpty(userInfoAllSet.isEmpty()) ){
 			userInfoAllMap = new HashMap<>(userInfoAllSet.size());
 			for (UserInfoAll userInfoAll : userInfoAllSet) {
 				userInfoAllMap.put(userInfoAll.getIdCardNum(), userInfoAll);
