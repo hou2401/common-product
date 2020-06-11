@@ -43,5 +43,10 @@ public class UpdateEnterpriseParams extends CreateEnterpriseParams{
 	public UpdateEnterpriseParams() {
 		super();
 	}
+
+	public UpdateEnterpriseParams(Long uuid) {
+		super();
+		this.uuid = uuid;
+	}
 	
 }
