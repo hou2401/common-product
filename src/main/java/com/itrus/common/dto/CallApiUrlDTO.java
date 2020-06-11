@@ -134,7 +134,7 @@ public class CallApiUrlDTO {
         return callApiPartUrlDTO.getFile().getDownloadBase64();
     }
     /**
-     * 文档转换
+     * word文档转换pdf
      *
      * @throws HttpException
      */
@@ -144,6 +144,32 @@ public class CallApiUrlDTO {
         }
         return callApiPartUrlDTO.getFile().getWord2Pdfs();
     }
+
+    /**
+     * excel文档转换
+     *
+     * @throws HttpException
+     */
+    public String getExcel2Pdfs() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getFile().getExcel2Pdfs();
+        }
+        return callApiPartUrlDTO.getFile().getExcel2Pdfs();
+    }
+
+    /**
+     * 图片文档转换
+     *
+     * @throws HttpException
+     */
+    public String getImagePdfs() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getFile().getImage2Pdfs();
+        }
+        return callApiPartUrlDTO.getFile().getImage2Pdfs();
+    }
+
+
 
     /**
      * 文档转换
