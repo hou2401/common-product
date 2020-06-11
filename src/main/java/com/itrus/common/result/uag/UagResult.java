@@ -67,13 +67,9 @@ public class UagResult implements Serializable{
 	 * @param result json对象
 	 */
 	public static boolean isExist(JSONObject result) {
-		if( isOk(result)){
 			//1001  手机号已经存在
-			return   "1001".equals(result.get(CODE_KEY)) ? 
+			return  ("2000".equals(result.get(CODE_KEY))  ||  "1001".equals(result.get(CODE_KEY))) ? 
 					true : false;
-		}
-		return false;
-		
 	}
 	
 	/**
