@@ -2,6 +2,8 @@ package com.itrus.common.result.uag.dto.enterprise.user;
 
 import java.io.Serializable;
 
+import com.itrus.common.utils.PublicUtil;
+
 import lombok.Data;
 
 /**
@@ -104,7 +106,12 @@ public class UserInfoBase implements Comparable<UserInfoBase>, Serializable{
 	
 	@Override
 	public int compareTo(UserInfoBase o) {
-		return this.displayName.compareTo(o.displayName);
+		
+		if(PublicUtil.isEmpty(this.phone) ){
+			return this.displayName.compareTo(o.displayName);
+		}
+		
+		return this.phone.compareTo(o.phone);
 	}
 
 	@Override
