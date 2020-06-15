@@ -23,11 +23,8 @@ public class RemoveUserParams implements Serializable {
     private String manager;
 
     /**
-     * 所属企业uuid
+     * 企业关系表id
      */
-    private Long uuid;
-    /**
-     * 当前用户uuid
-     */
-    private Long userUuid;
+    private Long id;
+
 }
