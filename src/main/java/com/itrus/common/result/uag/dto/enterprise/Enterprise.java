@@ -32,12 +32,12 @@ public class Enterprise implements Serializable{
 	/**
 	 * 简称集合实体
 	 */
-	private TreeSet<OrgAlias> orgAliasSet;
+	private TreeSet<OrgAlias> orgAliasList;
 	
 	/**
 	 * 企业用户集合
 	 */
-	private TreeSet<UserInfoAll> userInfoAllSet;
+	private TreeSet<UserInfoAll> companyUserList;
 	
 	
 	private Map<String,UserInfoAll> userInfoAllMap;
@@ -48,9 +48,9 @@ public class Enterprise implements Serializable{
 	 * @return
 	 */
 	public Map<String,UserInfoAll> getCompanyUserMap(){
-		if( userInfoAllSet != null && PublicUtil.isNotEmpty(userInfoAllSet.isEmpty()) ){
-			userInfoAllMap = new HashMap<>(userInfoAllSet.size());
-			for (UserInfoAll userInfoAll : userInfoAllSet) {
+		if( PublicUtil.isNotEmpty(companyUserList) ){
+			userInfoAllMap = new HashMap<>(companyUserList.size());
+			for (UserInfoAll userInfoAll : companyUserList) {
 				userInfoAllMap.put(userInfoAll.getIdCardNum(), userInfoAll);
 			}
 		}

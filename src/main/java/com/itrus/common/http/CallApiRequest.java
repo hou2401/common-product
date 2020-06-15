@@ -299,9 +299,9 @@ public class CallApiRequest {
 
 
 	/***
-	 * 下载文件
-	 * @param data 文件存储标识
-	 * @return 文件内容
+	 * word文档转换pdf（支持doc/docx）
+	 * @param data 文件byte数组
+	 * @return 转换后的PDF文件的base64编码
 	 * @throws Exception
 	 */
 	public JSONObject word2Pdfs(byte[] data) throws Exception {
@@ -309,6 +309,29 @@ public class CallApiRequest {
 		params.put("file",Base64Utils.encodeToString(data));
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getWord2Pdfs(), params, new ApiUser());
 	}
+	/***
+	 * excel表格转换pdf（支持xls/xlsx）
+	 * @param data 文件byte数组
+	 * @return 转换后的PDF文件的base64编码
+	 * @throws Exception
+	 */
+	public JSONObject excel2Pdfs(byte[] data) throws Exception {
+		Map<String,String> params = new HashMap<>();
+		params.put("file",Base64Utils.encodeToString(data));
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getExcel2Pdfs(), params, new ApiUser());
+	}
+	/***
+	 * 图片转换pdf（支持jpg/jpeg/png）
+	 * @param data 文件byte数组
+	 * @return 转换后的PDF文件的base64编码
+	 * @throws Exception
+	 */
+	public JSONObject image2Pdfs(byte[] data) throws Exception {
+		Map<String,String> params = new HashMap<>();
+		params.put("file",Base64Utils.encodeToString(data));
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getImagePdfs(), params, new ApiUser());
+	}
+
 
 
 	/***

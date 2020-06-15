@@ -41,15 +41,18 @@ public class CreateEnterpriseParams implements Serializable{
 	 *如果携带该参数则表示在企业下创建子企业或子公司
 	 */
 	private Long parentUuid;
+	
+	private String realName; 
 
-	public CreateEnterpriseParams(String manager, String orgName, String orgAlias, String orgCode) {
+	public CreateEnterpriseParams(String manager, String orgName, String orgAlias, String orgCode, String realName) {
 		super();
 		this.manager = manager;
 		this.orgName = orgName;
 		this.orgAlias = orgAlias;
 		this.orgCode = orgCode;
+		this.realName = realName;
 	}
-
+	
 	public CreateEnterpriseParams() {
 		super();
 	}

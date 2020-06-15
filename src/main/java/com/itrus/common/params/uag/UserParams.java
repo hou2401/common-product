@@ -115,5 +115,16 @@ public class UserParams {
     	this.passwd = passwd;
     	this.enabled = enabled;
     }
-    
+
+
+    /***
+     * 用户注册
+     * @param uuid
+     * @param uuid
+     */
+    public UserParams(Long uuid, String manager){
+        super();
+        this.uuid = uuid;
+        this.manager = manager;
+    }
 }

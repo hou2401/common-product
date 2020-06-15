@@ -33,9 +33,19 @@ public class File {
 
 	private String downloadBase64;
 	/**
-	 * 文档转换
+	 * word文档转换
 	 */
 	private String word2Pdfs;
+	/**
+	 * excel文档转换
+	 */
+	private String excel2Pdfs;
+
+	/**
+	 * 图片文档转换
+	 */
+	private String image2Pdfs;
+
 	/**
 	 * pdf转换png
 	 */
