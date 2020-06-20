@@ -29,6 +29,11 @@ public class UagOrgParams {
 		this.manager = manager;
 		this.searchCondition = searchCondition;
 	}
+	public UagOrgParams(Long uuid, String manager) {
+		super();
+		this.uuid = uuid;
+		this.manager = manager;
+	}
 
 	public UagOrgParams() {
 		super();

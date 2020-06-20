@@ -52,7 +52,7 @@ public class UserParams {
     /**
      * 用户密码
      */
-    private String passwd;
+    private String passWd;
 
     //-------------------------------组织下用户更新入参-----------------------------------------------------
 
@@ -101,7 +101,7 @@ public class UserParams {
     public UserParams(String phone, String passwd){
     	super();
     	this.phone = phone;
-    	this.passwd = passwd;
+    	this.passWd = passwd;
     	this.enabled = true;
     }
     /***
@@ -112,7 +112,7 @@ public class UserParams {
     public UserParams(String phone, String passwd, boolean enabled ){
     	super();
     	this.phone = phone;
-    	this.passwd = passwd;
+    	this.passWd = passwd;
     	this.enabled = enabled;
     }
 
@@ -127,4 +127,19 @@ public class UserParams {
         this.uuid = uuid;
         this.manager = manager;
     }
+
+    /**
+     * 用户实名认证
+     * @param uuid
+     * @param manager
+     * @param realName
+     */
+	public UserParams(Long uuid, String manager, String realName) {
+		super();
+		this.uuid = uuid;
+		this.manager = manager;
+		this.realName = realName;
+	}
+    
+    
 }

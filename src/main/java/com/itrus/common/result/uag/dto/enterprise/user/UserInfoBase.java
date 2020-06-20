@@ -107,6 +107,10 @@ public class UserInfoBase implements Comparable<UserInfoBase>, Serializable{
 	@Override
 	public int compareTo(UserInfoBase o) {
 		
+		if(PublicUtil.isNotEmpty(uuid) &&  PublicUtil.isNotEmpty(o.uuid) ){
+			return this.uuid.compareTo(o.uuid);
+		}
+		
 		if(PublicUtil.isEmpty(this.phone) ){
 			return this.displayName.compareTo(o.displayName);
 		}

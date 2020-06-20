@@ -46,6 +46,16 @@ public class UserExtParams extends BaseUagParams{/**
 	 */
 	private String companyEmail;
 	
+	/**
+	 * 是否立即申请证书( true立即申请，false使用时候再申请 )
+	 */
+	private Boolean applyCert;
+	
+	/**
+	 * 实名认证( 客户认证true,天威认证false )
+	 */
+	private Boolean authentication;
+	
 	
 	public UserExtParams() {
 		super();
