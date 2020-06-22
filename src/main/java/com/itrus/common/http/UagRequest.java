@@ -965,5 +965,29 @@ public class UagRequest {
         return result;
 
     }
+    
+    
+    /**
+     * 员工从指定企业离职接口
+     *
+     * @param userDimissionParams 请求参数
+     * @return 返回创建结果
+     * @throws Exception 抛出异常
+     */
+    public JSONObject userDelete(UserParams userParams) throws Exception {
+        JSONObject result = null;
+        for (int i = 0; i < http.getRetryCount(); i++) {
+            if (httped()) {
+                result = httpRequset.userDelete(userParams);
+            } else {
+                result = callApiRequest.userDelete(userParams);
+            }
+            if (result != null) {
+                break;
+            }
+        }
+        return result;
+
+    }
 
 }

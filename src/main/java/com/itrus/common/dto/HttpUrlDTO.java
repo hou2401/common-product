@@ -243,4 +243,7 @@ public class HttpUrlDTO {
 	public String getUserDimission() throws HttpException {
 		return httpDTO.getUrl()+uag.getUserDimission();
 	}
+	public String userDelete() {
+		return httpDTO.getUrl()+uag.getUserDelete();
+	}
 }

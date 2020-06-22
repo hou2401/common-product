@@ -796,6 +796,17 @@ public class CallApiUrlDTO {
     	}
     	return callApiPartUrlDTO.getUag().getUserDimission();
     }
+/**
+ * 删除注册用户接口
+ * @return
+ * @throws HttpException
+ */
+	public String getUserDelete() throws HttpException {
+		if(httpDTO.alled()) {
+			return callApiPartUrlDTO.getUag().getUserDelete();
+		}
+		return callApiPartUrlDTO.getUag().getUserDelete();
+	}
     
 
 }

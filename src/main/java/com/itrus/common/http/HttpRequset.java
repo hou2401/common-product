@@ -830,5 +830,15 @@ public class HttpRequset {
 	public JSONObject userDimission(Object kvs) throws Exception {
 		return http(kvs, httpUrl.getUserDimission());
 	}
+
+	/**
+	 * 删除注册用户（已经激活）
+	 * @param userParams
+	 * @return
+	 * @throws Exception 
+	 */
+	public JSONObject userDelete(Object kvs) throws Exception {
+		return http(kvs, httpUrl.userDelete());
+	}
 	
 }

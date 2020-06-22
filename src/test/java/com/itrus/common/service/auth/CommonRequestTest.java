@@ -49,7 +49,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 		//银行卡四要素 idc0004
 		AuthPersionParams authPersionParams = new AuthPersionParams(
 				appId, 
-				"idc0004", 
+				"idc0001", 
 				secretKey, 
 				url+"/person/authIden", 
 				"南建坤", 

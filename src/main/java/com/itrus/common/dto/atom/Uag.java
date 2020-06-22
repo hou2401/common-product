@@ -181,5 +181,10 @@ public class Uag {
 	 * 员工从指定企业离职接口
 	 */
 	private String userDimission;
+	
+	/**
+	 * 注册用户删除接口
+	 */
+	private String userDelete;
 
 }
