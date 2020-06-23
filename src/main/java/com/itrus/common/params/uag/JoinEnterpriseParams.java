@@ -49,5 +49,10 @@ public class JoinEnterpriseParams implements Serializable {
      * 公司邮箱
      */
     private String companyEmail;
+    
+    /**
+     * 是否需要用户确认
+     */
+    private boolean confirm = false;
 
 }
