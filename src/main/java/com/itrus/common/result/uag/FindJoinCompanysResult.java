@@ -18,6 +18,5 @@ public class FindJoinCompanysResult extends UagResult {
 	
 	private UserInfoAll userInfo;
 	
-	
 
 }
