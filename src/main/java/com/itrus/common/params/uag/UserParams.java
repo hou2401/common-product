@@ -127,6 +127,18 @@ public class UserParams {
         this.uuid = uuid;
         this.manager = manager;
     }
+    
+    
+    /***
+     * 用户注册
+     * @param uuid
+     * @param uuid
+     */
+    public UserParams(Long uuid){
+        super();
+        this.uuid = uuid;
+    }
+
 
     /**
      * 用户实名认证

@@ -1,11 +1,10 @@
 package com.itrus.common.params.uag;
 
-import lombok.AllArgsConstructor;
+import java.io.Serializable;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
  * <p>
@@ -17,7 +16,6 @@ import java.io.Serializable;
  */
 @Data
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 public class JoinEnterpriseParams implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -54,5 +52,30 @@ public class JoinEnterpriseParams implements Serializable {
      * 是否需要用户确认
      */
     private boolean confirm = false;
+
+	public JoinEnterpriseParams(String manager, String phone, Long uuid, String type, String displayName, String code,
+			String companyEmail, boolean confirm) {
+		super();
+		this.manager = manager;
+		this.phone = phone;
+		this.uuid = uuid;
+		this.type = type;
+		this.displayName = displayName;
+		this.code = code;
+		this.companyEmail = companyEmail;
+		this.confirm = confirm;
+	}
+
+	public JoinEnterpriseParams(String manager, String phone, Long uuid, String type, String displayName, String code,
+			String companyEmail) {
+		super();
+		this.manager = manager;
+		this.phone = phone;
+		this.uuid = uuid;
+		this.type = type;
+		this.displayName = displayName;
+		this.code = code;
+		this.companyEmail = companyEmail;
+	}
 
 }

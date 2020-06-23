@@ -35,6 +35,12 @@ public class HttpDTO {
 	private Integer retryCount;
 	
 	/**
+	 * 是否校验token 默认校验
+	 */
+	@Value("${http.tokened:1}")
+	private String tokened;
+	
+	/**
 	 * 是否为http模式
 	 * @return
 	 * @throws HttpException
@@ -53,6 +59,18 @@ public class HttpDTO {
 	 */
 	public boolean alled() throws HttpException{
 		if( "1".equals(alled) || "true".equalsIgnoreCase(alled) ) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * 是否为校验token
+	 * @return
+	 * @throws HttpException
+	 */
+	public boolean tokened() throws HttpException{
+		if( "1".equals(tokened) || "true".equalsIgnoreCase(tokened) ) {
 			return true;
 		}
 		return false;

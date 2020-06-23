@@ -15,6 +15,11 @@ public class EntListParams {
 	private String phone;
 	
 	/**
+	 * 用户的userId
+	 */
+	private Long uuid;
+	
+	/**
 	 * 登录状态 不传默认全查
 	 */
 	private String joinState;
@@ -33,5 +38,9 @@ public class EntListParams {
 	public EntListParams() {
 		super();
 	}
-    
+
+	public EntListParams(Long uuid) {
+		super();
+		this.uuid = uuid;
+	}
 }
