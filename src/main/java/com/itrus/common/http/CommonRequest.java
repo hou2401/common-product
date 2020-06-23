@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.itrus.common.params.sign.PdfBatchSign;
 import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -586,17 +587,17 @@ public class CommonRequest {
     /**
      * PDF批量签章
      *
-     * @param kvs
+     * @param pdfBatchSign
      * @return
      * @throws Exception
      */
-    public JSONObject batchSign(Object kvs) throws Exception {
+    public JSONObject batchSign(PdfBatchSign pdfBatchSign) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
             if (httped()) {
                 throw new Exception("http 方法还未实现");
             } else {
-                result = callApiRequest.batchSign(kvs);
+                result = callApiRequest.batchSign(pdfBatchSign);
             }
             if (result != null) {
                 break;
