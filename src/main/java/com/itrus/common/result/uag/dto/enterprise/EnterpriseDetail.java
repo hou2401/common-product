@@ -19,6 +19,11 @@ public class EnterpriseDetail implements Serializable{
 	private Long uuid;
 	
 	/**
+	 * 用户uuid
+	 */
+	private Long userUuid;
+	
+	/**
 	 * 企业全称
 	 */
 	private String orgName;
