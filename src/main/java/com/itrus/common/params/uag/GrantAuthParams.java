@@ -22,6 +22,10 @@ public class GrantAuthParams implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	/**
+	 * 管理员手机号
+	 */
+	private String manager;
+	/**
 	 * 公司uuid
 	 */
 	private Long uuid;
@@ -45,8 +49,9 @@ public class GrantAuthParams implements Serializable{
 	 * @param userUuid
 	 * @param phone
 	 */
-	public GrantAuthParams(Long uuid,Long userUuid,String phone) {
+	public GrantAuthParams(String manager, Long uuid,Long userUuid,String phone) {
 		super();
+		this.manager = manager;
 		this.uuid = uuid;
 		this.userUuid = userUuid;
 		this.phone = phone;
