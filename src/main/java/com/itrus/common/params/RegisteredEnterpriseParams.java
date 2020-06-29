@@ -38,7 +38,7 @@ public class RegisteredEnterpriseParams {
 	/**
 	 * 密码，必填项
 	 */
-	private String passwd;
+	private String passWd;
 	
 	
 	/**
@@ -56,14 +56,14 @@ public class RegisteredEnterpriseParams {
 
 
 	public RegisteredEnterpriseParams(String orgName, String orgAliases, String orgCode, String email,
-			String telephonenum, String passwd, String realName, String ifAudited) {
+			String telephonenum, String passWd, String realName, String ifAudited) {
 		super();
 		this.orgName = orgName;
 		this.orgAliases = orgAliases;
 		this.orgCode = orgCode;
 		this.email = email;
 		this.telephonenum = telephonenum;
-		this.passwd = passwd;
+		this.passWd = passWd;
 		this.realName = realName;
 		this.ifAudited = ifAudited;
 	}
