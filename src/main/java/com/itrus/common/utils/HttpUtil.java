@@ -14,9 +14,9 @@ import okhttp3.Response;
 public class HttpUtil {
 	
 	private static OkHttpClient client=new OkHttpClient().newBuilder()
-			.connectTimeout(3, TimeUnit.SECONDS)
-			.readTimeout(3, TimeUnit.SECONDS)
-			.writeTimeout(3, TimeUnit.SECONDS)
+			.connectTimeout(10, TimeUnit.SECONDS)
+			.readTimeout(10, TimeUnit.SECONDS)
+			.writeTimeout(10, TimeUnit.SECONDS)
 			.build();
 	
 	public static void setClient(OkHttpClient client) {
