@@ -150,6 +150,9 @@ public class HttpUrlDTO {
 	public String getEntUpdate() throws HttpException {
 		return httpDTO.getUrl()+uag.getEntUpdate();
 	}
+	public String getEntUpdateBase() throws HttpException {
+		return httpDTO.getUrl()+uag.getEntUpdateBase();
+	}
 	public String getEntDelete() throws HttpException {
 		return httpDTO.getUrl()+uag.getEntDelete();
 	}

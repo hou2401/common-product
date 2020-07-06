@@ -248,6 +248,27 @@ public class UagRequest {
         return result;
 
     }
+    /**
+     * 更新企业基本信息
+     *
+     * @return 返回创建结果
+     * @throws Exception 抛出异常
+     */
+    public JSONObject entUpdateBase(Object obj) throws Exception {
+        JSONObject result = null;
+        for (int i = 0; i < http.getRetryCount(); i++) {
+            if (httped()) {
+                result = httpRequset.entUpdateBase(obj);
+            } else {
+                result = callApiRequest.entUpdateBase(obj);
+            }
+            if (result != null) {
+                break;
+            }
+        }
+        return result;
+
+    }
 
     /**
      * 删除企业 ---慎用

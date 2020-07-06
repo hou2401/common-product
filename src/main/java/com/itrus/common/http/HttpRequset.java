@@ -521,6 +521,14 @@ public class HttpRequset {
 		
 		return http(obj, httpUrl.getEntUpdate());
 	}
+	/**
+	 * 更新企业基本信息
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entUpdateBase(Object obj) throws Exception {
+		return http(obj, httpUrl.getEntUpdateBase());
+	}
 	
 	/**
 	 * 删除企业

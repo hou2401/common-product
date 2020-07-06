@@ -539,6 +539,14 @@ public class CallApiRequest {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntUpdate(), obj , new ApiUser());
 	}
 	/**
+	 * 更新企业基本信息
+	 * @param kvs
+	 * @return
+	 */
+	public JSONObject entUpdateBase(Object obj) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getEntUpdateBase(), obj , new ApiUser());
+	}
+	/**
 	 * 删除企业
 	 * @param kvs
 	 * @return

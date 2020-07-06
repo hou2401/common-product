@@ -35,6 +35,11 @@ public class Uag {
 	 * 更新企业
 	 */
 	private String entUpdate;
+
+	/**
+	 * 更新企业基本信息
+	 */
+	private String entUpdateBase;
 	/**
 	 * 删除企业
 	 */

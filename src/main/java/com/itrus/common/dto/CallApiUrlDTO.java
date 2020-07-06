@@ -423,6 +423,17 @@ public class CallApiUrlDTO {
         }
         return callApiPartUrlDTO.getUag().getEntUpdate();
     }
+    /**
+     * 更新企业基本信息
+     *
+     * @return
+     */
+    public String getEntUpdateBase() throws HttpException {
+        if (httpDTO.alled()) {
+            return callApiUrlAllDTO.getUag().getEntUpdateBase();
+        }
+        return callApiPartUrlDTO.getUag().getEntUpdateBase();
+    }
     
     /**
      * 删除企业
