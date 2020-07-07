@@ -63,7 +63,7 @@ public class VideoEncodeUtil {
 		enciding.setVideoAttributes(video);
 		
 		//设置截取时间3s
-		enciding.setDuration(2F);
+		//enciding.setDuration(2F);
 		
 		encoder.encode(source, target, enciding);
 	}
