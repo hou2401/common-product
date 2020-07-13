@@ -28,6 +28,11 @@ public class UserInfoBase implements Comparable<UserInfoBase>, Serializable{
 	 * 用户名
 	 */
 	private String userName;
+
+	/*
+	是否删除
+	 */
+	private Boolean deleted;
 	
 	/**
 	 * 密码  ？？？ 加密的吗？天威云 md5加密
