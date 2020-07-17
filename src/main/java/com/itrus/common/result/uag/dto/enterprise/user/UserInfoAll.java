@@ -46,6 +46,11 @@ public class UserInfoAll extends UserInfoBase implements Serializable{
 	private String companyEmail;
 	
 	/**
+	 * 公司统一社会信用代码
+	 */
+	private String companyOrgCode;
+	
+	/**
 	 * 公司扩展属性json
 	 */
 	private String companyExt;

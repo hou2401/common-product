@@ -30,6 +30,12 @@ public class EntListParams {
 		this.joinState = joinState;
 	}
 	
+	public EntListParams(Long uuid, String joinState) {
+		super();
+		this.uuid = uuid;
+		this.joinState = joinState;
+	}
+	
 	public EntListParams(String phone) {
 		super();
 		this.phone = phone;
