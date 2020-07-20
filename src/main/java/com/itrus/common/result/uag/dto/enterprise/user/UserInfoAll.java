@@ -60,5 +60,9 @@ public class UserInfoAll extends UserInfoBase implements Serializable{
 	 */
 	private String companyExt;
 
+	/**
+	 * 用户注册时间
+	 */
+	private String createTime;
 
 }
