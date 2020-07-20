@@ -31,6 +31,11 @@ public class UserInfoAll extends UserInfoBase implements Serializable{
 	private String joinState;
 	
 	/**
+	 * 企业实名状态
+	 */
+	private String companyState;
+	
+	/**
 	 * 职位
 	 */
 	private String position;

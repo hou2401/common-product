@@ -1,6 +1,5 @@
 package com.itrus.common.result.uag.dto.enterprise;
 
-import com.itrus.common.result.uag.dto.enterprise.user.UserInfoBase;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -51,7 +50,7 @@ public class CompanyInfo implements Serializable {
     /**
      * 实名状态
      */
-    private String realName;
+    private String companyRealName;
     /**
      * 创建人
      */
