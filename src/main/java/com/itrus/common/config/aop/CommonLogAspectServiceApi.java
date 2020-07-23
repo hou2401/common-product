@@ -1,6 +1,5 @@
 package com.itrus.common.config.aop;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -18,73 +19,97 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * AOP   前置通知 后置通知
-// 申明是个spring管理的bean
- */
+@Slf4j
 @Aspect
 @Component
-@Slf4j
 public class CommonLogAspectServiceApi {
-	
-	
-	
-	
-	
-	// 申明一个切点 里面是 execution表达式
-	@Pointcut("execution(* com.itrus.common.http..*.*(..))")
-	private void controllerAspect() {
-	}
 
-	// 请求method前打印内容
-	@Before(value = "controllerAspect()")
-	public void methodBefore(JoinPoint joinPoint) {
-		ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes();
-		
-		if( requestAttributes == null ){
+	/** 以 controller 包下定义的所有请求为切入点 */
+	@Pointcut("execution(* com.itrus.common.http..*.*(..))")
+	public void commonLogAspectServiceApi() {}
+
+	/**
+	 * 在切点之前织入
+	 * @param joinPoint
+	 * @throws Throwable
+	 */
+	@Before("commonLogAspectServiceApi()")
+	public void doBefore(JoinPoint joinPoint) throws Throwable {
+		// 开始打印请求日志
+		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+
+		if( attributes == null ){
 			return;
 		}
-		
-		HttpServletRequest request = requestAttributes.getRequest();
-		log.info("==========common=====请求内容===============");
-		try {
-			// 打印请求内容
-			log.info("请求地址:" + request.getRequestURL().toString());
-			log.info("请求方式:" + request.getMethod());
-			log.info("请求类方法:" + joinPoint.getSignature());
-			Object[] args = joinPoint.getArgs();
-			List<Object> arguments = new ArrayList<>(args.length);
-			for (int i = 0; i < args.length; i++) {
-				if (args[i] instanceof ServletRequest || args[i] instanceof ServletResponse || args[i] instanceof MultipartFile) {
+
+		HttpServletRequest request = attributes.getRequest();
+
+		// 打印请求相关参数
+		log.info("========================================== common Start ==========================================");
+		// 打印请求 url
+		log.info("URL            : {}", request.getRequestURL().toString());
+		// 打印 Http method
+		log.info("HTTP Method    : {}", request.getMethod());
+		// 打印调用 controller 的全路径以及执行方法
+		log.info("Class Method   : {}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
+		// 打印请求的 IP
+		log.info("IP             : {}", request.getRemoteAddr());
+		// 打印请求入参
+		Object[] args= joinPoint.getArgs();
+		List<Object> arguments = new ArrayList<>(args.length);
+		if( args != null ) {
+			for (Object arg : args) {
+				if (arg instanceof ServletRequest || arg instanceof ServletResponse || arg instanceof MultipartFile) {
 					//ServletRequest不能序列化，从入参里排除，否则报异常：java.lang.IllegalStateException: It is illegal to call this method if the current request is not in asynchronous mode (i.e. isAsyncStarted() returns false)
 					//ServletResponse不能序列化 从入参里排除，否则报异常：java.lang.IllegalStateException: getOutputStream() has already been called for this response
 					continue;
 				}
-				arguments.add(args[i]);
+				arguments.add(arg);				
 			}
-			if (arguments != null && !(arguments.isEmpty())) {
-				log.info("请求类方法参数:" + JSONObject.toJSONString(arguments) );
-			}
-		} catch (Exception e) { 
-			log.error("###CommonLogAspectServiceApi.class methodBefore() ### ERROR:", e); 
-		} 
-		log.info("==========common=====请求内容==============="); 
-	} 
-	// 在方法执行完结后打印返回内容
-	@AfterReturning(returning = "o", pointcut = "controllerAspect()") 
-	public void methodAfterReturing(Object o) { 
-		log.info("----------common----返回内容----------------"); 
-		try { 
-			log.info("Response内容:" + JSONObject.toJSONString(o)); 
-		} catch (Exception e) {
-			log.error("###CommonLogAspectServiceApi.class methodAfterReturing() ### ERROR:", e);
 		}
-		log.info("----------common----返回内容----------------");  
+		try {
+
+			log.info("Request Args   : {}", new Gson().toJson(arguments));
+		} catch (Exception e) {
+			log.error("message={}",e.getMessage(),e);
+		}
+	}
+
+	/**
+	 * 在切点之后织入
+	 * @throws Throwable
+	 */
+	@After("commonLogAspectServiceApi()")
+	public void doAfter() throws Throwable {
+		log.info("=========================================== common End ===========================================");
+		// 每个请求之间空一行
+		log.info("");
+	}
+
+	/**
+	 * 环绕
+	 * @param proceedingJoinPoint
+	 * @return
+	 * @throws Throwable
+	 */
+	@Around("commonLogAspectServiceApi()")
+	public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+		long startTime = System.currentTimeMillis();
+		Object result = proceedingJoinPoint.proceed();
+		// 打印出参
+		 try {
+	        	log.info("Response Args  : {}", new Gson().toJson(result));
+			} catch (Exception e) {
+				log.error("message={}",e.getMessage(),e);
+			}
+		// 执行耗时
+		log.info("Time-Consuming : {} ms", System.currentTimeMillis() - startTime);
+		return result;
 	}
 
 }
+
