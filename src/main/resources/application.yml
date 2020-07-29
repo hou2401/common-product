@@ -22,13 +22,16 @@ spring:
     default-property-inclusion: NON_NULL
   application:
     name: product
-#######################证书信息######################################  
-itrus:
-  cert:
-    oName: 天威诚信服务有限公司
-    ouName: 天威诚信产品研发部
-    raCode: #sm2-itrus
-    validDays: 365 
+
+
+logging:
+  level:
+    root: INFO
+    com: INFO
+    com.itrus.newportal.dao: debug    #mapper 路径 可以打印sql
+  file: ./logs/${spring.application.name}.log
+  file.max-size: 50MB
+  file.max-history: 14
     
     
 http:
