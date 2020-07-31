@@ -1,10 +1,13 @@
 package com.itrus.common.params;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 
-@ApiModel(description = "发送通知公共实体")
+/**
+ * 发送通知公共实体
+ * @author wgx52
+ *
+ */
 @Data
 @ToString
 public class SendAdviceParams {

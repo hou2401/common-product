@@ -118,6 +118,15 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
+    /**
+    *
+    * @api {post} account/userRegister 用户注册
+    * @apiVersion 2.0.0
+    * @apiParam {Object} obj 注册参数.
+    * @apiName userRegister
+    * @apiGroup 账号服务（account）
+    * @apiSuccess (Success 0x0000) {JSONObject} json.
+	*/
     public JSONObject userRegister(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -141,6 +150,15 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
+    /**
+    *
+    * @api {post} account/userUpdate 用户更新
+    * @apiVersion 2.0.0
+    * @apiUse UserParams 
+    * @apiName userRegister
+    * @apiGroup 账号服务（account）
+    * @apiSuccess (Success 0x0000) {JSONObject} json.
+	*/
     public JSONObject userUpdate(UserParams userParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {

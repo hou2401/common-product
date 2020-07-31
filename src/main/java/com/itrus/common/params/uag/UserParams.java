@@ -1,10 +1,36 @@
 package com.itrus.common.params.uag;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 
-@ApiModel(description = "请求UAG部门实体类")
+
+/**
+ * 请求UAG部门实体类
+ * 
+ * 
+ * 
+ * @author wgx52
+ *
+ */
+
+/**
+ * @apiDefine UserParams sdk身份证信息
+ * 
+ * @apiParam {Long} uuid 用户uuid.
+ * @apiParam {String} manager 管理员账号.
+ * @apiParam {String} phone 手机号.
+ * @apiParam {String} displayName 真实姓名.
+ * @apiParam {String} idCardNum 证件号.
+ * @apiParam {String} idCardType 证件类型.
+ * @apiParam {String} email 用户个人邮箱.
+ * @apiParam {String} realName  用户实名状态 0 未实名 1 已实名.
+ * @apiParam {String} passWd  用户密码.
+ * @apiParam {Long} parentUuid  公司uuid.
+ * @apiParam {Long} targetUuid  目标uuid,迁移到那个组织节点下，组织节点的uuid(公司或部门).
+ * @apiParam {String} targetType  目标组织类型：1公司、2部门.
+ * @apiParam {UserExtParams} ext  扩展字段.
+ * @apiParam {boolean} enabled  用户激活状态.
+ */
 @ToString
 @Data
 public class UserParams {

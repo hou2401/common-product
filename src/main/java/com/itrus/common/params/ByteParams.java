@@ -1,11 +1,15 @@
 package com.itrus.common.params;
 
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
+
 import lombok.Data;
 import lombok.ToString;
 
-@ApiModel(description = "邮件参数实体")
+/**
+ * 邮件参数实体
+ * @author wgx52
+ *
+ */
 @Data
 @ToString
 public class ByteParams implements Serializable{

@@ -2,19 +2,19 @@ package com.itrus.common.params.uag;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 
 /**
  * <p>
  *  UAG 授权
+ *  请求UAG授权实体类
  * </p>
  *
  * @author han_yanhui
  * @since 2020-5-25 10:30:12
  */
-@ApiModel(description = "请求UAG授权实体类")
+
 @ToString
 @Data
 public class GrantAuthParams implements Serializable{

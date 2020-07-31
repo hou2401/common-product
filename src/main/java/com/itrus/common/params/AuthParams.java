@@ -6,17 +6,16 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.springframework.stereotype.Component;
 
 import com.itrus.common.exception.AuthException;
 import com.itrus.common.utils.HMACSHA1;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
-@ApiModel(description = "证书请求参数实体")
 @ToString
 @Component
 @Data

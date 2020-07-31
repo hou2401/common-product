@@ -1,13 +1,12 @@
 package com.itrus.common.params;
 
-import io.swagger.annotations.ApiModel;
-import lombok.Data;
-import lombok.ToString;
+import java.io.Serializable;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.util.List;
+import lombok.Data;
+import lombok.ToString;
 
 /**
  * @ClassName PdfTextMarkParams
@@ -16,15 +15,20 @@ import java.util.List;
  * @Date:Created in 14:59 2020/4/1
  * @Modified By:
  * @Version 1.0
+ * 添加二维码水印请求参数实体
  **/
 
-@ApiModel(description = "添加二维码水印请求参数实体")
 @ToString
 @Component
 @Data
 public class PdfQrCodeMarkParams implements Serializable {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * pdf文件的base64编码
      */
     private String pdfData;

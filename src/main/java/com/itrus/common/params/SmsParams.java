@@ -2,12 +2,15 @@ package com.itrus.common.params;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-@ApiModel(description = "短信参数实体")
+/**
+ * 短信参数实体
+ * @author wgx52
+ *
+ */
 @Data
 @ToString
 @EqualsAndHashCode(callSuper=true)

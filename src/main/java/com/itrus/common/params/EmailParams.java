@@ -7,11 +7,12 @@ import java.util.List;
 
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 
-@ApiModel(description = "邮件参数实体")
+/**
+ *邮件参数实体
+ */
 @Data
 @ToString
 public class EmailParams implements Serializable{

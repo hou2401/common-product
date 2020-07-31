@@ -1,10 +1,8 @@
 package com.itrus.common.params.uag;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 
-@ApiModel(description = "请求UAG部门实体类")
 @ToString
 @Data
 public class DeptParams {

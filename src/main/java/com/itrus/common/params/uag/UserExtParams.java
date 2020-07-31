@@ -1,6 +1,5 @@
 package com.itrus.common.params.uag;
 
-import com.itrus.common.params.uag.BaseUagParams;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -12,6 +11,16 @@ import lombok.ToString;
  *
  * @author han_yanhui
  * @since 2020-5-25 10:30:12
+ */
+/**
+ * @apiDefine UserExtParams UAG 用户扩展字段
+ * @apiParam {String} code  成员编号.
+ * @apiParam {String} position  职位.
+ * @apiParam {String} address  地址.
+ * @apiParam {String} joinState  用户状态（0 待加入 1 已加入 2 异常 3 拒绝 4 离职）.
+ * @apiParam {String} companyEmail  公司邮箱.
+ * @apiParam {Boolean} applyCert  是否立即申请证书( true立即申请，false使用时候再申请 ).
+ * @apiParam {Boolean} authentication  实名认证( 客户认证true,天威认证false ).
  */
 @Data
 @EqualsAndHashCode(callSuper=true)

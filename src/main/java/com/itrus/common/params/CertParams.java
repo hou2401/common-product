@@ -6,18 +6,16 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 
 /**
- * @author lixc
+ * @author lixc 证书请求参数实体
  * @ClassName CertDTO.java
  * @Description
  * @createTime 2020年02月18日 20:58:00
  */
 
-@ApiModel(description = "证书请求参数实体")
 @ToString
 @Component
 @Data

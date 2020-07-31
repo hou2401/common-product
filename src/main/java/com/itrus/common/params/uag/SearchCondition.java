@@ -1,10 +1,13 @@
 package com.itrus.common.params.uag;
 
-import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.ToString;
 
-@ApiModel(description = "请求UAG查询组织实体类")
+/**
+ * 请求UAG查询组织实体类
+ * @author wgx52
+ *
+ */
 @ToString
 @Data
 public class SearchCondition {

@@ -2,12 +2,15 @@ package com.itrus.common.params.uag;
 
 import java.io.Serializable;
 
-import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 
-@ApiModel(description = "扩展字段实体类")
+/**
+ * 扩展字段实体类
+ * @author wgx52
+ *
+ */
 @ToString
 @Data
 @AllArgsConstructor
