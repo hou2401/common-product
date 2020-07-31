@@ -3,7 +3,6 @@ package com.itrus.common.params.uag;
 import java.io.Serializable;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
@@ -16,7 +15,6 @@ import lombok.ToString;
  */
 @Data
 @ToString
-@NoArgsConstructor
 public class JoinEnterpriseParams implements Serializable {
     private static final long serialVersionUID = 1L;
     /**
@@ -76,6 +74,10 @@ public class JoinEnterpriseParams implements Serializable {
 		this.displayName = displayName;
 		this.code = code;
 		this.companyEmail = companyEmail;
+	}
+	
+	public JoinEnterpriseParams() {
+		super();
 	}
 
 }
