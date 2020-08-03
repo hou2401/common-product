@@ -10,6 +10,21 @@ import java.security.NoSuchAlgorithmException;
  * @since 1.0
  */
 public class HMACSHA1 {
+	
+	/**
+    *
+    * @api HMACSHA1.getHmacSHA1 获取网关签名
+    * @apiVersion 2.2.0
+    * @apiParam {String} data 签名对象字符串
+    * @apiParam {String} key 秘钥
+    * @apiName getHmacSHA1
+    * @apiGroup HMACSHA1工具类
+    * @apiSuccess (Success) {byte[]} byte 网关签名byte数组
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "byte":{1,1,1,1,1,1,1,1,1}
+    *     }
+	*/
 	public static byte[] getHmacSHA1(String data, String key) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		byte[] ipadArray = new byte[64];
 		byte[] opadArray = new byte[64];
@@ -39,7 +54,20 @@ public class HMACSHA1 {
 		return  m.digest(join(opadArray, tempResult));
 	}
 	
-	
+	/**
+    *
+    * @api HMACSHA1.getHmacSHA1 获取网关签名
+    * @apiVersion 2.2.0
+    * @apiParam {String} data 签名对象byte数组
+    * @apiParam {String} key 秘钥
+    * @apiName getHmacSHA1
+    * @apiGroup HMACSHA1工具类
+    * @apiSuccess (Success) {byte[]} byte 网关签名byte数组
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "byte":{1,1,1,1,1,1,1,1,1}
+    *     }
+	*/
 	public static byte[] getHmacSHA1(byte[] data, String key) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		byte[] ipadArray = new byte[64];
 		byte[] opadArray = new byte[64];

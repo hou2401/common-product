@@ -59,6 +59,7 @@ public class HttpUtil {
 		}
 		return formBody;
 	}
+	
 	public static String doGet(String url,Map<String,Object> params,Map<String,String> headers) throws Exception{
 		String result=null;
 		if(url != null && url.length()>0) {

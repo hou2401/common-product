@@ -19,13 +19,19 @@ import java.util.Map;
 public class PublicUtil {
 
 	/**
-	 * 判断对象是否Empty(null或元素为0)
-	 * 实用于对如下对象做判断:String Collection及其子类 Map及其子类
-	 *
-	 * @param pObj 待检查对象
-	 *
-	 * @return boolean 返回的布尔值
-	 */
+    *
+    * @api PublicUtil.isEmpty 判断对象是否Empty
+    * @apiDescription 判断对象是否Empty(null或元素为0),String Collection及其子类 Map及其子类
+    * @apiVersion 2.2.0
+    * @apiParam {Object} obj 检查对象
+    * @apiName isEmpty
+    * @apiGroup PublicUtil工具类
+    * @apiSuccess (Success) {boolean} boo 成功失败
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "boo":true
+    *     }
+	*/
 	public static boolean isEmpty(Object pObj) {
 		if (pObj == null) {
 			return true;
@@ -44,23 +50,37 @@ public class PublicUtil {
 	}
 
 	/**
-	 * 判断对象是否为NotEmpty(!null或元素大于0)
-	 * 实用于对如下对象做判断:String Collection及其子类 Map及其子类
-	 *
-	 * @param pObj 待检查对象
-	 *
-	 * @return boolean 返回的布尔值
-	 */
+    *
+    * @api PublicUtil.isNotEmpty 判断对象是否为NotEmpty
+    * @apiDescription 判断对象是否NotEmpty(null或元素为0),String Collection及其子类 Map及其子类
+    * @apiVersion 2.2.0
+    * @apiParam {Object} obj 检查对象
+    * @apiName isNotEmpty
+    * @apiGroup PublicUtil工具类
+    * @apiSuccess (Success) {boolean} boo 成功失败
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "boo":true
+    *     }
+	*/
 	public static boolean isNotEmpty(Object pObj) {
 		return !isEmpty(pObj);
 	}
 
 	/**
-	 * 把字符串百分比类型转成double小数
-	 * @param percent 百分比
-	 *
-	 * @return double
-	 */
+    *
+    * @api PublicUtil.percentToDouble 百分比字符串转double
+    * @apiDescription 判断对象是否NotEmpty(null或元素为0),String Collection及其子类 Map及其子类
+    * @apiVersion 2.2.0
+    * @apiParam {String} percent 百分比字符串
+    * @apiName percentToDouble
+    * @apiGroup PublicUtil工具类
+    * @apiSuccess (Success) {double} dou double
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "dou":12.12
+    *     }
+	*/
 	public static double percentToDouble(String percent) throws ParseException {
 		NumberFormat nf = NumberFormat.getPercentInstance();
 		Number m = nf.parse(percent);//将百分数转换成Number类型
@@ -69,11 +89,22 @@ public class PublicUtil {
 	}
 
 	/**
-	 * 把空间位置信息 gis 切割成经度和纬度 例如 传入"POINT(108.9498710632 34.2588125935)"
-	 * 返回 108.9498710632 34.2588125935
-	 * @param gis 空间位置信息
-	 * @return String[] 长度是2的数组 索引0是 lng 索引1是lat
-	 */
+    *
+    * @api PublicUtil.spiltGis 空间位置信息切割数组
+    * @apiDescription 例如："POINT(108.9498710632 34.2588125935)"
+    * @apiVersion 2.2.0
+    * @apiParam {String} gis 空间位置信息
+    * @apiName spiltGis
+    * @apiGroup PublicUtil工具类
+    * @apiSuccess (Success) {String[]} str 字符串数组
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "str":[
+    *       108.9498710632,
+    *       34.2588125935
+    *       ]
+    *     }
+	*/
 	public static String[] spiltGis(String gis) {
 		String[] arr = gis.substring(gis.indexOf("(")+1, gis.indexOf(")")).split(" ");
 		return arr;

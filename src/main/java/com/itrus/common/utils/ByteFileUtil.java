@@ -11,6 +11,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * 
  * 
@@ -22,7 +24,17 @@ import java.io.InputStream;
 @Slf4j
 public class ByteFileUtil {
 	
-	
+	/**
+    *
+    * @api ByteFileUtil.copyFile2Byte File转化Byte[]
+    * @apiVersion 2.2.0
+    * @apiParam {File} file file文件 
+    * @apiName copyFile2Byte
+    * @apiGroup ByteFileUtil工具类
+    * @apiSuccess (Success) {byte[]} byte byte[]数组
+    * @apiSuccessExample Success-Response:
+    *     {byte[] = {1,1,1,1,1,1,1,1,1,1,1,1,1}}
+	*/
 	public static byte [] copyFile2Byte(File file){
         InputStream in = null;
 
@@ -52,11 +64,17 @@ public class ByteFileUtil {
     }
 
 	/**
-     * 创建日期:2020-5-1 17:13:16
-     * 机能概要:byte 转 file
-     * @param bytes
-     * @param file 请看下方测试用例
-     */
+    *
+    * @api ByteFileUtil.copyByteToFile Byte[]写入File
+    * @apiVersion 2.2.0
+    * @apiParam {byte[]} bytes byte[]数组
+    * @apiParam {File} file file文件 
+    * @apiName copyByteToFile
+    * @apiGroup ByteFileUtil工具类
+    * @apiSuccess (Success) {File} file file数组
+    * @apiSuccessExample Success-Response:
+    *     {file = {file文件}}
+	*/
     public static boolean copyByteToFile(byte [] bytes,File file){
         FileOutputStream  out = null;
         try {
@@ -90,9 +108,10 @@ public class ByteFileUtil {
     
     public static void main(String[] args) {
 		
-    	File file = new File("E:\\签约原子服务接口文档-1.3.0.all.md");
+    	File file = new File("E:\\ceshi.png");
     	byte[] bytes = copyFile2Byte(file);
     	File files = new File("ceshi.md");//创建一个初始化file，ceshi.md 是文件流的 pathName，必填项
+    	System.out.println(JSON.toJSONString(file));
     	boolean copyByteToFile = copyByteToFile(bytes, files);
     	System.out.println(copyByteToFile);
     	

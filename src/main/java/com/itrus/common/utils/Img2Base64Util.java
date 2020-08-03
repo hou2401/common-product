@@ -52,11 +52,20 @@ public class Img2Base64Util {
         generateImage(str,imgFilePath);
     	
     }
+
     /**
-     * 将图片转换成Base64编码
-     * @param imgFile 待处理图片
-     * @return
-     */
+    *
+    * @api Img2Base64Util.getImgStr 图片转换Base64编码
+    * @apiVersion 2.2.0
+    * @apiParam {String} imgFile 文件路径
+    * @apiName getImgStr
+    * @apiGroup Img2Base64Util工具类
+    * @apiSuccess (Success) {String} string base64
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "string":"ADDAHLDA115533321ALWO11N..."
+    *     }
+	*/
     public static String getImgStr(String imgFile){
         //将图片文件转化为字节数组字符串，并对其进行Base64编码处理
   
@@ -75,11 +84,19 @@ public class Img2Base64Util {
     }
     
     /**
-     * 对字节数组字符串进行Base64解码并生成图片
-     * @param imgStr 图片数据
-     * @param imgFilePath 保存图片全路径地址
-     * @return
-     */
+    *
+    * @api Img2Base64Util.generateImage 字节数组字符串进行Base64解码并生成图片
+    * @apiVersion 2.2.0
+    * @apiParam {String} imgStr 字节数组字符串
+    * @apiParam {String} imgFilePath 图片路径地址
+    * @apiName generateImage
+    * @apiGroup Img2Base64Util工具类
+    * @apiSuccess (Success) {boolean} boo 成功失败
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "boo":true
+    *     }
+	*/
     public static boolean generateImage(String imgStr,String imgFilePath){
         //
         if (imgStr == null) //图像数据为空

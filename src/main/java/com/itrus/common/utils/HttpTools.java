@@ -93,27 +93,48 @@ public class HttpTools {
     }
 
     /**
-     * 发送get请求.
-     * 
-     * @param url
-     *            请求地址
-     * @return 响应结果
-     * @throws IOException
-     */
+    *
+    * @api HttpTools.get 发送get请求
+    * @apiVersion 2.2.0
+    * @apiParam {String} url 请求路径
+    * @apiName get
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {Integer} status 状态码
+    * @apiSuccess (Success) {String} message 状态消息
+    * @apiSuccess (Success) {String} content 内容
+    * @apiSuccess (Success) {String} sign 签名
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "status": 200,
+    *       "message": "成功",
+    *       "content":"{\"suject\":\"温温测试\",\"listFile\":[],\"html\":true,\"email\":[\"wen_guoxing@itrus.com.cn\"]}",
+    *       "sign":"ADDAHLDA115533321ALWO11N..."
+    *     }
+	*/
     public static ResponseEntity get(String url) throws IOException {
         return get(url, new HttpData());
     }
 
     /**
-     * 发送get请求.
-     * 
-     * @param url
-     *            请求地址
-     * @param data
-     *            请求数据
-     * @return 响应结果
-     * @throws IOException
-     */
+    *
+    * @api HttpTools.get 发送get请求
+    * @apiVersion 2.2.0
+    * @apiParam {String} url 请求路径
+    * @apiUse HttpData
+    * @apiName get
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {Integer} status 状态码
+    * @apiSuccess (Success) {String} message 状态消息
+    * @apiSuccess (Success) {String} content 内容
+    * @apiSuccess (Success) {String} sign 签名
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "status": 200,
+    *       "message": "成功",
+    *       "content":"{\"suject\":\"温温测试\",\"listFile\":[],\"html\":true,\"email\":[\"wen_guoxing@itrus.com.cn\"]}",
+    *       "sign":"ADDAHLDA115533321ALWO11N..."
+    *     }
+	*/
     public static ResponseEntity get(String url, HttpData data) throws IOException {
         // 连接池管理，无需关闭
         CloseableHttpClient httpclient = createClient(data);
@@ -127,30 +148,50 @@ public class HttpTools {
         return httpclient.execute(httpGet, responseHandler);
     }
 
+
     /**
-     * 发送POST请求.
-     * 
-     * @param url
-     *            请求地址
-     * @param data
-     *            请求数据
-     * @return 响应结果
-     * @throws IOException
-     */
+    *
+    * @api HttpTools.post 发送post请求
+    * @apiName post
+    * @apiGroup HttpTools工具类
+    * @apiVersion 2.2.0
+    * @apiParam {String} url 请求路径
+    * @apiSuccess (Success) {Integer} status 状态码
+    * @apiSuccess (Success) {String} message 状态消息
+    * @apiSuccess (Success) {String} content 内容
+    * @apiSuccess (Success) {String} sign 签名
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "status": 200,
+    *       "message": "成功",
+    *       "content":"{\"suject\":\"温温测试\",\"listFile\":[],\"html\":true,\"email\":[\"wen_guoxing@itrus.com.cn\"]}",
+    *       "sign":"ADDAHLDA115533321ALWO11N..."
+    *     }
+	*/
     public static ResponseEntity post(String url) throws IOException {
         return post(url, new HttpData());
     }
 
     /**
-     * 发送POST请求.
-     * 
-     * @param url
-     *            请求地址
-     * @param data
-     *            请求数据
-     * @return 响应结果
-     * @throws IOException
-     */
+    *
+    * @api HttpTools.post 发送post请求
+    * @apiVersion 2.2.0
+    * @apiParam {String} url 请求路径
+    * @apiUse HttpData
+    * @apiName post
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {Integer} status 状态码
+    * @apiSuccess (Success) {String} message 状态消息
+    * @apiSuccess (Success) {String} content 内容
+    * @apiSuccess (Success) {String} sign 签名
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "status": 200,
+    *       "message": "成功",
+    *       "content":"{\"suject\":\"温温测试\",\"listFile\":[],\"html\":true,\"email\":[\"wen_guoxing@itrus.com.cn\"]}",
+    *       "sign":"ADDAHLDA115533321ALWO11N..."
+    *     }
+	*/
     public static ResponseEntity post(String url, HttpData data) throws IOException {
         CloseableHttpClient httpclient = createClient(data);
 
@@ -164,15 +205,25 @@ public class HttpTools {
     }
 
     /**
-     * 发送DELETE请求.
-     * 
-     * @param url
-     *            请求地址
-     * @param data
-     *            请求数据
-     * @return 响应结果
-     * @throws IOException
-     */
+    *
+    * @api HttpTools.delete 发送DELETE请求
+    * @apiVersion 2.2.0
+    * @apiParam {String} url 请求路径
+    * @apiUse HttpData
+    * @apiName delete
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {Integer} status 状态码
+    * @apiSuccess (Success) {String} message 状态消息
+    * @apiSuccess (Success) {String} content 内容
+    * @apiSuccess (Success) {String} sign 签名
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "status": 200,
+    *       "message": "成功",
+    *       "content":"{\"suject\":\"温温测试\",\"listFile\":[],\"html\":true,\"email\":[\"wen_guoxing@itrus.com.cn\"]}",
+    *       "sign":"ADDAHLDA115533321ALWO11N..."
+    *     }
+	*/
     public static ResponseEntity delete(String url, HttpData data) throws IOException {
         CloseableHttpClient httpclient = createClient(data);
 
@@ -185,6 +236,27 @@ public class HttpTools {
         return httpclient.execute(httpDelete, responseHandler);
     }
     
+    /**
+    *
+    * @api HttpTools.download 下载
+    * @apiVersion 2.2.0
+    * @apiParam {String} url 请求路径
+    * @apiUse HttpData
+    * @apiParam {OutputStream} out 输出流
+    * @apiName download
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {Integer} status 状态码
+    * @apiSuccess (Success) {String} message 状态消息
+    * @apiSuccess (Success) {String} content 内容
+    * @apiSuccess (Success) {String} sign 签名
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "status": 200,
+    *       "message": "成功",
+    *       "content":"{ok}",
+    *       "sign":"ADDAHLDA115533321ALWO11N..."
+    *     }
+	*/
     public static ResponseEntity download(String url, HttpData data, final OutputStream out) throws IOException {
         CloseableHttpClient httpclient = createClient(data);
 
@@ -240,15 +312,16 @@ public class HttpTools {
         return httpclient;
     }
 
-    /***
-     * 设置请求头、参数信息
-     * 
-     * @param request
-     *            请求对象
-     * @param headers
-     *            请求头参数
-     * @throws UnsupportedEncodingException
-     */
+    /**
+    *
+    * @api HttpTools.setData 设置请求头
+    * @apiVersion 2.2.0
+    * @apiParam {HttpRequestBase} request requestBase
+    * @apiUse HttpData
+    * @apiName setData
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {HttpRequestBase} request requestBase
+	*/
     private static void setData(HttpRequestBase request, HttpData data) throws UnsupportedEncodingException {
         /* -----------设置请求头信息------------- */
         if (data.getHeaders() != null) {
@@ -327,15 +400,16 @@ public class HttpTools {
         httpPost.setEntity(meBuilder.build());
     }
 
-    /***
-     * 设置get类型参数
-     * 
-     * @param request
-     *            请求对象
-     * @param data
-     *            请求数据
-     * @throws UnsupportedEncodingException
-     */
+    /**
+    *
+    * @api HttpTools.setHttpGetParams 设置get类型参数
+    * @apiVersion 2.2.0
+    * @apiParam {HttpGet} request HttpGet
+    * @apiUse HttpData
+    * @apiName setHttpGetParams
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {HttpGet} request HttpGet
+	*/
     private static void setHttpGetParams(HttpGet request, HttpData data) throws UnsupportedEncodingException {
         if (data.getParams() == null) {
             return;
@@ -364,15 +438,16 @@ public class HttpTools {
         request.setURI(URI.create(url.toString()));
     }
 
-    /***
-     * 设置Delete类型参数
-     * 
-     * @param request
-     *            请求对象
-     * @param data
-     *            请求数据
-     * @throws UnsupportedEncodingException
-     */
+    /**
+    *
+    * @api HttpTools.setHttpDeleteParams 设置Delete类型参数
+    * @apiVersion 2.2.0
+    * @apiParam {HttpDelete} request HttpDelete
+    * @apiUse HttpData
+    * @apiName setHttpDeleteParams
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {HttpDelete} request HttpDelete
+	*/
     private static void setHttpDeleteParams(HttpDelete request, HttpData data) throws UnsupportedEncodingException {
         if (data.getParams() == null) {
             return;
@@ -401,15 +476,16 @@ public class HttpTools {
         request.setURI(URI.create(url.toString()));
     }
 
-    /***
-     * 设置post类型参数
-     * 
-     * @param request
-     *            请求对象
-     * @param data
-     *            请求数据
-     * @throws UnsupportedEncodingException
-     */
+    /**
+    *
+    * @api HttpTools.setHttpPostParams 设置post类型参数
+    * @apiVersion 2.2.0
+    * @apiParam {HttpPost} request HttpPost
+    * @apiUse HttpData
+    * @apiName setHttpPostParams
+    * @apiGroup HttpTools工具类
+    * @apiSuccess (Success) {HttpPost} request HttpPost
+	*/
     private static void setHttpPostParams(HttpPost request, HttpData data) throws UnsupportedEncodingException {
         if (data.getParams() == null) {
             return;
@@ -524,14 +600,13 @@ public class HttpTools {
     }
     
     
-    /***
+    /**
+     * @apiDefine HttpData 请求体
      * 
-     * Title: HttpData.java<br>
-     * Description: Http请求数据类<br>
-     * Company: www.e7code.com<br>
-     * 
-     * @author ssr
-     * @author 2018年3月20日
+     * @apiParam {Map} files file文件
+     * @apiParam {Map} headers 请求头参数
+     * @apiParam {Map} params 表单参数
+     * @apiParam {HttpEntity} postEntity 请求体
      */
     public static class HttpData{
         //编码
@@ -553,12 +628,17 @@ public class HttpTools {
             return new HttpData();
         }
         
-        /***
-         * 添加请求头参数
-         * @param name 参数名称
-         * @param value 参数值
-         * @return HttpData对象本身
-         */
+        
+        /**
+        *
+        * @api HttpTools.addHeader 添加请求头参数
+        * @apiVersion 2.2.0
+        * @apiParam {String} name 键(参数名称)
+        * @apiParam {Object} value 值
+        * @apiName addHeader
+        * @apiGroup HttpTools工具类
+        * @apiSuccess (Success) {HttpData} headers HttpData
+    	*/
         public HttpData addHeader(String name, Object value){
             if(name != null && value != null) {
                 if(headers == null) {
@@ -569,12 +649,15 @@ public class HttpTools {
             return this;
         }
         
-        /***
-         * 添加表单参数
-         * @param name 参数名称
-         * @param value 参数值
-         * @return HttpData对象本身
-         */
+        /**
+        *
+        * @api HttpTools.addParams 添加表单参数
+        * @apiVersion 2.2.0
+        * @apiParam {Map} params Map键值对
+        * @apiName addParams
+        * @apiGroup HttpTools工具类
+        * @apiSuccess (Success) {HttpData} params HttpData
+    	*/
         public HttpData addParams(Map<String, String> params){
             if(params == null || params.size() == 0) {
                 return this;
@@ -591,12 +674,16 @@ public class HttpTools {
             return this;
         }
         
-        /***
-         * 添加表单参数
-         * @param name 参数名称
-         * @param value 参数值
-         * @return HttpData对象本身
-         */
+        /**
+        *
+        * @api HttpTools.addParams 添加表单参数
+        * @apiVersion 2.2.0
+        * @apiParam {String} name 键(参数名称)
+        * @apiParam {Object} value 值
+        * @apiName addParams
+        * @apiGroup HttpTools工具类
+        * @apiSuccess (Success) {HttpData} params HttpData
+    	*/
         public HttpData addParam(String name, Object value){
             if(name != null && value != null) {
                 if(params == null) {
@@ -607,12 +694,16 @@ public class HttpTools {
             return this;
         }
         
-        /***
-         * 添加文件
-         * @param name 参数名称
-         * @param value 参数值
-         * @return HttpData对象本身
-         */
+        /**
+        *
+        * @api HttpTools.addParams 添加文件流参数
+        * @apiVersion 2.2.0
+        * @apiParam {String} name 键(参数名称)
+        * @apiParam {File} value 值(file文件)
+        * @apiName addParams
+        * @apiGroup HttpTools工具类
+        * @apiSuccess (Success) {HttpData} files HttpData
+    	*/
         public HttpData addFile(String name, File value) {
             if(name != null && value != null) {
                 if(files == null) {
@@ -623,13 +714,17 @@ public class HttpTools {
             return this;
         }
         
-        /***
-         * 添加文件流
-         * @param paramName 参数名称
-         * @param value 文件流
-         * @param fileName 文件名名称
-         * @return HttpData对象本身
-         */
+        /**
+        *
+        * @api HttpTools.addFile 添加文件流参数
+        * @apiVersion 2.2.0
+        * @apiParam {String} paramName 键(参数名称)
+        * @apiParam {InputStream} value 值(输入流)
+        * @apiParam {String} fileName 值(文件名称)
+        * @apiName addFile
+        * @apiGroup HttpTools工具类
+        * @apiSuccess (Success) {HttpData} files HttpData
+    	*/
         public HttpData addFile(String paramName, InputStream value, String fileName) {
             if(paramName != null && value != null && fileName != null) {
                 if(files == null) {
@@ -643,14 +738,17 @@ public class HttpTools {
             return this;
         }
         
-        /***
-         * 添加文件字节数组
-         * @param paramName 参数名称
-         * @param value 文件字节数组
-         * @param ContentType 文件类型
-         * @param value 文件名
-         * @return HttpData对象本身
-         */
+        /**
+        *
+        * @api HttpTools.addFile 添加文件字节数组参数
+        * @apiVersion 2.2.0
+        * @apiParam {String} paramName 键(参数名称)
+        * @apiParam {byte[]} value 文件字节数组
+        * @apiParam {String} fileName 值(文件名称)
+        * @apiName addFile
+        * @apiGroup HttpTools工具类
+        * @apiSuccess (Success) {HttpData} files HttpData
+    	*/
         public HttpData addFile(String paramName, byte[] value, String fileName) {
             if(paramName != null && value != null && fileName != null) {
                 if(files == null) {

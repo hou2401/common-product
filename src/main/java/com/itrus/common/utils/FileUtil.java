@@ -24,12 +24,16 @@ public class FileUtil {
 	}
 
 	/**
-	* <p>Title: copyFolder</p>
-	* <p>Description: </p>
-	* @param sourcePath 原来路径
-	* @param targetPath 目标路径
-	* @throws IOException
-	 */
+    *
+    * @api FileUtil.copyFolder 复制文件
+    * @apiVersion 2.2.0
+    * @apiParam {String} sourcePath 原路径
+    * @apiParam {String} targetPath 目标路径
+    * @apiName copyFolder
+    * @apiGroup FileUtil工具类
+    * @apiSuccess (Success) {String} targetPath 复制文件到目标路径
+    * 
+	*/
 	public static void copyFolder(String sourcePath, String targetPath) throws IOException  { 
 		// 如果文件夹不存在，则建立新文件夹 
 		(new File(targetPath)).mkdirs(); 

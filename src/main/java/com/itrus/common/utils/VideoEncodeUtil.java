@@ -35,6 +35,17 @@ public class VideoEncodeUtil {
 		}
 	}
 	
+	/**
+    *
+    * @api VideoEncodeUtil.encode 视频重新编码
+    * @apiDescription  视频压缩
+    * @apiVersion 2.2.0
+    * @apiParam {File} source 原文件
+    * @apiParam {File} target 目标文件
+    * @apiName encode
+    * @apiGroup VideoEncodeUtil工具类
+    * @apiSuccess (Success) {File} target 重新编码成功
+	*/
 	public static void encode( File source, File target)throws Exception{
 		audio.setCodec("libmp3lame");
 		//设置新重新编码的音频流的比特率值

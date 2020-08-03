@@ -11,11 +11,20 @@ import com.itrus.common.constants.SubstringConstant;
 public class LogSubStringUtil {
 
 	/**
-	 * 截取字符串
-	 * 错误日志存储
-	 * @param info
-	 * @return
-	 */
+    *
+    * @api LogSubStringUtil.subStringInfo 截取字符串
+    * @apiVersion 2.2.0
+    * @apiParam {String} info 字符串
+    * @apiParam {Integer} totalLength 限制字符串长度
+    * @apiParam {Integer} subLength 截取字符串长度
+    * @apiName subStringInfo
+    * @apiGroup LogSubStringUtil工具类
+    * @apiSuccess (Success) {String} string 截取后字符串
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "string":"aakjnakankcakna"
+    *     }
+	*/
 	public static String subStringInfo(String info, Integer totalLength, Integer subLength ){
 		
 		if( totalLength == null ){
@@ -31,11 +40,18 @@ public class LogSubStringUtil {
 	}
 	
 	/**
-	 * 截取字符串
-	 * 错误日志存储
-	 * @param info
-	 * @return
-	 */
+    *
+    * @api LogSubStringUtil.subStringInfo 截取字符串
+    * @apiVersion 2.2.0
+    * @apiParam {String} info 字符串
+    * @apiName subStringInfo
+    * @apiGroup LogSubStringUtil工具类
+    * @apiSuccess (Success) {String} string 截取后字符串
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "string":"aakjnakankcakna"
+    *     }
+	*/
 	public static String subStringInfo(String info){
 		return subStringInfo(info, null, null);
 	}

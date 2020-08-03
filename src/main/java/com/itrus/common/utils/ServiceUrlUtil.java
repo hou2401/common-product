@@ -29,13 +29,7 @@ public class ServiceUrlUtil {
 	private static String appUrl = null;
 
 	private static final String URL = "url";
-	/**
-	 * 获取应用的url
-	 * @param request
-	 * @param groupNames  apphome，apiservice，apigate
-	 * @param appName  应用注册到redis里面的名称
-	 * @return
-	 */
+
 	public static String getAppSingle( HttpServletRequest request,String groupNames, String appName){
 		if(StringUtils.isEmpty(appUrl)){
 			appUrl = getApigatUrl(request,groupNames,appName);

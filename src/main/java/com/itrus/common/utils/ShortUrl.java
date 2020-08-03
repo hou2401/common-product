@@ -22,7 +22,21 @@ public class ShortUrl {
             System.out.println(shortCodeArray[i]);// 任意一个都可以作为短链接码  
         }  
     }  
-  
+	
+	/**
+    *
+    * @api ShortUrl.shortUrl 长链接转短链接
+    * @apiDescription  当我们生成短链接之后，只需要在表中（数据库或者NoSql ）存储原始链接与短链接的映射关系即可。
+    * @apiVersion 2.2.0
+    * @apiParam {String} url 长链接
+    * @apiName shortUrl
+    * @apiGroup ShortUrl工具类
+    * @apiSuccess (Success) {String[]} string 短链接
+    * @apiSuccessExample Success-Response:
+    *     {
+    *       "string":["a","K","l","S"]
+    *     }
+	*/
     public static String[] shortUrl(String url) {  
         // 可以自定义生成 MD5 加密字符传前的混合 KEY  
         String key = "";  

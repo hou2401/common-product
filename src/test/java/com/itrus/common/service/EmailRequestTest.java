@@ -37,4 +37,12 @@ public class EmailRequestTest extends AbstractTestNGSpringContextTests {
 		Reporter.log(JSON.toJSONString(true));
 	}
 	
+	public static void main(String[] args) {
+		String str = "{\"suject\":\"温温测试\",\"listFile\":[],\"bytes\":[],\"html\":true,\"content\":\"test\",\"email\":[\"wen_guoxing@itrus.com.cn\"]}";
+		String [] toEmail = new String[]{"wen_guoxing@itrus.com.cn"};
+		EmailParams emailParams = new EmailParams(toEmail, "test", "温温测试", true, null);
+		System.out.println(JSON.toJSON(emailParams));
+		
+	}
+	
 }
