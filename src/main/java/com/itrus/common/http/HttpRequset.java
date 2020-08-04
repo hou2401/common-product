@@ -52,7 +52,7 @@ public class HttpRequset {
 
 	/**
 	 *
-	 * @param params
+	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
@@ -62,7 +62,7 @@ public class HttpRequset {
 
 	/**
 	 *
-	 * @param hospitalSeal
+	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
@@ -72,7 +72,7 @@ public class HttpRequset {
 
 	/**
 	 * 证书申请
-	 * @param cert
+	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
@@ -82,7 +82,7 @@ public class HttpRequset {
 
 	/**
 	 * 证书更新
-	 * @param cert
+	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
@@ -93,7 +93,7 @@ public class HttpRequset {
 	/**
 	 *  视频h5核身功能
 	 *  支持熟读
-	 * @param doctorQuery
+	 * @param persion
 	 * @return
 	 * @throws Exception
 	 */
@@ -116,7 +116,7 @@ public class HttpRequset {
 	/**
 	 *  个人实名认证   
 		不支持视频h5核身功能
-	 * @param doctorQuery
+	 * @param persion
 	 * @return
 	 * @throws PersionAuthException 
 	 * @throws Exception
@@ -307,8 +307,7 @@ public class HttpRequset {
 	/**
 	 * 图片上传
 	 *
-	 * @param uploadQuery
-	 * @param uploadImageUrl
+	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
@@ -334,8 +333,6 @@ public class HttpRequset {
 	 * 
 	 * 文件下载
 	 * @param fssId
-	 * @param downLoadUrl
-	 * @return
 	 * @throws Exception
 	 */
 	public JSONObject downLoadBase64(Long fssId) throws Exception {
@@ -438,7 +435,7 @@ public class HttpRequset {
 	/**
 	 * http  json请求 返回流
 	 * @param obj
-	 * @param url2
+	 * @param url
 	 * @return
 	 * @throws Exception
 	 */
@@ -461,7 +458,7 @@ public class HttpRequset {
 	
 	/**
 	 * 用户注册
-	 * @param cert
+	 * @param kvs
 	 * @return
 	 * @throws Exception
 	 */
@@ -472,7 +469,7 @@ public class HttpRequset {
 	
 	/**
 	 * 用户更新
-	 * @param cert
+	 * @param userParams
 	 * @return
 	 * @throws Exception
 	 */
@@ -483,7 +480,7 @@ public class HttpRequset {
 
 	/**
 	 * 用户详细信息查询
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 * @throws Exception
 	 */
@@ -504,7 +501,7 @@ public class HttpRequset {
 
 	/**
 	 * 创建企业
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entAdd(Object obj) throws Exception {
@@ -514,7 +511,7 @@ public class HttpRequset {
 	
 	/**
 	 * 更新企业
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entUpdate(Object obj) throws Exception {
@@ -523,7 +520,7 @@ public class HttpRequset {
 	}
 	/**
 	 * 更新企业基本信息
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entUpdateBase(Object obj) throws Exception {
@@ -532,7 +529,7 @@ public class HttpRequset {
 	
 	/**
 	 * 删除企业
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entDelete(Object obj) throws Exception {
@@ -542,7 +539,7 @@ public class HttpRequset {
 	
 	/**
 	 * 企业详细信息查询
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entSearchInfo(Object obj) throws Exception {
@@ -552,7 +549,7 @@ public class HttpRequset {
 	
 	/**
 	 * 创建部门
-	 * @param kvs
+	 * @param deptParams
 	 * @return
 	 */
 	public JSONObject deptAdd(DeptParams deptParams) throws Exception {
@@ -562,7 +559,7 @@ public class HttpRequset {
 	
 	/**
 	 * 更新部门
-	 * @param kvs
+	 * @param deptParams
 	 * @return
 	 */
 	public JSONObject deptUpdate(DeptParams deptParams) throws Exception {
@@ -572,7 +569,7 @@ public class HttpRequset {
 	
 	/**
 	 * 查询部门详情信息
-	 * @param kvs
+	 * @param deptParams
 	 * @return
 	 */
 	public JSONObject deptSearchInfo(DeptParams deptParams) throws Exception {
@@ -582,7 +579,7 @@ public class HttpRequset {
 	
 	/**
 	 * 部门删除
-	 * @param kvs
+	 * @param deptParams
 	 * @return
 	 */
 	public JSONObject deptDelete(DeptParams deptParams) throws Exception {
@@ -592,7 +589,7 @@ public class HttpRequset {
 	
 	/**
 	 * 查询企业下一级节点信息
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entSearchOneNode(Object obj) throws Exception {
@@ -612,7 +609,7 @@ public class HttpRequset {
 	
 	/**
 	 * 查询企业下全部节点信息
-	 * @param kvs
+	 * @param uagOrgParams
 	 * @return
 	 */
 	public JSONObject entAll(UagOrgParams uagOrgParams) throws Exception {
@@ -632,7 +629,7 @@ public class HttpRequset {
 	
 	/**
 	 * 查询当前用户加入的企业列表
-	 * @param kvs
+	 * @param entListParams
 	 * @return
 	 * @throws Exception
 	 */
@@ -662,7 +659,7 @@ public class HttpRequset {
 	
 	/**
 	 * 用户切换企业
-	 * @param kvs
+	 * @param swicthParams
 	 * @return
 	 * @throws Exception
 	 */
@@ -751,7 +748,7 @@ public class HttpRequset {
 	
 	/**
 	 * 用户授权接口
-	 * @param kvs
+	 * @param authParams
 	 * @return
 	 * @throws Exception
 	 */
@@ -761,7 +758,7 @@ public class HttpRequset {
 	
 	/**
 	 *  根据手机号或uuid集合查询用户信息
-	 * @param kvs
+	 * @param params
 	 * @return
 	 * @throws Exception
 	 */
@@ -810,7 +807,7 @@ public class HttpRequset {
 	
 	/**
 	 * 用户同意加入企业
-	 * @param kvs
+	 * @param joinToEntParams
 	 * @return
 	 * @throws Exception
 	 */
@@ -841,7 +838,7 @@ public class HttpRequset {
 
 	/**
 	 * 删除注册用户（已经激活）
-	 * @param userParams
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 */

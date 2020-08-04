@@ -1,5 +1,7 @@
 package com.itrus.common.utils.excel;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +49,7 @@ public class ExcelLogs {
     public List<ExcelLog> getErrorLogList() {
         List<ExcelLog> errList = new ArrayList<>();
         for (ExcelLog log : this.logList) {
-            if (log != null && ExcelUtil.isNotBlank(log.getLog())) {
+            if (log != null && StringUtils.isNotBlank(log.getLog())) {
                 errList.add(log);
             }
         }

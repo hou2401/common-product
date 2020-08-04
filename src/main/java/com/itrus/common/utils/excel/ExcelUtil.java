@@ -1,10 +1,12 @@
 package com.itrus.common.utils.excel;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.ComparatorUtils;
 import org.apache.commons.collections.comparators.ComparableComparator;
 import org.apache.commons.collections.comparators.ComparatorChain;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellReference;
@@ -32,10 +34,12 @@ import java.util.regex.Pattern;
  * @author hzq
  * @since 2020/3/30
  */
+@Slf4j
 public class ExcelUtil {
 
     private static Logger LG = LoggerFactory.getLogger(ExcelUtil.class);
 
+    private static final Pattern PATTERN = Pattern.compile("-?[0-9]+(\\\\.[0-9]+)?");
     /**
      * 用来验证excel与Vo中的类型是否一致 <br>
      * Map<栏位类型,只能是哪些Cell类型>
@@ -58,30 +62,31 @@ public class ExcelUtil {
      * 获取cell类型的文字描述
      *
      * @param cellType <pre>
-     *                                                 CellType.BLANK
-     *                                                 CellType.BOOLEAN
-     *                                                 CellType.ERROR
-     *                                                 CellType.FORMULA
-     *                                                 CellType.NUMERIC
-     *                                                 CellType.STRING
-     *                                                 </pre>
+     *                                                                 CellType.BLANK
+     *                                                                 CellType.BOOLEAN
+     *                                                                 CellType.ERROR
+     *                                                                 CellType.FORMULA
+     *                                                                 CellType.NUMERIC
+     *                                                                 CellType.STRING
+     *                                                                 </pre>
      * @return
      */
     private static String getCellTypeByInt(CellType cellType) {
-        if (cellType == CellType.BLANK)
+        if (cellType == CellType.BLANK) {
             return "Null type";
-        else if (cellType == CellType.BOOLEAN)
+        } else if (cellType == CellType.BOOLEAN) {
             return "Boolean type";
-        else if (cellType == CellType.ERROR)
+        } else if (cellType == CellType.ERROR) {
             return "Error type";
-        else if (cellType == CellType.FORMULA)
+        } else if (cellType == CellType.FORMULA) {
             return "Formula type";
-        else if (cellType == CellType.NUMERIC)
+        } else if (cellType == CellType.NUMERIC) {
             return "Numeric type";
-        else if (cellType == CellType.STRING)
+        } else if (cellType == CellType.STRING) {
             return "String type";
-        else
+        } else {
             return "Unknown type";
+        }
     }
 
     /**
@@ -91,19 +96,21 @@ public class ExcelUtil {
      * @return
      */
     private static Object getCellValue(Cell cell) {
-        if (cell == null
-                || (cell.getCellTypeEnum() == CellType.STRING && isBlank(cell
-                .getStringCellValue()))) {
+        if (cell == null || (
+                cell.getCellTypeEnum() == CellType.STRING
+                        && StringUtils.isBlank(cell.getStringCellValue())
+                )
+        ) {
             return null;
         }
         CellType cellType = cell.getCellTypeEnum();
-        if (cellType == CellType.BLANK)
+        if (cellType == CellType.BLANK) {
             return null;
-        else if (cellType == CellType.BOOLEAN)
+        } else if (cellType == CellType.BOOLEAN) {
             return cell.getBooleanCellValue();
-        else if (cellType == CellType.ERROR)
+        } else if (cellType == CellType.ERROR) {
             return cell.getErrorCellValue();
-        else if (cellType == CellType.FORMULA) {
+        } else if (cellType == CellType.FORMULA) {
             try {
                 if (HSSFDateUtil.isCellDateFormatted(cell)) {
                     return cell.getDateCellValue();
@@ -119,10 +126,11 @@ public class ExcelUtil {
             } else {
                 return cell.getNumericCellValue();
             }
-        } else if (cellType == CellType.STRING)
+        } else if (cellType == CellType.STRING) {
             return cell.getStringCellValue();
-        else
+        } else {
             return null;
+        }
     }
 
     /**
@@ -251,10 +259,12 @@ public class ExcelUtil {
      * @param dataset 数据集合
      * @param pattern 日期格式
      */
-    private static <T> void write2Sheet(HSSFSheet sheet, Map<String, String> headers, Collection<T> dataset,
+    private static <T> void write2Sheet(HSSFSheet sheet,
+                                        Map<String, String> headers,
+                                        Collection<T> dataset,
                                         String pattern) {
         //时间格式默认"yyyy-MM-dd"
-        if (isBlank(pattern)) {
+        if (StringUtils.isBlank(pattern)) {
             pattern = "yyyy-MM-dd";
         }
         // 产生表格标题行
@@ -482,7 +492,7 @@ public class ExcelUtil {
                             for (int i = 0; i < count; i++) {
                                 Cell cell = row.getCell(cellIndex);
                                 String errMsg = validateCell(cell, field, cellIndex);
-                                if (isBlank(errMsg)) {
+                                if (StringUtils.isBlank(errMsg)) {
                                     value[i] = getCellValue(cell);
                                 } else {
                                     log.append(errMsg);
@@ -496,7 +506,7 @@ public class ExcelUtil {
                         } else {
                             Cell cell = row.getCell(cellIndex);
                             String errMsg = validateCell(cell, field, cellIndex);
-                            if (isBlank(errMsg)) {
+                            if (StringUtils.isBlank(errMsg)) {
                                 Object value = null;
                                 // 处理特殊情况,Excel中的String,转换成Bean的Date
                                 if (field.getType().equals(Date.class) && cell.getCellTypeEnum() == CellType.STRING) {
@@ -513,7 +523,7 @@ public class ExcelUtil {
                                     value = getCellValue(cell);
                                     // 处理特殊情况,excel的value为String,且bean中为其他,且defaultValue不为空,那就=defaultValue
                                     ExcelCell annoCell = field.getAnnotation(ExcelCell.class);
-                                    if (value instanceof String && !field.getType().equals(String.class) && isNotBlank(annoCell.defaultValue())) {
+                                    if (value instanceof String && !field.getType().equals(String.class) && StringUtils.isNotBlank(annoCell.defaultValue())) {
                                         value = annoCell.defaultValue();
                                     }
                                     if (field.getType().equals(String.class)) {
@@ -529,7 +539,7 @@ public class ExcelUtil {
                                 }
                                 field.set(t, value);
                             }
-                            if (isNotBlank(errMsg)) {
+                            if (StringUtils.isNotBlank(errMsg)) {
                                 log.append(errMsg);
                                 log.append(";");
                                 logs.setHasError(true);
@@ -537,7 +547,7 @@ public class ExcelUtil {
                             cellIndex++;
                         }
                     }
-                    if (log.toString().equals("")) {
+                    if (StringUtils.isBlank(log.toString())) {
                         list.add(t);
                     } else {
                         logList.add(new ExcelLog(t, log.toString(), row.getRowNum() + 1));
@@ -577,7 +587,7 @@ public class ExcelUtil {
             if (field.getType() == String.class) {
                 if (cell.getCellTypeEnum() == CellType.STRING) {
                     String value = cell.getStringCellValue();
-                    if (!valid.allowNull() && isBlank(value)) {
+                    if (!valid.allowNull() && StringUtils.isBlank(value)) {
                         result = MessageFormat.format("the cell [{0}] can not null", columnName);
                         return result;
                     }
@@ -593,11 +603,11 @@ public class ExcelUtil {
                 }
                 if (cell.getCellTypeEnum() == CellType.STRING) {
                     String value = cell.getStringCellValue();
-                    if (!valid.allowNull() && isBlank(value)) {
+                    if (!valid.allowNull() && StringUtils.isBlank(value)) {
                         result = MessageFormat.format("the cell [{0}] can not null", columnName);
                         return result;
                     } else {
-                        if (!isNumericzidai(value)) {
+                        if (!isNumericZidai(value)) {
                             result = MessageFormat.format("the cell [{0}] type must [{1}]", columnName, "Numeric");
                         }
                     }
@@ -611,88 +621,6 @@ public class ExcelUtil {
         }
 
 
-//        ExcelCell annoCell = field.getAnnotation(ExcelCell.class);
-//        if (cell == null || (cell.getCellTypeEnum() == CellType.STRING && isBlank(cell
-//                .getStringCellValue()))) {
-//            if (annoCell != null && valid.allowNull() == false) {
-//                result = MessageFormat.format("the cell [{0}] can not null", columnName);
-//            }
-//        } else if (cell.getCellTypeEnum() == CellType.BLANK && valid.allowNull()) {
-//            return result;
-//        } else {
-//            List<CellType> cellTypes = Arrays.asList(cellTypeArr);
-//            if(field.getType() != String.class) { //过滤String类型
-//                // 如果類型不在指定範圍內,並且沒有默認值
-//                if (!(cellTypes.contains(cell.getCellTypeEnum())) || isNotBlank(annoCell.defaultValue())
-//                        && cell.getCellTypeEnum() == CellType.STRING) {
-//                    StringBuilder strType = new StringBuilder();
-//                    for (int i = 0; i < cellTypes.size(); i++) {
-//                        CellType cellType = cellTypes.get(i);
-//                        if (cellType == CellType.STRING) {
-//                            continue;
-//                        }
-//                        strType.append(getCellTypeByInt(cellType));
-//                        if (i != cellTypes.size() - 1) {
-//                            strType.append(",");
-//                        }
-//                    }
-//                    result =
-//                            MessageFormat.format("the cell [{0}] type must [{1}]", columnName, strType.toString());
-//                } else {
-//                    // 类型符合验证,但值不在要求范围内的
-//                    // String in
-//                    if (annoCell.valid().in().length != 0 && cell.getCellTypeEnum() == CellType.STRING) {
-//                        String[] in = annoCell.valid().in();
-//                        String cellValue = cell.getStringCellValue();
-//                        boolean isIn = false;
-//                        for (String str : in) {
-//                            if (str.equals(cellValue)) {
-//                                isIn = true;
-//                            }
-//                        }
-//                        if (!isIn) {
-//                            result = MessageFormat.format("the cell [{0}] value must in {1}", columnName, in);
-//                        }
-//                    }
-//                    // 数字型
-//                    if (cell.getCellTypeEnum() == CellType.NUMERIC) {
-//                        double cellValue = cell.getNumericCellValue();
-//                        // 小于
-//                        if (!Double.isNaN(annoCell.valid().lt())) {
-//                            if (!(cellValue < annoCell.valid().lt())) {
-//                                result =
-//                                        MessageFormat.format("the cell [{0}] value must less than [{1}]", columnName,
-//                                                annoCell.valid().lt());
-//                            }
-//                        }
-//                        // 大于
-//                        if (!Double.isNaN(annoCell.valid().gt())) {
-//                            if (!(cellValue > annoCell.valid().gt())) {
-//                                result =
-//                                        MessageFormat.format("the cell [{0}] value must greater than [{1}]", columnName,
-//                                                annoCell.valid().gt());
-//                            }
-//                        }
-//                        // 小于等于
-//                        if (!Double.isNaN(annoCell.valid().le())) {
-//                            if (!(cellValue <= annoCell.valid().le())) {
-//                                result =
-//                                        MessageFormat.format("the cell [{0}] value must less than or equal [{1}]",
-//                                                columnName, annoCell.valid().le());
-//                            }
-//                        }
-//                        // 大于等于
-//                        if (!Double.isNaN(annoCell.valid().ge())) {
-//                            if (!(cellValue >= annoCell.valid().ge())) {
-//                                result =
-//                                        MessageFormat.format("the cell [{0}] value must greater than or equal [{1}]",
-//                                                columnName, annoCell.valid().ge());
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
         return result;
     }
 
@@ -747,20 +675,14 @@ public class ExcelUtil {
         }
     }
 
-    private static boolean isBlank(String str) {
-        if (str == null) {
-            return true;
-        }
-        return str.length() == 0;
-    }
+    /**
+     * 判断你是不是数字子代
+     * @param str
+     * @return
+     */
+    private static boolean isNumericZidai(String str) {
 
-    protected static boolean isNotBlank(String str) {
-        return !isBlank(str);
-    }
-
-    private static boolean isNumericzidai(String str) {
-        Pattern pattern = Pattern.compile("-?[0-9]+(\\\\.[0-9]+)?");
-        Matcher isNum = pattern.matcher(str);
+        Matcher isNum = PATTERN.matcher(str);
         if (!isNum.matches()) {
             return false;
         }

@@ -55,43 +55,58 @@ public class OrgAlias implements Comparable<OrgAlias>,Serializable{
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		OrgAlias other = (OrgAlias) obj;
 		if (createdBy == null) {
-			if (other.createdBy != null)
+			if (other.createdBy != null) {
 				return false;
-		} else if (!createdBy.equals(other.createdBy))
+			}
+		} else if (!createdBy.equals(other.createdBy)) {
 			return false;
+		}
 		if (ifAudited == null) {
-			if (other.ifAudited != null)
+			if (other.ifAudited != null) {
 				return false;
-		} else if (!ifAudited.equals(other.ifAudited))
+			}
+		} else if (!ifAudited.equals(other.ifAudited)) {
 			return false;
+		}
 		if (orgAlias == null) {
-			if (other.orgAlias != null)
+			if (other.orgAlias != null) {
 				return false;
-		} else if (!orgAlias.equals(other.orgAlias))
+			}
+		} else if (!orgAlias.equals(other.orgAlias)) {
 			return false;
+		}
 		if (parentUuid == null) {
-			if (other.parentUuid != null)
+			if (other.parentUuid != null) {
 				return false;
-		} else if (!parentUuid.equals(other.parentUuid))
+			}
+		} else if (!parentUuid.equals(other.parentUuid)) {
 			return false;
+		}
 		if (realName == null) {
-			if (other.realName != null)
+			if (other.realName != null) {
 				return false;
-		} else if (!realName.equals(other.realName))
+			}
+		} else if (!realName.equals(other.realName)) {
 			return false;
+		}
 		if (uuid == null) {
-			if (other.uuid != null)
+			if (other.uuid != null) {
 				return false;
-		} else if (!uuid.equals(other.uuid))
+			}
+		} else if (!uuid.equals(other.uuid)) {
 			return false;
+		}
 		return true;
 	}
 

@@ -496,7 +496,7 @@ public class CallApiRequest {
 	/**
 	 * 用户更新
 	 *
-	 * @param kvs 不能是map对象
+	 * @param userParams 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -506,7 +506,7 @@ public class CallApiRequest {
 	/**
 	 * 用户详细信息查询
 	 *
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -524,7 +524,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 创建企业
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entAdd(Object obj) throws Exception {
@@ -532,7 +532,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 更新企业
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entUpdate(Object obj) throws Exception {
@@ -540,7 +540,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 更新企业基本信息
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entUpdateBase(Object obj) throws Exception {
@@ -548,7 +548,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 删除企业
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entDelete(Object obj) throws Exception {
@@ -556,7 +556,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 企业详细信息查询
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entSearchInfo(Object obj) throws Exception {
@@ -564,7 +564,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 创建部门
-	 * @param kvs
+	 * @param deptParams
 	 * @return
 	 */
 	public JSONObject deptAdd(DeptParams deptParams) throws Exception {
@@ -572,7 +572,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 更新部门
-	 * @param kvs
+	 * @param deptParams
 	 * @return
 	 */
 	public JSONObject deptUpdate(DeptParams deptParams) throws Exception {
@@ -580,7 +580,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 查询部门详情信息
-	 * @param kvs
+	 * @param deptParams
 	 * @return
 	 */
 	public JSONObject deptSearchInfo(DeptParams deptParams) throws Exception {
@@ -588,7 +588,7 @@ public class CallApiRequest {
 	}
 	/**
 	 *  部门删除
-	 * @param kvs
+	 * @param deptParams
 	 * @return
 	 */
 	public JSONObject deptDelete(DeptParams deptParams) throws Exception {
@@ -596,7 +596,7 @@ public class CallApiRequest {
 	}
 	/**
 	 *  查询企业下一级节点信息
-	 * @param kvs
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject entSearchOneNode(Object obj) throws Exception {
@@ -612,7 +612,7 @@ public class CallApiRequest {
 	}
 	/**
 	 *  查询企业下全部节点信息
-	 * @param kvs
+	 * @param uagOrgParams
 	 * @return
 	 */
 	public JSONObject entAll(UagOrgParams uagOrgParams) throws Exception {
@@ -620,7 +620,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 查询部门下全部节点信息
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -630,7 +630,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 查询当前用户加入的企业列表
-	 * @param object
+	 * @param entListParams
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -640,7 +640,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 查询当前用户加入的企业列表
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -650,7 +650,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 移除邀约用户
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -660,7 +660,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 用户切换企业
-	 * @param object
+	 * @param swicthParams
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -670,7 +670,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 企业邀请用户
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -691,7 +691,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 口令认证
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -701,7 +701,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 获取短信验证码
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -711,7 +711,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 验证短信验证码
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -721,7 +721,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 退出单点登录
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -731,7 +731,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 添加扩展属性
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -741,7 +741,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 查询当前节点下uuid集合
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -751,7 +751,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 用户授权接口
-	 * @param object
+	 * @param authParams
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -761,7 +761,7 @@ public class CallApiRequest {
 	}
 	/**
 	 * 根据手机号或uuid集合查询用户信息
-	 * @param object
+	 * @param params
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -771,7 +771,7 @@ public class CallApiRequest {
 	}
 	/**
 	 *全量查询企业和用户信息
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -782,7 +782,7 @@ public class CallApiRequest {
 	
 	/**
 	 *获取企业下超管列表
-	 * @param object
+	 * @param kvs
 	 * @return
 	 * @throws Exception 
 	 * @throws  
@@ -803,7 +803,7 @@ public class CallApiRequest {
 	
 	/**
 	 * 实名用户接口
-	 * @param entLoadTreeParams
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject updateAuth(Object obj)throws Exception {
@@ -813,7 +813,7 @@ public class CallApiRequest {
 	
 	/**
 	 * 用户同意加入企业
-	 * @param entLoadTreeParams
+	 * @param joinToEntParams
 	 * @return
 	 */
 	public JSONObject joinToEnterprise(JoinToEntParams joinToEntParams)throws Exception {
@@ -823,7 +823,7 @@ public class CallApiRequest {
 	
 	/**
 	 * 更新用户企业内信息
-	 * @param entLoadTreeParams
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject updateUserInfoInEnterprise(Object obj)throws Exception {
@@ -833,7 +833,7 @@ public class CallApiRequest {
 	
 	/**
 	 * 员工从指定企业离职接口
-	 * @param entLoadTreeParams
+	 * @param obj
 	 * @return
 	 */
 	public JSONObject userDimission(Object obj)throws Exception {

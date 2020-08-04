@@ -130,12 +130,13 @@ public class SmsRequest{
 	/**
      * 异步发送短信
      * 
-     * @param email
+     * @param sms
      */
     public void sendSmsByAsynchronousMode(final SmsParams sms){
     	
     	taskExecutor.execute(new Runnable(){
-	        public void run(){
+	        @Override
+			public void run(){
 				try {
 					send(sms);
 		        } catch (Exception e) {
@@ -169,7 +170,7 @@ public class SmsRequest{
 				JSONObject jsonObject = JSON.parseObject(doPost);
 				Integer retCode = jsonObject.getInteger("retCode");
 				if (!Objects.equals(retCode, 1000)) {
-					// TODO:出证申请失败处理
+					// 出证申请失败处理
 					String message = String.valueOf(jsonObject.get("retMsg"));
 					log.info("短信发送失败：code={},message={}",retCode,message );
 					throw new SmsException(message);
@@ -210,22 +211,22 @@ public class SmsRequest{
 				if( sendTwy ){
 					Integer status = jsonObject.getInteger("status");
 					if (!Objects.equals(status, 1)) {
-						// TODO:出证申请失败处理
+						// :出证申请失败处理
 						throw new SmsException("status="+status+"message="+jsonObject.get("message"));
 					} 
-					// TODO:出证申请成功处理
+					// :出证申请成功处理
 				}else{
 
 					Integer retCode = jsonObject.getInteger("retCode");
 					if (!Objects.equals(retCode, 1000)) {
-						// TODO:出证申请失败处理
+						// :出证申请失败处理
 						throw new SmsException("retCode="+retCode+"retMsg="+jsonObject.get("retMsg"));
 					} 
-					// TODO:出证申请成功处理
+					// :出证申请成功处理
 				}
 
 			} else {
-				// TODO：Http调用失败处理
+				// ：Http调用失败处理
 				log.info(responseEntity.getMessage());
 				throw new SmsException(responseEntity.getMessage());
 			}

@@ -106,6 +106,7 @@ public class EmailRequest implements Serializable {
     public void sendMailByAsynchronousMode(final EmailParams email) {
 
         taskExecutor.execute(new Runnable() {
+            @Override
             public void run() {
                 try {
                     send(email);

@@ -68,7 +68,7 @@ public class UagRequest {
 
     public boolean success(JSONObject object) {
         if (object.getString("code") != null) {
-            return object.getString("code").equals("0x0000");
+            return "0x0000".equals(object.getString("code"));
         }
         return false;
     }

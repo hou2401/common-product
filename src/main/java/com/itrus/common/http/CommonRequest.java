@@ -676,7 +676,7 @@ public class CommonRequest {
     /**
      * 查询银行列表
      *
-     * @param url 完整路径 从数据库里面查询
+     * @param authParams 完整路径 从数据库里面查询
      * @return
      * @throws AuthException
      */
@@ -694,7 +694,7 @@ public class CommonRequest {
     /**
      * 查询省/直辖市列表
      *
-     * @param url 完整路径 从数据库里面查询
+     * @param authParams 完整路径 从数据库里面查询
      * @return
      * @throws AuthException
      */

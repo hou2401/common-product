@@ -125,98 +125,135 @@ public class UserInfoBase implements Comparable<UserInfoBase>, Serializable{
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		UserInfoBase other = (UserInfoBase) obj;
 		if (defaultOrganizationUuid == null) {
-			if (other.defaultOrganizationUuid != null)
+			if (other.defaultOrganizationUuid != null) {
 				return false;
-		} else if (!defaultOrganizationUuid.equals(other.defaultOrganizationUuid))
+			}
+		} else if (!defaultOrganizationUuid.equals(other.defaultOrganizationUuid)) {
 			return false;
+		}
 		if (displayName == null) {
-			if (other.displayName != null)
+			if (other.displayName != null) {
 				return false;
-		} else if (!displayName.equals(other.displayName))
+			}
+		} else if (!displayName.equals(other.displayName)) {
 			return false;
+		}
 		if (email == null) {
-			if (other.email != null)
+			if (other.email != null) {
 				return false;
-		} else if (!email.equals(other.email))
+			}
+		} else if (!email.equals(other.email)) {
 			return false;
+		}
 		if (ext == null) {
-			if (other.ext != null)
+			if (other.ext != null) {
 				return false;
-		} else if (!ext.equals(other.ext))
+			}
+		} else if (!ext.equals(other.ext)) {
 			return false;
+		}
 		if (idCardNum == null) {
-			if (other.idCardNum != null)
+			if (other.idCardNum != null) {
 				return false;
-		} else if (!idCardNum.equals(other.idCardNum))
+			}
+		} else if (!idCardNum.equals(other.idCardNum)) {
 			return false;
+		}
 		if (idCardType == null) {
-			if (other.idCardType != null)
+			if (other.idCardType != null) {
 				return false;
-		} else if (!idCardType.equals(other.idCardType))
+			}
+		} else if (!idCardType.equals(other.idCardType)) {
 			return false;
+		}
 		if (lastLogon == null) {
-			if (other.lastLogon != null)
+			if (other.lastLogon != null) {
 				return false;
-		} else if (!lastLogon.equals(other.lastLogon))
+			}
+		} else if (!lastLogon.equals(other.lastLogon)) {
 			return false;
+		}
 		if (orgName == null) {
-			if (other.orgName != null)
+			if (other.orgName != null) {
 				return false;
-		} else if (!orgName.equals(other.orgName))
+			}
+		} else if (!orgName.equals(other.orgName)) {
 			return false;
+		}
 		if (orgType == null) {
-			if (other.orgType != null)
+			if (other.orgType != null) {
 				return false;
-		} else if (!orgType.equals(other.orgType))
+			}
+		} else if (!orgType.equals(other.orgType)) {
 			return false;
+		}
 		if (orgUuid == null) {
-			if (other.orgUuid != null)
+			if (other.orgUuid != null) {
 				return false;
-		} else if (!orgUuid.equals(other.orgUuid))
+			}
+		} else if (!orgUuid.equals(other.orgUuid)) {
 			return false;
+		}
 		if (passWd == null) {
-			if (other.passWd != null)
+			if (other.passWd != null) {
 				return false;
-		} else if (!passWd.equals(other.passWd))
+			}
+		} else if (!passWd.equals(other.passWd)) {
 			return false;
+		}
 		if (phone == null) {
-			if (other.phone != null)
+			if (other.phone != null) {
 				return false;
-		} else if (!phone.equals(other.phone))
+			}
+		} else if (!phone.equals(other.phone)) {
 			return false;
+		}
 		if (realName == null) {
-			if (other.realName != null)
+			if (other.realName != null) {
 				return false;
-		} else if (!realName.equals(other.realName))
+			}
+		} else if (!realName.equals(other.realName)) {
 			return false;
+		}
 		if (satate == null) {
-			if (other.satate != null)
+			if (other.satate != null) {
 				return false;
-		} else if (!satate.equals(other.satate))
+			}
+		} else if (!satate.equals(other.satate)) {
 			return false;
+		}
 		if (sex == null) {
-			if (other.sex != null)
+			if (other.sex != null) {
 				return false;
-		} else if (!sex.equals(other.sex))
+			}
+		} else if (!sex.equals(other.sex)) {
 			return false;
+		}
 		if (userName == null) {
-			if (other.userName != null)
+			if (other.userName != null) {
 				return false;
-		} else if (!userName.equals(other.userName))
+			}
+		} else if (!userName.equals(other.userName)) {
 			return false;
+		}
 		if (uuid == null) {
-			if (other.uuid != null)
+			if (other.uuid != null) {
 				return false;
-		} else if (!uuid.equals(other.uuid))
+			}
+		} else if (!uuid.equals(other.uuid)) {
 			return false;
+		}
 		return true;
 	}
 

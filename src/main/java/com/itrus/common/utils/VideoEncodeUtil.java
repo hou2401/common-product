@@ -50,11 +50,11 @@ public class VideoEncodeUtil {
 		audio.setCodec("libmp3lame");
 		//设置新重新编码的音频流的比特率值
 		//如果你想要128 kb / s比特率，你应该调用setBitRate（new Integer（128000））
-		audio.setBitRate(new Integer(128000));
+		audio.setBitRate(Integer.valueOf(128000));
 		//设置将在重新编码的音频流中使用的音频通道的数量（1 =单声道，2 =立体声）
-		audio.setChannels(new Integer(2));
+		audio.setChannels(Integer.valueOf(2));
 		//设置新重新编码的音频流的采样率。如果未设置采样率值，编码器将选择默认值。该值应以赫兹表示。例如，如果您想要类似CD的44100 Hz采样率，则应调用setSamplingRate（new Integer（44100））。
-		audio.setSamplingRate(new Integer(44100));
+		audio.setSamplingRate(Integer.valueOf(44100));
 		//可以调用此方法来改变音频流的音量。值256表示没有音量变化。因此，小于256的值是音量减小，而大于256的值将增加音频流的音量。
 		audio.setVolume(256);
 		
@@ -64,9 +64,9 @@ public class VideoEncodeUtil {
 		//它设置新重新编码的视频流的比特率值。如果未设置比特率值，编码器将选择默认值。该值应以每秒位数表示。例如，如果你想要360 kb / s比特率，你应该调用setBitRate（new Integer（360000））。
 		//800
 		//360000
-		video.setBitRate(new Integer(800));
+		video.setBitRate(Integer.valueOf(800));
 		//它为新重新编码的音频流设置帧速率值。如果未设置比特率帧速率，则编码器将选择默认帧速率。该值应以每秒帧数表示。例如，如果你想要一个30 f / s的帧速率，你应该调用setFrameRate（new Integer（30））。
-		video.setFrameRate(new Integer(15));
+		video.setFrameRate(Integer.valueOf(15));
 		
 		enciding.setFormat("mp4");
 		

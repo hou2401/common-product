@@ -31,9 +31,10 @@ public class RemoteAddr {
 			return "127.0.0.1";
 		}
 		HttpServletRequest request = ((ServletRequestAttributes) ra).getRequest();		
-		if(request.getHeader("X-Real-IP")!=null)
+		if(request.getHeader("X-Real-IP")!=null) {
 			return request.getHeader("X-Real-IP");
-		else
+		} else {
 			return request.getRemoteAddr();
+		}
 	}
 }
