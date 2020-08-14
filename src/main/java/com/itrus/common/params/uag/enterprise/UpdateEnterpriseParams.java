@@ -24,10 +24,7 @@ public class UpdateEnterpriseParams extends CreateEnterpriseParams{
 	 */
 	private String ifAudited;
 	
-	/**
-	 * 企业实名状态
-	 */
-	private String realName;
+
 	
 	
 	public UpdateEnterpriseParams(String manager, Long uuid, String ifAudited, String realName){
@@ -35,7 +32,7 @@ public class UpdateEnterpriseParams extends CreateEnterpriseParams{
 		this.setManager(manager);
 		this.uuid = uuid;
 		this.ifAudited = ifAudited;
-		this.realName = realName;
+		this.setRealName(realName);
 	}
 
 	public UpdateEnterpriseParams() {
