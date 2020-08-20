@@ -15,6 +15,14 @@ public class Uag {
 	 * 用户注册
 	 */
 	private String userRegister;
+	
+	
+	/**
+	 * 企业邀请用户
+	 */
+	private String joinEnterprise;
+	
+	
 	/**
 	 * 用户更新
 	 */
@@ -101,11 +109,6 @@ public class Uag {
 	 * 用户切换企业
 	 */
 	private String switchEnterprise;
-	
-	/**
-	 * 企业邀请用户
-	 */
-	private String joinEnterprise;
 	
 	/**
 	 * 重新邀请企业用户

@@ -71,6 +71,7 @@
 		<springfox-swagger.version>2.9.2</springfox-swagger.version>
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
+		<commons-io.version>2.4</commons-io.version>
 	</properties>
 	<!-- 私有化服务上传jar -->
 	<distributionManagement>
@@ -232,7 +233,12 @@
 			<artifactId>httpmime</artifactId>
 			<scope>compile</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+			<scope>compile</scope>
+		</dependency>
 		<!-- 发送邮件 -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>

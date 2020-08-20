@@ -48,7 +48,7 @@ public class UagResult implements Serializable{
 		if(result == null ){
 			return false;
 		}
-		return   "0x0000".equals(result.get(CODE_KEY)) ? true : false;
+		return   0 == result.getLong(CODE_KEY) ? true : false;
 	}
 	
 	/**
@@ -60,18 +60,6 @@ public class UagResult implements Serializable{
 		return !isOk(result);
 	}
 	
-	
-	/**
-	 *  是否存在
-	 *
-	 * @param result json对象
-	 */
-	public static boolean isExist(JSONObject result) {
-			//1001  手机号已经存在
-			return  ("2000".equals(result.get(CODE_KEY))  ||  "1001".equals(result.get(CODE_KEY))) ? 
-					true : false;
-	}
-	
 	/**
 	 * 获取响应失败提示语
 	 */
@@ -79,7 +67,7 @@ public class UagResult implements Serializable{
 		if(jsonObject == null) {
 			return defaultMessage;
 		}
-		String string = jsonObject.getString("msg");
+		String string = jsonObject.getString(messageKey);
 		if(StringUtils.isNotBlank(string)) {
 			return string;
 		}

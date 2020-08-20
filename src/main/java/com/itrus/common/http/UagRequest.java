@@ -1,19 +1,30 @@
 package com.itrus.common.http;
 
-import com.itrus.common.params.uag.*;
 import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.params.uag.BetchImportParams;
 import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.EntListParams;
+import com.itrus.common.params.uag.EntLoadTreeParams;
+import com.itrus.common.params.uag.EntSearchInfoParams;
 import com.itrus.common.params.uag.GrantAuthParams;
+import com.itrus.common.params.uag.JoinEnterpriseParams;
+import com.itrus.common.params.uag.JoinToEntParams;
+import com.itrus.common.params.uag.ReJoinEnterpriseParams;
+import com.itrus.common.params.uag.RemoveUserParams;
+import com.itrus.common.params.uag.SearchOneNodeParams;
 import com.itrus.common.params.uag.SwicthParams;
 import com.itrus.common.params.uag.UagOrgParams;
+import com.itrus.common.params.uag.UserDimissionParams;
 import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.params.uag.UserParams;
+import com.itrus.common.params.uag.UserSearchInfoParams;
+import com.itrus.common.params.uag.user.RegisterParams;
+import com.itrus.common.result.uag.user.RegisterResult;
 
 /**
  * 公共原子服务调用方法
@@ -52,59 +63,6 @@ public class UagRequest {
         return http.httped();
     }
 
-    /**
-     * 请求是否OK
-     *
-     * @param object json对象
-     */
-    public boolean isOk(JSONObject object) {
-        if (object.get("code") != null || object.get("status") != null) {
-            return object.getIntValue("code") == 0 || object.getIntValue("status") == 1;
-
-        }
-        return false;
-
-    }
-
-    public boolean success(JSONObject object) {
-        if (object.getString("code") != null) {
-            return "0x0000".equals(object.getString("code"));
-        }
-        return false;
-    }
-
-    /**
-     * 获取请求消息
-     *
-     * @param object json对象
-     */
-    public String getMsg(JSONObject object) {
-        return object.getString("msg") == null ? object.getString("message") : object.getString("msg");
-    }
-
-    /**
-     * 获取请求消息
-     *
-     * @param object json对象
-     */
-    public int getCode(JSONObject object) {
-        return object.getIntValue("code");
-    }
-
-
-    /**
-     * 获取请求消息
-     *
-     * @param object json对象
-     * @return
-     */
-    public JSONObject getData(JSONObject object) {
-        if (object == null) {
-            return null;
-        }
-        return (JSONObject) object.get("data");
-    }
-
     //-----------------------------------------------------------------------------------------------------------------------
     /**
      * UAG组织架构服务
@@ -127,7 +85,7 @@ public class UagRequest {
     * @apiGroup 账号服务（account）
     * @apiSuccess (Success 0x0000) {JSONObject} json.
 	*/
-    public JSONObject userRegister(Object obj) throws Exception {
+    public RegisterResult userRegister(RegisterParams obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
             if (httped()) {
@@ -139,7 +97,12 @@ public class UagRequest {
                 break;
             }
         }
-        return result;
+        // 直接转换成对象，方便后续使用
+        RegisterResult overResult = null;
+        if( result != null ) {
+        	overResult = JSONObject.toJavaObject(result, RegisterResult.class);
+        }
+        return overResult;
 
     }
 
