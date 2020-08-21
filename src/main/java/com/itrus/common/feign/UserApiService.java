@@ -1,6 +1,7 @@
 package com.itrus.common.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itrus.common.params.uag.user.RegisterParams;
@@ -19,7 +20,7 @@ public interface UserApiService {
 	    * @apiGroup userapi
 	    * @apiSuccess [(group)] [{type}] field [description]
 	 */
-	@RequestMapping("/user/register")
+	@PostMapping("/user/register")
 	UagResult<RegisterResult> register(RegisterParams params);
 
 	
