@@ -12,16 +12,16 @@ public enum AccountSource{
 	/**
 	 * SaaS（默认）
 	 */
-	SAAS(0, "SaaS（默认）"),
+	SAAS("0", "SaaS（默认）"),
 	/**
 	 *Api
 	 */
-	API(1, "Api");
+	API("1", "Api");
 
-	private int code;
+	private String code;
 	private String name;
 
-	private AccountSource(int code, String name) {
+	private AccountSource(String code, String name) {
 		this.code = code;
 		this.name = name;
 	}

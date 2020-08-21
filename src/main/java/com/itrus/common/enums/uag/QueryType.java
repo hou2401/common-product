@@ -12,17 +12,17 @@ public enum QueryType{
 	/**
 	 *全量
 	 */
-	ALL(0, "全量"),
+	ALL("0", "全量"),
 	/**
 	 * 一级（默认）
 	 */
-	ONE(1, "一级（默认）")
+	ONE("1", "一级（默认）")
 	;
 	
-	private int code;
+	private String code;
 	private String name;
 
-	private QueryType(int code, String name) {
+	private QueryType(String code, String name) {
 		this.code = code;
 		this.name = name;
 	}

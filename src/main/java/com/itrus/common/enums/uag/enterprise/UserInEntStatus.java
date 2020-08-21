@@ -12,16 +12,16 @@ public enum UserInEntStatus{
 	/**
 	 * 在职（默认）
 	 */
-	NORMAL(0, "在职（默认）"),
+	NORMAL("0", "在职（默认）"),
 	/**
 	 * 公司级部门
 	 */
-	DIMISSION(1, "离职");
+	DIMISSION("1", "离职");
 
-	private int code;
+	private String code;
 	private String name;
 
-	private UserInEntStatus(int code, String name) {
+	private UserInEntStatus(String code, String name) {
 		this.code = code;
 		this.name = name;
 	}

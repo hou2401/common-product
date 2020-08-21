@@ -12,16 +12,16 @@ public enum UserSexType{
 	/**
 	 * 男（默认）
 	 */
-	MAN(0, "男（默认）"),
+	MAN("0", "男（默认）"),
 	/**
 	 * 女
 	 */
-	WOMAN(1, "女");
+	WOMAN("1", "女");
 	
-	private int code;
+	private String code;
 	private String name;
 
-	private UserSexType(int code, String name) {
+	private UserSexType(String code, String name) {
 		this.code = code;
 		this.name = name;
 	}

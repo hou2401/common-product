@@ -12,17 +12,17 @@ public enum RealNameStatus{
 	/**
 	 *未实名（默认）
 	 */
-	NO(0, "未实名（默认）"),
+	NO("0", "未实名（默认）"),
 	/**
 	 *已实名
 	 */
-	YES(1, "已实名")
+	YES("1", "已实名")
 	;
 	
-	private int code;
+	private String code;
 	private String name;
 
-	private RealNameStatus(int code, String name) {
+	private RealNameStatus(String code, String name) {
 		this.code = code;
 		this.name = name;
 	}
