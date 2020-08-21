@@ -1,17 +1,24 @@
 package com.itrus.common.result.uag.user;
 
-import com.alibaba.fastjson.JSONObject;
-import com.itrus.common.result.uag.UagResult;
+import java.io.Serializable;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 /**
  * 用户注册返回实体
  * @author wgx52
  *
  */
+/**
+ * @apiDefine RegisterResult 用户注册返回实体
+ * 
+ * @apiParam {Long} uuid 用户注册id.
+ *
+ */
+@Getter
 @EqualsAndHashCode(callSuper=false)
-public class RegisterResult extends UagResult{
+public class RegisterResult implements Serializable{
 
 	/**
 	 * 
@@ -23,14 +30,5 @@ public class RegisterResult extends UagResult{
 	 * 注册成功，返回用户注册uuid
 	 */
 	private Long uuid;
-	
-	/**
-	 * 用户注册标识
-	 */
-	public Long getUuid(){
-		JSONObject data = this.getData();
-		uuid = data.getLong("uuid");
-		return uuid;
-	}
 	
 }

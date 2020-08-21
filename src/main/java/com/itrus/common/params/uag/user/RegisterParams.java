@@ -10,6 +10,14 @@ import lombok.ToString;
  * @author wgx52
  *
  */
+/**
+ * @apiDefine RegisterParams 用户注册请求实体
+ * 
+ * @apiParam {String} phone 手机号.
+ * @apiParam {String} passwd 密码.
+ * @apiParam {String} state 账号状态 0未激活，1正常（默认） 2挂起.
+ *
+ */
 @Data
 @ToString
 @AllArgsConstructor

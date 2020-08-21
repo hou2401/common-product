@@ -1,5 +1,7 @@
 package com.itrus.common.result.uag.enterprise;
 
+import java.io.Serializable;
+
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.result.uag.UagResult;
 
@@ -14,8 +16,7 @@ import lombok.ToString;
  */
 @ToString
 @Data
-@EqualsAndHashCode(callSuper=true)
-public class RegisteredEnterpriseResult extends UagResult{
+public class RegisteredEnterpriseResult implements Serializable{
 
 	/**
 	 * 
@@ -43,21 +44,6 @@ public class RegisteredEnterpriseResult extends UagResult{
 	public static final String UUID_KEY="uuid";
 	
 	
-	/**
-	 *  是否存在
-	 *
-	 * @param result json对象
-	 */
-	public static boolean isExist(JSONObject result) {
-		if( isOk(result)){
-			//1001  手机号已经存在
-			UagResult uagResult = JSONObject.parseObject(result.toJSONString(), UagResult.class);
-			return   "1004".equals(uagResult.getCode()) ? 
-					true : false;
-		}
-		return false;
-		
-	}
 	
 	
 }

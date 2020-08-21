@@ -2,16 +2,14 @@ package com.itrus.common.result.uag;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang3.StringUtils;
-
-import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 import lombok.ToString;
 
 @Data
 @ToString
-public class UagResult implements Serializable{
+public class UagResult<T> implements Serializable{
 	
 	/**
 	 * 
@@ -28,51 +26,7 @@ public class UagResult implements Serializable{
 	 */
 	private String msg;
 	
-	private JSONObject data;
-	
-	
-	public static final String defaultMessage = "调用UAG失败";
-	
-	public static final String messageKey = "msg";
-	
-	public static final String DATA_KEY = "data";
-	
-	private static final String CODE_KEY = "code";
-	
-	/**
-	 *     请求OK
-	 *
-	 * @param result json对象
-	 */
-	public static boolean isOk(JSONObject result) {
-		if(result == null ){
-			return false;
-		}
-		return   0 == result.getLong(CODE_KEY) ? true : false;
-	}
-	
-	/**
-	 *     请求不OK
-	 *
-	 * @param result json对象
-	 */
-	public static boolean isNotOk(JSONObject result) {
-		return !isOk(result);
-	}
-	
-	/**
-	 * 获取响应失败提示语
-	 */
-	public static String getMessage(JSONObject jsonObject) {
-		if(jsonObject == null) {
-			return defaultMessage;
-		}
-		String string = jsonObject.getString(messageKey);
-		if(StringUtils.isNotBlank(string)) {
-			return string;
-		}
-		return defaultMessage;
-	}
-	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	private T data;
 	
 }
