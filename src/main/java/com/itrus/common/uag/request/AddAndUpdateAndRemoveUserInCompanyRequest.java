@@ -49,10 +49,6 @@ public class AddAndUpdateAndRemoveUserInCompanyRequest extends EntBase {
      */
     private JSONArray roleList;
     /**
-     * 企业/部门唯一标识
-     */
-    private Long parentUuid;
-    /**
      * 上级节点类型 0 企业（默认） 1 部门 2 用户 3 全部
      */
     private String parentType;
