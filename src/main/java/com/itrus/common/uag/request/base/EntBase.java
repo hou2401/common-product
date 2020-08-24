@@ -21,7 +21,7 @@ public class EntBase {
     /**
      * 企业唯一标识/账号唯一标识
      */
-    private Long uuid;
+    private String  uuid;
     /**
      * 企业唯一标识
      */

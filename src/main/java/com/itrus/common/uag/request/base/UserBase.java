@@ -13,7 +13,7 @@ public class UserBase {
     /**
      * 用户唯一标识
      */
-    private Long uuid;
+    private String uuid;
 
     /**
      *姓名
