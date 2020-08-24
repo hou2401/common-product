@@ -14,7 +14,7 @@ public class ApiAddPersonalRequest extends UserBase {
     /**
      * 标识给哪个企业/个人创建外部
      */
-    private Long uuid;
+    private String uuid;
     /**
      * 节点类型
      */

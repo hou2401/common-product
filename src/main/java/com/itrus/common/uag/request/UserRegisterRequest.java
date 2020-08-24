@@ -12,6 +12,5 @@ import lombok.ToString;
 @ToString
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class UserRegisterRequest extends UserBase {
 }

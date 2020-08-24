@@ -9,7 +9,6 @@ import lombok.ToString;
 @ToString
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class OrgShowCompanyInfoRequest extends EntBase {
 
 }
