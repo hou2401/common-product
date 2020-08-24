@@ -6,16 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-/**
- * 变更企业主管理员
- */
-@ToString
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrgChangeCreator extends EntBase {
+@ToString
+public class OrgRemoveSubCompanyRequest extends EntBase {
     /**
-     * 新主管理员手机号码
+     * 要移除的下级企业唯一标识
      */
-    private String phone;
+    private Long subCompanyUuid;
 }

@@ -1,0 +1,30 @@
+package com.itrus.common.uag.request;
+
+import com.itrus.common.uag.request.base.EntBase;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+public class ExternalUpdateCompanyRequest extends EntBase {
+    /**
+     * 数据库标识
+     */
+    private Long id;
+    /**
+     * 姓名
+     */
+    private String displayName;
+    /**
+     * 手机号码
+     */
+    private String phone;
+    /**
+     * 企业邮箱
+     */
+    private String email;
+}
