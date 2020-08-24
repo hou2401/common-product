@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- *
+ * 加载指定企业一级用户列表
  */
 @ToString
 @Data

@@ -13,7 +13,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeptAddandRemoveLeaderRequest {
+public class DeptAddAndRemoveLeaderRequest {
     /**
      *指定部门/企业唯一标识
      */
