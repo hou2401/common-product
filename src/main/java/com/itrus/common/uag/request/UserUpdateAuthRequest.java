@@ -9,7 +9,7 @@ import lombok.ToString;
  */
 @ToString
 @Data
-public class UserUpdateAuth extends UserBase {
+public class UserUpdateAuthRequest extends UserBase {
     /**
      *银行卡号
      */

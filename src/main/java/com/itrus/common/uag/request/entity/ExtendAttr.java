@@ -15,4 +15,9 @@ public class ExtendAttr {
      */
     private String telphoneNumber;
 
+    /**
+     * 注册地址
+     */
+    private String orgAddress;
+
 }

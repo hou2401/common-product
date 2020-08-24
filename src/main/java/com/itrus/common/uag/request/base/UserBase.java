@@ -44,6 +44,10 @@ public class UserBase {
      */
     private String state;
 
+
+    public UserBase() {
+    }
+
     public UserBase(Long uuid, String displayName, String phone, String email, String idCardType, String idCardNum, String passwd, String state) {
         this.uuid = uuid;
         this.displayName = displayName;
@@ -54,4 +58,6 @@ public class UserBase {
         this.passwd = passwd;
         this.state = state;
     }
+
+
 }
