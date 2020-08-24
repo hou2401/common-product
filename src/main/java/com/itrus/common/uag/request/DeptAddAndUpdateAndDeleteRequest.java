@@ -19,10 +19,6 @@ public class DeptAddAndUpdateAndDeleteRequest extends EntBase {
      */
      private String deptName;
      /**
-     * 上级节点唯一标识
-     */
-     private Long parentUuid;
-     /**
      * 0 企业（默认） 1 部门 2 用户 3 全部
      */
      private String parentType;

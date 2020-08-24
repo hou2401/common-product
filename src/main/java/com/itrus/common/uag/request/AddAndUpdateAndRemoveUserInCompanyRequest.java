@@ -1,7 +1,7 @@
 package com.itrus.common.uag.request;
 
 import com.alibaba.fastjson.JSONArray;
-import com.itrus.common.uag.request.base.UserShowBase;
+import com.itrus.common.uag.request.base.EntBase;
 import com.itrus.common.uag.request.entity.ExtendAttr;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +15,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddAndUpdateAndRemoveUserInCompanyRequest extends UserShowBase {
+public class AddAndUpdateAndRemoveUserInCompanyRequest extends EntBase {
     /**
      *姓名
      */

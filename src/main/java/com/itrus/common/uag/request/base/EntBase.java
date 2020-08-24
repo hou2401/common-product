@@ -19,7 +19,7 @@ public class EntBase {
      */
     private Long nodeUuid;
     /**
-     * 企业唯一标识
+     * 企业唯一标识/账号唯一标识
      */
     private Long uuid;
     /**

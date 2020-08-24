@@ -1,6 +1,6 @@
 package com.itrus.common.uag.request;
 
-import com.itrus.common.uag.request.base.UserShowBase;
+import com.itrus.common.uag.request.base.EntBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +13,5 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserShowInCompanyRequest extends UserShowBase {
+public class UserShowInCompanyRequest extends EntBase {
 }
