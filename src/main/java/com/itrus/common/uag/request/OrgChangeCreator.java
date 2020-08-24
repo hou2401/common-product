@@ -1,17 +1,21 @@
 package com.itrus.common.uag.request;
 
-import com.itrus.common.uag.request.base.UserBase;
+import com.itrus.common.uag.request.base.EntBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * 个人详情
+ * 变更企业主管理员
  */
 @ToString
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserShowUserRequest extends UserBase {
+public class OrgChangeCreator extends EntBase {
+    /**
+     * 新主管理员手机号码
+     */
+    private String phone;
 }

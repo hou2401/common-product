@@ -1,17 +1,22 @@
 package com.itrus.common.uag.request;
 
-import com.itrus.common.uag.request.base.UserBase;
+;
+import com.itrus.common.uag.request.base.SearchBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * 个人详情
+ *
  */
 @ToString
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserShowUserRequest extends UserBase {
+public class UserSearchByCompanyRequest  extends SearchBase {
+    /**
+     *企业唯一标识
+     */
+    private Long companyUuid;
 }

@@ -2,7 +2,9 @@ package com.itrus.common.uag.request;
 
 import com.itrus.common.uag.request.base.UserBase;
 import com.itrus.common.uag.request.entity.ExtendAttr;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
@@ -10,6 +12,8 @@ import lombok.ToString;
  */
 @ToString
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserUpdateRequest extends UserBase {
     /**
      * 昵称
@@ -19,15 +23,4 @@ public class UserUpdateRequest extends UserBase {
      * 扩展属性
      */
     private ExtendAttr extendAttr;
-
-    public UserUpdateRequest(String nikeName, ExtendAttr extendAttr) {
-        this.nikeName = nikeName;
-        this.extendAttr = extendAttr;
-    }
-
-    public UserUpdateRequest(Long uuid, String displayName, String phone, String email, String idCardType, String idCardNum, String passwd, String state, String nikeName, ExtendAttr extendAttr) {
-        super(uuid, displayName, phone, email, idCardType, idCardNum, passwd, state);
-        this.nikeName = nikeName;
-        this.extendAttr = extendAttr;
-    }
 }

@@ -2,7 +2,9 @@ package com.itrus.common.uag.request;
 
 import com.itrus.common.uag.request.base.UserBase;
 import com.itrus.common.uag.request.entity.ExtendAttr;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
@@ -10,7 +12,9 @@ import lombok.ToString;
  */
 @ToString
 @Data
-public class OrgRegister extends UserBase {
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrgRegisterRequest extends UserBase {
      /**
      *企业全称
      */

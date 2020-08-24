@@ -9,44 +9,33 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserBase {
-    /**
-     * 用户唯一标识
-     */
-    private Long uuid;
-
+public class SearchBase {
     /**
      *姓名
      */
     private String displayName;
-
     /**
-     * 手机号
+     *手机号
      */
     private String phone;
-
     /**
-     * 邮箱
+     *邮箱
      */
     private String email;
     /**
-     *证件类型
+     *角色名称
      */
-    private String idCardType;
+    private String roleName;
     /**
-     *证件号码
+     *在职，离职状态
      */
-    private String idCardNum;
-
+    private String joinState;
     /**
-     * 用户密码
+     *每页数量
      */
-    private String passwd;
-
+    private Integer pageSize;
     /**
-     * 0未激活 1 正常（默认） 2挂起
+     *页码
      */
-    private String state;
-
-
+    private Integer pageNumber;
 }

@@ -1,7 +1,9 @@
 package com.itrus.common.uag.request;
 
 import com.itrus.common.uag.request.base.UserBase;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
@@ -9,6 +11,8 @@ import lombok.ToString;
  */
 @ToString
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserAddRequest extends UserBase {
      /**
       * 企业邮箱

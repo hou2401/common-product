@@ -1,21 +1,21 @@
 package com.itrus.common.uag.request;
 
-import com.itrus.common.uag.request.base.UserBase;
+import com.itrus.common.uag.request.base.SearchBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * 重置密码
+ * 加载指定部门一级用户列表
  */
 @ToString
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResetPasswdRequset extends UserBase {
+public class UserSearchByDeptRequest extends SearchBase {
     /**
-     * 用户原始密码
+     * 企业唯一标识
      */
-    private  String oldPasswd;
+    private Long parentUuid;
 }
