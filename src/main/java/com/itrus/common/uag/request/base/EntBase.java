@@ -35,5 +35,10 @@ public class EntBase {
      */
     private String registerNumber;
 
+    /**
+     * 企业类型
+     */
+    private String companyType;
+
 
 }
