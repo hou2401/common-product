@@ -24,4 +24,9 @@ public class ExtendAttr {
      */
     private String orgAddress;
 
+    /**
+     * 公司座机号码
+     */
+    private String companyTelphoneNumber;
+
 }

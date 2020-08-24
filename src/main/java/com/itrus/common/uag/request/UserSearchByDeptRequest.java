@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * 加载指定部门一级用户列表
+ * 加载指定部门用户列表
  */
 @ToString
 @Data

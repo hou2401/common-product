@@ -11,6 +11,14 @@ import lombok.ToString;
 @NoArgsConstructor
 public class SearchBase {
     /**
+     * 0 全量 1 一级（默认）
+     */
+    private String level;
+    /**
+     * 个人唯一标识
+     */
+    private Long userUuid;
+    /**
      *姓名
      */
     private String displayName;

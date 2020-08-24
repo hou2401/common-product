@@ -1,5 +1,6 @@
 package com.itrus.common.uag.request;
 
+import com.itrus.common.uag.request.base.UserShowBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,13 +13,5 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserShowInCompanyRequest {
-    /**
-     *账号唯一标识
-     */
-    private Long uuid;
-    /**
-     * 企业唯一标识
-     */
-    private Long companyUuid;
+public class UserShowInCompanyRequest extends UserShowBase {
 }
