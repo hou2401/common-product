@@ -13,10 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrgUpdateCompanyOnOperationRequest extends EntBase {
-    /**
-     * 企业唯一标识
-     */
-    private Long uuid;
+
     /**
      * 手机号
      */

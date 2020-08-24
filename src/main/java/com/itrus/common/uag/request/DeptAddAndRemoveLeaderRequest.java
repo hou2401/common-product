@@ -1,6 +1,7 @@
 package com.itrus.common.uag.request;
 
 import com.alibaba.fastjson.JSONArray;
+import com.itrus.common.uag.request.base.EntBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,8 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeptAddAndRemoveLeaderRequest {
-    /**
-     *指定部门/企业唯一标识
-     */
-    private Long uuid;
+public class DeptAddAndRemoveLeaderRequest extends EntBase {
+
     /**
      *企业  部门
      */

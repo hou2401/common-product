@@ -1,6 +1,6 @@
 package com.itrus.common.uag.request;
 
-import com.alibaba.fastjson.JSONArray;
+import com.itrus.common.uag.request.base.UserBase;
 import com.itrus.common.uag.request.entity.UserList;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,11 +16,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserBatchAddRequest {
-    /**
-     *当前登录人员的唯一标识
-     */
-    private Long uuid;
+public class UserBatchAddRequest extends UserBase {
     /**
      *批量用户信息
      */

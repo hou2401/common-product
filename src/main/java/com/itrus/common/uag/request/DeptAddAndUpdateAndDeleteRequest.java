@@ -1,5 +1,6 @@
 package com.itrus.common.uag.request;
 
+import com.itrus.common.uag.request.base.EntBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +13,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeptAddAndUpdateAndDeleteRequest {
-     /**
-     * 操作者唯一标识
-     */
-     private Long uuid;
+public class DeptAddAndUpdateAndDeleteRequest extends EntBase {
      /**
      * 部门名称
      */

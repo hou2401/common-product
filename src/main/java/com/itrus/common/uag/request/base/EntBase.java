@@ -13,6 +13,18 @@ public class EntBase {
     /**
      * 企业唯一标识
      */
+    private Long parentUuid;
+    /**
+     *企业/部门唯一标识
+     */
+    private Long nodeUuid;
+    /**
+     * 企业唯一标识
+     */
+    private Long uuid;
+    /**
+     * 企业唯一标识
+     */
     private Long companyUuid;
     /**
      * 企业全称

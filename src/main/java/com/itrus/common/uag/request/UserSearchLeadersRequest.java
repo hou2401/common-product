@@ -1,6 +1,7 @@
 package com.itrus.common.uag.request;
 
 
+import com.itrus.common.uag.request.base.EntBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,8 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSearchLeadersRequest {
-    /**
-     *企业/部门唯一标识
-     */
-   private Long nodeUuid;
+public class UserSearchLeadersRequest extends EntBase {
+
     /**
      * 0 企业（默认） 1 部门 2 用户 3 全部
      */
