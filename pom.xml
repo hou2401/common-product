@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.6.RELEASE</version>
+		<version>2.2.1.RELEASE</version>
 	</parent>
 	<groupId>com.itrus</groupId>
 	<artifactId>common-product</artifactId>
@@ -24,10 +24,10 @@
 					<target>${java.version}</target> <!--指明打包后的Jdk版本 -->
 					<encoding>${project.build.sourceEncoding}</encoding>
 					<excludes>
+
 						<exclude>application.yml</exclude>
-						<exclude>log4j2-spring.xml</exclude>
 						<exclude>com/itrus/common/WebApplication.class</exclude>
-						<exclude>com/itrus/common/swagger/SwaggerConfig.class</exclude>
+
 					</excludes>
 					<skip>true</skip>
 				</configuration>
@@ -88,6 +88,10 @@
 	</distributionManagement>
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-tomcat</artifactId>
+			</dependency>
 			<!--整合spring cloud -->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -109,8 +113,8 @@
 	<dependencies>
 		<!--整合spring cloud start-->
 		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
@@ -138,8 +142,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<scope>compile</scope>
-			<optional>true</optional>
+			<version>2.2.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
