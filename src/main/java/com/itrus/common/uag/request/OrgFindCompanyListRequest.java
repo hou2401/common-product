@@ -1,9 +1,10 @@
 package com.itrus.common.uag.request;
 
 import com.itrus.common.uag.request.base.EntBase;
-import com.itrus.common.uag.request.base.UserBase;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode(callSuper=true)
 public class OrgFindCompanyListRequest extends EntBase{
     /**
      * 个人唯一标识

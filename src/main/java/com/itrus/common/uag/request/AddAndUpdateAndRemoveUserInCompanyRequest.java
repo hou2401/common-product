@@ -3,8 +3,10 @@ package com.itrus.common.uag.request;
 import com.alibaba.fastjson.JSONArray;
 import com.itrus.common.uag.request.base.EntBase;
 import com.itrus.common.uag.request.entity.ExtendAttr;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -15,6 +17,7 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper=true)
 public class AddAndUpdateAndRemoveUserInCompanyRequest extends EntBase {
     /**
      *姓名
