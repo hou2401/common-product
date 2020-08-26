@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.itrus</groupId>
 	<artifactId>common-product</artifactId>
-	<version>2.2.1</version>
+	<version>3.0.0</version>
 	<name>common-product</name>
 	<description>common-product</description>
 	<build>
@@ -72,6 +72,7 @@
 		<commons-collections.version>3.2.1</commons-collections.version>
 		<commons-beanutils.version>1.8.3</commons-beanutils.version>
 		<commons-io.version>2.4</commons-io.version>
+		<mail.version>1.6.2</mail.version>
 	</properties>
 	<!-- 私有化服务上传jar -->
 	<distributionManagement>
@@ -282,6 +283,7 @@
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
+			<version>${mail.version}</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
