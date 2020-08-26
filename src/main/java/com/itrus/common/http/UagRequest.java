@@ -1,4 +1,4 @@
-package com.itrus.common.http;
+/*package com.itrus.common.http;
 
 import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,57 +26,52 @@ import com.itrus.common.params.uag.UserSearchInfoParams;
 import com.itrus.common.params.uag.user.RegisterParams;
 import com.itrus.common.result.uag.user.RegisterResult;
 
-/**
+*//**
  * 公共原子服务调用方法
  *
  * @author han_yanhui
  * @date 2020-2-25 12:04:04
- **/
+ **//*
 @Component
 public class UagRequest {
 
     @Autowired
     private HttpDTO http;
 
-    @Autowired
-    private HttpRequset httpRequset;
 
-    @Autowired
-    private CallApiRequest callApiRequest;
-
-    /**
+    *//**
      *	 公共请求对象
      *
      * @return 返回实例
-     */
-	/*public static CommonRequest getInstance() {
+     *//*
+	public static CommonRequest getInstance() {
         return REQUEST;
-    }*/
+    }
 
-    /**
+    *//**
      * 是否是http调用模式
      *
      * @return
      * @throws HttpException
-     */
+     *//*
     private boolean httped() throws HttpException {
         return http.httped();
     }
 
     //-----------------------------------------------------------------------------------------------------------------------
-    /**
+    *//**
      * UAG组织架构服务
-     */
+     *//*
     //-----------------------------------------------------------------------------------------------------------------------
 
-    /**
+    *//**
      * 用户注册
      *
      * @param obj 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
-    /**
+     *//*
+    *//**
     *
     * @api {post} account/userRegister 用户注册
     * @apiVersion 2.0.0
@@ -84,7 +79,7 @@ public class UagRequest {
     * @apiName userRegister
     * @apiGroup 账号服务（account）
     * @apiSuccess (Success 0x0000) {JSONObject} json.
-	*/
+	*//*
     public RegisterResult userRegister(RegisterParams obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -106,14 +101,14 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 用户更新
      *
      * @param obj 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
-    /**
+     *//*
+    *//**
     *
     * @api {post} account/userUpdate 用户更新
     * @apiVersion 2.0.0
@@ -121,7 +116,7 @@ public class UagRequest {
     * @apiName userRegister
     * @apiGroup 账号服务（account）
     * @apiSuccess (Success 0x0000) {JSONObject} json.
-	*/
+	*//*
     public JSONObject userUpdate(UserParams userParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -138,13 +133,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 用户详细信息查询
      *
      * @param userSearchInfoParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject userSearchInfo(UserSearchInfoParams userSearchInfoParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -161,13 +156,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 用户更新/重置/忘记密码
      *
      * @param updateUtsNodeParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject resetPassWd(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -184,13 +179,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 创建企业
      *
      * @param adminAuthParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject entAdd(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -207,13 +202,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 更新企业
      *
      * @param adminAuthParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject entUpdate(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -229,12 +224,12 @@ public class UagRequest {
         return result;
 
     }
-    /**
+    *//**
      * 更新企业基本信息
      *
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject entUpdateBase(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -251,13 +246,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 删除企业 ---慎用
      *
      * @param adminAuthParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject entDelete(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -274,13 +269,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 企业详细信息查询
      *
      * @param entSearchInfoParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject entSearchInfo(EntSearchInfoParams entSearchInfoParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -298,13 +293,13 @@ public class UagRequest {
     }
 
 
-    /**
+    *//**
      * 创建部门
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject deptAdd(DeptParams deptParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -321,13 +316,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 更新部门
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject deptUpdate(DeptParams deptParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -344,13 +339,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 查询部门详情信息
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject deptSearchInfo(DeptParams deptParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -367,13 +362,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 部门删除
      *
      * @param uagOrgParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject deptDelete(DeptParams deptParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -390,13 +385,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 查询企业下一级节点信息
      *
      * @param searchOneNodeParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject entSearchOneNode(SearchOneNodeParams searchOneNodeParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -413,13 +408,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 查询部门下一级节点信息
      *
      * @param searchOneNodeParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject deptSearchOneNode(SearchOneNodeParams searchOneNodeParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -436,13 +431,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 查询企业下全部节点信息
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject entAll(UagOrgParams uagOrgParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -460,13 +455,13 @@ public class UagRequest {
     }
 
 
-    /**
+    *//**
      * 加载企业树
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject entLoadTree(EntLoadTreeParams entLoadTreeParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -484,13 +479,13 @@ public class UagRequest {
     }
 
 
-    /**
+    *//**
      * 查询部门下全部节点信息
      *
      * @param uagOrgParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject deptAll(UagOrgParams uagOrgParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -507,13 +502,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 查询当前用户加入的企业列表
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject findJoinCompanys(EntListParams entListParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -530,13 +525,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 批量导入
      *
      * @param betchImportParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject betchImport(BetchImportParams betchImportParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -553,13 +548,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 移除邀约用户
      *
      * @param removeUserParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject removeUser(RemoveUserParams removeUserParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -576,13 +571,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 用户切换企业
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject switchEnterprise(SwicthParams swicthParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -599,13 +594,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 企业邀请用户
      *
      * @param joinEnterpriseParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject joinEnterprise(JoinEnterpriseParams joinEnterpriseParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -622,13 +617,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 编辑企业成员邀请信息，重新发起邀请
      *
      * @param reJoinEnterpriseParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject reJoinEnterprise(ReJoinEnterpriseParams reJoinEnterpriseParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -645,13 +640,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 口令认证(密码登录)
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject passwdAuth(Object object) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -668,13 +663,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 获取短信验证码
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject getVerificationCode(Object object) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -691,13 +686,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 验证短信验证码
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject verifySmsCodeAuth(Object object) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -714,13 +709,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 退出单点登录
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject logout(Object object) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -737,13 +732,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 添加扩展属性
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject extendedAdd(Object object) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -760,13 +755,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 查询当前节点下uuid集合
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject findChildUuidList(Object object) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -783,13 +778,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 用户授权接口
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject grantAuth(GrantAuthParams authParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -806,13 +801,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 根据手机号或uuid集合查询用户信息
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject findUserInfoByUuidList(UserListParams params) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -829,13 +824,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 全量查询企业和用户信息
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject findAllEnterpriseAndUser(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -853,13 +848,13 @@ public class UagRequest {
     }
 
 
-    /**
+    *//**
      * 全量查询企业和用户信息
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject findSuperManagerForCompany(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -876,13 +871,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 实名用户接口
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject updateAuth(Object obj) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -899,13 +894,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 用户同意加入企业
      *
      * @param object 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject joinToEnterprise(JoinToEntParams joinToEntParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -922,13 +917,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 更新用户企业内信息
      *
      * @param userParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject updateUserInfoInEnterprise(UserParams userParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -945,13 +940,13 @@ public class UagRequest {
 
     }
 
-    /**
+    *//**
      * 员工从指定企业离职接口
      *
      * @param userDimissionParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject userDimission(UserDimissionParams userDimissionParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -969,13 +964,13 @@ public class UagRequest {
     }
     
     
-    /**
+    *//**
      * 员工从指定企业离职接口
      *
      * @param userDimissionParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
-     */
+     *//*
     public JSONObject userDelete(UserParams userParams) throws Exception {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
@@ -993,3 +988,4 @@ public class UagRequest {
     }
 
 }
+*/

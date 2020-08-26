@@ -25,7 +25,7 @@ public class SmsRequestTest extends AbstractTestNGSpringContextTests {
 		String content ="【天威诚信】您好：您的验证码为：CODE。";
 		String appId = "ecea8764614149";
 		String secretKey = "19d2a7192b604f29aa9ebfc319ba24b0";
-		String phone = "18600584688";
+		String phone = "15100426903";
 		String url="http://124.205.224.179:9018/portal/sms/send";
 		SmsParams smsParams = new SmsParams(
 				appId, 
@@ -47,7 +47,7 @@ public class SmsRequestTest extends AbstractTestNGSpringContextTests {
 		String content ="您好：您的验证码为：CODE。";
 		String appId = "e7a765ff2a2b46";
 		String secretKey = "ab6b33ae9a6f49cb8e6dba4d0520a157";
-		String phone = "15010491957";
+		String phone = "15100426903";
 		String autograph = "【天威诚信】";
 		String serviceCode = "msg0001";
 		String url="http://demo-open.itruscloud.com/apigate/smsService/sendingSms";

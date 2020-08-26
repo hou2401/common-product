@@ -13,16 +13,6 @@ import lombok.Data;
 public class HttpDTO {
 	
 	/**
-	 * 是否采用http请求方式
-	 */
-	private String httped;
-	
-	/**
-	 * 当httped 为1 或者 true 时，此参数生效
-	 */
-	private String url;
-	
-	/**
 	 * 调用原子服务 使用 分布的 还是 整合版本
 	 */
 	private String alled;
@@ -35,22 +25,53 @@ public class HttpDTO {
 	private Integer retryCount;
 	
 	/**
+	 * 合并版原子服务注册中心名称
+	 */
+	@Value("${http.atomed}")
+	private String atomed;
+	
+	/**
+	 * 文档转换服务 只有拆分版
+	 */
+	@Value("${http.fcs}")
+	private String fcs;
+	
+	/**
+	 * 印章服务拆分版注册中心名称
+	 */
+	@Value("${http.seal}")
+	private String seal;
+	
+	/**
+	 * 文件存储服务拆分版注册中心名称
+	 */
+	@Value("${http.fss}")
+	private String fss;
+	
+	/**
+	 * 证书服务拆分版注册中心名称
+	 */
+	@Value("${http.cs}")
+	private String cs;
+	
+	/**
+	 * 签章验章服务拆分版注册中心名称
+	 */
+	@Value("${http.dsvs}")
+	private String dsvs;
+	
+	/**
+	 * 文档生成服务拆分版注册中心名称
+	 */
+	@Value("${http.dgs}")
+	private String dgs;
+	
+	/**
 	 * 是否校验token 默认校验
 	 */
 	@Value("${http.tokened:1}")
 	private String tokened;
 	
-	/**
-	 * 是否为http模式
-	 * @return
-	 * @throws HttpException
-	 */
-	public boolean httped() throws HttpException{
-		if( "1".equals(httped) || "true".equalsIgnoreCase(httped) ) {
-			return true;
-		}
-		return false;
-	}
 	
 	/**
 	 * 是否为合并调用式

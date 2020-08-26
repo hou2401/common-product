@@ -26,7 +26,7 @@ public class ByteFileUtil {
 	
 	/**
     *
-    * @api ByteFileUtil.copyFile2Byte File转化Byte[]
+    * @api  ByteFileUtil.copyFile2Byte File转化Byte[]
     * @apiVersion 2.2.0
     * @apiParam {File} file file文件 
     * @apiName copyFile2Byte

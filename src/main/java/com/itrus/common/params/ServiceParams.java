@@ -11,7 +11,6 @@ import com.alibaba.fastjson.JSON;
 import com.itrus.common.exception.ItrusException;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.exception.SmsException;
-import com.itrus.common.http.HttpRequset;
 import com.itrus.common.utils.HMACSHA1;
 import com.itrus.common.utils.HttpTools.HttpData;
 
@@ -69,6 +68,8 @@ public class ServiceParams implements Serializable{
 	 */
 	public static final String SERVICE_CODE = "serviceCode";
 	
+	
+	
 	/**
 	 * 计算天威云 httpData
 	 * @return
@@ -77,10 +78,10 @@ public class ServiceParams implements Serializable{
 	 */
 	public HttpData getData( Map<String,String> params, String signature ) throws ItrusException{
 		HttpData data = HttpData.instance()
-				.addHeader(HttpRequset.CONTENT_SIGNATURE, getSignature(signature))
-				.addHeader(HttpRequset.CONTEXT_TYPE, HttpRequset.CONTEXT_TYPE_JSON)
-				.addHeader(HttpRequset.APP_ID, this.getAppId() )
-				.addHeader(HttpRequset.SERVICE_CODE, this.getServiceCode())
+				.addHeader(CONTENT_SIGNATURE, getSignature(signature))
+				.addHeader(CONTEXT_TYPE, CONTEXT_TYPE_JSON)
+				.addHeader(APP_ID, this.getAppId() )
+				.addHeader(SERVICE_CODE, this.getServiceCode())
 				.setPostEntity(new ByteArrayEntity(JSON.toJSONBytes( params )));
 		return data;
 	}

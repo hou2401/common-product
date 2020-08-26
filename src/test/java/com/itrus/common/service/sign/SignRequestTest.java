@@ -1,4 +1,4 @@
-package com.itrus.common.service.sign;
+/*package com.itrus.common.service.sign;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.WebApplication;
@@ -16,14 +16,14 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+*//**
  * @ClassName SignRequestTest
  * @Author: Yuliu
  * @Description:
  * @Date:Created in 9:49 2020/4/22
  * @Modified By:
  * @Version 1.0
- **/
+ **//*
 @SpringBootTest(classes = WebApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)// 指定启动类
 public class SignRequestTest extends AbstractTestNGSpringContextTests {
     @Autowired
@@ -85,3 +85,4 @@ public class SignRequestTest extends AbstractTestNGSpringContextTests {
 
 
 }
+*/

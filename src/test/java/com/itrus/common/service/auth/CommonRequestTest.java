@@ -1,4 +1,4 @@
-package com.itrus.common.service.auth;
+/*package com.itrus.common.service.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -82,7 +82,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 		Reporter.log(JSON.toJSONString(authPersion),true);
 	}
 	
-	/**
+	*//**
 	 * 	//servicecode  
 		//数读idc2001
 		//静默idc2002
@@ -90,7 +90,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 		//VideoEncodeUtil.encode(source, target);
 		//com.itrus.common.utils.VideoEncodeUtil
 	 * @throws PersionAuthException
-	 */
+	 *//*
 	@Test(groups = "内部接口", testName = "个人实名认证-h5-验证熟读接口&验证静默接口，只是服务编码不一样", description = "数读idc2001 静默idc2002使用过程中，视频如果超过1M，需要进行压缩操作,使用此目录的压缩方法 com.itrus.common.utils.VideoEncodeUtil.encode(source, target);")
 	@Author(names = "wen_guoxing")
 	public void authPersionVideo() throws  PersionAuthException{
@@ -147,7 +147,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 		// 企业法人四要素 idb0031
 		//type ET_PE:企业   ET_SE:个体工商户  OU:企事业单位 （orgCode 必传， id_code  不一定 ）
 		
-		/*//String appId,
+		//String appId,
 		 *  String serviceCode, 
 		 *  String secretKey, 
 		 *  String url, 
@@ -159,7 +159,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 		String legalId, 
 		String legalUrl,
 		String legalImg, 
-		String agentName, String agentId, String agentUrl, String agentImg*/
+		String agentName, String agentId, String agentUrl, String agentImg
 		AuthEnterpriseParams authEnterpriseParams = new AuthEnterpriseParams(
 				appId, 
 				"idb0033", 
@@ -183,3 +183,4 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	}
 	
 }
+*/

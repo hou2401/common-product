@@ -26,11 +26,11 @@ public class EmailRequestTest extends AbstractTestNGSpringContextTests {
 	public void EmailSend() throws  EmailException{
 		
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-		mailSender.setUsername("wen_guoxing@itrus.com.cn");
-		mailSender.setPassword("***");
+		mailSender.setUsername("han_yanhui@itrus.com.cn");
+		mailSender.setPassword("Han@743431");
 		mailSender.setPort(587);
 		mailSender.setHost("mail.itrus.com.cn");
-		String [] toEmail = new String[]{"wen_guoxing@itrus.com.cn"};
+		String [] toEmail = new String[]{"han806433285@qq.com"};
 		EmailParams emailParams = new EmailParams(toEmail, "test", "温温测试", true, mailSender);
 		smsRequest.send(emailParams);
 		System.out.println( "发送完成" );
