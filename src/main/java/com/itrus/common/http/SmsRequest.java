@@ -107,9 +107,10 @@ public class SmsRequest{
 
 	/**
 	 * 发送短信
+	 * @return 
 	 * @throws SmsException 
 	 */
-	public void send(SmsParams sms ) throws SmsException{
+	public String send(SmsParams sms ) throws SmsException{
 
 		this.appId = sms.getAppId();
 		this.secretKey = sms.getSecretKey();
@@ -117,14 +118,14 @@ public class SmsRequest{
 		this.phone = sms.getPhone();
 		this.autograph = sms.getSignature();
 		this.content = sms.getContent();
-		
+		String orderNumber = "";
 		if( serviceCode == null ){
 			sendOld(sms.getUrl());
 			//			send(url, false);
 		}else{
-			send(sms.getUrl(), true);
+			orderNumber = send(sms.getUrl(), true);
 		}
-
+		return orderNumber;
 	}
 	
 	/**
@@ -191,7 +192,7 @@ public class SmsRequest{
 	 * 发送短信
 	 * @throws SmsException 
 	 */
-	public void send(String url, boolean sendTwy) throws SmsException{
+	public String send(String url, boolean sendTwy) throws SmsException{
 		try {
 			HttpData data = null;
 			if(sendTwy){
@@ -215,6 +216,8 @@ public class SmsRequest{
 						throw new SmsException("status="+status+"message="+jsonObject.get("message"));
 					} 
 					// :出证申请成功处理
+					return jsonObject.getString("orderNumber");
+
 				}else{
 
 					Integer retCode = jsonObject.getInteger("retCode");
@@ -223,6 +226,7 @@ public class SmsRequest{
 						throw new SmsException("retCode="+retCode+"retMsg="+jsonObject.get("retMsg"));
 					} 
 					// :出证申请成功处理
+					return null;
 				}
 
 			} else {

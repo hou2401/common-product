@@ -21,6 +21,7 @@ public class UagResult<T> implements Serializable{
 	private static final String CODE_KEY = "code";
 	private static final Integer GET_CODE = 0;
 	public static final String defaultMessage = "调用UAG失败";
+	public static final String DATA_KEY = "data";
 
 	/**
 	 * 返回状态

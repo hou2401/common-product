@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.itrus.common.params.sign.PdfBatchSign;
+import com.itrus.common.params.sign.PdfVerify;
+
 import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -887,6 +889,28 @@ public class CommonRequest {
                 result = httpRequset.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams);
             } else {
                 result = callApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams);
+            }
+            if (result != null) {
+                break;
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * PDF验章
+     *
+     * @param pdfVerify
+     * @return
+     * @throws Exception
+     */
+    public JSONObject verifyBase64(PdfVerify pdfVerify) throws Exception {
+        JSONObject result = null;
+        for (int i = 0; i < http.getRetryCount(); i++) {
+            if (httped()) {
+                throw new Exception("http 方法还未实现");
+            } else {
+                result = callApiRequest.verifyBase64(pdfVerify);
             }
             if (result != null) {
                 break;

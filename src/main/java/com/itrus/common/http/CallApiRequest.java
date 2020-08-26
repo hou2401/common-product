@@ -22,6 +22,7 @@ import com.itrus.api.common.ApiService;
 import com.itrus.api.common.ApiUser;
 import com.itrus.common.config.TWConfig;
 import com.itrus.common.dto.CallApiUrlDTO;
+import com.itrus.common.params.sign.PdfVerify;
 import com.itrus.common.params.uag.DeptParams;
 import com.itrus.common.params.uag.EntListParams;
 import com.itrus.common.params.uag.EntLoadTreeParams;
@@ -848,5 +849,15 @@ public class CallApiRequest {
 	 */
 	public JSONObject userDelete(Object obj) throws Exception {
 		return (JSONObject) getApiService().callApi(callApiUrlDTO.getUserDelete(), obj, new ApiUser());
+	}
+	/**
+	 * PDF批量签章
+	 *
+	 * @param kvs 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	public JSONObject verifyBase64(Object kvs) throws Exception {
+		return (JSONObject) getApiService().callApi(callApiUrlDTO.getDsvsVerifyBase64(), BeanUtil.toMap(kvs) , new ApiUser());
 	}
 }
