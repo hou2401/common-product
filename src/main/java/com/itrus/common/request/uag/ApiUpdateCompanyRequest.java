@@ -1,0 +1,41 @@
+package com.itrus.common.request.uag;
+
+import com.itrus.common.request.uag.base.EntBase;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(callSuper=true)
+public class ApiUpdateCompanyRequest extends EntBase {
+    /**
+     * 数据库标识
+     */
+    private Long id;
+    /**
+     * 姓名
+     */
+    private String displayName;
+    /**
+     * 手机号码
+     */
+    private String phone;
+    /**
+     * 企业邮箱
+     */
+    private String email;
+    /**
+     * 企业类型
+     */
+    private String orgType;
+    /**
+     * 实名状态
+     */
+    private String authResult;
+}
