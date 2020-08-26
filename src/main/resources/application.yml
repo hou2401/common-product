@@ -24,9 +24,17 @@ spring:
     name: common-product
   cloud:
     nacos:
+      config:
+        namespace: develop
+        server-addr: 192.168.100.233:32105
+        group: v1
+        file-extension: yaml
+        extension-configs[0]:
+          group: v1
+          data-id: common-product-api.yaml
       discovery:
-        server-addr: 127.0.0.1:8848
-
+        namespace: develop
+        server-addr: 192.168.100.233:32105
 
 logging:
   level:
