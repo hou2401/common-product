@@ -22,7 +22,7 @@ public class UserInfoBase implements Comparable<UserInfoBase>, Serializable{
 	/**
 	 * 用户uuid
 	 */
-	private Long uuid;
+	private String uuid;
 
 	/**
 	 * 用户名

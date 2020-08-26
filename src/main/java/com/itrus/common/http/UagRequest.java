@@ -24,7 +24,7 @@ import com.itrus.common.params.uag.UserListParams;
 import com.itrus.common.params.uag.UserParams;
 import com.itrus.common.params.uag.UserSearchInfoParams;
 import com.itrus.common.params.uag.user.RegisterParams;
-import com.itrus.common.result.uag.user.RegisterResult;
+import com.itrus.common.response.uag.RegisterResult;
 
 *//**
  * 公共原子服务调用方法

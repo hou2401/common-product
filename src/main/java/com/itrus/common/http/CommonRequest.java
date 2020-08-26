@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.itrus.common.params.sign.PdfBatchSign;
+import com.itrus.common.params.sign.PdfVerify;
+
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -710,5 +712,5 @@ public class CommonRequest {
         }
         return result;
     }
-
+    
 }

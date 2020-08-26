@@ -32,7 +32,7 @@ public class EntSearchInfoSearchCondition implements Serializable {
     /**
      * 企业uuid唯一标识
      */
-    private Long uuid;
+    private String uuid;
     /**
      * 审核状态
      */

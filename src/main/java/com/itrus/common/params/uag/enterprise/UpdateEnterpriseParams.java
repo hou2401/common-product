@@ -17,7 +17,7 @@ public class UpdateEnterpriseParams extends CreateEnterpriseParams{
 	/**
 	 * 企业标识
 	 */
-	private Long uuid;
+	private String uuid;
 	
 	/**
 	 * 企业审核状态
@@ -27,7 +27,7 @@ public class UpdateEnterpriseParams extends CreateEnterpriseParams{
 
 	
 	
-	public UpdateEnterpriseParams(String manager, Long uuid, String ifAudited, String realName){
+	public UpdateEnterpriseParams(String manager, String uuid, String ifAudited, String realName){
 		super();
 		this.setManager(manager);
 		this.uuid = uuid;
@@ -39,7 +39,7 @@ public class UpdateEnterpriseParams extends CreateEnterpriseParams{
 		super();
 	}
 
-	public UpdateEnterpriseParams(Long uuid) {
+	public UpdateEnterpriseParams(String uuid) {
 		super();
 		this.uuid = uuid;
 	}

@@ -15,36 +15,25 @@ public class EntListParams {
 	/**
 	 * 用户的userId
 	 */
-	private Long uuid;
+	private String uuid;
 	
 	/**
 	 * 登录状态 不传默认全查
 	 */
 	private String joinState;
 	
-	public EntListParams(String phone, String joinState) {
-		super();
-		this.phone = phone;
-		this.joinState = joinState;
-	}
-	
-	public EntListParams(Long uuid, String joinState) {
+	public EntListParams(String uuid, String phone, String joinState) {
 		super();
 		this.uuid = uuid;
+		this.phone = phone;
 		this.joinState = joinState;
 	}
-	
-	public EntListParams(String phone) {
+	public EntListParams(String uuid) {
 		super();
-		this.phone = phone;
+		this.uuid = uuid;
 	}
-
+	
 	public EntListParams() {
 		super();
-	}
-
-	public EntListParams(Long uuid) {
-		super();
-		this.uuid = uuid;
 	}
 }
