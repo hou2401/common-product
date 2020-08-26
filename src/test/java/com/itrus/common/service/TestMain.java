@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 import com.alibaba.fastjson.JSONObject;
-import com.itrus.common.result.uag.user.RegisterResult;
+import com.itrus.common.response.uag.RegisterResult;
 
 public class TestMain {
 	public static void main(String[] args) throws IOException {

@@ -1,4 +1,4 @@
-package com.itrus.common.result.uag.user;
+package com.itrus.common.response.uag;
 
 import java.io.Serializable;
 

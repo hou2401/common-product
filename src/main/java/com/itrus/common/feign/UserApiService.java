@@ -4,8 +4,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.itrus.common.params.uag.user.RegisterParams;
+import com.itrus.common.response.uag.RegisterResult;
 import com.itrus.common.result.uag.UagResult;
-import com.itrus.common.result.uag.user.RegisterResult;
 
 @FeignClient("userapi")
 public interface UserApiService {
