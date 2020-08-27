@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.itrus.common.params.sign.PdfBatchSign;
-import com.itrus.common.params.sign.PdfVerify;
 
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
@@ -26,6 +25,7 @@ import com.itrus.common.params.PdfTextMarkParams;
 import com.itrus.common.params.UploadParams;
 
 import cn.com.itrus.atom.sign.api.seal.bean.SealParam;
+import cn.com.itrus.atom.sign.common.bean.Result;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -61,6 +61,8 @@ public class CommonRequest {
     
     @Autowired
     private DgsApiRequest dgsApiRequest;
+    
+    private Long okCode = 1L;
 
     /**
      * 是否为合并调用式
@@ -71,52 +73,15 @@ public class CommonRequest {
     private boolean alled() throws HttpException {
         return http.alled();
     }
-
-    /**
-     * 请求是否OK
-     *
-     * @param object json对象
-     */
-    public boolean isOk(JSONObject object) {
-        if (object != null && (object.get("code") != null || object.get("status") != null)) {
-            return object.getIntValue("code") == 0 || object.getIntValue("status") == 1;
-
-        }
-        return false;
-
+    
+    private Object isOk(Result<?> result) throws HttpException{
+    	Long code = result.getCode();
+    	if(code != null && code.equals(okCode)) {
+    		return result.getData();
+    	}
+    	throw new HttpException(result.getMsg());
     }
 
-    /**
-     * 获取请求消息
-     *
-     * @param object json对象
-     */
-    public String getMsg(JSONObject object) {
-        return object.getString("msg") == null ? object.getString("message") : object.getString("msg");
-    }
-
-    /**
-     * 获取请求消息
-     *
-     * @param object json对象
-     */
-    public int getCode(JSONObject object) {
-        return object.getIntValue("code");
-    }
-
-
-    /**
-     * 获取请求消息
-     *
-     * @param object json对象
-     * @return
-     */
-    public JSONObject getData(JSONObject object) {
-        if (object == null) {
-            return null;
-        }
-        return (JSONObject) object.get("data");
-    }
 
     /**
      *
@@ -135,9 +100,9 @@ public class CommonRequest {
     public JSONObject createEllipseSeal(Object kvs) throws Exception {
         JSONObject result = null;
             if (alled()) {//合并版
-            	result = atomedApiRequest.createEllipseSeal(kvs).getData();
+            	result = (JSONObject) isOk(atomedApiRequest.createEllipseSeal(kvs));
             } else {
-                result = sealApiRequest.createEllipseSeal(kvs).getData();
+                result = (JSONObject) isOk(sealApiRequest.createEllipseSeal(kvs));
             }
         return result;
     }
@@ -152,9 +117,9 @@ public class CommonRequest {
     public JSONObject createCircularSeal(SealParam sealParam) throws Exception {
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.createCircularSeal(sealParam).getData();
+            result = (JSONObject) isOk(atomedApiRequest.createCircularSeal(sealParam));
         } else {
-            result = sealApiRequest.createCircularSeal(sealParam).getData();
+            result = (JSONObject) isOk(sealApiRequest.createCircularSeal(sealParam));
         }
         return result;
     }
@@ -169,9 +134,9 @@ public class CommonRequest {
     public JSONObject createTriangleSeal(SealParam sealParam) throws Exception {
     	JSONObject result = null;
     	if (alled()) {
-    		result = atomedApiRequest.createTriangleSeal(sealParam).getData();
+    		result = (JSONObject) isOk(atomedApiRequest.createTriangleSeal(sealParam));
     	} else {
-    		result = sealApiRequest.createTriangleSeal(sealParam).getData();
+    		result = (JSONObject) isOk(sealApiRequest.createTriangleSeal(sealParam));
     	}
     	return result;
     }
@@ -186,9 +151,9 @@ public class CommonRequest {
     public JSONObject createDoubleRowSeal(SealParam sealParam) throws Exception {
         JSONObject result = null;
             if (alled()) {
-            	result = atomedApiRequest.createDoubleRowSeal(sealParam).getData();
+            	result = (JSONObject) isOk(atomedApiRequest.createDoubleRowSeal(sealParam));
             } else {
-                result = sealApiRequest.createDoubleRowSeal(sealParam).getData();
+                result = (JSONObject) isOk(sealApiRequest.createDoubleRowSeal(sealParam));
             }
         return result;
     }
@@ -203,9 +168,9 @@ public class CommonRequest {
     public JSONObject createSingleRowSeal(SealParam sealParam) throws Exception {
         JSONObject result = null;
         if (alled()) {
-        	result = atomedApiRequest.createSingleRowSeal(sealParam).getData();
+        	result = (JSONObject) isOk(atomedApiRequest.createSingleRowSeal(sealParam));
         } else {
-            result = sealApiRequest.createSingleRowSeal(sealParam).getData();
+            result = (JSONObject) isOk(sealApiRequest.createSingleRowSeal(sealParam));
         }
         return result;
     }
@@ -220,10 +185,10 @@ public class CommonRequest {
     public JSONObject sealLimpid(Object obj) throws Exception {
         JSONObject result = null;
         if (alled()) {
-        	result = atomedApiRequest.sealLimpid(obj).getData();
+        	result = (JSONObject) isOk(atomedApiRequest.sealLimpid(obj));
         } else {
 
-            result = sealApiRequest.sealLimpid(obj).getData();
+            result = (JSONObject) isOk(sealApiRequest.sealLimpid(obj));
         }
         return result;
     }
@@ -247,9 +212,9 @@ public class CommonRequest {
 		params.put("fssId", fssId);
         JSONObject result = null;
         if (alled()) {
-            return atomedApiRequest.fileDelete(params).getData();
+            result = (JSONObject) isOk(atomedApiRequest.fileDelete(params));
         } else {
-            result = fssApiRequest.fileDelete(params).getData();
+            result = (JSONObject) isOk(fssApiRequest.fileDelete(params));
         }
         return result;
     }
@@ -275,7 +240,7 @@ public class CommonRequest {
         Long fssId = null;
         if (alled()) {
         	
-        	JSONObject jsonObject = atomedApiRequest.uploadBase64(cearParam).getData();
+        	JSONObject jsonObject = (JSONObject) isOk(atomedApiRequest.uploadBase64(cearParam));
             if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
@@ -285,7 +250,7 @@ public class CommonRequest {
                 }
             }        
         }else {
-        	JSONObject jsonObject = fssApiRequest.uploadBase64(cearParam).getData();
+        	JSONObject jsonObject = (JSONObject) isOk(fssApiRequest.uploadBase64(cearParam));
             if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
@@ -316,7 +281,7 @@ public class CommonRequest {
     	Long fssId = null;
     	JSONObject jsonObject = null;
         if (alled()) {
-        	jsonObject = atomedApiRequest.upload(file,bizType,encryptionType).getData();
+        	jsonObject = (JSONObject) isOk(atomedApiRequest.upload(file,bizType,encryptionType));
         	if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
@@ -326,7 +291,7 @@ public class CommonRequest {
                 }
             }
         } else {
-        	jsonObject = fssApiRequest.upload(file, bizType, encryptionType).getData();
+        	jsonObject = (JSONObject) isOk(fssApiRequest.upload(file, bizType, encryptionType));
         	if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
@@ -350,9 +315,9 @@ public class CommonRequest {
 		params.put("fssId", fssId);
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.downLoadBase64(params).getData();
+            result = (JSONObject) isOk(atomedApiRequest.downLoadBase64(params));
         } else {
-            result = fssApiRequest.downLoadBase64(params).getData();
+            result = (JSONObject) isOk(fssApiRequest.downLoadBase64(params));
         }
         return result;
     }
@@ -421,7 +386,7 @@ public class CommonRequest {
     public JSONObject word2Pdfs(byte[] data) throws Exception {
     	Map<String,String> params = new HashMap<>();
 		params.put("file",Base64Utils.encodeToString(data));
-        return fcsApiRequest.word2Pdfs(params).getData();
+        return (JSONObject) isOk(fcsApiRequest.word2Pdfs(params));
     }
     
     /**
@@ -433,7 +398,7 @@ public class CommonRequest {
     public JSONObject pdf2png(byte[] data) throws Exception {
     	Map<String,String> params = new HashMap<>();
 		params.put("file",Base64Utils.encodeToString(data));
-        return fcsApiRequest.pdf2png(params).getData();
+        return (JSONObject) isOk(fcsApiRequest.pdf2png(params));
     }
 
 	/**
@@ -445,7 +410,7 @@ public class CommonRequest {
     public JSONObject excel2Pdfs(byte[] data) throws Exception {
     	Map<String,String> params = new HashMap<>();
 		params.put("file",Base64Utils.encodeToString(data));
-        return fcsApiRequest.excel2Pdfs(params).getData();
+        return (JSONObject) isOk(fcsApiRequest.excel2Pdfs(params));
     }
 
 	/**
@@ -457,7 +422,7 @@ public class CommonRequest {
     public JSONObject image2png(byte[] data) throws Exception {
     	Map<String,String> params = new HashMap<>();
 		params.put("file",Base64Utils.encodeToString(data));
-        return fcsApiRequest.image2Pdfs(params).getData();
+        return (JSONObject) isOk(fcsApiRequest.image2Pdfs(params));
     }
     
     /***
@@ -474,7 +439,7 @@ public class CommonRequest {
 		}
     	InputStream inputStream = new ByteArrayInputStream(fileBytes);
     	MultipartFile file = new MockMultipartFile(fileName,originalFilename,ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
-    	return fcsApiRequest.generateThumbnail(file, pages, scale, dpi).getData();
+    	return (JSONObject) isOk(fcsApiRequest.generateThumbnail(file, pages, scale, dpi));
     }
     
     /***
@@ -490,7 +455,7 @@ public class CommonRequest {
     	}
     	InputStream inputStream = new ByteArrayInputStream(fileBytes);
     	MultipartFile file = new MockMultipartFile(fileName,originalFilename,ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
-    	return fcsApiRequest.getTotalPages(file).getData();
+    	return (JSONObject) isOk(fcsApiRequest.getTotalPages(file));
     }
 
 
@@ -511,9 +476,9 @@ public class CommonRequest {
     public JSONObject applyCert(CertParams cert) throws Exception {
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.applyCert(cert).getData();
+            result = (JSONObject) isOk(atomedApiRequest.applyCert(cert));
         } else {
-            result = certApiRequest.applyCert(cert).getData();
+            result = (JSONObject) isOk(certApiRequest.applyCert(cert));
         }
         return result;
 
@@ -529,9 +494,9 @@ public class CommonRequest {
     public JSONObject updateCert(Object kvs) throws Exception {
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.updateCert(kvs).getData();
+            result = (JSONObject) isOk(atomedApiRequest.updateCert(kvs));
         } else {
-            result = certApiRequest.updateCert(kvs).getData();
+            result = (JSONObject) isOk(certApiRequest.updateCert(kvs));
         }
         return result;
 
@@ -553,9 +518,9 @@ public class CommonRequest {
     public JSONObject sign(Object kvs) throws Exception {
         JSONObject result = null;
 	    if (alled()) {
-	        result = atomedApiRequest.sign(kvs).getData();
+	        result = (JSONObject) isOk(atomedApiRequest.sign(kvs));
 	    } else {
-	        result = dsvsApiRequest.sign(kvs).getData();
+	        result = (JSONObject) isOk(dsvsApiRequest.sign(kvs));
 	    }
         return result;
 
@@ -571,9 +536,9 @@ public class CommonRequest {
     public JSONObject batchSign(PdfBatchSign pdfBatchSign) throws Exception {
         JSONObject result = null;
         if (alled()) {
-        	 result = atomedApiRequest.batchSign(pdfBatchSign).getData();
+        	 result = (JSONObject) isOk(atomedApiRequest.batchSign(pdfBatchSign));
         } else {
-            result = dsvsApiRequest.batchSign(pdfBatchSign).getData();
+            result = (JSONObject) isOk(dsvsApiRequest.batchSign(pdfBatchSign));
         }
         return result;
     }
@@ -589,12 +554,9 @@ public class CommonRequest {
         JSONObject result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
             if (alled()) {
-                result = atomedApiRequest.verifyBase64(obj).getData();
+                result = (JSONObject) isOk(atomedApiRequest.verifyBase64(obj));
             } else {
-                result = dsvsApiRequest.verifyBase64(obj).getData();
-            }
-            if (result != null) {
-                break;
+                result = (JSONObject) isOk(dsvsApiRequest.verifyBase64(obj));
             }
         }
         return result;
@@ -618,9 +580,9 @@ public class CommonRequest {
     public JSONObject pdfFill(Object kvs) throws Exception {
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.pdfFill(kvs).getData();
+            result = (JSONObject) isOk(atomedApiRequest.pdfFill(kvs));
         } else {
-            result = dgsApiRequest.pdfFill(kvs).getData();
+            result = (JSONObject) isOk(dgsApiRequest.pdfFill(kvs));
         }
         return result;
 
@@ -636,9 +598,9 @@ public class CommonRequest {
     public JSONObject pdfCreate(Object kvs) throws Exception {
     	JSONObject result = null;
     	if (alled()) {
-    		result = atomedApiRequest.pdfCreate(kvs).getData();
+    		result = (JSONObject) isOk(atomedApiRequest.pdfCreate(kvs));
     	} else {
-    		result = dgsApiRequest.pdfCreate(kvs).getData();
+    		result = (JSONObject) isOk(dgsApiRequest.pdfCreate(kvs));
     	}
     	return result;
     	
@@ -655,9 +617,9 @@ public class CommonRequest {
 
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.pdfTextMark(pdfTextMarkParams).getData();
+            result = (JSONObject) isOk(atomedApiRequest.pdfTextMark(pdfTextMarkParams));
         } else {
-            result = dgsApiRequest.pdfTextMark(pdfTextMarkParams).getData();
+            result = (JSONObject) isOk(dgsApiRequest.pdfTextMark(pdfTextMarkParams));
         }
         return result;
     }
@@ -672,9 +634,9 @@ public class CommonRequest {
     public JSONObject pdfImageMark(PdfImageMarkParams pdfImageMarkParams) throws Exception {
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.pdfImageMark(pdfImageMarkParams).getData();
+            result = (JSONObject) isOk(atomedApiRequest.pdfImageMark(pdfImageMarkParams));
         } else {
-            result = dgsApiRequest.pdfImageMark(pdfImageMarkParams).getData();
+            result = (JSONObject) isOk(dgsApiRequest.pdfImageMark(pdfImageMarkParams));
         }
         return result;
     }
@@ -689,9 +651,9 @@ public class CommonRequest {
     public JSONObject pdfQrCodeMark(PdfQrCodeMarkParams pdfQrCodeMarkParams) throws Exception {
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams).getData();
+            result = (JSONObject) isOk(atomedApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams));
         } else {
-            result = dgsApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams).getData();
+            result = (JSONObject) isOk(dgsApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams));
         }
         return result;
     }
@@ -706,9 +668,9 @@ public class CommonRequest {
     public JSONObject pdfTextAndQrCodeMark(PdfTextAndQrCodeMarkParams pdfTextAndQrCodeMarkParams) throws Exception {
         JSONObject result = null;
         if (alled()) {
-            result = atomedApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams).getData();
+            result = (JSONObject) isOk(atomedApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams));
         } else {
-            result = dgsApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams).getData();
+            result = (JSONObject) isOk(dgsApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams));
         }
         return result;
     }
