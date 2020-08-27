@@ -1,7 +1,6 @@
 package com.itrus.common.http;
 
 import com.itrus.common.request.uag.atom.*;
-import com.itrus.common.request.uag.cert.CertApplyRequest;
 import com.itrus.common.request.uag.cert.CertUpdateRequest;
 import com.itrus.common.request.uag.dgs.*;
 import com.itrus.common.request.uag.dsvs.DsvsBatchSignRequest;
@@ -10,7 +9,7 @@ import com.itrus.common.request.uag.dsvs.DsvsVerifyBase64Request;
 import com.itrus.common.response.atom.FssDownloadBase64Result;
 import com.itrus.common.response.atom.FssUploadBase64Result;
 import com.itrus.common.response.atom.FssUploadResult;
-import com.itrus.common.response.cert.CertApplyResult;
+import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
 import com.itrus.common.response.dsvs.DsvsBatchSignResult;
@@ -25,9 +24,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alibaba.fastjson.JSONObject;
-
-import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
 import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
@@ -214,7 +210,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/cert/apply", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<CertApplyResult> applyCert(Object obj);
+	public Result<ApplyCertResult> applyCert(Object obj);
 
 	/**
 	 * 更新证书

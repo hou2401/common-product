@@ -1,12 +1,19 @@
-package com.itrus.common.result.atom;
+package com.itrus.common.response.cert;
+
+import java.io.Serializable;
 
 import lombok.Data;
 import lombok.ToString;
 
 @Data
 @ToString
-public class ApplyCertResult{
+public class ApplyCertResult implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * 证书ID
 	 */

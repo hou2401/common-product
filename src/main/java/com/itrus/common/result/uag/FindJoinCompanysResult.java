@@ -1,5 +1,7 @@
 package com.itrus.common.result.uag;
 
+import java.io.Serializable;
+
 import com.itrus.common.result.uag.dto.enterprise.user.UserInfoAll;
 
 import lombok.Data;
@@ -9,7 +11,7 @@ import lombok.ToString;
 @Data
 @ToString
 @EqualsAndHashCode(callSuper=false)
-public class FindJoinCompanysResult extends UagResult {
+public class FindJoinCompanysResult implements Serializable{
 
 	/**
 	 * 

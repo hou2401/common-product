@@ -21,7 +21,7 @@ import com.itrus.common.request.uag.fcs.generateThumbnailRequest;
 import com.itrus.common.request.uag.fcs.getTotalPagesRequest;
 import com.itrus.common.request.uag.fcs.pdf2pngRequest;
 import com.itrus.common.response.atom.FssDownloadBase64Result;
-import com.itrus.common.response.cert.CertApplyResult;
+import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
 import com.itrus.common.response.dsvs.DsvsBatchSignResult;
@@ -551,12 +551,12 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public CertApplyResult applyCert(CertApplyRequest cert) throws Exception {
-        CertApplyResult result = null;
+    public ApplyCertResult applyCert(CertApplyRequest cert) throws Exception {
+    	ApplyCertResult result = null;
         if (alled()) {
-            result = (CertApplyResult) isOk(atomedApiRequest.applyCert(cert));
+            result = (ApplyCertResult) isOk(atomedApiRequest.applyCert(cert));
         } else {
-            result = (CertApplyResult) isOk(certApiRequest.applyCert(cert));
+            result = (ApplyCertResult) isOk(certApiRequest.applyCert(cert));
         }
         return result;
 
