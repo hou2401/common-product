@@ -18,6 +18,7 @@ import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -155,7 +156,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<DownloadResponse> download(@RequestPart(value = "fssId")Long fssId);
+	public ResponseEntity download(Object obj);
 
 	/***
 	 * 下载文件
