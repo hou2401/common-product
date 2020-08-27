@@ -3,6 +3,7 @@ package com.itrus.common.http;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.com.itrus.atom.sign.api.constants.FSSConstants;
@@ -627,13 +628,13 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public DsvsVerifyBase64Result verifyBase64(DsvsVerifyBase64Request obj) throws Exception {
-        DsvsVerifyBase64Result result = null;
+    public List<DsvsVerifyBase64Result> verifyBase64(DsvsVerifyBase64Request obj) throws Exception {
+        List<DsvsVerifyBase64Result> result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
             if (alled()) {
-                result = (DsvsVerifyBase64Result) isOk(atomedApiRequest.verifyBase64(obj));
+                result = (List<DsvsVerifyBase64Result>) isOk(atomedApiRequest.verifyBase64(obj));
             } else {
-                result = (DsvsVerifyBase64Result) isOk(dsvsApiRequest.verifyBase64(obj));
+                result = (List<DsvsVerifyBase64Result>) isOk(dsvsApiRequest.verifyBase64(obj));
             }
         }
         return result;
