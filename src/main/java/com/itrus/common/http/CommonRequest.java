@@ -224,12 +224,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public Long upload(UploadParams uploadQuery) throws Exception {
-        Long ffsId = upload(uploadQuery.getBizType(), uploadQuery.getFileName(), uploadQuery.getFileBytes(), uploadQuery.getEncryptionType());
+    public Long uploadBase64(UploadParams uploadQuery) throws Exception {
+        Long ffsId = uploadBase64(uploadQuery.getBizType(), uploadQuery.getFileName(), uploadQuery.getFileBytes(), uploadQuery.getEncryptionType());
         return ffsId;
     }
 
-    public Long upload(String bizType, String originalFileName, byte[] fileBytes, Integer encryptionType) throws Exception {
+    public Long uploadBase64(String bizType, String originalFileName, byte[] fileBytes, Integer encryptionType) throws Exception {
     	Map<String, Object> cearParam = new HashMap<>();
 		cearParam.put("fileBytes", Base64Utils.encodeToString(fileBytes));
 		cearParam.put("bizType", bizType);
@@ -635,12 +635,18 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject pdfCreate(Object kvs) throws Exception {
+    public JSONObject pdfCreate(String fileName, String bizType, byte[] fileBytes,String originalFilename,Integer styleType,
+    		Integer pageSize) throws Exception {
+    	if(originalFilename == null) {
+    		originalFilename = "anonymous.file";
+		}
+    	InputStream inputStream = new ByteArrayInputStream(fileBytes);
+    	MultipartFile file = new MockMultipartFile(fileName,originalFilename,ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
     	JSONObject result = null;
     	if (alled()) {
-    		result = (JSONObject) isOk(atomedApiRequest.pdfCreate(kvs));
+    		result = (JSONObject) isOk(atomedApiRequest.pdfCreate(file,styleType,pageSize));
     	} else {
-    		result = (JSONObject) isOk(dgsApiRequest.pdfCreate(kvs));
+    		result = (JSONObject) isOk(dgsApiRequest.pdfCreate(file,styleType,pageSize));
     	}
     	return result;
     	
