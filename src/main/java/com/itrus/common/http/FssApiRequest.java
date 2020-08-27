@@ -5,6 +5,7 @@ import com.itrus.common.response.atom.FssUploadBase64Result;
 import com.itrus.common.response.atom.FssUploadResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONObject;
 import cn.com.itrus.atom.sign.common.bean.Result;
+
+import java.util.Map;
 
 /**
  * 整合版公共原子服务调用方法
@@ -59,8 +62,17 @@ public interface FssApiRequest {
 	@RequestMapping(value = "/fss/downloadBase64", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public Result<FssDownloadBase64Result> downLoadBase64(Object obj);
 
-
 	/***
+	 * 下载文件
+	 * @param obj 文件存储标识
+	 * @return 文件内容
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity download(Object obj);
+
+
+    /***
 	 * 下载文件
 	 * @param fssId 文件存储标识
 	 * @return 文件内容
