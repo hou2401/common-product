@@ -5,8 +5,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.itrus.common.params.sign.PdfBatchSign;
-
 import com.itrus.common.request.uag.atom.*;
 import com.itrus.common.request.uag.cert.CertApplyRequest;
 import com.itrus.common.request.uag.cert.CertUpdateRequest;
@@ -35,14 +33,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
-import com.itrus.common.params.CertParams;
-import com.itrus.common.params.PdfImageMarkParams;
-import com.itrus.common.params.PdfQrCodeMarkParams;
-import com.itrus.common.params.PdfTextAndQrCodeMarkParams;
-import com.itrus.common.params.PdfTextMarkParams;
 import com.itrus.common.params.UploadParams;
 
-import cn.com.itrus.atom.sign.api.seal.bean.SealParam;
 import cn.com.itrus.atom.sign.common.bean.Result;
 import lombok.extern.slf4j.Slf4j;
 
@@ -80,7 +72,7 @@ public class CommonRequest {
     @Autowired
     private DgsApiRequest dgsApiRequest;
     
-    private Long okCode = 1L;
+    private Long okCode = 0L;
 
     /**
      * 是否为合并调用式
