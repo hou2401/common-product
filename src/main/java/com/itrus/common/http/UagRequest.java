@@ -1,11 +1,8 @@
 package com.itrus.common.http;
 
 import com.itrus.common.result.uag.request.*;
-import com.itrus.common.result.uag.response.SearchAllResult;
-import com.itrus.common.result.uag.response.SearchByUuidsResult;
-import com.itrus.common.result.uag.response.UUIDResult;
+import com.itrus.common.result.uag.response.*;
 import com.itrus.common.result.uag.response.entity.UserInfoCompany;
-import com.itrus.common.result.uag.response.showUserResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -100,7 +97,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> userFindJoinCompanys(Object obj) throws Exception {
+    public UagResult<FindJoinCompanysResult> userFindJoinCompanys(UserFindJoinCompanysRequest obj) throws Exception {
     	return uagApiRequest.userFindJoinCompanys(obj);
     }
     
@@ -155,7 +152,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> externalApiAddPersonal(Object obj) throws Exception {
+    public UagResult<ExternalApiAddPersonalResult> externalApiAddPersonal(ExternalApiAddPersonalRequest obj) throws Exception {
     	return uagApiRequest.externalApiAddPersonal(obj);
     }
     
