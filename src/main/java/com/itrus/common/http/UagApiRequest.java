@@ -1,6 +1,7 @@
 package com.itrus.common.http;
 
 import com.itrus.common.result.uag.request.*;
+import com.itrus.common.result.uag.request.ExternalApiAddPersonalRequest;
 import com.itrus.common.result.uag.response.*;
 import com.itrus.common.result.uag.response.entity.UserInfoCompany;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -67,19 +68,19 @@ public interface UagApiRequest {
 	
 	
 	@RequestMapping(value = "/externalApi/addPersonal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UagResult<JSONObject> externalApiAddPersonal(Object obj);
+	public UagResult<ExternalApiAddPersonalResult> externalApiAddPersonal(ExternalApiAddPersonalRequest obj);
 	
 	
 	@RequestMapping(value = "/externalApi/addCompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UagResult<JSONObject> externalApiAddCompany(Object obj);
+	public UagResult<ExternalApiAddCompanyResult> externalApiAddCompany(ExternalApiAddCompanyRequest obj);
 	
 	
 	@RequestMapping(value = "/org/loadTree", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UagResult<JSONObject> orgLoadTree(Object obj);
+	public UagResult<LoadTreeResult> orgLoadTree(OrgLoadTreeRequest obj);
 	
 	
 	@RequestMapping(value = "/user/findCompanySuperAdminList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UagResult<JSONObject> userFindCompanySuperAdminList(Object obj);
+	public UagResult<JSONObject> userFindCompanySuperAdminList(UserFindCompanySuperAdminListRequest obj);
 	
 	
 	@RequestMapping(value = "/org/show", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

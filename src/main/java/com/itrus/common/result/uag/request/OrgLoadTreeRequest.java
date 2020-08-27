@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * 加载企业下全量节点信息
+ */
 @ToString
 @Data
 @AllArgsConstructor

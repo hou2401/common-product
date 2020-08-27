@@ -163,7 +163,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> externalApiAddCompany(Object obj) throws Exception {
+    public UagResult<ExternalApiAddCompanyResult> externalApiAddCompany(ExternalApiAddCompanyRequest obj) throws Exception {
     	return uagApiRequest.externalApiAddCompany(obj);
     }
     
@@ -174,7 +174,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> orgLoadTree(Object obj) throws Exception {
+    public UagResult<LoadTreeResult> orgLoadTree(OrgLoadTreeRequest obj) throws Exception {
     	return uagApiRequest.orgLoadTree(obj);
     }
     
