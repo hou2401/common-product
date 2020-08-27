@@ -5,6 +5,9 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.alibaba.fastjson.JSONObject;
 import cn.com.itrus.atom.sign.common.bean.Result;
 
@@ -31,8 +34,9 @@ public interface DgsApiRequest {
 	 * @param obj
 	 * @return
 	 */
-	@RequestMapping(value = "/dgs/pdfCreate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfCreate(Object obj);
+	@RequestMapping(value = "/dgs/pdfCreate", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public Result<JSONObject> pdfCreate(@RequestPart(value = "file") MultipartFile file,@RequestPart(value = "styleType")Integer styleType,
+			@RequestPart(value = "pageSize")Integer pageSize);
 	
 	/**
 	 * 添加文字水印

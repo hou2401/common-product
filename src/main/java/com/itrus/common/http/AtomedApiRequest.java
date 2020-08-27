@@ -3,6 +3,7 @@ package com.itrus.common.http;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -139,7 +140,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<DownloadResponse> download(Object obj);
+	public Result<DownloadResponse> download(@RequestHeader Object obj);
 
 	/***
 	 * 下载文件
@@ -264,8 +265,9 @@ public interface AtomedApiRequest {
 	 * @param obj
 	 * @return
 	 */
-	@RequestMapping(value = "/dgs/pdfCreate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfCreate(Object obj);
+	@RequestMapping(value = "/dgs/pdfCreate", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public Result<JSONObject> pdfCreate(@RequestPart(value = "file") MultipartFile file,@RequestPart(value = "styleType")Integer styleType,
+			@RequestPart(value = "pageSize")Integer pageSize);
 
 
 	/**
