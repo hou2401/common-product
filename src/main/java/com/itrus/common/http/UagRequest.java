@@ -101,7 +101,7 @@ public class UagRequest {
     }
     
     /**
-     * api-通过uuid获取用户信息
+     * api-通过uuid集合获取用户信息
      *
      * @param userSearchInfoParams 请求参数
      * @return 返回创建结果
@@ -167,7 +167,7 @@ public class UagRequest {
     }
     
     /**
-     * 加载企业数
+     * 加载企业树
      *
      * @param userSearchInfoParams 请求参数
      * @return 返回创建结果
