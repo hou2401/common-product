@@ -1,5 +1,8 @@
 package com.itrus.common.http;
 
+import com.itrus.common.response.atom.FssDownloadBase64Result;
+import com.itrus.common.response.atom.FssUploadBase64Result;
+import com.itrus.common.response.atom.FssUploadResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -23,7 +26,7 @@ public interface FssApiRequest {
 	
 
 	@RequestMapping(value = "/fss/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> fileDelete(Object obj);
+	public Result<String> fileDelete(Object obj);
 	
 	/***
 	 * 上传文件
@@ -34,7 +37,7 @@ public interface FssApiRequest {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/fss/uploadBase64", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> uploadBase64(Object obj);
+	public Result<FssUploadBase64Result> uploadBase64(Object obj);
 
 	/***
 	 * 上传文件
@@ -44,8 +47,8 @@ public interface FssApiRequest {
 	 * @return 操作结果
 	 */
 	@RequestMapping(value = "/fss/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Result<JSONObject> upload(@RequestPart(value = "file") MultipartFile file,@RequestPart(value = "bizType")String bizType,
-			@RequestPart(value = "encryptionType")Integer encryptionType);
+	public Result<FssUploadResult> upload(@RequestPart(value = "file") MultipartFile file, @RequestPart(value = "bizType")String bizType,
+										  @RequestPart(value = "encryptionType")Integer encryptionType);
 
 	/***
 	 * 下载文件
@@ -54,7 +57,7 @@ public interface FssApiRequest {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/fss/downloadBase64", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Result<JSONObject> downLoadBase64(Object obj);
+	public Result<FssDownloadBase64Result> downLoadBase64(Object obj);
 
 
 	/***

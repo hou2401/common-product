@@ -1,5 +1,8 @@
 package com.itrus.common.http;
 
+import com.itrus.common.request.uag.cert.CertUpdateRequest;
+import com.itrus.common.response.cert.CertApplyResult;
+import com.itrus.common.response.cert.CertUpdateResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -25,7 +28,7 @@ public interface CertApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/cert/apply", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> applyCert(Object obj);
+	public Result<CertApplyResult> applyCert(Object obj);
 
 	/**
 	 * 更新证书
@@ -35,6 +38,6 @@ public interface CertApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/cert/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> updateCert(Object obj);
+	public Result<CertUpdateResult> updateCert(CertUpdateRequest obj);
 
 }

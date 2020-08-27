@@ -1,5 +1,21 @@
 package com.itrus.common.http;
 
+import com.itrus.common.request.uag.atom.*;
+import com.itrus.common.request.uag.cert.CertApplyRequest;
+import com.itrus.common.request.uag.cert.CertUpdateRequest;
+import com.itrus.common.request.uag.dgs.*;
+import com.itrus.common.request.uag.dsvs.DsvsBatchSignRequest;
+import com.itrus.common.request.uag.dsvs.DsvsSignRequest;
+import com.itrus.common.request.uag.dsvs.DsvsVerifyBase64Request;
+import com.itrus.common.response.atom.FssDownloadBase64Result;
+import com.itrus.common.response.atom.FssUploadBase64Result;
+import com.itrus.common.response.atom.FssUploadResult;
+import com.itrus.common.response.cert.CertApplyResult;
+import com.itrus.common.response.cert.CertUpdateResult;
+import com.itrus.common.response.dgs.DgsPdfFillResult;
+import com.itrus.common.response.dsvs.DsvsBatchSignResult;
+import com.itrus.common.response.dsvs.DsvsSignResult;
+import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -39,7 +55,7 @@ public interface AtomedApiRequest {
 	
 	//value:被调用的服务接口路径
 	@RequestMapping(value = "/seal/front/createEllipseSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> createEllipseSeal(Object obj);
+	public Result<String> createEllipseSeal(CreateEllipseSealRequest obj);
 
 	/**
 	 * 创建圆形印章
@@ -49,7 +65,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/createCircularSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> createCircularSeal(Object obj);
+	public Result<String> createCircularSeal(CreateCircularSealRequest obj);
 	
 	/**
 	 * 创建三角章
@@ -59,7 +75,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/createTriangleSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> createTriangleSeal(Object obj);
+	public Result<String> createTriangleSeal(CreateTriangleSealRequest obj);
 
 	/**
 	 * 创建双行人名印章
@@ -69,7 +85,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/createDoubleRowSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> createDoubleRowSeal(Object obj);
+	public Result<String> createDoubleRowSeal(CreateDoubleRowSealRequest obj);
 
 	/**
 	 * 创建单行人名印章
@@ -79,7 +95,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/createSingleRowSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> createSingleRowSeal(Object obj);
+	public Result<String> createSingleRowSeal(CreateSingleRowSealRequest obj);
 
 	/**
 	 * 印章透明处理
@@ -89,7 +105,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/sealLimpid", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> sealLimpid(Object obj);
+	public Result<String> sealLimpid(SealLimpidRequest obj);
 	//--------------------------------------------------------------------------------------------------------------------
 
 	/**
@@ -99,7 +115,7 @@ public interface AtomedApiRequest {
 	//--------------------------------------------------------------------------------------------------------------------
 
 	@RequestMapping(value = "/fss/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> fileDelete(Object obj);
+	public Result<String> fileDelete(Object obj);
 	
 	/***
 	 * 上传文件
@@ -110,7 +126,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/fss/uploadBase64", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> uploadBase64(Object obj);
+	public Result<FssUploadBase64Result> uploadBase64(Object obj);
 
 	/***
 	 * 上传文件
@@ -120,8 +136,8 @@ public interface AtomedApiRequest {
 	 * @return 操作结果
 	 */
 	@RequestMapping(value = "/fss/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Result<JSONObject> upload(@RequestPart(value = "file") MultipartFile file,@RequestPart(value = "bizType")String bizType,
-			@RequestPart(value = "encryptionType")Integer encryptionType);
+	public Result<FssUploadResult> upload(@RequestPart(value = "file") MultipartFile file, @RequestPart(value = "bizType")String bizType,
+										  @RequestPart(value = "encryptionType")Integer encryptionType);
 	
 	/***
 	 * 下载文件
@@ -130,7 +146,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/fss/downloadBase64", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> downLoadBase64(Object obj);
+	public Result<FssDownloadBase64Result> downLoadBase64(Object obj);
 
 	/***
 	 * 下载文件
@@ -139,7 +155,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<DownloadResponse> download(Object obj);
+	public Result<DownloadResponse> download(@RequestPart(value = "fssId")Long fssId);
 
 	/***
 	 * 下载文件
@@ -197,7 +213,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/cert/apply", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> applyCert(Object obj);
+	public Result<CertApplyResult> applyCert(Object obj);
 
 	/**
 	 * 更新证书
@@ -207,7 +223,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/cert/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> updateCert(Object obj);
+	public Result<CertUpdateResult> updateCert(CertUpdateRequest obj);
 	
 	//-----------------------------------------------------------------------------------------------------------------------
 	/**
@@ -223,7 +239,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dsvs/sign", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> sign(Object obj);
+	public Result<DsvsSignResult> sign(DsvsSignRequest obj);
 	
 	/**
 	 * PDF批量签章
@@ -233,7 +249,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dsvs/batchSign", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> batchSign(Object obj);
+	public Result<DsvsBatchSignResult> batchSign(DsvsBatchSignRequest obj);
 
     /**
      * PDF验章
@@ -243,7 +259,7 @@ public interface AtomedApiRequest {
      * @throws Exception
      */
 	@RequestMapping(value = "/dsvs/verifyBase64", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> verifyBase64(Object obj);
+	public Result<DsvsVerifyBase64Result> verifyBase64(DsvsVerifyBase64Request obj);
 
     //-----------------------------------------------------------------------------------------------------------------------
     /**
@@ -257,7 +273,7 @@ public interface AtomedApiRequest {
 	 * @return
 	 */
 	@RequestMapping(value = "/dgs/pdfFill", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfFill(Object obj);
+	public Result<DgsPdfFillResult> pdfFill(DgsPdfFillRequest obj);
 	
 	/**
 	 * PDF模板创建
@@ -265,7 +281,7 @@ public interface AtomedApiRequest {
 	 * @return
 	 */
 	@RequestMapping(value = "/dgs/pdfCreate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfCreate(Object obj);
+	public Result<String> pdfCreate(DgsPdfCreateRequest obj);
 
 
 	/**
@@ -275,7 +291,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dgs/pdfTextMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfTextMark(Object obj);
+	public Result<String> pdfTextMark(DgsPdfTextMarkRequest obj);
 
 	/**
 	 * 添加图片水印
@@ -284,7 +300,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dgs/pdfImageMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfImageMark(Object obj);
+	public Result<String> pdfImageMark(DgsPdfImageMarkRequest obj);
 
 	/**
 	 * 添加二维码水印
@@ -293,7 +309,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dgs/pdfQrCodeMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfQrCodeMark(Object obj);
+	public Result<String> pdfQrCodeMark(DgsPdfQrCodeMarkRequest obj);
 
 	/**
 	 * 添加文字和二维码水印
@@ -302,6 +318,6 @@ public interface AtomedApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dgs/pdfTextAndQrCodeMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfTextAndQrCodeMark(Object obj);
+	public Result<String> pdfTextAndQrCodeMark(DgsPdfTextAndQrCodeMarkRequest obj);
 
 }

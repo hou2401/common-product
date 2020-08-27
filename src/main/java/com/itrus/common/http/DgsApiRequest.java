@@ -1,5 +1,7 @@
 package com.itrus.common.http;
 
+import com.itrus.common.request.uag.dgs.*;
+import com.itrus.common.response.dgs.DgsPdfFillResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -24,7 +26,7 @@ public interface DgsApiRequest {
 	 * @return
 	 */
 	@RequestMapping(value = "/dgs/pdfFill", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfFill(Object obj);
+	public Result<DgsPdfFillResult> pdfFill(DgsPdfFillRequest obj);
 	
 	/**
 	 * PDF模板创建
@@ -32,7 +34,7 @@ public interface DgsApiRequest {
 	 * @return
 	 */
 	@RequestMapping(value = "/dgs/pdfCreate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfCreate(Object obj);
+	public Result<String> pdfCreate(DgsPdfCreateRequest obj);
 	
 	/**
 	 * 添加文字水印
@@ -41,7 +43,7 @@ public interface DgsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dgs/pdfTextMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfTextMark(Object obj);
+	public Result<String> pdfTextMark(DgsPdfTextMarkRequest obj);
 	
 	/**
 	 * 添加图片水印
@@ -50,7 +52,7 @@ public interface DgsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dgs/pdfImageMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfImageMark(Object obj);
+	public Result<JSONObject> pdfImageMark(DgsPdfImageMarkRequest obj);
 	
 	/**
 	 * 添加二维码水印
@@ -59,7 +61,7 @@ public interface DgsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dgs/pdfQrCodeMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfQrCodeMark(Object obj);
+	public Result<String> pdfQrCodeMark(DgsPdfQrCodeMarkRequest obj);
 
 
 	/**
@@ -69,6 +71,6 @@ public interface DgsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dgs/pdfTextAndQrCodeMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdfTextAndQrCodeMark(Object obj);
+	public Result<String> pdfTextAndQrCodeMark(DgsPdfTextAndQrCodeMarkRequest obj);
 	
 }

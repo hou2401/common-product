@@ -1,5 +1,11 @@
 package com.itrus.common.http;
 
+import com.itrus.common.request.uag.dsvs.DsvsBatchSignRequest;
+import com.itrus.common.request.uag.dsvs.DsvsSignRequest;
+import com.itrus.common.request.uag.dsvs.DsvsVerifyBase64Request;
+import com.itrus.common.response.dsvs.DsvsBatchSignResult;
+import com.itrus.common.response.dsvs.DsvsSignResult;
+import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -26,7 +32,7 @@ public interface DsvsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dsvs/sign", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> sign(Object obj);
+	public Result<DsvsSignResult> sign(DsvsSignRequest obj);
 	
 	/**
 	 * PDF批量签章
@@ -36,7 +42,7 @@ public interface DsvsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dsvs/batchSign", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> batchSign(Object obj);
+	public Result<DsvsBatchSignResult> batchSign(DsvsBatchSignRequest obj);
 	
 	/**
      * PDF验章
@@ -46,6 +52,6 @@ public interface DsvsApiRequest {
      * @throws Exception
      */
 	@RequestMapping(value = "/dsvs/verifyBase64", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> verifyBase64(Object obj);
+	public Result<DsvsVerifyBase64Result> verifyBase64(DsvsVerifyBase64Request obj);
 
 }

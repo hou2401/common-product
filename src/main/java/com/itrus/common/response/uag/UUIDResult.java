@@ -2,8 +2,7 @@ package com.itrus.common.response.uag;
 
 import java.io.Serializable;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.*;
 
 /**
  * 用户注册返回实体
@@ -11,14 +10,17 @@ import lombok.Getter;
  *
  */
 /**
+ *
  * @apiDefine RegisterResult 用户注册返回实体
  * 
  * @apiParam {Long} uuid 用户注册id.
  *
  */
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-public class RegisterResult implements Serializable{
+public class UUIDResult implements Serializable{
 
 	/**
 	 * 

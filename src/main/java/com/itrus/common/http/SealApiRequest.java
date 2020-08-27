@@ -1,5 +1,6 @@
 package com.itrus.common.http;
 
+import com.itrus.common.request.uag.atom.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,7 @@ public interface SealApiRequest {
 	
 	//value:被调用的服务接口路径
 	@RequestMapping(value = "/seal/front/createEllipseSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE) 
-	public Result<JSONObject> createEllipseSeal(Object obj);
+	public Result<String> createEllipseSeal(CreateEllipseSealRequest obj);
 
 	/**
 	 * 创建圆形印章
@@ -39,7 +40,7 @@ public interface SealApiRequest {
 	 */
 	//value:被调用的服务接口路径
 	@RequestMapping(value = "/seal/front/createCircularSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE) 
-	public Result<JSONObject> createCircularSeal(Object obj);
+	public Result<String> createCircularSeal(CreateCircularSealRequest obj);
 	
 	/**
 	 * 创建三角章
@@ -49,7 +50,7 @@ public interface SealApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/createTriangleSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> createTriangleSeal(Object obj);
+	public Result<String> createTriangleSeal(CreateTriangleSealRequest obj);
 
 	/**
 	 * 创建双行人名印章
@@ -60,7 +61,7 @@ public interface SealApiRequest {
 	 */
 	//value:被调用的服务接口路径
 	@RequestMapping(value = "/seal/front/createDoubleRowSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE) 
-	public Result<JSONObject> createDoubleRowSeal(Object obj);
+	public Result<String> createDoubleRowSeal(CreateDoubleRowSealRequest obj);
 
 	/**
 	 * 创建单行人名印章
@@ -70,7 +71,7 @@ public interface SealApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/createSingleRowSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE) 
-	public Result<JSONObject> createSingleRowSeal(Object obj);
+	public Result<String> createSingleRowSeal(CreateSingleRowSealRequest obj);
 
 	/**
 	 * 印章透明处理
@@ -80,6 +81,6 @@ public interface SealApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/sealLimpid", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> sealLimpid(Object obj);
+	public Result<String> sealLimpid(SealLimpidRequest obj);
 	
 }

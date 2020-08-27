@@ -1,5 +1,6 @@
 package com.itrus.common.http;
 
+import com.itrus.common.response.fcs.GetTotalPagesResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,7 @@ public interface FcsApiRequest {
 	 * @throws Exception    
 	 */
 	@RequestMapping(value = "fcs/front/word2pdf", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> word2Pdfs(Object obj);
+	public Result<String> word2Pdfs(Object obj);
 	
 	/***
 	 * pdf转png
@@ -37,7 +38,7 @@ public interface FcsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/fcs/front/pdf2png", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> pdf2png(Object obj);
+	public Result<String> pdf2png(Object obj);
 
 	/***
 	 * excel表格转换pdf（支持xls/xlsx）
@@ -46,7 +47,7 @@ public interface FcsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/fcs/front/excel2pdf", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> excel2Pdfs(Object obj);
+	public Result<String> excel2Pdfs(Object obj);
 	
 	/***
 	 * 图片转换pdf（支持jpg/jpeg/png）
@@ -55,7 +56,7 @@ public interface FcsApiRequest {
 	 * @throws Exception  
 	 */
 	@RequestMapping(value = "/fcs/front/image2pdf", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<JSONObject> image2Pdfs(Object obj);
+	public Result<String> image2Pdfs(Object obj);
 
 	/***
 	 * 生成缩略图
@@ -63,7 +64,7 @@ public interface FcsApiRequest {
 	 * @return 操作结果
 	 */
 	@RequestMapping(value = "/fcs/front/generateThumbnail", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Result<JSONObject> generateThumbnail(@RequestPart(value = "file") MultipartFile file,@RequestPart(value = "pages")String pages,
+	public Result<String> generateThumbnail(@RequestPart(value = "file") MultipartFile file,@RequestPart(value = "pages")String pages,
 			@RequestPart(value = "scale")Float scale, @RequestPart(value = "dpi")Float dpi);
 	
 	/***
@@ -72,6 +73,6 @@ public interface FcsApiRequest {
 	 * @return 操作结果
 	 */
 	@RequestMapping(value = "/fcs/front/getTotalPages", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Result<JSONObject> getTotalPages(@RequestPart(value = "file") MultipartFile file);
+	public Result<GetTotalPagesResult> getTotalPages(@RequestPart(value = "file") MultipartFile file);
 
 }

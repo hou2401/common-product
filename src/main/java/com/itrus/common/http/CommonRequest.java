@@ -7,6 +7,24 @@ import java.util.Map;
 
 import com.itrus.common.params.sign.PdfBatchSign;
 
+import com.itrus.common.request.uag.atom.*;
+import com.itrus.common.request.uag.cert.CertApplyRequest;
+import com.itrus.common.request.uag.cert.CertUpdateRequest;
+import com.itrus.common.request.uag.dgs.*;
+import com.itrus.common.request.uag.dsvs.DsvsBatchSignRequest;
+import com.itrus.common.request.uag.dsvs.DsvsSignRequest;
+import com.itrus.common.request.uag.dsvs.DsvsVerifyBase64Request;
+import com.itrus.common.request.uag.fcs.generateThumbnailRequest;
+import com.itrus.common.request.uag.fcs.getTotalPagesRequest;
+import com.itrus.common.request.uag.fcs.pdf2pngRequest;
+import com.itrus.common.response.atom.FssDownloadBase64Result;
+import com.itrus.common.response.cert.CertApplyResult;
+import com.itrus.common.response.cert.CertUpdateResult;
+import com.itrus.common.response.dgs.DgsPdfFillResult;
+import com.itrus.common.response.dsvs.DsvsBatchSignResult;
+import com.itrus.common.response.dsvs.DsvsSignResult;
+import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
+import com.itrus.common.response.fcs.GetTotalPagesResult;
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,12 +115,12 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public JSONObject createEllipseSeal(Object kvs) throws Exception {
-        JSONObject result = null;
+    public String createEllipseSeal(CreateEllipseSealRequest kvs) throws Exception {
+        String result = null;
             if (alled()) {//合并版
-            	result = (JSONObject) isOk(atomedApiRequest.createEllipseSeal(kvs));
+            	result = (String) isOk(atomedApiRequest.createEllipseSeal(kvs));
             } else {
-                result = (JSONObject) isOk(sealApiRequest.createEllipseSeal(kvs));
+                result = (String) isOk(sealApiRequest.createEllipseSeal(kvs));
             }
         return result;
     }
@@ -114,12 +132,12 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public JSONObject createCircularSeal(SealParam sealParam) throws Exception {
-        JSONObject result = null;
+    public String createCircularSeal(CreateCircularSealRequest sealParam) throws Exception {
+        String result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.createCircularSeal(sealParam));
+            result = (String) isOk(atomedApiRequest.createCircularSeal(sealParam));
         } else {
-            result = (JSONObject) isOk(sealApiRequest.createCircularSeal(sealParam));
+            result = (String) isOk(sealApiRequest.createCircularSeal(sealParam));
         }
         return result;
     }
@@ -131,12 +149,12 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public JSONObject createTriangleSeal(SealParam sealParam) throws Exception {
-    	JSONObject result = null;
+    public String createTriangleSeal(CreateTriangleSealRequest sealParam) throws Exception {
+        String result = null;
     	if (alled()) {
-    		result = (JSONObject) isOk(atomedApiRequest.createTriangleSeal(sealParam));
+    		result = (String) isOk(atomedApiRequest.createTriangleSeal(sealParam));
     	} else {
-    		result = (JSONObject) isOk(sealApiRequest.createTriangleSeal(sealParam));
+    		result = (String) isOk(sealApiRequest.createTriangleSeal(sealParam));
     	}
     	return result;
     }
@@ -148,12 +166,12 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public JSONObject createDoubleRowSeal(SealParam sealParam) throws Exception {
-        JSONObject result = null;
+    public String createDoubleRowSeal(CreateDoubleRowSealRequest sealParam) throws Exception {
+        String result = null;
             if (alled()) {
-            	result = (JSONObject) isOk(atomedApiRequest.createDoubleRowSeal(sealParam));
+            	result = (String) isOk(atomedApiRequest.createDoubleRowSeal(sealParam));
             } else {
-                result = (JSONObject) isOk(sealApiRequest.createDoubleRowSeal(sealParam));
+                result = (String) isOk(sealApiRequest.createDoubleRowSeal(sealParam));
             }
         return result;
     }
@@ -165,12 +183,12 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public JSONObject createSingleRowSeal(SealParam sealParam) throws Exception {
-        JSONObject result = null;
+    public String createSingleRowSeal(CreateSingleRowSealRequest sealParam) throws Exception {
+        String result = null;
         if (alled()) {
-        	result = (JSONObject) isOk(atomedApiRequest.createSingleRowSeal(sealParam));
+        	result = (String) isOk(atomedApiRequest.createSingleRowSeal(sealParam));
         } else {
-            result = (JSONObject) isOk(sealApiRequest.createSingleRowSeal(sealParam));
+            result = (String) isOk(sealApiRequest.createSingleRowSeal(sealParam));
         }
         return result;
     }
@@ -182,13 +200,13 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public JSONObject sealLimpid(Object obj) throws Exception {
-        JSONObject result = null;
+    public String sealLimpid(SealLimpidRequest obj) throws Exception {
+        String result = null;
         if (alled()) {
-        	result = (JSONObject) isOk(atomedApiRequest.sealLimpid(obj));
+        	result = (String) isOk(atomedApiRequest.sealLimpid(obj));
         } else {
 
-            result = (JSONObject) isOk(sealApiRequest.sealLimpid(obj));
+            result = (String) isOk(sealApiRequest.sealLimpid(obj));
         }
         return result;
     }
@@ -207,14 +225,14 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject fileDelete(Long fssId) throws Exception {
+    public String fileDelete(Long fssId) throws Exception {
     	Map<String, Object> params = new HashMap<>(1);
 		params.put("fssId", fssId);
-        JSONObject result = null;
+        String result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.fileDelete(params));
+            result = (String) isOk(atomedApiRequest.fileDelete(params));
         } else {
-            result = (JSONObject) isOk(fssApiRequest.fileDelete(params));
+            result = (String) isOk(fssApiRequest.fileDelete(params));
         }
         return result;
     }
@@ -271,17 +289,17 @@ public class CommonRequest {
      * @return 操作结果
      * @throws Exception
      */
-    public Long upload(String fileName, String bizType, byte[] fileBytes,String originalFilename, Integer encryptionType) throws Exception {
+    public Long upload(FssUploadRequest obj) throws Exception {
     	
-    	if(originalFilename == null) {
-    		originalFilename = "anonymous.file";
+    	if(obj.getOriginalFilename() == null) {
+    		obj.setOriginalFilename("anonymous.file");
 		}
-    	InputStream inputStream = new ByteArrayInputStream(fileBytes);
-    	MultipartFile file = new MockMultipartFile(fileName,originalFilename,ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
+    	InputStream inputStream = new ByteArrayInputStream(obj.getFileBytes());
+    	MultipartFile file = new MockMultipartFile(obj.getFileName(),obj.getOriginalFilename(),ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
     	Long fssId = null;
     	JSONObject jsonObject = null;
         if (alled()) {
-        	jsonObject = (JSONObject) isOk(atomedApiRequest.upload(file,bizType,encryptionType));
+        	jsonObject = (JSONObject) isOk(atomedApiRequest.upload(file,obj.getBizType(),obj.getEncryptionType()));
         	if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
@@ -291,7 +309,7 @@ public class CommonRequest {
                 }
             }
         } else {
-        	jsonObject = (JSONObject) isOk(fssApiRequest.upload(file, bizType, encryptionType));
+        	jsonObject = (JSONObject) isOk(fssApiRequest.upload(file, obj.getBizType(), obj.getEncryptionType()));
         	if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
@@ -310,14 +328,14 @@ public class CommonRequest {
      * @return 文件内容
      * @throws Exception
      */
-    public JSONObject downloadBase64(Long fssId) throws Exception {
+    public FssDownloadBase64Result downloadBase64(Long fssId) throws Exception {
     	Map<String, Object> params = new HashMap<>(1);
 		params.put("fssId", fssId);
-        JSONObject result = null;
+        FssDownloadBase64Result result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.downLoadBase64(params));
+            result = (FssDownloadBase64Result) isOk(atomedApiRequest.downLoadBase64(params));
         } else {
-            result = (JSONObject) isOk(fssApiRequest.downLoadBase64(params));
+            result = (FssDownloadBase64Result) isOk(fssApiRequest.downLoadBase64(params));
         }
         return result;
     }
@@ -383,10 +401,10 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject word2Pdfs(byte[] data) throws Exception {
+    public String word2Pdfs(byte[] data) throws Exception {
     	Map<String,String> params = new HashMap<>();
 		params.put("file",Base64Utils.encodeToString(data));
-        return (JSONObject) isOk(fcsApiRequest.word2Pdfs(params));
+        return (String) isOk(fcsApiRequest.word2Pdfs(params));
     }
     
     /**
@@ -395,10 +413,11 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject pdf2png(byte[] data) throws Exception {
+    public String pdf2png(pdf2pngRequest data) throws Exception {
     	Map<String,String> params = new HashMap<>();
-		params.put("file",Base64Utils.encodeToString(data));
-        return (JSONObject) isOk(fcsApiRequest.pdf2png(params));
+		params.put("file",Base64Utils.encodeToString(data.getData()));
+        params.put("scale",data.getScale().toString());
+        return (String) isOk(fcsApiRequest.pdf2png(params));
     }
 
 	/**
@@ -407,10 +426,10 @@ public class CommonRequest {
 	 * @return
 	 * @throws Exception
 	 */
-    public JSONObject excel2Pdfs(byte[] data) throws Exception {
+    public String excel2Pdfs(byte[] data) throws Exception {
     	Map<String,String> params = new HashMap<>();
 		params.put("file",Base64Utils.encodeToString(data));
-        return (JSONObject) isOk(fcsApiRequest.excel2Pdfs(params));
+        return (String) isOk(fcsApiRequest.excel2Pdfs(params));
     }
 
 	/**
@@ -419,10 +438,10 @@ public class CommonRequest {
 	 * @return
 	 * @throws Exception
 	 */
-    public JSONObject image2png(byte[] data) throws Exception {
+    public String image2png(byte[] data) throws Exception {
     	Map<String,String> params = new HashMap<>();
 		params.put("file",Base64Utils.encodeToString(data));
-        return (JSONObject) isOk(fcsApiRequest.image2Pdfs(params));
+        return (String) isOk(fcsApiRequest.image2Pdfs(params));
     }
     
     /***
@@ -431,15 +450,14 @@ public class CommonRequest {
      * @return 操作结果
      * @throws Exception
      */
-    public JSONObject generateThumbnail(String fileName, byte[] fileBytes,String originalFilename, String pages,
-    		Float scale, Float dpi) throws Exception {
+    public String generateThumbnail(generateThumbnailRequest obj) throws Exception {
     	
-    	if(originalFilename == null) {
-    		originalFilename = "anonymous.file";
+    	if(obj.getOriginalFilename() == null) {
+    		obj.setOriginalFilename("anonymous.file");
 		}
-    	InputStream inputStream = new ByteArrayInputStream(fileBytes);
-    	MultipartFile file = new MockMultipartFile(fileName,originalFilename,ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
-    	return (JSONObject) isOk(fcsApiRequest.generateThumbnail(file, pages, scale, dpi));
+    	InputStream inputStream = new ByteArrayInputStream(obj.getFileBytes());
+    	MultipartFile file = new MockMultipartFile(obj.getFileName(),obj.getOriginalFilename(),ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
+    	return (String) isOk(fcsApiRequest.generateThumbnail(file, obj.getPages(), obj.getScale(), obj.getDpi()));
     }
     
     /***
@@ -448,14 +466,14 @@ public class CommonRequest {
      * @return 操作结果
      * @throws Exception
      */
-    public JSONObject getTotalPages(String fileName, byte[] fileBytes,String originalFilename) throws Exception {
+    public GetTotalPagesResult getTotalPages(getTotalPagesRequest obj) throws Exception {
     	
-    	if(originalFilename == null) {
-    		originalFilename = "anonymous.file";
+    	if(obj.getOriginalFilename() == null) {
+    		obj.setOriginalFilename("anonymous.file");
     	}
-    	InputStream inputStream = new ByteArrayInputStream(fileBytes);
-    	MultipartFile file = new MockMultipartFile(fileName,originalFilename,ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
-    	return (JSONObject) isOk(fcsApiRequest.getTotalPages(file));
+    	InputStream inputStream = new ByteArrayInputStream(obj.getFileBytes());
+    	MultipartFile file = new MockMultipartFile(obj.getFileName(),obj.getOriginalFilename(),ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
+    	return (GetTotalPagesResult) isOk(fcsApiRequest.getTotalPages(file));
     }
 
 
@@ -473,12 +491,12 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public JSONObject applyCert(CertParams cert) throws Exception {
-        JSONObject result = null;
+    public CertApplyResult applyCert(CertApplyRequest cert) throws Exception {
+        CertApplyResult result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.applyCert(cert));
+            result = (CertApplyResult) isOk(atomedApiRequest.applyCert(cert));
         } else {
-            result = (JSONObject) isOk(certApiRequest.applyCert(cert));
+            result = (CertApplyResult) isOk(certApiRequest.applyCert(cert));
         }
         return result;
 
@@ -491,12 +509,12 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public JSONObject updateCert(Object kvs) throws Exception {
-        JSONObject result = null;
+    public CertUpdateResult updateCert(CertUpdateRequest kvs) throws Exception {
+        CertUpdateResult result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.updateCert(kvs));
+            result = (CertUpdateResult) isOk(atomedApiRequest.updateCert(kvs));
         } else {
-            result = (JSONObject) isOk(certApiRequest.updateCert(kvs));
+            result = (CertUpdateResult) isOk(certApiRequest.updateCert(kvs));
         }
         return result;
 
@@ -515,12 +533,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject sign(Object kvs) throws Exception {
-        JSONObject result = null;
+    public DsvsSignResult sign(DsvsSignRequest kvs) throws Exception {
+        DsvsSignResult result = null;
 	    if (alled()) {
-	        result = (JSONObject) isOk(atomedApiRequest.sign(kvs));
+	        result = (DsvsSignResult) isOk(atomedApiRequest.sign(kvs));
 	    } else {
-	        result = (JSONObject) isOk(dsvsApiRequest.sign(kvs));
+	        result = (DsvsSignResult) isOk(dsvsApiRequest.sign(kvs));
 	    }
         return result;
 
@@ -533,12 +551,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject batchSign(PdfBatchSign pdfBatchSign) throws Exception {
-        JSONObject result = null;
+    public DsvsBatchSignResult batchSign(DsvsBatchSignRequest pdfBatchSign) throws Exception {
+        DsvsBatchSignResult result = null;
         if (alled()) {
-        	 result = (JSONObject) isOk(atomedApiRequest.batchSign(pdfBatchSign));
+        	 result = (DsvsBatchSignResult) isOk(atomedApiRequest.batchSign(pdfBatchSign));
         } else {
-            result = (JSONObject) isOk(dsvsApiRequest.batchSign(pdfBatchSign));
+            result = (DsvsBatchSignResult) isOk(dsvsApiRequest.batchSign(pdfBatchSign));
         }
         return result;
     }
@@ -550,13 +568,13 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject verifyBase64(Object obj) throws Exception {
-        JSONObject result = null;
+    public DsvsVerifyBase64Result verifyBase64(DsvsVerifyBase64Request obj) throws Exception {
+        DsvsVerifyBase64Result result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
             if (alled()) {
-                result = (JSONObject) isOk(atomedApiRequest.verifyBase64(obj));
+                result = (DsvsVerifyBase64Result) isOk(atomedApiRequest.verifyBase64(obj));
             } else {
-                result = (JSONObject) isOk(dsvsApiRequest.verifyBase64(obj));
+                result = (DsvsVerifyBase64Result) isOk(dsvsApiRequest.verifyBase64(obj));
             }
         }
         return result;
@@ -577,12 +595,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject pdfFill(Object kvs) throws Exception {
-        JSONObject result = null;
+    public DgsPdfFillResult pdfFill(DgsPdfFillRequest kvs) throws Exception {
+        DgsPdfFillResult result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.pdfFill(kvs));
+            result = (DgsPdfFillResult) isOk(atomedApiRequest.pdfFill(kvs));
         } else {
-            result = (JSONObject) isOk(dgsApiRequest.pdfFill(kvs));
+            result = (DgsPdfFillResult) isOk(dgsApiRequest.pdfFill(kvs));
         }
         return result;
 
@@ -595,12 +613,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject pdfCreate(Object kvs) throws Exception {
-    	JSONObject result = null;
+    public String pdfCreate(DgsPdfCreateRequest kvs) throws Exception {
+        String result = null;
     	if (alled()) {
-    		result = (JSONObject) isOk(atomedApiRequest.pdfCreate(kvs));
+    		result = (String) isOk(atomedApiRequest.pdfCreate(kvs));
     	} else {
-    		result = (JSONObject) isOk(dgsApiRequest.pdfCreate(kvs));
+    		result = (String) isOk(dgsApiRequest.pdfCreate(kvs));
     	}
     	return result;
     	
@@ -613,13 +631,13 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject pdfTextMark(PdfTextMarkParams pdfTextMarkParams) throws Exception {
+    public String pdfTextMark(DgsPdfTextMarkRequest pdfTextMarkParams) throws Exception {
 
-        JSONObject result = null;
+        String result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.pdfTextMark(pdfTextMarkParams));
+            result = (String) isOk(atomedApiRequest.pdfTextMark(pdfTextMarkParams));
         } else {
-            result = (JSONObject) isOk(dgsApiRequest.pdfTextMark(pdfTextMarkParams));
+            result = (String) isOk(dgsApiRequest.pdfTextMark(pdfTextMarkParams));
         }
         return result;
     }
@@ -631,12 +649,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject pdfImageMark(PdfImageMarkParams pdfImageMarkParams) throws Exception {
-        JSONObject result = null;
+    public String pdfImageMark(DgsPdfImageMarkRequest pdfImageMarkParams) throws Exception {
+        String result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.pdfImageMark(pdfImageMarkParams));
+            result = (String) isOk(atomedApiRequest.pdfImageMark(pdfImageMarkParams));
         } else {
-            result = (JSONObject) isOk(dgsApiRequest.pdfImageMark(pdfImageMarkParams));
+            result = (String) isOk(dgsApiRequest.pdfImageMark(pdfImageMarkParams));
         }
         return result;
     }
@@ -648,12 +666,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject pdfQrCodeMark(PdfQrCodeMarkParams pdfQrCodeMarkParams) throws Exception {
-        JSONObject result = null;
+    public String pdfQrCodeMark(DgsPdfQrCodeMarkRequest pdfQrCodeMarkParams) throws Exception {
+        String result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams));
+            result = (String) isOk(atomedApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams));
         } else {
-            result = (JSONObject) isOk(dgsApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams));
+            result = (String) isOk(dgsApiRequest.pdfQrCodeMark(pdfQrCodeMarkParams));
         }
         return result;
     }
@@ -665,12 +683,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject pdfTextAndQrCodeMark(PdfTextAndQrCodeMarkParams pdfTextAndQrCodeMarkParams) throws Exception {
-        JSONObject result = null;
+    public String pdfTextAndQrCodeMark(DgsPdfTextAndQrCodeMarkRequest pdfTextAndQrCodeMarkParams) throws Exception {
+        String result = null;
         if (alled()) {
-            result = (JSONObject) isOk(atomedApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams));
+            result = (String) isOk(atomedApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams));
         } else {
-            result = (JSONObject) isOk(dgsApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams));
+            result = (String) isOk(dgsApiRequest.pdfTextAndQrCodeMark(pdfTextAndQrCodeMarkParams));
         }
         return result;
     }
