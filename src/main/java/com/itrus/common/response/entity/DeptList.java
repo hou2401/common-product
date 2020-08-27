@@ -15,17 +15,17 @@ import java.io.Serializable;
 public class DeptList implements Serializable {
     private String deptName;
 
-    private int uuid;
+    private String uuid;
 
     private String deptType;
 
-    private int orderNum;
+    private Integer orderNum;
 
-    private int parentUuid;
+    private String parentUuid;
 
     private String parentType;
 
-    private int companyUuid;
+    private String companyUuid;
 
     private String creatorName;
 

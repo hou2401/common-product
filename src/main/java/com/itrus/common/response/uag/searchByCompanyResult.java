@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class searchByCompanyResult implements Serializable {
-    private int total;
+    private Integer total;
 
     private List<UserList> userList;
 }

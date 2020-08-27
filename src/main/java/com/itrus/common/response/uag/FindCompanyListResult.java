@@ -1,5 +1,6 @@
 package com.itrus.common.response.uag;
 
+import com.itrus.common.response.entity.Company;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,10 +14,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class addLeader implements Serializable {
-    private int successCount;
+public class FindCompanyListResult implements Serializable {
+    private Integer total;
 
-    private int errorCount;
-
-    private List<String> errorDataList;
+    private List<Company> companyList;
 }

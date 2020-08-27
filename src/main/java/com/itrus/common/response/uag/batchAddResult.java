@@ -14,9 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class batchAddResult implements Serializable {
-    private int successCount;
+    private Integer successCount;
 
-    private int errorCount;
+    private Integer errorCount;
 
     private List<String> errorDataList;
 }

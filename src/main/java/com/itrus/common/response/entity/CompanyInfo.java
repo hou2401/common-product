@@ -21,5 +21,5 @@ public class CompanyInfo implements Serializable {
 
     private RelationInfo relationInfo;
 
-    private String extendAttr;
+    private Object extendAttr;
 }

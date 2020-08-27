@@ -31,6 +31,6 @@ public class UUIDResult implements Serializable{
 	 * uuid 
 	 * 注册成功，返回用户注册uuid
 	 */
-	private Long uuid;
+	private String uuid;
 	
 }

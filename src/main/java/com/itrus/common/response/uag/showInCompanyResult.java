@@ -17,7 +17,7 @@ import java.util.List;
 public class showInCompanyResult implements Serializable {
     private String userName;
 
-    private int uuid;
+    private String uuid;
 
     private String employeeCode;
 

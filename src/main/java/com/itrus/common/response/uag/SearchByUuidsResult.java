@@ -2,10 +2,11 @@ package com.itrus.common.response.uag;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author yuying
@@ -13,9 +14,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class AddCompanyOnOperationResult implements Serializable {
-    private String uuid;
-
-    private String companyUuid;
+public class SearchByUuidsResult implements Serializable {
+    private List<String> uuids;
+    private List<HashMap<String,Object>> userInfos;
 }

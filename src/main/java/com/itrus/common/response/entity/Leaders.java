@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Leaders implements Serializable {
-    private int uuid;
+    private String uuid;
 
     private String nickName;
 

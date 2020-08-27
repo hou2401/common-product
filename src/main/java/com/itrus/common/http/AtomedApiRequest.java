@@ -55,7 +55,7 @@ public interface AtomedApiRequest {
 	
 	//value:被调用的服务接口路径
 	@RequestMapping(value = "/seal/front/createEllipseSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<String> createEllipseSeal(CreateEllipseSealRequest obj);
+	public Result<String> createEllipseSeal(CreateCircularSealRequest obj);
 
 	/**
 	 * 创建圆形印章
@@ -75,7 +75,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception 抛出异常
 	 */
 	@RequestMapping(value = "/seal/front/createTriangleSeal", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<String> createTriangleSeal(CreateTriangleSealRequest obj);
+	public Result<String> createTriangleSeal(CreateCircularSealRequest obj);
 
 	/**
 	 * 创建双行人名印章

@@ -107,7 +107,7 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public String createEllipseSeal(CreateEllipseSealRequest kvs) throws Exception {
+    public String createEllipseSeal(CreateCircularSealRequest kvs) throws Exception {
         String result = null;
             if (alled()) {//合并版
             	result = (String) isOk(atomedApiRequest.createEllipseSeal(kvs));
@@ -141,7 +141,7 @@ public class CommonRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public String createTriangleSeal(CreateTriangleSealRequest sealParam) throws Exception {
+    public String createTriangleSeal(CreateCircularSealRequest sealParam) throws Exception {
         String result = null;
     	if (alled()) {
     		result = (String) isOk(atomedApiRequest.createTriangleSeal(sealParam));

@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchLeadersResult implements Serializable {
-    private int total;
+    private Integer total;
 
     private List<Leaders> leaders;
 }

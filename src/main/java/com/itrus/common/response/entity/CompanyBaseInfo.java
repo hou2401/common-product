@@ -17,5 +17,5 @@ import java.io.Serializable;
 public class CompanyBaseInfo implements Serializable {
     private String orgName;
 
-    private int uuid;
+    private String uuid;
 }

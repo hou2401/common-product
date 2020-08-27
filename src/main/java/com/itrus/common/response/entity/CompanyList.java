@@ -18,7 +18,7 @@ import java.util.List;
 public class CompanyList implements Serializable {
     private String orgName;
 
-    private int orgId;
+    private Integer orgId;
 
     private List<String> roleNameList;
 

@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class ManagerInfo implements Serializable {
-    private int uuid;
+    private String uuid;
 
     private String creatorName;
 

@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserList implements Serializable {
-    private int uuid;
+    private String uuid;
 
     private String nickName;
 
@@ -34,7 +34,7 @@ public class UserList implements Serializable {
 
     private String sex;
 
-    private String extendAttr;
+    private Object extendAttr;
 
     private List<String> roleName;
 

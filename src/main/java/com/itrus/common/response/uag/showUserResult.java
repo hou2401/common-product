@@ -23,7 +23,7 @@ public class showUserResult implements Serializable {
 
     private RealInfo realInfo;
 
-    private int companyCount;
+    private Integer companyCount;
 
     private List<CompanyList> companyList;
 }
