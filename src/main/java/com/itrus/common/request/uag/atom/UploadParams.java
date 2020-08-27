@@ -1,4 +1,4 @@
-package com.itrus.common.params;
+package com.itrus.common.request.uag.atom;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

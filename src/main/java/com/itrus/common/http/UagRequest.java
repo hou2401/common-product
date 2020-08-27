@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
-import com.itrus.common.params.uag.user.RegisterParams;
 import com.itrus.common.response.atom.RegisterResult;
 import com.itrus.common.result.uag.UagResult;
 
@@ -29,7 +28,7 @@ public class UagRequest {
     * @apiGroup 账号服务（account）
     * @apiSuccess (Success 0x0000) {JSONObject} json.
 	*/
-    public UagResult<RegisterResult> userRegister(RegisterParams obj) throws Exception {
+    public UagResult<RegisterResult> userRegister(Object obj) throws Exception {
     	
         return uagApiRequest.userRegister(obj);
 

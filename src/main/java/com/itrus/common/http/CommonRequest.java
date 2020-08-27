@@ -40,7 +40,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.dto.HttpDTO;
-import com.itrus.common.params.UploadParams;
 
 import cn.com.itrus.atom.sign.common.bean.Result;
 import lombok.extern.slf4j.Slf4j;
