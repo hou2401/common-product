@@ -11,10 +11,14 @@ import com.itrus.common.result.uag.response.entity.UserInfoBase;
 
 /**
  * @author yuying
+ * 查询全网指定用户信息
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchAllResult implements Serializable {
+    /**
+     * 用户信息列表
+     */
     private List<UserInfoBase> users;
 }

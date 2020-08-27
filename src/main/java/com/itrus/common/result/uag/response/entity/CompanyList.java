@@ -16,11 +16,20 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class CompanyList implements Serializable {
+    /**
+     * 企业名称
+     */
     private String orgName;
-
-    private Integer orgId;
-
-    private List<String> roleNameList;
-
+    /**
+     * 公司UUID
+     */
+    private String orgUuid;
+    /**
+     * 角色名字列表
+     */
+    private List<RoleName> roleNameList;
+    /**
+     * 认证结果
+     */
     private String authResult;
 }

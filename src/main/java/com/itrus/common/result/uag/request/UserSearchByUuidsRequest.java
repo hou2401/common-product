@@ -9,6 +9,9 @@ import java.util.List;
 
 import com.itrus.common.request.base.UserBase;
 
+/**
+ * 通过uuid集合获取用户信息
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,5 +20,5 @@ public class UserSearchByUuidsRequest{
     /**
      * 用户唯一标识集合
      */
-    private List<UserBase> uuids;
+    private String[] uuids;
 }

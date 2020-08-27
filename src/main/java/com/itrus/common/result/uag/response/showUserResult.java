@@ -14,17 +14,27 @@ import com.itrus.common.result.uag.response.entity.UserInfo;
 
 /**
  * @author yuying
+ *  个人详情
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class showUserResult implements Serializable {
+    /**
+     * 用户信息
+     */
     private UserInfo userInfo;
-
+    /**
+     * 认证信息
+     */
     private RealInfo realInfo;
-
+    /**
+     * 公司总数
+     */
     private Integer companyCount;
-
+    /**
+     * 公司列表
+     */
     private List<CompanyList> companyList;
 }

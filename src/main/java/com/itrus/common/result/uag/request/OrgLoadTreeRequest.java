@@ -13,7 +13,7 @@ public class OrgLoadTreeRequest {
     /**
      * 节点唯一标识
      */
-    private Long uuid;
+    private String uuid;
     /**
      * 节点类型
      */

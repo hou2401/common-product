@@ -15,7 +15,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class CompanyBaseInfo implements Serializable {
+    /**
+     * 企业全称
+     */
     private String orgName;
-
+    /**
+     * 企业UUID
+     */
     private String uuid;
 }

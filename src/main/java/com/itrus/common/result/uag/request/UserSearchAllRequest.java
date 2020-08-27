@@ -7,6 +7,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * 查询全网指定用户信息
+ */
 @Data
 @AllArgsConstructor
 @ToString

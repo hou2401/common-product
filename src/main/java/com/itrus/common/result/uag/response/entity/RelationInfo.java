@@ -9,13 +9,19 @@ import java.util.List;
 
 /**
  * @author yuying
+ * 公司关系信息
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class RelationInfo implements Serializable {
-    private ParentOrg parentOrg;
-
-    private List<SubInfo> subInfo;
+    /**
+     * 父企业
+     */
+    private ParentSubInfo parentOrg;
+    /**
+     * 子企业列表
+     */
+    private List<ParentSubInfo> subInfo;
 
 }

@@ -7,6 +7,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * 查询用户已加入企业
+ */
 @Data
 @AllArgsConstructor
 @ToString

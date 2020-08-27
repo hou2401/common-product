@@ -12,8 +12,13 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubInfo implements Serializable {
+public class ParentSubInfo implements Serializable {
+    /**
+     * 企业全称
+     */
     private String orgName;
-
+    /**
+     * 企业UUID
+     */
     private String uuid;
 }

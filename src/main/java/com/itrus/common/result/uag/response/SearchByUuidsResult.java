@@ -12,12 +12,18 @@ import com.itrus.common.result.uag.response.entity.UserInfoBase;
 
 /**
  * @author yuying
+ * 通过uuid集合获取用户信息
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchByUuidsResult implements Serializable {
+    /**
+     * 用户唯一标识集合
+     */
     private List<String> uuids;
-
+    /**
+     * 用户信息列表
+     */
     private List<HashMap<String, UserInfoBase>> userInfos;
 }

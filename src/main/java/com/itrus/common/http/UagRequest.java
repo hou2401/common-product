@@ -1,11 +1,15 @@
 package com.itrus.common.http;
 
+import com.itrus.common.result.uag.request.*;
+import com.itrus.common.result.uag.response.SearchAllResult;
+import com.itrus.common.result.uag.response.SearchByUuidsResult;
+import com.itrus.common.result.uag.response.UUIDResult;
+import com.itrus.common.result.uag.response.entity.UserInfoCompany;
+import com.itrus.common.result.uag.response.showUserResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
-import com.itrus.common.response.atom.RegisterResult;
-import com.itrus.common.result.uag.request.UagResult;
 
 /**
  * 公共原子服务调用方法
@@ -28,7 +32,7 @@ public class UagRequest {
     * @apiGroup 账号服务（account）
     * @apiSuccess (Success 0x0000) {JSONObject} json.
 	*/
-    public UagResult<RegisterResult> userRegister(Object obj) throws Exception {
+    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj) throws Exception {
     	
         return uagApiRequest.userRegister(obj);
 
@@ -41,7 +45,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> userUpdateAuth(Object obj) throws Exception {
+    public UagResult<JSONObject> userUpdateAuth(UserUpdateAuthRequest obj) throws Exception {
         return uagApiRequest.userUpdateAuth(obj);
     }
     
@@ -52,7 +56,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> userShowUser(Object obj) throws Exception {
+    public UagResult<showUserResult> userShowUser(UserShowUserRequest obj) throws Exception {
     	return uagApiRequest.userShowUser(obj);
     }
     
@@ -63,7 +67,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> orgRegister(Object obj) throws Exception {
+    public UagResult<UUIDResult> orgRegister(OrgRegisterRequest obj) throws Exception {
     	return uagApiRequest.orgRegister(obj);
     }
     
@@ -74,7 +78,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> userAdd(Object obj) throws Exception {
+    public UagResult<JSONObject> userAdd(UserAddRequest obj) throws Exception {
     	return uagApiRequest.userAdd(obj);
     }
     
@@ -85,7 +89,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> userShowInCompany(Object obj) throws Exception {
+    public UagResult<UserInfoCompany> userShowInCompany(UserShowInCompanyRequest obj) throws Exception {
     	return uagApiRequest.userShowInCompany(obj);
     }
     
@@ -107,7 +111,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> userSearchByUuids(Object obj) throws Exception {
+    public UagResult<SearchByUuidsResult> userSearchByUuids(UserSearchByUuidsRequest obj) throws Exception {
     	return uagApiRequest.userSearchByUuids(obj);
     }
     
@@ -118,7 +122,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> userSearchAll(Object obj) throws Exception {
+    public UagResult<SearchAllResult> userSearchAll(UserSearchAllRequest obj) throws Exception {
     	return uagApiRequest.userSearchAll(obj);
     }
     
@@ -129,7 +133,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> externalAddPersonal(Object obj) throws Exception {
+    public UagResult<JSONObject> externalAddPersonal(ExternalAddPersonalRequest obj) throws Exception {
     	return uagApiRequest.externalAddPersonal(obj);
     }
     
@@ -140,7 +144,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> externalAddCompany(Object obj) throws Exception {
+    public UagResult<JSONObject> externalAddCompany(ExternalAddCompanyRequest obj) throws Exception {
     	return uagApiRequest.externalAddCompany(obj);
     }
     

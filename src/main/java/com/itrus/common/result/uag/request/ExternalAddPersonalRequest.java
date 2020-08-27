@@ -8,6 +8,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * 创建外部联系人-个人
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

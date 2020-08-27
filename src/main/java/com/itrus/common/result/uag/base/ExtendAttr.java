@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * 个人申请企业认证扩展属性
+ */
 @ToString
 @Data
 @AllArgsConstructor
