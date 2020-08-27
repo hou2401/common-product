@@ -1,4 +1,4 @@
-package com.itrus.common.response.entity;
+package com.itrus.common.response.uag.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

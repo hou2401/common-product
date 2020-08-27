@@ -1,7 +1,7 @@
 package com.itrus.common.response.uag;
 
-import com.itrus.common.response.entity.CompanyInfo;
-import com.itrus.common.response.entity.DeptList;
+import com.itrus.common.response.uag.entity.CompanyInfo;
+import com.itrus.common.response.uag.entity.DeptList;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

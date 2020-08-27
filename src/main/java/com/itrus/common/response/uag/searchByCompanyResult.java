@@ -1,7 +1,6 @@
 package com.itrus.common.response.uag;
 
-import com.itrus.common.response.entity.Leaders;
-import com.itrus.common.response.entity.UserList;
+import com.itrus.common.response.uag.entity.UserInfoAll;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,5 +17,5 @@ import java.util.List;
 public class searchByCompanyResult implements Serializable {
     private Integer total;
 
-    private List<UserList> userList;
+    private List<UserInfoAll> userList;
 }

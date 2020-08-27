@@ -1,6 +1,6 @@
 package com.itrus.common.response.uag;
 
-import com.itrus.common.response.entity.Company;
+import com.itrus.common.response.uag.entity.Company;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

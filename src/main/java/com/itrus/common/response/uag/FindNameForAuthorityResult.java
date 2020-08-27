@@ -1,13 +1,12 @@
 package com.itrus.common.response.uag;
 
-import com.itrus.common.response.uag.entity.UserInfoBase;
+import com.itrus.common.response.uag.entity.orgCompany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author yuying
@@ -15,8 +14,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SearchByUuidsResult implements Serializable {
-    private List<String> uuids;
-
-    private List<HashMap<String, UserInfoBase>> userInfos;
+public class FindNameForAuthorityResult implements Serializable {
+    private String person;
+    private HashMap<String, orgCompany> company;
 }

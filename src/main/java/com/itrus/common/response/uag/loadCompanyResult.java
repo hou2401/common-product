@@ -1,8 +1,7 @@
-package com.itrus.common.response.entity;
+package com.itrus.common.response.uag;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -13,19 +12,20 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class UserInfo implements Serializable {
-    private String uuid;
+public class loadCompanyResult implements Serializable {
+    private String orgName;
+
+    private String idCardNum;
 
     private String displayName;
 
-    private String nickName;
-
     private String phone;
 
-    private String state;
-
     private String email;
+
+    private String authResult;
+
+    private String sourceCode;
 
     private String createTime;
 }

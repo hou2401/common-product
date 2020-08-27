@@ -1,4 +1,4 @@
-package com.itrus.common.response.entity;
+package com.itrus.common.response.uag.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Leaders implements Serializable {
+public class UserInfoAll implements Serializable {
     private String uuid;
 
     private String nickName;
@@ -30,17 +30,13 @@ public class Leaders implements Serializable {
 
     private String idCardNum;
 
-    private String birth;
+    private Object extendAttr;
 
-    private String sex;
+    private List<RoleName> roleName;
 
-    private String extendAttr;
+    private List<DeptName> deptName;
 
-    private List<String> roleName;
+    private List<DeptName> leaderDeptName;
 
-    private List<String> deptName;
-
-    private List<String> leaderDeptName;
-
-    private List<ParentList> parentList;
+    private List<Parent> parent;
 }

@@ -1,10 +1,9 @@
-package com.itrus.common.response.uag;
+package com.itrus.common.response.uag.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +12,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class showInCompanyResult implements Serializable {
+public class UserInfoCompany {
+
     private String userName;
 
     private String uuid;
@@ -24,11 +24,12 @@ public class showInCompanyResult implements Serializable {
 
     private String employeeEmail;
 
-    private String extendAttrCompany;
+    private Object extendAttrCompany;
 
-    private List<String> roleName;
+    private List<RoleName> roleName;
 
-    private List<String> deptName;
+    private List<DeptName> deptName;
 
-    private List<String> leaderDeptName;
+    private List<DeptName> leaderDeptName;
+
 }

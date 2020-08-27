@@ -1,12 +1,11 @@
 package com.itrus.common.response.uag;
 
-import com.itrus.common.response.uag.entity.User;
+import com.itrus.common.response.uag.entity.CompanyInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author yuying
@@ -14,6 +13,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FindUserListResult implements Serializable {
-    private List<User> userList;
+public class ShowCompanyInfoResult implements Serializable {
+    private CompanyInfo companyInfo;
 }

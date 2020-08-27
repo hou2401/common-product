@@ -1,8 +1,8 @@
 package com.itrus.common.response.uag;
 
-import com.itrus.common.response.entity.CompanyList;
-import com.itrus.common.response.entity.RealInfo;
-import com.itrus.common.response.entity.UserInfo;
+import com.itrus.common.response.uag.entity.CompanyList;
+import com.itrus.common.response.uag.entity.RealInfo;
+import com.itrus.common.response.uag.entity.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

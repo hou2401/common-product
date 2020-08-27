@@ -1,4 +1,4 @@
-package com.itrus.common.response.entity;
+package com.itrus.common.response.uag.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,5 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Relations {
+public class DeptName {
+    private String deptName;
+
+    private String uuid;
 }

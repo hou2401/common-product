@@ -1,22 +1,19 @@
-package com.itrus.common.response.entity;
+package com.itrus.common.response.uag.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.util.List;
-
 /**
  * @author yuying
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class UserList implements Serializable {
-    private String uuid;
-
+@NoArgsConstructor
+public class UserInfoBase {
     private String nickName;
+
+    private String uuid;
 
     private String displayName;
 
@@ -35,12 +32,4 @@ public class UserList implements Serializable {
     private String sex;
 
     private Object extendAttr;
-
-    private List<String> roleName;
-
-    private List<String> deptName;
-
-    private List<String> leaderDeptName;
-
-    private List<ParentList> parentList;
 }

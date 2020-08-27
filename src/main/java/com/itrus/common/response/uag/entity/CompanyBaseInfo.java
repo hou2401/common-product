@@ -1,4 +1,4 @@
-package com.itrus.common.response.entity;
+package com.itrus.common.response.uag.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,8 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubInfo implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class CompanyBaseInfo implements Serializable {
     private String orgName;
 
     private String uuid;

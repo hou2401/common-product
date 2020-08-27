@@ -1,6 +1,7 @@
 package com.itrus.common.response.uag;
 
 import com.itrus.common.response.uag.entity.CompanyInfo;
+import com.itrus.common.response.uag.entity.UserInfoCompany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FindJoinCompanysResult implements Serializable {
-    List<CompanyInfo> companyList;
+public class FindCompanySuperAdminListResult implements Serializable {
+    private CompanyInfo companyInfo;
+    private List<UserInfoCompany> list;
 }

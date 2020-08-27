@@ -1,5 +1,6 @@
-package com.itrus.common.response.entity;
+package com.itrus.common.response.uag;
 
+import com.itrus.common.response.uag.entity.UserInfoBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,9 +14,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RelationInfo implements Serializable {
-    private ParentOrg parentOrg;
-
-    private List<SubInfo> subInfo;
-
+public class SearchAllResult implements Serializable {
+    private List<UserInfoBase> users;
 }

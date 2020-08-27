@@ -1,4 +1,4 @@
-package com.itrus.common.response.entity;
+package com.itrus.common.response.uag.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author yuying
@@ -14,16 +15,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class ManagerInfo implements Serializable {
-    private String uuid;
+public class CompanyList implements Serializable {
+    private String orgName;
 
-    private String creatorName;
+    private Integer orgId;
 
-    private String phone;
+    private List<String> roleNameList;
 
-    private String email;
-
-    private String state;
-
-    private String createTime;
+    private String authResult;
 }
