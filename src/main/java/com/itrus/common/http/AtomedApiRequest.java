@@ -1,17 +1,15 @@
 package com.itrus.common.http;
 
+import cn.com.itrus.atom.sign.common.bean.Result;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.alibaba.fastjson.JSONObject;
-
-import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
-import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
  * 整合版公共原子服务调用方法
@@ -139,7 +137,8 @@ public interface AtomedApiRequest {
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<DownloadResponse> download(Object obj);
+	public ResponseEntity download(Object obj);
+
 
 	/***
 	 * 下载文件
@@ -303,5 +302,4 @@ public interface AtomedApiRequest {
 	 */
 	@RequestMapping(value = "/dgs/pdfTextAndQrCodeMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Result<JSONObject> pdfTextAndQrCodeMark(Object obj);
-
 }

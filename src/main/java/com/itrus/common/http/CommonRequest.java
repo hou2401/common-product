@@ -1,32 +1,30 @@
 package com.itrus.common.http;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-
+import cn.com.itrus.atom.sign.api.constants.FSSConstants;
+import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
+import cn.com.itrus.atom.sign.api.seal.bean.SealParam;
+import cn.com.itrus.atom.sign.common.bean.Result;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import com.itrus.common.dto.HttpDTO;
+import com.itrus.common.params.*;
 import com.itrus.common.params.sign.PdfBatchSign;
-
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alibaba.fastjson.JSONObject;
-import com.itrus.common.dto.HttpDTO;
-import com.itrus.common.params.CertParams;
-import com.itrus.common.params.PdfImageMarkParams;
-import com.itrus.common.params.PdfQrCodeMarkParams;
-import com.itrus.common.params.PdfTextAndQrCodeMarkParams;
-import com.itrus.common.params.PdfTextMarkParams;
-import com.itrus.common.params.UploadParams;
-
-import cn.com.itrus.atom.sign.api.seal.bean.SealParam;
-import cn.com.itrus.atom.sign.common.bean.Result;
-import lombok.extern.slf4j.Slf4j;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 公共原子服务调用方法
@@ -178,7 +176,7 @@ public class CommonRequest {
     /**
      * 印章透明处理
      *
-     * @param kvs 请求参数
+     * @param obj 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
@@ -267,7 +265,7 @@ public class CommonRequest {
     /***
      * 上传文件
      * @param bizType 业务类型，字符串格式[0-9a-zA-Z_-]*，最大长度为20个字符
-     * @param file 文件
+     * @param fileBytes 文件
      * @return 操作结果
      * @throws Exception
      */
@@ -322,6 +320,48 @@ public class CommonRequest {
         return result;
     }
 
+    /**
+     * 下载文件
+     * @param fssId
+     * @return
+     * @throws Exception
+     */
+    public JSONObject download(Long fssId) throws Exception {
+        Map<String, Object> params = new HashMap<>(1);
+        params.put("fssId", fssId);
+        JSONObject result = null;
+        ResponseEntity response = null;
+        if (alled()) {
+            response = atomedApiRequest.download(params);
+        } else {
+            response = fssApiRequest.downLoad(params);
+        }
+        Result<DownloadResponse> re = this.getResultByResponseEntity(response);
+        return (JSONObject) isOk(re);
+    }
+
+    private Result<DownloadResponse> getResultByResponseEntity(ResponseEntity response) {
+        try {
+            HttpHeaders headers = response.getHeaders();
+            headers.get(FSSConstants.HEADER_DOWNLOAD_SUCCESS).get(0);
+            String downloadSuccess = headers.get(FSSConstants.HEADER_DOWNLOAD_SUCCESS).get(0);
+            if("true".equals(downloadSuccess)) {
+                String filename = headers.get("Content-Disposition").get(0);
+                if (filename.startsWith("attachment;filename=")) {
+                    filename = filename.replace("attachment;filename=", "");
+                }
+                DownloadResponse downloaRresponse = new DownloadResponse();
+                downloaRresponse.setFileBytes((byte[]) response.getBody());
+                downloaRresponse.setFileName(filename);
+                return Result.createSuccessResult(downloaRresponse);
+            } else {
+                return JSON.parseObject((String) response.getBody(), new TypeReference<Result<DownloadResponse>>() {});
+            }
+        } catch (Exception e) {
+            log.error("download error", e);
+            return Result.createFailResult("下载失败: " + e.getMessage());
+        }
+    }
 
     /**
      * 文件流下载接口
@@ -427,7 +467,7 @@ public class CommonRequest {
     
     /***
      * 生成缩略图
-     * @param file 文件
+     * @param fileBytes 文件
      * @return 操作结果
      * @throws Exception
      */
@@ -444,7 +484,7 @@ public class CommonRequest {
     
     /***
      * 获取文件总页数
-     * @param file 文件
+     * @param fileBytes 文件
      * @return 操作结果
      * @throws Exception
      */
@@ -546,7 +586,7 @@ public class CommonRequest {
     /**
      * PDF验章
      *
-     * @param kvs
+     * @param obj
      * @return
      * @throws Exception
      */
