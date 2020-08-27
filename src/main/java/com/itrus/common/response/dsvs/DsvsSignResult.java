@@ -13,7 +13,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DsvsSignResult implements Serializable {
-    private Long fssId;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Long fssId;
     private String pdfBytes;
     private String hashValue;
 }

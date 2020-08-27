@@ -1,18 +1,17 @@
 package com.itrus.common.http;
 
-import com.itrus.common.request.uag.atom.*;
-import com.itrus.common.request.uag.cert.CertUpdateRequest;
-import com.itrus.common.request.uag.dgs.*;
-import com.itrus.common.request.uag.dsvs.DsvsBatchSignRequest;
-import com.itrus.common.request.uag.dsvs.DsvsSignRequest;
-import com.itrus.common.request.uag.dsvs.DsvsVerifyBase64Request;
+import com.itrus.common.request.atom.*;
+import com.itrus.common.request.cert.CertUpdateRequest;
+import com.itrus.common.request.dgs.*;
+import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
+import com.itrus.common.request.dsvs.DsvsSignRequest;
+import com.itrus.common.request.dsvs.DsvsVerifyBase64Request;
 import com.itrus.common.response.atom.FssDownloadBase64Result;
 import com.itrus.common.response.atom.FssUploadBase64Result;
 import com.itrus.common.response.atom.FssUploadResult;
 import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
-import com.itrus.common.response.dsvs.DsvsBatchSignResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -246,7 +245,7 @@ public interface AtomedApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dsvs/batchSign", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public Result<DsvsBatchSignResult> batchSign(DsvsBatchSignRequest obj);
+	public Result<DsvsSignResult> batchSign(DsvsBatchSignRequest obj);
 
     /**
      * PDF验章

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.response.atom.RegisterResult;
-import com.itrus.common.result.uag.UagResult;
+import com.itrus.common.result.uag.request.UagResult;
 
 /**
  * 公共原子服务调用方法

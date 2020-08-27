@@ -1,6 +1,6 @@
 package com.itrus.common.http;
 
-import com.itrus.common.request.uag.cert.CertUpdateRequest;
+import com.itrus.common.request.cert.CertUpdateRequest;
 import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
 import org.springframework.cloud.openfeign.FeignClient;

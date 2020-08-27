@@ -1,6 +1,6 @@
 package com.itrus.common.http;
 
-import com.itrus.common.request.uag.dgs.*;
+import com.itrus.common.request.dgs.*;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;

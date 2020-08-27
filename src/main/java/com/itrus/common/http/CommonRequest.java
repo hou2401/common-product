@@ -10,21 +10,20 @@ import cn.com.itrus.atom.sign.api.constants.FSSConstants;
 import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.itrus.common.request.uag.atom.*;
-import com.itrus.common.request.uag.cert.CertApplyRequest;
-import com.itrus.common.request.uag.cert.CertUpdateRequest;
-import com.itrus.common.request.uag.dgs.*;
-import com.itrus.common.request.uag.dsvs.DsvsBatchSignRequest;
-import com.itrus.common.request.uag.dsvs.DsvsSignRequest;
-import com.itrus.common.request.uag.dsvs.DsvsVerifyBase64Request;
-import com.itrus.common.request.uag.fcs.generateThumbnailRequest;
-import com.itrus.common.request.uag.fcs.getTotalPagesRequest;
-import com.itrus.common.request.uag.fcs.pdf2pngRequest;
+import com.itrus.common.request.atom.*;
+import com.itrus.common.request.cert.CertApplyRequest;
+import com.itrus.common.request.cert.CertUpdateRequest;
+import com.itrus.common.request.dgs.*;
+import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
+import com.itrus.common.request.dsvs.DsvsSignRequest;
+import com.itrus.common.request.dsvs.DsvsVerifyBase64Request;
+import com.itrus.common.request.fcs.generateThumbnailRequest;
+import com.itrus.common.request.fcs.getTotalPagesRequest;
+import com.itrus.common.request.fcs.pdf2pngRequest;
 import com.itrus.common.response.atom.FssDownloadBase64Result;
 import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
-import com.itrus.common.response.dsvs.DsvsBatchSignResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import com.itrus.common.response.fcs.GetTotalPagesResult;
@@ -610,12 +609,12 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public DsvsBatchSignResult batchSign(DsvsBatchSignRequest pdfBatchSign) throws Exception {
-        DsvsBatchSignResult result = null;
+    public DsvsSignResult batchSign(DsvsBatchSignRequest pdfBatchSign) throws Exception {
+    	DsvsSignResult result = null;
         if (alled()) {
-        	 result = (DsvsBatchSignResult) isOk(atomedApiRequest.batchSign(pdfBatchSign));
+        	 result = (DsvsSignResult) isOk(atomedApiRequest.batchSign(pdfBatchSign));
         } else {
-            result = (DsvsBatchSignResult) isOk(dsvsApiRequest.batchSign(pdfBatchSign));
+            result = (DsvsSignResult) isOk(dsvsApiRequest.batchSign(pdfBatchSign));
         }
         return result;
     }

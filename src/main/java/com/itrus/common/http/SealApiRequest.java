@@ -1,12 +1,13 @@
 package com.itrus.common.http;
 
-import com.itrus.common.request.uag.atom.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.alibaba.fastjson.JSONObject;
+import com.itrus.common.request.atom.*;
+
 import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
