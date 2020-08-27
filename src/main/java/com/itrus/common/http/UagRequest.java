@@ -185,7 +185,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> userFindCompanySuperAdminList(Object obj) throws Exception {
+    public UagResult<UserFindCompanySuperAdminListResult> userFindCompanySuperAdminList(UserFindCompanySuperAdminListRequest obj) throws Exception {
     	return uagApiRequest.userFindCompanySuperAdminList(obj);
     }
     
@@ -196,7 +196,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> orgShow(Object obj) throws Exception {
+    public UagResult<OrgShowResult> orgShow(OrgShowRequest obj) throws Exception {
     	return uagApiRequest.orgShow(obj);
     }
     

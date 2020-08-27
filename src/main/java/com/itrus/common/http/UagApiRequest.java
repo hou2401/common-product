@@ -80,11 +80,11 @@ public interface UagApiRequest {
 	
 	
 	@RequestMapping(value = "/user/findCompanySuperAdminList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UagResult<JSONObject> userFindCompanySuperAdminList(UserFindCompanySuperAdminListRequest obj);
+	public UagResult<UserFindCompanySuperAdminListResult> userFindCompanySuperAdminList(UserFindCompanySuperAdminListRequest obj);
 	
 	
 	@RequestMapping(value = "/org/show", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UagResult<JSONObject> orgShow(Object obj);
+	public UagResult<OrgShowResult> orgShow(OrgShowRequest obj);
 
 
     

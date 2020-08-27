@@ -6,14 +6,11 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author yuying
- *  获取指定企业下的超管列表
+ * 运营平台-企业详情
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserFindCompanySuperAdminListRequest {
-    /**
-     * 企业唯一标识
-     */
+public class OrgShowRequest {
     private String companyUuid;
 }
