@@ -358,6 +358,26 @@ public class CommonRequest {
         isOk(re);
         return re;
     }
+    /**
+     * 下载文件FromBase64
+     * @param fssId
+     * @return
+     * @throws Exception
+     */
+    public Result<DownloadResponse> downloadFile(Long fssId) throws Exception {
+        Map<String, Object> params = new HashMap<>(1);
+        params.put("fssId", fssId);
+        FssDownloadBase64Result result = null;
+        if (alled()) {
+            result = (FssDownloadBase64Result) isOk(atomedApiRequest.downLoadBase64(params));
+        } else {
+            result = (FssDownloadBase64Result) isOk(fssApiRequest.downLoadBase64(params));
+        }
+        DownloadResponse downloaRresponse = new DownloadResponse();
+        downloaRresponse.setFileBytes(Base64Utils.decodeFromString(result.getFileBytes()));
+        downloaRresponse.setFileName(result.getFileName());
+        return Result.createSuccessResult(downloaRresponse);
+    }
 
     private Result<DownloadResponse> getResultByResponseEntity(ResponseEntity response) {
         try {
