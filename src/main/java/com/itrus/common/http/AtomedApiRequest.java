@@ -1,17 +1,15 @@
 package com.itrus.common.http;
 
+import cn.com.itrus.atom.sign.common.bean.Result;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.alibaba.fastjson.JSONObject;
-
-import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
-import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
  * 整合版公共原子服务调用方法
@@ -140,49 +138,6 @@ public interface AtomedApiRequest {
 	 */
 	@RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity download(Object obj);
-
-
-	/***
-	 * 下载文件
-	 * @param fssId 文件存储标识
-	 * @return 文件内容
-	 */
-	/*public Result<DownloadResponse> download(Long fssId) {
-		Map<String, Long> request = new Hashtable<>();
-		request.put("fssId", fssId);
-		Result<DownloadResponse> result;
-		try {
-			result = getApiService().callApi(callApiUrlDTO.getFileDownload(), request, new ApiUser(),
-					new ApiResponseHandler<Result<DownloadResponse>>() {
-				@Override
-				public Result<DownloadResponse> handleResponse(Response response) {
-					try {
-						String downloadSuccess = response.header(FSSConstants.HEADER_DOWNLOAD_SUCCESS);
-						if("true".equals(downloadSuccess)) {
-							String filename = response.header("Content-Disposition");
-							if (filename.startsWith("attachment;filename=")) {
-								filename = filename.replace("attachment;filename=", "");
-							}
-							DownloadResponse downloaRresponse = new DownloadResponse();
-							downloaRresponse.setFileBytes(response.body().bytes());
-							downloaRresponse.setFileName(filename);
-							return Result.createSuccessResult(downloaRresponse);
-						} else {
-							return JSON.parseObject(response.body().string(), new TypeReference<Result<DownloadResponse>>() {});
-						}
-					} catch (Exception e) {
-						log.error("download error", e);
-						return Result.createFailResult("下载失败: " + e.getMessage());
-					}
-				}
-			});
-			return result;
-		} catch (Exception e) {
-			log.error("download error", e);
-			return Result.createFailResult("download error: " + e.getMessage());
-		}
-	}*/
-	
 
 	//-------------------------------------------------------------------------------------------------------------------------
 	/**
