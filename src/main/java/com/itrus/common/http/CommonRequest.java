@@ -344,7 +344,7 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public JSONObject download(Long fssId) throws Exception {
+    public Result<DownloadResponse> download(Long fssId) throws Exception {
         Map<String, Object> params = new HashMap<>(1);
         params.put("fssId", fssId);
         JSONObject result = null;
@@ -355,7 +355,8 @@ public class CommonRequest {
             response = fssApiRequest.download(params);
         }
         Result<DownloadResponse> re = this.getResultByResponseEntity(response);
-        return (JSONObject) isOk(re);
+        isOk(re);
+        return re;
     }
 
     private Result<DownloadResponse> getResultByResponseEntity(ResponseEntity response) {
