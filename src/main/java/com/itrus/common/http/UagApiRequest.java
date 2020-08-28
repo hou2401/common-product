@@ -35,7 +35,7 @@ public interface UagApiRequest {
 	
 	
 	@RequestMapping(value = "/user/showUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UagResult<showUserResult> userShowUser(UserShowUserRequest obj);
+	public UagResult<ShowUserResult> userShowUser(UserShowUserRequest obj);
 	
 	
 	@RequestMapping(value = "/org/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

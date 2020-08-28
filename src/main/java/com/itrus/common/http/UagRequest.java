@@ -56,7 +56,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<showUserResult> userShowUser(UserShowUserRequest obj) throws Exception {
+    public UagResult<ShowUserResult> userShowUser(UserShowUserRequest obj) throws Exception {
     	return uagApiRequest.userShowUser(obj);
     }
     

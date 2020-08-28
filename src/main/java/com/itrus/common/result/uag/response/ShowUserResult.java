@@ -20,7 +20,7 @@ import com.itrus.common.result.uag.response.entity.UserInfo;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class showUserResult implements Serializable {
+public class ShowUserResult implements Serializable {
 
     private static final long serialVersionUID = 1081961762680292556L;
     /**
