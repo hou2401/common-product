@@ -1,5 +1,7 @@
 package com.itrus.common.enums.uag.user;
 
+import java.util.Objects;
+
 import lombok.Getter;
 
 /**
@@ -41,4 +43,23 @@ public enum UserIdcardType{
 		this.code = code;
 		this.name = name;
 	}
+	
+	public boolean equalsIdCode(String idCode) {
+        return Objects.equals(this.code, idCode);
+    }
+	
+	/**
+     * 获取证件类型
+     *
+     * @param idCode
+     * @return
+     */
+    public static UserIdcardType getInstance(String idCode) {
+        for (UserIdcardType idcardType : UserIdcardType.values()) {
+            if (idcardType.equalsIdCode(idCode)) {
+                return idcardType;
+            }
+        }
+        return null;
+    }
 }

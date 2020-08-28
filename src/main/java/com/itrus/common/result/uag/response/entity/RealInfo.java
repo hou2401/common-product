@@ -19,7 +19,7 @@ public class RealInfo implements Serializable {
     /**
      * 姓名
      */
-    private String realName;
+    private String displayName;
     /**
      * 认证时间
      */
