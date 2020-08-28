@@ -11,11 +11,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.WebApplication;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
+import com.itrus.common.http.AuthApiRequest;
 import com.itrus.common.http.CommonRequest;
 import com.itrus.common.report.Author;
-import com.itrus.common.request.auth.AuthPersionParams;
+import com.itrus.common.request.auth.AuthEnterpriseRequest;
 import com.itrus.common.request.auth.AuthPersionRequest;
-import com.itrus.common.request.auth.AuthPersionVideoParams;
+import com.itrus.common.request.auth.AuthPersionVideoRequest;
 import com.itrus.common.utils.Img2Base64Util;
 
 @SpringBootTest(classes = WebApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)// 指定启动类
@@ -24,10 +25,8 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	
 	
 	@Autowired
-	private CommonRequest commonRequest;
+	private AuthApiRequest commonRequest;
 	
-	@Autowired
-	private  callApiUrl;
 	
 	private final static  String appId = "a929cd69afae46";
 	
@@ -39,8 +38,6 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	@Author(names = "wen_guoxing")
 	public void authPersion() throws  PersionAuthException{
 		
-		
-		System.out.println(callApiUrl.toString());
 		
 		//servicecode  
 		//两要素  idc0001
@@ -67,7 +64,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	@Author(names = "wen_guoxing")
 	public void authPersionVideoLips() throws  PersionAuthException{
 		//servicecode  
-		AuthPersionVideoParams authPersionParams = new AuthPersionVideoParams(
+		AuthPersionVideoRequest authPersionParams = new AuthPersionVideoRequest(
 				appId, 
 				"idc2001", 
 				secretKey, 
@@ -94,7 +91,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 	@Author(names = "wen_guoxing")
 	public void authPersionVideo() throws  PersionAuthException{
 		String videoFile=Img2Base64Util.getImgStr("e:\\h5_ys.mp4"); 
-		AuthPersionVideoParams authPersionParams = new AuthPersionVideoParams(
+		AuthPersionVideoRequest authPersionParams = new AuthPersionVideoRequest(
 				appId, 
 				"idc2001", 
 				secretKey, 
@@ -115,7 +112,7 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 		//servicecode  
 		//工商信息 idb0003
 		//type ET_PE:企业   ET_SE:个体工商户  OU:企事业单位 （orgCode 必传， id_code  不一定 ）
-		AuthEnterpriseParams authEnterpriseParams = new AuthEnterpriseParams(
+		AuthEnterpriseRequest authEnterpriseParams = new AuthEnterpriseRequest(
 				appId, 
 				"idb0003", 
 				secretKey, 
@@ -147,19 +144,19 @@ public class CommonRequestTest extends AbstractTestNGSpringContextTests {
 		//type ET_PE:企业   ET_SE:个体工商户  OU:企事业单位 （orgCode 必传， id_code  不一定 ）
 		
 		//String appId,
-		   String serviceCode, 
-		   String secretKey, 
-		   String url, 
-		   String name,
-		String type, 
-		String idCode, 
-		String orgCode, 
-		String legalName, 
-		String legalId, 
-		String legalUrl,
-		String legalImg, 
-		String agentName, String agentId, String agentUrl, String agentImg
-		AuthEnterpriseParams authEnterpriseParams = new AuthEnterpriseParams(
+//		   String serviceCode, 
+//		   String secretKey, 
+//		   String url, 
+//		   String name,
+//		String type, 
+//		String idCode, 
+//		String orgCode, 
+//		String legalName, 
+//		String legalId, 
+//		String legalUrl,
+//		String legalImg, 
+//		String agentName, String agentId, String agentUrl, String agentImg
+		AuthEnterpriseRequest authEnterpriseParams = new AuthEnterpriseRequest(
 				appId, 
 				"idb0033", 
 				secretKey, 
