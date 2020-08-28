@@ -34,6 +34,16 @@ public class UserInfoCompany {
      * 短信id
      */
     private String smsId;
+
+    /**
+     * 实名认证类型
+     */
+    private String authType;
+    
+    /**
+     * 实名认证结果
+     */
+    private String authResult;
     
     /**
      * 用户UUId
