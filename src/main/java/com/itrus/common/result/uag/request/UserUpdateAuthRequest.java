@@ -42,5 +42,9 @@ public class UserUpdateAuthRequest extends UserBase {
      *当sourceType是SaaS时，appid需要传入为企业应用的应
      * 用ID
      */
-    private String appId;
+    private String sourceCode;
+    /**
+     *实名认证方
+     */
+    private String certifier;
 }
