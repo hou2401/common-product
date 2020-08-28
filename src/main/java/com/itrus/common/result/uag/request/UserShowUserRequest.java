@@ -22,4 +22,7 @@ public class UserShowUserRequest {
      */
     private String phone;
 
+    public UserShowUserRequest() {
+        super();
+    }
 }
