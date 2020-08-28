@@ -19,6 +19,11 @@ public class UserBase {
      *姓名
      */
     private String displayName;
+    
+    /**
+     *昵称
+     */
+    private String nickName;
 
     /**
      * 手机号
@@ -47,6 +52,30 @@ public class UserBase {
      * 0未激活 1 正常（默认） 2挂起
      */
     private String state;
-
+    
+    /**
+     * 实名流水ID
+     */
+    private String authId;
+    
+    /**
+     * 短信流水ID
+     */
+    private String smsId;
+    
+    /**
+     * 出生日期
+     */
+    private String birth;
+    
+    /**
+     * 性别
+     */
+    private String sex;
+    
+    /**
+     * {账号扩展属性JSON}
+     */
+    private String extendAttr;
 
 }

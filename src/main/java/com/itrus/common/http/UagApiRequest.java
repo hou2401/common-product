@@ -1,5 +1,6 @@
 package com.itrus.common.http;
 
+import com.itrus.common.result.uag.UagResult;
 import com.itrus.common.result.uag.request.*;
 import com.itrus.common.result.uag.request.ExternalApiAddPersonalRequest;
 import com.itrus.common.result.uag.response.*;
