@@ -15,5 +15,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 public class UserShowUserRequest extends UserBase {
-
+	
+	public UserShowUserRequest(String userUuid) {
+		this.setUuid(userUuid);
+	}
+	
 }

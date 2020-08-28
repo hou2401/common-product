@@ -28,7 +28,7 @@ public class CompanyList implements Serializable {
     /**
      * 角色名字列表
      */
-    private List<RoleName> roleNameList;
+    private List<RoleInfo> roleNameList;
     /**
      * 认证结果
      */

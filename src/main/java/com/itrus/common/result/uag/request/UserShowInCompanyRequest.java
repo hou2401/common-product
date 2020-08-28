@@ -15,5 +15,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 public class UserShowInCompanyRequest extends EntBase {
-
+	public UserShowInCompanyRequest(String userId, String companyUuid) {
+		this.setUuid(userId);
+		this.setCompanyUuid(companyUuid);
+	}
 }

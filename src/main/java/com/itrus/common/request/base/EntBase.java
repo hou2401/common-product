@@ -13,11 +13,11 @@ public class EntBase {
     /**
      * 企业唯一标识
      */
-    private Long parentUuid;
+    private String parentUuid;
     /**
      *企业/部门唯一标识
      */
-    private Long nodeUuid;
+    private String nodeUuid;
     /**
      * 企业唯一标识/账号唯一标识
      */
@@ -25,7 +25,7 @@ public class EntBase {
     /**
      * 企业唯一标识
      */
-    private Long companyUuid;
+    private String companyUuid;
     /**
      * 企业全称
      */

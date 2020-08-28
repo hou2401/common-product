@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoleName {
+public class RoleInfo {
     /**
      * 是否是超级管理员
      */
@@ -19,7 +19,7 @@ public class RoleName {
     /**
      * 角色名称
      */
-    private String roleName;
+    private String name;
     /**
      * 角色类型 0 未加入 1 在职 2 已拒绝 3 异常 4 离职
      */

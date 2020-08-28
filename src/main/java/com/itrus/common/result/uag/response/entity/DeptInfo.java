@@ -20,11 +20,11 @@ public class DeptInfo {
     /**
      * 部门唯一标识
      */
-    private Integer uuid;
+    private String uuid;
     /**
      * 部门类型
      */
-    private String deptType;
+    private String type;
     /**
      * 排序
      */

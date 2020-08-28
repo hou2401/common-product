@@ -21,6 +21,21 @@ public class UserInfoCompany {
      */
     private String userName;
     /**
+     * 姓名
+     */
+    private String displayName;
+    
+    /**
+     * 实名id
+     */
+    private String authId;
+    
+    /**
+     * 短信id
+     */
+    private String smsId;
+    
+    /**
      * 用户UUId
      */
     private String uuid;
@@ -43,14 +58,14 @@ public class UserInfoCompany {
     /**
      * 角色名字列表
      */
-    private List<RoleName> roleName;
+    private List<RoleInfo> roleInfo;
     /**
      * 部门名称列表
      */
-    private List<DeptName> deptName;
+    private List<DeptInfo> deptInfo;
     /**
      * 领导部门名称列表
      */
-    private List<DeptName> leaderDeptName;
+    private List<DeptInfo> leaderDeptInfo;
 
 }
