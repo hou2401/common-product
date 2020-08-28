@@ -19,6 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 public class UserFindCompanySuperAdminListResult implements Serializable {
 
+    private static final long serialVersionUID = -570543366284288585L;
     /**
      * 企业信息
      */

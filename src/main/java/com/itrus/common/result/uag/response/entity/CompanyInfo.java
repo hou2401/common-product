@@ -14,6 +14,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompanyInfo implements Serializable {
+
+    private static final long serialVersionUID = -3781267399818411644L;
     /**
      * 企业基本信息
      */

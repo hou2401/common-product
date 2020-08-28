@@ -18,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ExternalApiAddPersonalResult implements Serializable {
 
+    private static final long serialVersionUID = 1981676700966344877L;
     /**
      * 成功数目
      */

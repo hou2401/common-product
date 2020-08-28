@@ -18,6 +18,7 @@ import com.itrus.common.result.uag.response.entity.CompanyInfo;
 @NoArgsConstructor
 public class FindJoinCompanysResult implements Serializable {
 
+    private static final long serialVersionUID = -5762434753879388822L;
     /**
      * 公司信息列表
      */

@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class CompanyList implements Serializable {
+    private static final long serialVersionUID = 2122639022290459210L;
     /**
      * 企业名称
      */

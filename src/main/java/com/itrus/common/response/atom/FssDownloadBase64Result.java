@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FssDownloadBase64Result implements Serializable {
+    private static final long serialVersionUID = 7364722461130134714L;
     private String fileBytes;
 
     private String fileName;

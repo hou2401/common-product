@@ -16,6 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class OrgShowResult implements Serializable {
 
+    private static final long serialVersionUID = -4607706574659630218L;
     /**
      * 企业信息
      */

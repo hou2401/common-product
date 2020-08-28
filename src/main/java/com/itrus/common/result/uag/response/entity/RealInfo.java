@@ -15,6 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class RealInfo implements Serializable {
+    private static final long serialVersionUID = 7600854741101156684L;
     /**
      * 姓名
      */

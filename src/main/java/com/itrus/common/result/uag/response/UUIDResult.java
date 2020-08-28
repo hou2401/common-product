@@ -23,6 +23,7 @@ import lombok.*;
 public class UUIDResult implements Serializable{
 
 
+
 	/**
 	 * 
 	 */

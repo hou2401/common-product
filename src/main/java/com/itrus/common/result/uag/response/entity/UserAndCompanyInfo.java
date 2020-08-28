@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserAndCompanyInfo {
+
     /**
      * 用户信息
      */

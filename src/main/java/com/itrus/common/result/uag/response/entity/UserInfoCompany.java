@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class UserInfoCompany {
 
+
     /**
      * 用户账号
      */

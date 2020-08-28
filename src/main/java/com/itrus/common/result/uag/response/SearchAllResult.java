@@ -18,6 +18,7 @@ import com.itrus.common.result.uag.response.entity.UserInfoBase;
 @NoArgsConstructor
 public class SearchAllResult implements Serializable {
 
+    private static final long serialVersionUID = -8630945349460026019L;
     /**
      * 用户信息列表
      */

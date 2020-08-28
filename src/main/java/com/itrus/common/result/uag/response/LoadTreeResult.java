@@ -18,6 +18,7 @@ import com.itrus.common.result.uag.response.entity.UserInfoBase;
 @NoArgsConstructor
 public class LoadTreeResult implements Serializable {
 
+    private static final long serialVersionUID = 3026600311660818285L;
     /**
      * 部门信息
      */
