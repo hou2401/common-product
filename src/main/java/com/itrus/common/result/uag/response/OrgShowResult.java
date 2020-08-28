@@ -1,6 +1,8 @@
 package com.itrus.common.result.uag.response;
 
 import com.itrus.common.result.uag.response.entity.CompanyInfo;
+import com.itrus.common.result.uag.response.entity.UserInfoCompany;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,9 +18,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class OrgShowResult implements Serializable {
 
-    private static final long serialVersionUID = -4607706574659630218L;
-    /**
-     * 企业信息
-     */
-    private CompanyInfo companyInfo;
+	private static final long serialVersionUID = -4607706574659630218L;
+	/**
+	 * 企业信息
+	 */
+	private CompanyInfo companyInfo;
+
+	/**
+	 * 用户在企业信息
+	 */
+	private UserInfoCompany userInfo;
 }

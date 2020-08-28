@@ -1,11 +1,11 @@
 package com.itrus.common.result.uag.response.entity;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 /**
  * @author yuying
@@ -16,6 +16,10 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 public class AuthInfo implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 是否三证合一
      */
     private String inOneType;

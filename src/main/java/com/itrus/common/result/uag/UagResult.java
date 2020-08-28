@@ -20,6 +20,7 @@ public class UagResult<T> implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private static final Integer GET_CODE = 0;
+	public static final String DATA_KEY = "data";
 	public static final String defaultMessage = "调用用户中心失败";
 
 	/**

@@ -33,7 +33,7 @@ public class CertApplyRequest {
     /**
      * 证书有效天数，默认使用RA配置的有效天数
      */
-    private String validDays;
+    private Integer validDays;
     /**
      * 证书扩展信息，参考CA的《UserAPI开发手册.pdf》
      */

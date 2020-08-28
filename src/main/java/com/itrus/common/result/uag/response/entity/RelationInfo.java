@@ -16,6 +16,10 @@ import java.util.List;
 @NoArgsConstructor
 public class RelationInfo implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 父企业
      */
     private ParentSubInfo parentOrg;
