@@ -11,7 +11,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class getTotalPagesRequest {
+    /**
+     * 文件名字
+     */
     private String fileName;
+    /**
+     * 文件字节
+     */
     private byte[] fileBytes;
+    /**
+     * 原始文件名
+     */
     private String originalFilename;
 }

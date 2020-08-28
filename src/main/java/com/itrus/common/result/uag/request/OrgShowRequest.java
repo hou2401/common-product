@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrgShowRequest {
-
+    /**
+     * 企业唯一标识
+     */
     private String companyUuid;
 }
