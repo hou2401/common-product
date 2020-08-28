@@ -13,7 +13,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrgShowRequest {
     /**
-     * 企业唯一标识
+     * 企业唯一标识 必选
      */
     private String companyUuid;
+    /**
+     * 当前登录人员唯一标识 必选
+     */
+    private String uuid;
 }

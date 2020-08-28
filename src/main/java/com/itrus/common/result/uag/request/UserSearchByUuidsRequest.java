@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import java.util.List;
 
-import com.itrus.common.request.base.UserBase;
 
 /**
  * 通过uuid集合获取用户信息
@@ -19,7 +18,7 @@ import com.itrus.common.request.base.UserBase;
 public class UserSearchByUuidsRequest{
 
     /**
-     * 用户唯一标识集合
+     * 必选 用户唯一标识集合
      */
     private String[] uuids;
 }

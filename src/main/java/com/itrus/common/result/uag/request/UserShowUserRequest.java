@@ -1,6 +1,5 @@
 package com.itrus.common.result.uag.request;
 
-import com.itrus.common.request.base.UserBase;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,11 +12,14 @@ import lombok.ToString;
 @ToString
 @Data
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper=true)
-public class UserShowUserRequest extends UserBase {
-	
-	public UserShowUserRequest(String userUuid) {
-		this.setUuid(userUuid);
-	}
-	
+public class UserShowUserRequest {
+    /**
+     * 可选 用户唯一标识
+     */
+    private String uuid;
+    /**
+     * 可选 手机号码
+     */
+    private String phone;
+
 }

@@ -15,11 +15,11 @@ import lombok.ToString;
 public class OrgLoadTreeRequest {
 
     /**
-     * 节点唯一标识
+     * 节点唯一标识 必选
      */
     private String uuid;
     /**
-     * 节点类型
+     * 节点类型 可选
      */
     private String type;
 }

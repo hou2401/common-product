@@ -10,13 +10,25 @@ import lombok.Getter;
 @Getter
 public enum UserInEntStatus{
 	/**
-	 * 在职（默认）
+	 * 未加入
 	 */
-	NORMAL("0", "在职（默认）"),
+	NO_JOIN("0", "未加入"),
 	/**
-	 * 公司级部门
+	 * 在职
 	 */
-	DIMISSION("1", "离职");
+	JOINED("1", "在职"),
+	/**
+	 * 已拒绝
+	 */
+	REFUSE("2", "已拒绝"),
+	/**
+	 * 异常
+	 */
+	EXCEPTION("3", "异常"),
+	/**
+	 * 离职
+	 */
+	LEAVE("4", "离职");
 
 	private String code;
 	private String name;
