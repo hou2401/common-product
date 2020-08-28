@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.List;
+
 /**
  * 公共原子服务调用方法
  *
@@ -76,7 +78,7 @@ public interface UagApiRequest {
 	
 	
 	@RequestMapping(value = "/org/loadTree", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public UagResult<LoadTreeResult> orgLoadTree(OrgLoadTreeRequest obj);
+	public UagResult<List<LoadTreeResult>> orgLoadTree(OrgLoadTreeRequest obj);
 	
 	
 	@RequestMapping(value = "/user/findCompanySuperAdminList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

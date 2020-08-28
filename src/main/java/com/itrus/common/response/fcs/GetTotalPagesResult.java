@@ -13,5 +13,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetTotalPagesResult implements Serializable {
+    /**
+     * 页面计数
+     */
     private Integer pageCount;
 }

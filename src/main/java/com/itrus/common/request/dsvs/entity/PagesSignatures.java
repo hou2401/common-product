@@ -47,7 +47,9 @@ public class PagesSignatures {
      * 结合coordinateAxisType和sealPoint来确定坐标Y轴位置，<br />默认印章垂直居中
      */
     private Float y;
-    
+    /**
+     * 印章图片缩放比例：<span style="color:#00CC00">【V1.5.1新增】</span><br/>取值范围大于0小于等于5<br>0.1：缩小到10%<br>1：原始大小<br>3：放大到300%
+     */
     private String sealScale;
 
 }

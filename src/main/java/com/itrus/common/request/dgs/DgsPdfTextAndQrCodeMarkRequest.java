@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author yuying
+ * 添加文字和二维码水印
  */
 @Data
 @AllArgsConstructor

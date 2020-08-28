@@ -5,6 +5,9 @@ import java.io.Serializable;
 import lombok.Data;
 import lombok.ToString;
 
+/**
+ * 申请证书
+ */
 @Data
 @ToString
 public class ApplyCertResult implements Serializable{

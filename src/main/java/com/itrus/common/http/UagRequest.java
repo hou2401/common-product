@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.List;
+
 /**
  * 公共原子服务调用方法
  *
@@ -174,7 +176,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<LoadTreeResult> orgLoadTree(OrgLoadTreeRequest obj) throws Exception {
+    public UagResult<List<LoadTreeResult>> orgLoadTree(OrgLoadTreeRequest obj) throws Exception {
     	return uagApiRequest.orgLoadTree(obj);
     }
     
