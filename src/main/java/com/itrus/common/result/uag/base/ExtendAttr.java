@@ -1,6 +1,5 @@
 package com.itrus.common.result.uag.base;
 
-import com.alibaba.fastjson.JSON;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

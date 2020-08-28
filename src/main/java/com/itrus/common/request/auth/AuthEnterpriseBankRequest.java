@@ -1,4 +1,4 @@
-package com.itrus.common.params;
+package com.itrus.common.request.auth;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Data
 @Slf4j
-public class AuthParams implements Serializable{
+public class AuthEnterpriseBankRequest implements Serializable{
 
 	/**
 	 * 
@@ -85,7 +85,7 @@ public class AuthParams implements Serializable{
 	 * 查询银行列表，查询省/直辖市列表的构造方法
 	 * @param url 请求全路径
 	 */
-	public AuthParams(String url) {
+	public AuthEnterpriseBankRequest(String url) {
 		super();
 		this.url = url;
 	}
@@ -94,7 +94,7 @@ public class AuthParams implements Serializable{
 	 * 查询市/区列表的构造方法
 	 * @param url 请求全路径
 	 */
-	public AuthParams(String url,String provinceCode) {
+	public AuthEnterpriseBankRequest(String url,String provinceCode) {
 		super();
 		this.url = url;
 		this.provinceCode = provinceCode;
@@ -104,7 +104,7 @@ public class AuthParams implements Serializable{
 	 * 查询支行列表的构造方法
 	 * @param url 请求全路径
 	 */
-	public AuthParams(String url,String bankCode,String cityCode) {
+	public AuthEnterpriseBankRequest(String url,String bankCode,String cityCode) {
 		super();
 		this.url = url;
 		this.bankCode = bankCode;
@@ -115,7 +115,7 @@ public class AuthParams implements Serializable{
 	 * 企业对公银行账户打款的构造方法
 	 * @param url 请求全路径
 	 */
-	public AuthParams(String url,String appId,String secretKey,String serviceCode,String name,String bankAccount,String bankName,
+	public AuthEnterpriseBankRequest(String url,String appId,String secretKey,String serviceCode,String name,String bankAccount,String bankName,
 			String branchBankName,String provinceCode,String cityCode,String bankCode) {
 		super();
 		this.url = url;
@@ -135,7 +135,7 @@ public class AuthParams implements Serializable{
 	 * 账户打款查询的构造方法  secretKey无需给值
 	 * @param url 请求全路径
 	 */
-	public AuthParams(String url,String orderNumber,String appId,String secretKey) {
+	public AuthEnterpriseBankRequest(String url,String orderNumber,String appId,String secretKey) {
 		super();
 		this.url = url;
 		this.appId = appId;
@@ -146,7 +146,7 @@ public class AuthParams implements Serializable{
 	 * 打款金额验证的构造方法
 	 * @param url 请求全路径
 	 */
-	public AuthParams(String url,String orderNumber,Float paymentAmount) {
+	public AuthEnterpriseBankRequest(String url,String orderNumber,Float paymentAmount) {
 		super();
 		this.url = url;
 		this.orderNumber = orderNumber;
@@ -255,7 +255,7 @@ public class AuthParams implements Serializable{
 		return verificationSign.toString();
 	}
 	
-	public AuthParams() {
+	public AuthEnterpriseBankRequest() {
 		super();
 	}
 

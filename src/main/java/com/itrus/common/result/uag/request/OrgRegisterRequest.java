@@ -1,7 +1,6 @@
 package com.itrus.common.result.uag.request;
 
 import com.itrus.common.request.base.UserBase;
-import com.itrus.common.result.uag.base.ExtendAttr;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -47,10 +46,4 @@ public class OrgRegisterRequest extends UserBase {
      *实名结果
      */
      private String authResult;
-     /**
-     *扩展属性
-     */
-     private ExtendAttr extendAttr;
-
-
 }

@@ -1,5 +1,7 @@
 package com.itrus.common.request.base;
 
+import com.itrus.common.result.uag.base.ExtendAttr;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -76,6 +78,6 @@ public class UserBase {
     /**
      * {账号扩展属性JSON}
      */
-    private String extendAttr;
-
+    private ExtendAttr extendAttr;
+    
 }
