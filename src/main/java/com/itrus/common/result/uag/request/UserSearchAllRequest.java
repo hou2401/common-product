@@ -1,6 +1,5 @@
 package com.itrus.common.result.uag.request;
 
-import com.itrus.common.request.base.UserBase;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,8 +12,23 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @ToString
-@EqualsAndHashCode(callSuper=true)
-public class UserSearchAllRequest extends UserBase {
 
+public class UserSearchAllRequest {
+    /**
+     * 可选 姓名（精确）
+     */
+    private String displayName;
+    /**
+     * 可选 手机号码（精确）
+     */
+    private String phone;
+    /**
+     * 可选 邮箱（精确）
+     */
+    private String email;
+    /**
+     * 可选 证件号码（精确）
+     */
+    private String idCardNum;
 
 }

@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class UserFindCompanySuperAdminListRequest {
 
     /**
-     * 企业唯一标识
+     * 企业唯一标识 必选
      */
     private String companyUuid;
 }

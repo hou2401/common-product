@@ -1,6 +1,5 @@
 package com.itrus.common.result.uag.request;
 
-import com.itrus.common.request.base.EntBase;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,10 +12,14 @@ import lombok.ToString;
 @ToString
 @Data
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper=true)
-public class UserShowInCompanyRequest extends EntBase {
-	public UserShowInCompanyRequest(String userId, String companyUuid) {
-		this.setUuid(userId);
-		this.setCompanyUuid(companyUuid);
-	}
+public class UserShowInCompanyRequest {
+    /**
+     * 必选 账号唯一标识
+     */
+    private String uuid;
+    /**
+     * 必选 企业唯一标识
+     */
+    private String companyUuid;
+
 }

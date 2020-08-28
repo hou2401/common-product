@@ -17,15 +17,15 @@ import java.util.List;
 public class ExternalApiAddPersonalRequest {
 
     /**
-     * 用户信息集合
+     * 用户信息集合 必选
      */
     private List<UserInfo> userInfoList;
     /**
-     * 要添加外部联系人关系的节点唯一标识
+     * 要添加外部联系人关系的节点唯一标识 必选
      */
     private String uuid;
     /**
-     * 要添加外部联系人关系的节点类型
+     * 要添加外部联系人关系的节点类型 必选
      * 0 企业
      * 1 部门
      * 2 用户
