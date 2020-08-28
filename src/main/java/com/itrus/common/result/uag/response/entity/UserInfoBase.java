@@ -46,6 +46,14 @@ public class UserInfoBase {
      */
     private String idCardNum;
     /**
+     * 实名流水ID
+     */
+    private String authId;
+    /**
+     * 短信流水ID
+     */
+    private String smsId;
+    /**
      * 出生日期
      */
     private String birth;
