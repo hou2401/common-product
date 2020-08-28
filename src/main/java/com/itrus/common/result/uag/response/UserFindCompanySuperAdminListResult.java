@@ -18,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserFindCompanySuperAdminListResult implements Serializable {
+
     /**
      * 企业信息
      */

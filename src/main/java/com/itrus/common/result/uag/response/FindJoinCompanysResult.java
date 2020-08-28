@@ -17,6 +17,7 @@ import com.itrus.common.result.uag.response.entity.CompanyInfo;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FindJoinCompanysResult implements Serializable {
+
     /**
      * 公司信息列表
      */

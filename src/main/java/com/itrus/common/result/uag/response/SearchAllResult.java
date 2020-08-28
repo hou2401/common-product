@@ -17,6 +17,7 @@ import com.itrus.common.result.uag.response.entity.UserInfoBase;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchAllResult implements Serializable {
+
     /**
      * 用户信息列表
      */

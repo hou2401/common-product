@@ -17,6 +17,7 @@ import com.itrus.common.request.base.UserBase;
 @NoArgsConstructor
 @ToString
 public class UserSearchByUuidsRequest{
+
     /**
      * 用户唯一标识集合
      */

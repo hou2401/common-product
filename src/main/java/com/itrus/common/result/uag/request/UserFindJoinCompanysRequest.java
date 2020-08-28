@@ -16,4 +16,5 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper=true)
 public class UserFindJoinCompanysRequest extends UserBase {
 
+
 }

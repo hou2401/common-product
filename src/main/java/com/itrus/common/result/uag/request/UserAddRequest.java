@@ -17,6 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 public class UserAddRequest extends UserBase {
+
      /**
       * 企业邮箱
       */

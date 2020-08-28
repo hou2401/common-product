@@ -15,4 +15,5 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 public class UserShowUserRequest extends UserBase {
+
 }

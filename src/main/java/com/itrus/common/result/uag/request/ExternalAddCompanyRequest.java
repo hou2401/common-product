@@ -17,6 +17,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class ExternalAddCompanyRequest extends EntBase {
+
     /**
      * 节点类型
      */

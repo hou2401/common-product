@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExternalApiAddCompanyRequest {
+
     /**
      * 企业信息集合
      */

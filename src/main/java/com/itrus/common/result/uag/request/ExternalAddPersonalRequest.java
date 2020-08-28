@@ -17,6 +17,7 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(callSuper=true)
 public class ExternalAddPersonalRequest extends UserBase {
+
     /**
      * 节点类型
      */

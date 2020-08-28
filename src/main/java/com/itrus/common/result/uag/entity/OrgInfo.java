@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author yuying
+ * 企业信息
  */
 @Data
 @AllArgsConstructor

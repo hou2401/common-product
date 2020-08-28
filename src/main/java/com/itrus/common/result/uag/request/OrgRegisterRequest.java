@@ -18,6 +18,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 public class OrgRegisterRequest extends UserBase {
+
      /**
      *企业全称
      */

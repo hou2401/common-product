@@ -15,6 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrgShowResult implements Serializable {
+
     /**
      * 企业信息
      */

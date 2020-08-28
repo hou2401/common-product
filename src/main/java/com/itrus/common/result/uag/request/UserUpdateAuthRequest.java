@@ -17,6 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=true)
 public class UserUpdateAuthRequest extends UserBase {
+
     /**
      *银行卡号
      */

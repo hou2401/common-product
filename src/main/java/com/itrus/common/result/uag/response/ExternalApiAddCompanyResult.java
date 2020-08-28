@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExternalApiAddCompanyResult implements Serializable {
+
     /**
      * 成功个数
      */

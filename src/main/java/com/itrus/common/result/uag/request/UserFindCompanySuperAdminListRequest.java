@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserFindCompanySuperAdminListRequest {
+
     /**
      * 企业唯一标识
      */

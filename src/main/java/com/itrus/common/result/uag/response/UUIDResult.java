@@ -22,6 +22,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class UUIDResult implements Serializable{
 
+
 	/**
 	 * 
 	 */

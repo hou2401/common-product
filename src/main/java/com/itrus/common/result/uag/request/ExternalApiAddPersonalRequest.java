@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExternalApiAddPersonalRequest {
+
     /**
      * 用户信息集合
      */

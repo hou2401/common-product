@@ -13,6 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrgLoadTreeRequest {
+
     /**
      * 节点唯一标识
      */

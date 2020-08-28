@@ -21,6 +21,7 @@ import com.itrus.common.result.uag.response.entity.UserInfo;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class showUserResult implements Serializable {
+
     /**
      * 用户信息
      */

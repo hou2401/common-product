@@ -17,6 +17,7 @@ import com.itrus.common.result.uag.response.entity.UserInfoBase;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoadTreeResult implements Serializable {
+
     /**
      * 部门信息
      */
