@@ -3,6 +3,7 @@ package com.itrus.common.http;
 import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
 import com.itrus.common.request.dsvs.DsvsSignRequest;
 import com.itrus.common.request.dsvs.DsvsVerifyBase64Request;
+import com.itrus.common.response.dsvs.DsvsKeywordCoordinatesResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -26,7 +27,7 @@ public interface DsvsApiRequest {
 	/**
 	 * PDF签章
 	 *
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -36,7 +37,7 @@ public interface DsvsApiRequest {
 	/**
 	 * PDF批量签章
 	 *
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -46,11 +47,19 @@ public interface DsvsApiRequest {
 	/**
      * PDF验章
      *
-     * @param kvs 不能是map对象
+     * @param obj 不能是map对象
      * @return
      * @throws Exception
      */
 	@RequestMapping(value = "/dsvs/verifyBase64", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Result<DsvsVerifyBase64Result> verifyBase64(DsvsVerifyBase64Request obj);
-
+	/**
+	 * 获取关键字坐标
+	 *
+	 * @param obj 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/dsvs/getKeywordCoordinates", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    Result<DsvsKeywordCoordinatesResult> getKeywordCoordinates(DsvsVerifyBase64Request obj);
 }

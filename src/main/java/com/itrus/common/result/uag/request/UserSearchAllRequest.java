@@ -1,18 +1,15 @@
 package com.itrus.common.result.uag.request;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * 查询全网指定用户信息
  */
 @Data
-@AllArgsConstructor
 @ToString
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserSearchAllRequest {
     /**
      * 可选 姓名（精确）

@@ -1,10 +1,7 @@
 package com.itrus.common.result.uag.request;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * 个人详情
@@ -12,6 +9,7 @@ import lombok.ToString;
 @ToString
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserShowUserRequest {
     /**
      * 可选 用户唯一标识
@@ -22,7 +20,4 @@ public class UserShowUserRequest {
      */
     private String phone;
 
-    public UserShowUserRequest() {
-        super();
-    }
 }

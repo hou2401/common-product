@@ -1,6 +1,10 @@
 package com.itrus.common.http;
 
-import com.itrus.common.request.atom.*;
+import cn.com.itrus.atom.sign.common.bean.Result;
+import com.itrus.common.request.atom.CreateCircularSealRequest;
+import com.itrus.common.request.atom.CreateDoubleRowSealRequest;
+import com.itrus.common.request.atom.CreateSingleRowSealRequest;
+import com.itrus.common.request.atom.SealLimpidRequest;
 import com.itrus.common.request.cert.CertUpdateRequest;
 import com.itrus.common.request.dgs.*;
 import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
@@ -12,6 +16,7 @@ import com.itrus.common.response.atom.FssUploadResult;
 import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
+import com.itrus.common.response.dsvs.DsvsKeywordCoordinatesResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -22,8 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-
-import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
  * 整合版公共原子服务调用方法
@@ -44,7 +47,7 @@ public interface AtomedApiRequest {
 	/**
 	 * 创建椭圆印章
 	 *
-	 * @param kvs 请求参数
+	 * @param obj 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -56,7 +59,7 @@ public interface AtomedApiRequest {
 	/**
 	 * 创建圆形印章
 	 *
-	 * @param kvs 请求参数
+	 * @param obj 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -66,7 +69,7 @@ public interface AtomedApiRequest {
 	/**
 	 * 创建三角章
 	 *
-	 * @param kvs 请求参数
+	 * @param obj 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -76,7 +79,7 @@ public interface AtomedApiRequest {
 	/**
 	 * 创建双行人名印章
 	 *
-	 * @param kvs 请求参数
+	 * @param obj 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -86,7 +89,7 @@ public interface AtomedApiRequest {
 	/**
 	 * 创建单行人名印章
 	 *
-	 * @param kvs 请求参数
+	 * @param obj 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -96,7 +99,7 @@ public interface AtomedApiRequest {
 	/**
 	 * 印章透明处理
 	 *
-	 * @param kvs 请求参数
+	 * @param obj 请求参数
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -115,9 +118,7 @@ public interface AtomedApiRequest {
 	
 	/***
 	 * 上传文件
-	 * @param bizType 业务类型，字符串格式[0-9a-zA-Z_-]*，最大长度为20个字符
-	 * @param originalFileName 原文件名称，必须带扩展名
-	 * @param
+	 * @param	obj
 	 * @return 操作结果
 	 * @throws Exception 
 	 */
@@ -137,7 +138,7 @@ public interface AtomedApiRequest {
 	
 	/***
 	 * 下载文件
-	 * @param fssId 文件存储标识
+	 * @param obj 文件存储标识
 	 * @return 文件内容
 	 * @throws Exception 
 	 */
@@ -146,7 +147,7 @@ public interface AtomedApiRequest {
 
 	/***
 	 * 下载文件
-	 * @param fssId 文件存储标识
+	 * @param obj 文件存储标识
 	 * @return 文件内容
 	 * @throws Exception 
 	 */
@@ -204,7 +205,7 @@ public interface AtomedApiRequest {
 	/**
 	 * 申请证书
 	 *
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -214,7 +215,7 @@ public interface AtomedApiRequest {
 	/**
 	 * 更新证书
 	 *
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return 返回创建结果
 	 * @throws Exception 抛出异常
 	 */
@@ -230,7 +231,7 @@ public interface AtomedApiRequest {
 	/**
 	 * PDF签章
 	 *
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -240,7 +241,7 @@ public interface AtomedApiRequest {
 	/**
 	 * PDF批量签章
 	 *
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -250,13 +251,22 @@ public interface AtomedApiRequest {
     /**
      * PDF验章
      *
-     * @param kvs 不能是map对象
+     * @param obj 不能是map对象
      * @return
      * @throws Exception
      */
 	@RequestMapping(value = "/dsvs/verifyBase64", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Result<DsvsVerifyBase64Result> verifyBase64(DsvsVerifyBase64Request obj);
 
+	/**
+	 * 获取关键字坐标
+	 *
+	 * @param obj 不能是map对象
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/dsvs/getKeywordCoordinates", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	Result<DsvsKeywordCoordinatesResult> getKeywordCoordinates(DsvsVerifyBase64Request obj);
     //-----------------------------------------------------------------------------------------------------------------------
     /**
      * 文档生成服务
@@ -282,7 +292,7 @@ public interface AtomedApiRequest {
 
 	/**
 	 * 添加文字水印
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -291,7 +301,7 @@ public interface AtomedApiRequest {
 
 	/**
 	 * 添加图片水印
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -300,7 +310,7 @@ public interface AtomedApiRequest {
 
 	/**
 	 * 添加二维码水印
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */
@@ -309,7 +319,7 @@ public interface AtomedApiRequest {
 
 	/**
 	 * 添加文字和二维码水印
-	 * @param kvs 不能是map对象
+	 * @param obj 不能是map对象
 	 * @return
 	 * @throws Exception
 	 */

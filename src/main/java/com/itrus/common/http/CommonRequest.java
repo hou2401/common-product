@@ -1,20 +1,18 @@
 package com.itrus.common.http;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import cn.com.itrus.atom.sign.api.constants.FSSConstants;
 import cn.com.itrus.atom.sign.api.fss.bean.DownloadResponse;
+import cn.com.itrus.atom.sign.common.bean.Result;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import com.itrus.common.dto.HttpDTO;
 import com.itrus.common.request.atom.*;
 import com.itrus.common.request.cert.CertApplyRequest;
 import com.itrus.common.request.cert.CertUpdateRequest;
 import com.itrus.common.request.dgs.*;
 import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
+import com.itrus.common.request.dsvs.DsvsKeywordCoordinateRequest;
 import com.itrus.common.request.dsvs.DsvsSignRequest;
 import com.itrus.common.request.dsvs.DsvsVerifyBase64Request;
 import com.itrus.common.request.fcs.generateThumbnailRequest;
@@ -24,8 +22,10 @@ import com.itrus.common.response.atom.FssDownloadBase64Result;
 import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
+import com.itrus.common.response.dsvs.DsvsKeywordCoordinatesResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
+import com.itrus.common.response.dsvs.entity.KeywordCoordinate;
 import com.itrus.common.response.fcs.GetTotalPagesResult;
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
@@ -37,11 +37,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.alibaba.fastjson.JSONObject;
-import com.itrus.common.dto.HttpDTO;
-
-import cn.com.itrus.atom.sign.common.bean.Result;
-import lombok.extern.slf4j.Slf4j;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 公共原子服务调用方法
@@ -638,6 +638,29 @@ public class CommonRequest {
         return result;
 
     }
+
+
+    /**
+     * 获取关键字坐标
+     *
+     * @param kvs
+     * @return
+     * @throws Exception
+     */
+    public DsvsKeywordCoordinatesResult getKeywordCoordinates(DsvsVerifyBase64Request obj) throws Exception {
+        DsvsKeywordCoordinatesResult result = null;
+        for (int i = 0; i < http.getRetryCount(); i++) {
+            if (alled()) {
+                result = (DsvsKeywordCoordinatesResult) isOk(atomedApiRequest.getKeywordCoordinates(obj));
+            } else {
+                result = (DsvsKeywordCoordinatesResult) isOk(dsvsApiRequest.getKeywordCoordinates(obj));
+            }
+        }
+        return result;
+
+    }
+
+
 
     //-----------------------------------------------------------------------------------------------------------------------
     /**
