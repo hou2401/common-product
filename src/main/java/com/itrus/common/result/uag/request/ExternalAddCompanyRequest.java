@@ -3,7 +3,6 @@ package com.itrus.common.result.uag.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -15,6 +14,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ExternalAddCompanyRequest {
+	
+	/**
+             * 主企业uuid
+     */
+    private String uuid;
+    /**
+             * 要添加外部联系人关系的节点类型 必选
+     * 0 企业（默认）
+     */
+    private String type;
     /**
      * 必选 姓名
      */
@@ -44,6 +53,10 @@ public class ExternalAddCompanyRequest {
      * 可选 组织机构代码
      */
     private String unitCode;
+    /**
+             * 企业类型
+     */
+    private String orgType;
     /**
      * 可选 来源类型 详见1.3.5
      * 0 String SaaS（默认）
