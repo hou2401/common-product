@@ -49,7 +49,7 @@ import java.util.Map;
  * @author han_yanhui
  * @date 2020-2-25 12:04:04
  **/
-@Slf4j
+//@Slf4j
 @Component
 public class CommonRequest {
 
@@ -260,7 +260,7 @@ public class CommonRequest {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
                 } else {
-                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
+//                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
                     return null;
                 }
             }        
@@ -270,7 +270,7 @@ public class CommonRequest {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
                 } else {
-                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
+//                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
                     return null;
                 }
             }
@@ -300,7 +300,7 @@ public class CommonRequest {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
                 } else {
-                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
+//                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
                     return null;
                 }
             }
@@ -310,7 +310,7 @@ public class CommonRequest {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
                 } else {
-                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
+//                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
                     return null;
                 }
             }
@@ -396,7 +396,7 @@ public class CommonRequest {
                 return JSON.parseObject((String) response.getBody(), new TypeReference<Result<DownloadResponse>>() {});
             }
         } catch (Exception e) {
-            log.error("download error", e);
+//            log.error("download error", e);
             return Result.createFailResult("下载失败: " + e.getMessage());
         }
     }
@@ -647,7 +647,7 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public DsvsKeywordCoordinatesResult getKeywordCoordinates(DsvsVerifyBase64Request obj) throws Exception {
+    public DsvsKeywordCoordinatesResult getKeywordCoordinates(DsvsKeywordCoordinateRequest obj) throws Exception {
         DsvsKeywordCoordinatesResult result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
             if (alled()) {

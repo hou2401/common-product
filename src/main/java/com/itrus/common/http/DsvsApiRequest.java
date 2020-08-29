@@ -1,6 +1,8 @@
 package com.itrus.common.http;
 
+import cn.com.itrus.atom.sign.common.bean.Result;
 import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
+import com.itrus.common.request.dsvs.DsvsKeywordCoordinateRequest;
 import com.itrus.common.request.dsvs.DsvsSignRequest;
 import com.itrus.common.request.dsvs.DsvsVerifyBase64Request;
 import com.itrus.common.response.dsvs.DsvsKeywordCoordinatesResult;
@@ -11,8 +13,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.alibaba.fastjson.JSONObject;
-import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
  * 签章验章原子服务调用方法
@@ -61,5 +61,5 @@ public interface DsvsApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/dsvs/getKeywordCoordinates", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    Result<DsvsKeywordCoordinatesResult> getKeywordCoordinates(DsvsVerifyBase64Request obj);
+    Result<DsvsKeywordCoordinatesResult> getKeywordCoordinates(DsvsKeywordCoordinateRequest obj);
 }
