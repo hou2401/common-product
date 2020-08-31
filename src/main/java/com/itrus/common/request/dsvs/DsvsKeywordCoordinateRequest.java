@@ -28,7 +28,7 @@ public class DsvsKeywordCoordinateRequest implements Serializable {
     /**
      * 要获取关键字坐标的PDF文件
      */
-    private Long fssId;
+    private String pdfURI;
     /**
      * 关键字
      */
