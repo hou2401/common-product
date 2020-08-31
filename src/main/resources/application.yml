@@ -7,21 +7,7 @@ spring:
     default-property-inclusion: NON_NULL
   application:
     name: common-product
-  cloud:
-    nacos:
-      config:
-        namespace: develop
-        server-addr: 192.168.100.233:32105
-        group: v1
-        file-extension: yaml
-        extension-configs[0]:
-          group: v1
-          data-id: common-product.yaml
-      discovery:
-        namespace: develop
-        server-addr: 192.168.100.233:32105
-        group: v1
-
+  
 logging:
   level:
     root: INFO
