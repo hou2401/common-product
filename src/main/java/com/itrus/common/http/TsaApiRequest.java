@@ -34,7 +34,7 @@ public interface TsaApiRequest {
      * @return
      */
     @RequestMapping(value = "/web/tsa/getTsaConfig", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    RaResult<TimeStampResponse> TsaAdd(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
+    RaResult<TimeStampResponse> TsaGetTsaConfig(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
 
     /**
      * 根据tsaCode查询时间戳配置是否已存在
