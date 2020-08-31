@@ -1,5 +1,7 @@
 package com.itrus.common.request.dsvs;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +13,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DsvsVerifyBase64Request {
+public class DsvsVerifyBase64Request implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 已签名PDF文档Base64
      */
     private String pdfBytes;

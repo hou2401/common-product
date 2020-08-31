@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.List;
 
-import com.itrus.common.result.uag.response.entity.DeptInfo;
-import com.itrus.common.result.uag.response.entity.UserInfoBase;
-
 /**
  * @author yuying
  * 加载企业下全量节点信息
@@ -20,5 +17,9 @@ import com.itrus.common.result.uag.response.entity.UserInfoBase;
 @NoArgsConstructor
 public class LoadTreeResult implements Serializable {
 
-    private List<LoadTree> data;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<LoadTree> data;
 }

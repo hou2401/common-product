@@ -35,14 +35,10 @@ import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
@@ -361,8 +357,8 @@ public class CommonRequest {
     public Result<DownloadResponse> download(Long fssId) throws Exception {
         Map<String, Object> params = new HashMap<>(1);
         params.put("fssId", fssId);
-        JSONObject result = null;
-        ResponseEntity response = null;
+        //JSONObject result = null;
+        ResponseEntity<?> response = null;
         if (alled()) {
             response = atomedApiRequest.download(params);
         } else {
@@ -395,7 +391,7 @@ public class CommonRequest {
         return Result.createSuccessResult(downloaRresponse);
     }
 
-    private Result<DownloadResponse> getResultByResponseEntity(ResponseEntity response) {
+    private Result<DownloadResponse> getResultByResponseEntity(ResponseEntity<?> response) {
         try {
             HttpHeaders headers = response.getHeaders();
             headers.get(FSSConstants.HEADER_DOWNLOAD_SUCCESS).get(0);
@@ -636,7 +632,8 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public List<DsvsVerifyBase64Result> verifyBase64(DsvsVerifyBase64Request obj) throws Exception {
+    @SuppressWarnings("unchecked")
+	public List<DsvsVerifyBase64Result> verifyBase64(DsvsVerifyBase64Request obj) throws Exception {
         List<DsvsVerifyBase64Result> result = null;
         for (int i = 0; i < http.getRetryCount(); i++) {
             if (alled()) {
@@ -854,7 +851,8 @@ public class CommonRequest {
      * @param productId    可选 产品唯一标识
      * @return
      */
-    public List<CertConfigResponse> RaGetList(String enterpriseId, String productId) throws Exception {
+    @SuppressWarnings("unchecked")
+	public List<CertConfigResponse> RaGetList(String enterpriseId, String productId) throws Exception {
         List<CertConfigResponse> result = null;
         if (alled()) {
             result = (List<CertConfigResponse>) isOk(atomedApiRequest.RaGetList(enterpriseId, productId));

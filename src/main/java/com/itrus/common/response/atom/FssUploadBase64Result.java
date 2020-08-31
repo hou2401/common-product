@@ -15,6 +15,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class FssUploadBase64Result implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 文件存储ID
      */
     private Long fssId;

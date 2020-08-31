@@ -16,6 +16,10 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 public class CompanyBaseInfo implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 企业全称
      */
     private String orgName;

@@ -1,6 +1,5 @@
 package com.itrus.common.request.dsvs.entity;
 
-import lombok.Data;
 import lombok.ToString;
 
 /**
@@ -11,7 +10,6 @@ import lombok.ToString;
  * @Modified By:
  * @Version 1.0
  **/
-@Data
 @ToString
 public class PdfSign extends Signer {
 

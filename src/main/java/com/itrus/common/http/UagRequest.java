@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 
-import java.util.List;
-
 /**
  * 公共原子服务调用方法
  *

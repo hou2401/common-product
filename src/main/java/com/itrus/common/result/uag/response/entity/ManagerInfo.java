@@ -16,6 +16,10 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 public class ManagerInfo implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 管理员UUID
      */
     private String uuid;

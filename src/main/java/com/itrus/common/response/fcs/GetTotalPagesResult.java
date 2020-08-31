@@ -14,6 +14,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class GetTotalPagesResult implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 文件总页数
      */
     private Integer pageCount;

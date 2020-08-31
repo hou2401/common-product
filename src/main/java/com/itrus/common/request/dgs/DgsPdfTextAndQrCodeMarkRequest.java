@@ -1,5 +1,7 @@
 package com.itrus.common.request.dgs;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +13,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DgsPdfTextAndQrCodeMarkRequest {
+public class DgsPdfTextAndQrCodeMarkRequest implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
      * pdf文件的base64编码
      */

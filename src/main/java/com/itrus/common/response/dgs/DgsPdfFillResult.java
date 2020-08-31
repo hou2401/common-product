@@ -15,6 +15,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class DgsPdfFillResult implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * returnType=fss时，返回存储在文档存储服务器上的ID
      */
     private Long fssId;

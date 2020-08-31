@@ -3,7 +3,6 @@ package com.itrus.common.result.uag.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**

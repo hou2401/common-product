@@ -1,5 +1,7 @@
 package com.itrus.common.result.uag.response.entity;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoadTree {
-    private static final long serialVersionUID = 3026600311660818285L;
+public class LoadTree implements Serializable {
+	
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 部门信息
      */
     private DeptInfo deptInfo;

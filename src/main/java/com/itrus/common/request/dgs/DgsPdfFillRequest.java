@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.itrus.common.request.dgs.entity.Param;
@@ -15,8 +16,12 @@ import com.itrus.common.request.dgs.entity.Param;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DgsPdfFillRequest {
+public class DgsPdfFillRequest implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 文档资源地址
      * http:http\|https资源：<br />http://www.itrus.com.cn/contract/10001.pdf
      * fss:文件存储服务上的ID：<br />fss://612764508776960191

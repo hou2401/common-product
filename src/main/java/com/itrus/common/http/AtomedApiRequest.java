@@ -28,7 +28,6 @@ import com.itrus.common.response.ra.TimeStampResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -160,7 +159,7 @@ public interface AtomedApiRequest {
      * @throws Exception
      */
     @RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity download(Object obj);
+    public ResponseEntity<?> download(Object obj);
 
     /***
      * 下载文件

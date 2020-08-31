@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.itrus.common.request.dgs.entity.PositionArray;
@@ -14,7 +15,7 @@ import com.itrus.common.request.dgs.entity.PositionArray;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DgsPdfImageMarkRequest {
+public class DgsPdfImageMarkRequest implements Serializable {
 	/**
 	 * 
 	 */

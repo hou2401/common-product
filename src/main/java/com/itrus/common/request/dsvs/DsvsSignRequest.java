@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.itrus.common.request.dsvs.entity.CrossSignatures;
@@ -17,8 +18,12 @@ import com.itrus.common.request.dsvs.entity.PagesSignatures;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DsvsSignRequest {
+public class DsvsSignRequest implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 文档资源地址,pdfBytes和pdfURI至少要有一项，
      * 同时存在时，pdfBytes优先。
      * base64类型的URI在后续版本中会删除，base64请用参数pdfBytes

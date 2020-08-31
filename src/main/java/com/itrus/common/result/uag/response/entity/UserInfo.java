@@ -16,6 +16,10 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 public class UserInfo implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 编号
      */
     private String uuid;

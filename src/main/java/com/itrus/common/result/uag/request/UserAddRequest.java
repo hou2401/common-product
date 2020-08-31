@@ -5,7 +5,6 @@ import com.itrus.common.result.uag.response.entity.DeptInfo;
 import com.itrus.common.result.uag.response.entity.RoleInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 

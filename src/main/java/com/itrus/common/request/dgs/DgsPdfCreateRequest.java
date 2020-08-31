@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * @author yuying
@@ -13,8 +14,12 @@ import java.io.File;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DgsPdfCreateRequest {
+public class DgsPdfCreateRequest implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 样式类型，0 夜晚样式，1 github样式(默认)，2 白报纸样式
      */
     private int styleType;
