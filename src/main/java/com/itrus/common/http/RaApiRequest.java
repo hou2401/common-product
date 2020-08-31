@@ -41,7 +41,7 @@ public interface RaApiRequest {
      * @return
      */
     @RequestMapping(value = "/web/ra/getByRaCode", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    RaResult<String> GetByRaCode(@RequestPart("raCode") String raCode);
+    RaResult<CertConfigResponse> GetByRaCode(@RequestPart("raCode") String raCode);
 
 
     /**
