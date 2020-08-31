@@ -25,6 +25,28 @@ public class AuthApiRequest {
 
 	@Autowired
     private HttpDTO http;
+	
+	public boolean isOk(JSONObject object) {
+		if (object.get("status") != null) {
+			return object.getIntValue("status") == 1;
+
+		}
+		return false;
+	}
+	
+	/**
+	 * 获取请求消息
+	 *
+	 * @param object json对象
+	 */
+	public String getMsg(JSONObject object) {
+		if( object != null ) {
+			return object.getString("message");
+		}
+		return null;
+	}
+
+
     /**
      * 实名服务，2要素/手机号3要素/银行卡3、4要素 --个人实名
      *
