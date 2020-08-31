@@ -11,6 +11,8 @@ import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
 import com.itrus.common.request.dsvs.DsvsKeywordCoordinateRequest;
 import com.itrus.common.request.dsvs.DsvsSignRequest;
 import com.itrus.common.request.dsvs.DsvsVerifyBase64Request;
+import com.itrus.common.request.ra.CertConfigRequest;
+import com.itrus.common.request.ra.TimeStampRequest;
 import com.itrus.common.response.atom.FssDownloadBase64Result;
 import com.itrus.common.response.atom.FssUploadBase64Result;
 import com.itrus.common.response.atom.FssUploadResult;
@@ -20,6 +22,9 @@ import com.itrus.common.response.dgs.DgsPdfFillResult;
 import com.itrus.common.response.dsvs.DsvsKeywordCoordinatesResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
+import com.itrus.common.response.ra.CertConfigResponse;
+import com.itrus.common.response.ra.RaResult;
+import com.itrus.common.response.ra.TimeStampResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +33,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 /**
  * 整合版公共原子服务调用方法
@@ -332,5 +339,101 @@ public interface AtomedApiRequest {
      */
     @RequestMapping(value = "/dgs/pdfTextAndQrCodeMark", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Result<String> pdfTextAndQrCodeMark(DgsPdfTextAndQrCodeMarkRequest obj);
+
+    /**
+     * 新建RA证书配置
+     *
+     * @param obj
+     * @return
+     */
+    @RequestMapping(value = "/web/ra/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<String> RaAdd(CertConfigRequest obj);
+
+    /**
+     * 查询RA证书配置
+     *
+     * @param raCode
+     * @return
+     */
+    @RequestMapping(value = "/web/ra/getByRaCode", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<CertConfigResponse> GetByRaCode(@RequestPart("raCode") String raCode);
+
+
+    /**
+     * 更新RA证书配置
+     *
+     * @param obj
+     * @return
+     */
+    @RequestMapping(value = "/web/ra/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<String> RaUpdate(CertConfigRequest obj);
+
+
+    /**
+     * 根据唯一标识删除区块链服务配置
+     *
+     * @param raCode
+     * @return
+     */
+    @RequestMapping(value = "/web/ra/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<String> RaDelete(@RequestPart("raCode") String raCode);
+
+    /**
+     * 查询区块链服务配置列表
+     *
+     * @param enterpriseId 必选 企业唯一标识
+     * @param productId    可选 产品唯一标识
+     * @return
+     */
+    @RequestMapping(value = "/web/ra/getList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<List<CertConfigResponse>> RaGetList(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
+
+
+    /**
+     * 新增时间戳配置
+     *
+     * @param obj
+     * @return
+     */
+    @RequestMapping(value = "/web/tsa/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<String> tsaAdd(TimeStampRequest obj);
+
+    /**
+     * 根据企业唯一标识查询时间戳配置详情，只返回最后一次添加的一条
+     *
+     * @param enterpriseId 必填 企业唯一标识
+     * @param productId    可选 产品唯一标识
+     * @return
+     */
+    @RequestMapping(value = "/web/tsa/getTsaConfig", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<TimeStampResponse> tsaGetTsaConfig(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
+
+    /**
+     * 根据tsaCode查询时间戳配置是否已存在
+     *
+     * @param tsaCode 必选 时间戳代码
+     * @return
+     */
+
+    @RequestMapping(value = "/web/tsa/getByTsaCode", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<TimeStampResponse> tsaGetByTsaCode(@RequestPart("tsaCode") String tsaCode);
+
+    /**
+     * 根据tsaCode更新时间戳配置
+     *
+     * @param obj
+     * @return
+     */
+    @RequestMapping(value = "/web/tsa/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<String> tsaUpdate(TimeStampRequest obj);
+
+    /**
+     * 根据tsaCode删除时间戳服务配置
+     *
+     * @param tsaCode 必填 时间戳代码
+     * @return
+     */
+    @RequestMapping(value = "/web/tsa/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    RaResult<String> tsaDelete(@RequestPart("tsaCode") String tsaCode);
 
 }
