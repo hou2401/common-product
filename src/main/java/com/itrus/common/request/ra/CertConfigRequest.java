@@ -1,6 +1,5 @@
 package com.itrus.common.request.ra;
 
-import com.ctrip.framework.apollo.util.ConfigUtil;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.Max;
