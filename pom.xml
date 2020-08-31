@@ -102,7 +102,7 @@
 			<dependency>
 				<groupId>com.alibaba.cloud</groupId>
 				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
-				<version>2.2.0.RELEASE</version>
+				<version>2.1.0.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -111,22 +111,22 @@
 	<dependencies>
 		<!--整合spring cloud start -->
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-			<scope>compile</scope>
-			<optional>true</optional>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+			<!--<scope>compile</scope>-->
+			<!--<optional>true</optional>-->
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-			<scope>compile</scope>
-			<optional>true</optional>
+			<!--<scope>compile</scope>-->
+			<!--<optional>true</optional>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
-			<scope>compile</scope>
-			<optional>true</optional>
+			<!--<scope>compile</scope>-->
+			<!--<optional>true</optional>-->
 		</dependency>
 		<!--整合spring cloud end -->
 		<dependency>

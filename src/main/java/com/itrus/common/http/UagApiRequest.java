@@ -21,7 +21,6 @@ import java.util.List;
  * @author han_yanhui
  * @date 2020-8-27 11:19:18
  **/
-@Component
 @FeignClient(value = "${http.uag}") //value:被调用的服务在注册中心的名称
 public interface UagApiRequest {
 

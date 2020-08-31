@@ -35,7 +35,6 @@ import org.springframework.web.multipart.MultipartFile;
  * @author han_yanhui
  * @date 2020-8-26 14:41:00
  **/
-@Component
 @FeignClient(value = "${http.atomed}") //value:被调用的服务在注册中心的名称
 public interface AtomedApiRequest {
 

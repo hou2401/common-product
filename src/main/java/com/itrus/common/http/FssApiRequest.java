@@ -23,7 +23,6 @@ import java.util.Map;
  * @author han_yanhui
  * @date 2020-8-26 14:41:00
  **/
-@Component
 @FeignClient(value = "${http.fss}") //value:被调用的服务在注册中心的名称
 public interface FssApiRequest {
 	
