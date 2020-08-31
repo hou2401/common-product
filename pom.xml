@@ -24,10 +24,9 @@
 					<target>${java.version}</target> <!--指明打包后的Jdk版本 -->
 					<encoding>${project.build.sourceEncoding}</encoding>
 					<excludes>
-
 						<exclude>application.yml</exclude>
+						<exclude>bootstrap.yml</exclude>
 						<exclude>com/itrus/common/WebApplication.class</exclude>
-
 					</excludes>
 					<skip>true</skip>
 				</configuration>
@@ -220,29 +219,6 @@
 			<scope>compile</scope>
 			<optional>true</optional>
 		</dependency>
-
-		<!-- 添加APPHOME -->
-		<dependency>
-			<groupId>com.itrus.newportal</groupId>
-			<artifactId>apphome</artifactId>
-			<scope>compile</scope>
-			<version>${apphome.version}</version>
-			<optional>true</optional>
-			<exclusions>
-				<exclusion>
-					<groupId>org.mybatis</groupId>
-					<artifactId>mybatis</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.itrus.newportal</groupId>
-			<artifactId>apiservice</artifactId>
-			<scope>compile</scope>
-			<optional>true</optional>
-			<version>${apiservice.version}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>cn.com.itrus.atom.sign</groupId>
 			<artifactId>atom-sign-api</artifactId>
@@ -286,10 +262,15 @@
 			<version>${mail.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
-           <groupId>org.springframework</groupId>
-           <artifactId>spring-test</artifactId>
-        </dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
 	</dependencies>
 </project>
