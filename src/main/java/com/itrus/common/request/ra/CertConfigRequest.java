@@ -1,5 +1,8 @@
 package com.itrus.common.request.ra;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.Max;
@@ -10,6 +13,9 @@ import javax.validation.constraints.NotNull;
 /**
  * @author yuying
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CertConfigRequest {
     /**
      * raType  ra类型
