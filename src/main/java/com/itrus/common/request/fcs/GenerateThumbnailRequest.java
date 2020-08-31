@@ -3,26 +3,28 @@ package com.itrus.common.request.fcs;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
- * @author yuying
- */
+ * @ClassName GenerateThumbnailRequest
+ * @Author: Yuliu
+ * @Description:
+ * @Date:Created in 13:13 2020/8/31
+ * @Modified By:
+ * @Version 1.0
+ **/
 @Data
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class generateThumbnailRequest {
+public class GenerateThumbnailRequest extends TotalPageRequest implements Serializable {
     /**
-     * 文件名字
+     *
      */
-    private String fileName;
-    /**
-     * 文件字节
-     */
-    private byte[] fileBytes;
-    /**
-     * 原始文件名
-     */
-    private String originalFilename;
+    private static final long serialVersionUID = 1L;
+
     /**
      * 页码范围，格式形如：1~5,8,-3~-1<br/>0：所有页（默认）<br/>1~5：第1页至第5页<br/>-3~-1：倒数第3页至倒数第1页
      */

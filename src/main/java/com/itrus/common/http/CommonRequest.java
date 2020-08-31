@@ -15,9 +15,9 @@ import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
 import com.itrus.common.request.dsvs.DsvsKeywordCoordinateRequest;
 import com.itrus.common.request.dsvs.DsvsSignRequest;
 import com.itrus.common.request.dsvs.DsvsVerifyBase64Request;
-import com.itrus.common.request.fcs.generateThumbnailRequest;
-import com.itrus.common.request.fcs.getTotalPagesRequest;
-import com.itrus.common.request.fcs.pdf2pngRequest;
+import com.itrus.common.request.fcs.GenerateThumbnailRequest;
+import com.itrus.common.request.fcs.Pdf2pngRequest;
+import com.itrus.common.request.fcs.TotalPageRequest;
 import com.itrus.common.response.atom.FssDownloadBase64Result;
 import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
@@ -25,7 +25,6 @@ import com.itrus.common.response.dgs.DgsPdfFillResult;
 import com.itrus.common.response.dsvs.DsvsKeywordCoordinatesResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
-import com.itrus.common.response.dsvs.entity.KeywordCoordinate;
 import com.itrus.common.response.fcs.GetTotalPagesResult;
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
@@ -473,7 +472,7 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public String pdf2png(pdf2pngRequest data) throws Exception {
+    public String pdf2png(Pdf2pngRequest data) throws Exception {
     	Map<String,String> params = new HashMap<>();
 		params.put("file",Base64Utils.encodeToString(data.getData()));
         params.put("scale",data.getScale().toString());
@@ -509,14 +508,9 @@ public class CommonRequest {
      * @return 操作结果
      * @throws Exception
      */
-    public String generateThumbnail(generateThumbnailRequest obj) throws Exception {
+    public String generateThumbnail(GenerateThumbnailRequest obj) throws Exception {
     	
-    	if(obj.getOriginalFilename() == null) {
-    		obj.setOriginalFilename("anonymous.file");
-		}
-    	InputStream inputStream = new ByteArrayInputStream(obj.getFileBytes());
-    	MultipartFile file = new MockMultipartFile(obj.getFileName(),obj.getOriginalFilename(),ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
-    	return (String) isOk(fcsApiRequest.generateThumbnail(file, obj.getPages(), obj.getScale(), obj.getDpi()));
+    	return (String) isOk(fcsApiRequest.generateThumbnail(obj.getMultipartFile(), obj.getPages(), obj.getScale(), obj.getDpi()));
     }
     
     /***
@@ -524,14 +518,9 @@ public class CommonRequest {
      * @return 操作结果
      * @throws Exception
      */
-    public GetTotalPagesResult getTotalPages(getTotalPagesRequest obj) throws Exception {
+    public GetTotalPagesResult getTotalPages(TotalPageRequest obj) throws Exception {
     	
-    	if(obj.getOriginalFilename() == null) {
-    		obj.setOriginalFilename("anonymous.file");
-    	}
-    	InputStream inputStream = new ByteArrayInputStream(obj.getFileBytes());
-    	MultipartFile file = new MockMultipartFile(obj.getFileName(),obj.getOriginalFilename(),ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
-    	return (GetTotalPagesResult) isOk(fcsApiRequest.getTotalPages(file));
+    	return (GetTotalPagesResult) isOk(fcsApiRequest.getTotalPages(obj.getMultipartFile()));
     }
 
 
