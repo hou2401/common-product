@@ -24,7 +24,7 @@ public interface TsaApiRequest {
      * @return
      */
     @RequestMapping(value = "/web/tsa/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    RaResult<String> TsaAdd(TimeStampRequest obj);
+    RaResult<String> tsaAdd(TimeStampRequest obj);
 
     /**
      * 根据企业唯一标识查询时间戳配置详情，只返回最后一次添加的一条
@@ -34,7 +34,7 @@ public interface TsaApiRequest {
      * @return
      */
     @RequestMapping(value = "/web/tsa/getTsaConfig", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    RaResult<TimeStampResponse> TsaGetTsaConfig(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
+    RaResult<TimeStampResponse> tsaGetTsaConfig(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
 
     /**
      * 根据tsaCode查询时间戳配置是否已存在
@@ -44,7 +44,7 @@ public interface TsaApiRequest {
      */
 
     @RequestMapping(value = "/web/tsa/getByTsaCode", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    RaResult<TimeStampResponse> TsaGetByTsaCode(@RequestPart("tsaCode") String tsaCode);
+    RaResult<TimeStampResponse> tsaGetByTsaCode(@RequestPart("tsaCode") String tsaCode);
 
     /**
      * 根据tsaCode更新时间戳配置
@@ -53,7 +53,7 @@ public interface TsaApiRequest {
      * @return
      */
     @RequestMapping(value = "/web/tsa/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    RaResult<String> TsaUpdate(TimeStampRequest obj);
+    RaResult<String> tsaUpdate(TimeStampRequest obj);
 
     /**
      * 根据tsaCode删除时间戳服务配置
@@ -62,5 +62,5 @@ public interface TsaApiRequest {
      * @return
      */
     @RequestMapping(value = "/web/tsa/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    RaResult<String> TsaDelete(@RequestPart("tsaCode") String tsaCode);
+    RaResult<String> tsaDelete(@RequestPart("tsaCode") String tsaCode);
 }
