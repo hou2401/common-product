@@ -15,6 +15,17 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ExternalAddPersonalRequest {
+
+    /**
+     * 主企业uuid
+     */
+    private String companyUuid;
+    /**
+     * 要添加外部联系人关系的节点类型 必选
+     * 0 企业（默认）
+     */
+    private String type;
+
     /**
      * 必选 姓名
      */
