@@ -1,10 +1,12 @@
 package com.itrus.common.result.uag.response;
 
+import com.itrus.common.result.uag.response.entity.LoadTree;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.itrus.common.result.uag.response.entity.DeptInfo;
 import com.itrus.common.result.uag.response.entity.UserInfoBase;
@@ -18,13 +20,5 @@ import com.itrus.common.result.uag.response.entity.UserInfoBase;
 @NoArgsConstructor
 public class LoadTreeResult implements Serializable {
 
-    private static final long serialVersionUID = 3026600311660818285L;
-    /**
-     * 部门信息
-     */
-    private DeptInfo deptInfo;
-    /**
-     * 用户基本信息
-     */
-    private UserInfoBase userInfoBase;
+    private List<LoadTree> data;
 }
