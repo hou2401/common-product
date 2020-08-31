@@ -19,6 +19,7 @@ import com.itrus.common.request.fcs.GenerateThumbnailRequest;
 import com.itrus.common.request.fcs.Pdf2pngRequest;
 import com.itrus.common.request.fcs.TotalPageRequest;
 import com.itrus.common.response.atom.FssDownloadBase64Result;
+import com.itrus.common.response.atom.FssUploadBase64Result;
 import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
@@ -253,25 +254,17 @@ public class CommonRequest {
 		cearParam.put("encryptionType", encryptionType);
         Long fssId = null;
         if (alled()) {
-        	
-        	JSONObject jsonObject = (JSONObject) isOk(atomedApiRequest.uploadBase64(cearParam));
-            if (jsonObject != null) {
-                if (jsonObject.getInteger("code") == 0) {
-                    fssId = jsonObject.getJSONObject("data").getLong("fssId");
-                } else {
-//                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
-                    return null;
-                }
-            }        
+
+            FssUploadBase64Result ok = (FssUploadBase64Result) isOk(atomedApiRequest.uploadBase64(cearParam));
+            if (ok != null) {
+
+                return ok.getFssId();
+            }
         }else {
-        	JSONObject jsonObject = (JSONObject) isOk(fssApiRequest.uploadBase64(cearParam));
-            if (jsonObject != null) {
-                if (jsonObject.getInteger("code") == 0) {
-                    fssId = jsonObject.getJSONObject("data").getLong("fssId");
-                } else {
-//                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
-                    return null;
-                }
+
+            FssUploadBase64Result ok = (FssUploadBase64Result) isOk(fssApiRequest.uploadBase64(cearParam));
+            if (ok != null) {
+                return ok.getFssId();
             }
         }
         return fssId;
@@ -342,7 +335,7 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public Result<DownloadResponse> download(Long fssId) throws Exception {
+    public Result<DownloadResponse> downloadFile(Long fssId) throws Exception {
         Map<String, Object> params = new HashMap<>(1);
         params.put("fssId", fssId);
         JSONObject result = null;
@@ -362,7 +355,7 @@ public class CommonRequest {
      * @return
      * @throws Exception
      */
-    public Result<DownloadResponse> downloadFile(Long fssId) throws Exception {
+    public Result<DownloadResponse> download(Long fssId) throws Exception {
         Map<String, Object> params = new HashMap<>(1);
         params.put("fssId", fssId);
         FssDownloadBase64Result result = null;
