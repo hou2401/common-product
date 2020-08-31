@@ -12,7 +12,6 @@ import com.itrus.common.WebApplication;
 import com.itrus.common.exception.EnterpriseAuthException;
 import com.itrus.common.exception.PersionAuthException;
 import com.itrus.common.http.AuthApiRequest;
-import com.itrus.common.http.CommonRequest;
 import com.itrus.common.report.Author;
 import com.itrus.common.request.auth.AuthEnterpriseRequest;
 import com.itrus.common.request.auth.AuthPersionRequest;
