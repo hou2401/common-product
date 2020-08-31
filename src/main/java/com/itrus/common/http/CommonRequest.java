@@ -18,6 +18,8 @@ import com.itrus.common.request.dsvs.DsvsVerifyBase64Request;
 import com.itrus.common.request.fcs.GenerateThumbnailRequest;
 import com.itrus.common.request.fcs.Pdf2pngRequest;
 import com.itrus.common.request.fcs.TotalPageRequest;
+import com.itrus.common.request.ra.CertConfigRequest;
+import com.itrus.common.request.ra.TimeStampRequest;
 import com.itrus.common.response.atom.FssDownloadBase64Result;
 import com.itrus.common.response.cert.ApplyCertResult;
 import com.itrus.common.response.cert.CertUpdateResult;
@@ -26,14 +28,21 @@ import com.itrus.common.response.dsvs.DsvsKeywordCoordinatesResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
 import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import com.itrus.common.response.fcs.GetTotalPagesResult;
+import com.itrus.common.response.ra.CertConfigResponse;
+import com.itrus.common.response.ra.RaResult;
+import com.itrus.common.response.ra.TimeStampResponse;
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
@@ -54,28 +63,28 @@ public class CommonRequest {
 
     @Autowired
     private HttpDTO http;
-    
+
     @Autowired
     private AtomedApiRequest atomedApiRequest;
-    
+
     @Autowired
     private SealApiRequest sealApiRequest;
-    
+
     @Autowired
     private FssApiRequest fssApiRequest;
-    
+
     @Autowired
     private FcsApiRequest fcsApiRequest;
-    
+
     @Autowired
     private CertApiRequest certApiRequest;
-    
+
     @Autowired
     private DsvsApiRequest dsvsApiRequest;
-    
+
     @Autowired
     private DgsApiRequest dgsApiRequest;
-    
+
     private Long okCode = 0L;
 
     /**
@@ -87,15 +96,22 @@ public class CommonRequest {
     private boolean alled() throws HttpException {
         return http.alled();
     }
-    
-    private Object isOk(Result<?> result) throws HttpException{
-    	Long code = result.getCode();
-    	if(code != null && code.equals(okCode)) {
-    		return result.getData();
-    	}
-    	throw new HttpException(result.getMsg());
+
+    private Object isOk(Result<?> result) throws HttpException {
+        Long code = result.getCode();
+        if (code != null && code.equals(okCode)) {
+            return result.getData();
+        }
+        throw new HttpException(result.getMsg());
     }
 
+    private Object isOk(RaResult<?> result) throws HttpException {
+        Integer code = result.getCode();
+        if (code != null && code.equals(okCode)) {
+            return result.getData();
+        }
+        throw new HttpException(result.getMsg());
+    }
 
     /**
      *
@@ -113,11 +129,11 @@ public class CommonRequest {
      */
     public String createEllipseSeal(CreateCircularSealRequest kvs) throws Exception {
         String result = null;
-            if (alled()) {//合并版
-            	result = (String) isOk(atomedApiRequest.createEllipseSeal(kvs));
-            } else {
-                result = (String) isOk(sealApiRequest.createEllipseSeal(kvs));
-            }
+        if (alled()) {//合并版
+            result = (String) isOk(atomedApiRequest.createEllipseSeal(kvs));
+        } else {
+            result = (String) isOk(sealApiRequest.createEllipseSeal(kvs));
+        }
         return result;
     }
 
@@ -137,7 +153,7 @@ public class CommonRequest {
         }
         return result;
     }
-    
+
     /**
      * 创建三角章
      *
@@ -147,12 +163,12 @@ public class CommonRequest {
      */
     public String createTriangleSeal(CreateCircularSealRequest sealParam) throws Exception {
         String result = null;
-    	if (alled()) {
-    		result = (String) isOk(atomedApiRequest.createTriangleSeal(sealParam));
-    	} else {
-    		result = (String) isOk(sealApiRequest.createTriangleSeal(sealParam));
-    	}
-    	return result;
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.createTriangleSeal(sealParam));
+        } else {
+            result = (String) isOk(sealApiRequest.createTriangleSeal(sealParam));
+        }
+        return result;
     }
 
     /**
@@ -164,11 +180,11 @@ public class CommonRequest {
      */
     public String createDoubleRowSeal(CreateDoubleRowSealRequest sealParam) throws Exception {
         String result = null;
-            if (alled()) {
-            	result = (String) isOk(atomedApiRequest.createDoubleRowSeal(sealParam));
-            } else {
-                result = (String) isOk(sealApiRequest.createDoubleRowSeal(sealParam));
-            }
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.createDoubleRowSeal(sealParam));
+        } else {
+            result = (String) isOk(sealApiRequest.createDoubleRowSeal(sealParam));
+        }
         return result;
     }
 
@@ -182,7 +198,7 @@ public class CommonRequest {
     public String createSingleRowSeal(CreateSingleRowSealRequest sealParam) throws Exception {
         String result = null;
         if (alled()) {
-        	result = (String) isOk(atomedApiRequest.createSingleRowSeal(sealParam));
+            result = (String) isOk(atomedApiRequest.createSingleRowSeal(sealParam));
         } else {
             result = (String) isOk(sealApiRequest.createSingleRowSeal(sealParam));
         }
@@ -192,16 +208,15 @@ public class CommonRequest {
     /**
      * 印章透明处理
      *
-     * @param kvs 请求参数
+     * @param
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
     public String sealLimpid(SealLimpidRequest obj) throws Exception {
         String result = null;
         if (alled()) {
-        	result = (String) isOk(atomedApiRequest.sealLimpid(obj));
+            result = (String) isOk(atomedApiRequest.sealLimpid(obj));
         } else {
-
             result = (String) isOk(sealApiRequest.sealLimpid(obj));
         }
         return result;
@@ -222,8 +237,8 @@ public class CommonRequest {
      * @throws Exception
      */
     public String fileDelete(Long fssId) throws Exception {
-    	Map<String, Object> params = new HashMap<>(1);
-		params.put("fssId", fssId);
+        Map<String, Object> params = new HashMap<>(1);
+        params.put("fssId", fssId);
         String result = null;
         if (alled()) {
             result = (String) isOk(atomedApiRequest.fileDelete(params));
@@ -246,15 +261,15 @@ public class CommonRequest {
     }
 
     public Long upload(String bizType, String originalFileName, byte[] fileBytes, Integer encryptionType) throws Exception {
-    	Map<String, Object> cearParam = new HashMap<>();
-		cearParam.put("fileBytes", Base64Utils.encodeToString(fileBytes));
-		cearParam.put("bizType", bizType);
-		cearParam.put("fileName", originalFileName);
-		cearParam.put("encryptionType", encryptionType);
+        Map<String, Object> cearParam = new HashMap<>();
+        cearParam.put("fileBytes", Base64Utils.encodeToString(fileBytes));
+        cearParam.put("bizType", bizType);
+        cearParam.put("fileName", originalFileName);
+        cearParam.put("encryptionType", encryptionType);
         Long fssId = null;
         if (alled()) {
-        	
-        	JSONObject jsonObject = (JSONObject) isOk(atomedApiRequest.uploadBase64(cearParam));
+
+            JSONObject jsonObject = (JSONObject) isOk(atomedApiRequest.uploadBase64(cearParam));
             if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
@@ -262,9 +277,9 @@ public class CommonRequest {
 //                    log.error("调用存储原子服务保存印章失败：" + jsonObject.getString("msg"));
                     return null;
                 }
-            }        
-        }else {
-        	JSONObject jsonObject = (JSONObject) isOk(fssApiRequest.uploadBase64(cearParam));
+            }
+        } else {
+            JSONObject jsonObject = (JSONObject) isOk(fssApiRequest.uploadBase64(cearParam));
             if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
@@ -285,17 +300,17 @@ public class CommonRequest {
      * @throws Exception
      */
     public Long upload(FssUploadRequest obj) throws Exception {
-    	
-    	if(obj.getOriginalFilename() == null) {
-    		obj.setOriginalFilename("anonymous.file");
-		}
-    	InputStream inputStream = new ByteArrayInputStream(obj.getFileBytes());
-    	MultipartFile file = new MockMultipartFile(obj.getFileName(),obj.getOriginalFilename(),ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
-    	Long fssId = null;
-    	JSONObject jsonObject = null;
+
+        if (obj.getOriginalFilename() == null) {
+            obj.setOriginalFilename("anonymous.file");
+        }
+        InputStream inputStream = new ByteArrayInputStream(obj.getFileBytes());
+        MultipartFile file = new MockMultipartFile(obj.getFileName(), obj.getOriginalFilename(), ContentType.APPLICATION_OCTET_STREAM.toString(), inputStream);
+        Long fssId = null;
+        JSONObject jsonObject = null;
         if (alled()) {
-        	jsonObject = (JSONObject) isOk(atomedApiRequest.upload(file,obj.getBizType(),obj.getEncryptionType()));
-        	if (jsonObject != null) {
+            jsonObject = (JSONObject) isOk(atomedApiRequest.upload(file, obj.getBizType(), obj.getEncryptionType()));
+            if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
                 } else {
@@ -304,8 +319,8 @@ public class CommonRequest {
                 }
             }
         } else {
-        	jsonObject = (JSONObject) isOk(fssApiRequest.upload(file, obj.getBizType(), obj.getEncryptionType()));
-        	if (jsonObject != null) {
+            jsonObject = (JSONObject) isOk(fssApiRequest.upload(file, obj.getBizType(), obj.getEncryptionType()));
+            if (jsonObject != null) {
                 if (jsonObject.getInteger("code") == 0) {
                     fssId = jsonObject.getJSONObject("data").getLong("fssId");
                 } else {
@@ -324,8 +339,8 @@ public class CommonRequest {
      * @throws Exception
      */
     public FssDownloadBase64Result downloadBase64(Long fssId) throws Exception {
-    	Map<String, Object> params = new HashMap<>(1);
-		params.put("fssId", fssId);
+        Map<String, Object> params = new HashMap<>(1);
+        params.put("fssId", fssId);
         FssDownloadBase64Result result = null;
         if (alled()) {
             result = (FssDownloadBase64Result) isOk(atomedApiRequest.downLoadBase64(params));
@@ -338,6 +353,7 @@ public class CommonRequest {
 
     /**
      * 下载文件
+     *
      * @param fssId
      * @return
      * @throws Exception
@@ -356,8 +372,10 @@ public class CommonRequest {
         isOk(re);
         return re;
     }
+
     /**
      * 下载文件FromBase64
+     *
      * @param fssId
      * @return
      * @throws Exception
@@ -382,7 +400,7 @@ public class CommonRequest {
             HttpHeaders headers = response.getHeaders();
             headers.get(FSSConstants.HEADER_DOWNLOAD_SUCCESS).get(0);
             String downloadSuccess = headers.get(FSSConstants.HEADER_DOWNLOAD_SUCCESS).get(0);
-            if("true".equals(downloadSuccess)) {
+            if ("true".equals(downloadSuccess)) {
                 String filename = headers.get("Content-Disposition").get(0);
                 if (filename.startsWith("attachment;filename=")) {
                     filename = filename.replace("attachment;filename=", "");
@@ -392,7 +410,8 @@ public class CommonRequest {
                 downloaRresponse.setFileName(filename);
                 return Result.createSuccessResult(downloaRresponse);
             } else {
-                return JSON.parseObject((String) response.getBody(), new TypeReference<Result<DownloadResponse>>() {});
+                return JSON.parseObject((String) response.getBody(), new TypeReference<Result<DownloadResponse>>() {
+                });
             }
         } catch (Exception e) {
 //            log.error("download error", e);
@@ -445,12 +464,12 @@ public class CommonRequest {
         }
         return in2b;
     }*/
-    
+
     //-------------------------------------------------------------------------------------------------------------------------
-	/**
-	 * 文档转换服务
-	 */
-	//-------------------------------------------------------------------------------------------------------------------------
+    /**
+     * 文档转换服务
+     */
+    //-------------------------------------------------------------------------------------------------------------------------
 
 
     /**
@@ -461,68 +480,70 @@ public class CommonRequest {
      * @throws Exception
      */
     public String word2Pdfs(byte[] data) throws Exception {
-    	Map<String,String> params = new HashMap<>();
-		params.put("file",Base64Utils.encodeToString(data));
+        Map<String, String> params = new HashMap<>();
+        params.put("file", Base64Utils.encodeToString(data));
         return (String) isOk(fcsApiRequest.word2Pdfs(params));
     }
-    
+
     /**
      * pdf转png
+     *
      * @param data
      * @return
      * @throws Exception
      */
     public String pdf2png(Pdf2pngRequest data) throws Exception {
-    	Map<String,String> params = new HashMap<>();
-		params.put("file",Base64Utils.encodeToString(data.getData()));
-        params.put("scale",data.getScale().toString());
+        Map<String, String> params = new HashMap<>();
+        params.put("file", Base64Utils.encodeToString(data.getData()));
+        params.put("scale", data.getScale().toString());
         return (String) isOk(fcsApiRequest.pdf2png(params));
     }
 
-	/**
-	 * excel文档转换pdf（支持xls/xlsx）
-	 * @param data
-	 * @return
-	 * @throws Exception
-	 */
+    /**
+     * excel文档转换pdf（支持xls/xlsx）
+     *
+     * @param data
+     * @return
+     * @throws Exception
+     */
     public String excel2Pdfs(byte[] data) throws Exception {
-    	Map<String,String> params = new HashMap<>();
-		params.put("file",Base64Utils.encodeToString(data));
+        Map<String, String> params = new HashMap<>();
+        params.put("file", Base64Utils.encodeToString(data));
         return (String) isOk(fcsApiRequest.excel2Pdfs(params));
     }
 
-	/**
-	 * image文档转换pdf（支持jpeg/jpg/png）
-	 * @param data
-	 * @return
-	 * @throws Exception
-	 */
+    /**
+     * image文档转换pdf（支持jpeg/jpg/png）
+     *
+     * @param data
+     * @return
+     * @throws Exception
+     */
     public String image2png(byte[] data) throws Exception {
-    	Map<String,String> params = new HashMap<>();
-		params.put("file",Base64Utils.encodeToString(data));
+        Map<String, String> params = new HashMap<>();
+        params.put("file", Base64Utils.encodeToString(data));
         return (String) isOk(fcsApiRequest.image2Pdfs(params));
     }
-    
+
     /***
      * 生成缩略图
      * @return 操作结果
      * @throws Exception
      */
     public String generateThumbnail(GenerateThumbnailRequest obj) throws Exception {
-    	
-    	return (String) isOk(fcsApiRequest.generateThumbnail(obj.getMultipartFile(), obj.getPages(), obj.getScale(), obj.getDpi()));
+
+        return (String) isOk(fcsApiRequest.generateThumbnail(obj.getMultipartFile(), obj.getPages(), obj.getScale(), obj.getDpi()));
     }
-    
+
     /***
      * 获取文件总页数
      * @return 操作结果
      * @throws Exception
      */
     public GetTotalPagesResult getTotalPages(TotalPageRequest obj) throws Exception {
-    	
-    	return (GetTotalPagesResult) isOk(fcsApiRequest.getTotalPages(obj.getMultipartFile()));
-    }
 
+        return (GetTotalPagesResult) isOk(fcsApiRequest.getTotalPages(obj.getMultipartFile()));
+    }
 
 
     //-------------------------------------------------------------------------------------------------------------------------
@@ -539,7 +560,7 @@ public class CommonRequest {
      * @throws Exception 抛出异常
      */
     public ApplyCertResult applyCert(CertApplyRequest cert) throws Exception {
-    	ApplyCertResult result = null;
+        ApplyCertResult result = null;
         if (alled()) {
             result = (ApplyCertResult) isOk(atomedApiRequest.applyCert(cert));
         } else {
@@ -566,8 +587,8 @@ public class CommonRequest {
         return result;
 
     }
-    
-  //-----------------------------------------------------------------------------------------------------------------------
+
+    //-----------------------------------------------------------------------------------------------------------------------
     /**
      * 签章验章服务
      */
@@ -582,15 +603,15 @@ public class CommonRequest {
      */
     public DsvsSignResult sign(DsvsSignRequest kvs) throws Exception {
         DsvsSignResult result = null;
-	    if (alled()) {
-	        result = (DsvsSignResult) isOk(atomedApiRequest.sign(kvs));
-	    } else {
-	        result = (DsvsSignResult) isOk(dsvsApiRequest.sign(kvs));
-	    }
+        if (alled()) {
+            result = (DsvsSignResult) isOk(atomedApiRequest.sign(kvs));
+        } else {
+            result = (DsvsSignResult) isOk(dsvsApiRequest.sign(kvs));
+        }
         return result;
 
     }
-    
+
     /**
      * PDF批量签章
      *
@@ -599,9 +620,9 @@ public class CommonRequest {
      * @throws Exception
      */
     public DsvsSignResult batchSign(DsvsBatchSignRequest pdfBatchSign) throws Exception {
-    	DsvsSignResult result = null;
+        DsvsSignResult result = null;
         if (alled()) {
-        	 result = (DsvsSignResult) isOk(atomedApiRequest.batchSign(pdfBatchSign));
+            result = (DsvsSignResult) isOk(atomedApiRequest.batchSign(pdfBatchSign));
         } else {
             result = (DsvsSignResult) isOk(dsvsApiRequest.batchSign(pdfBatchSign));
         }
@@ -611,7 +632,7 @@ public class CommonRequest {
     /**
      * PDF验章
      *
-     * @param kvs
+     * @param
      * @return
      * @throws Exception
      */
@@ -632,7 +653,7 @@ public class CommonRequest {
     /**
      * 获取关键字坐标
      *
-     * @param kvs
+     * @param
      * @return
      * @throws Exception
      */
@@ -648,7 +669,6 @@ public class CommonRequest {
         return result;
 
     }
-
 
 
     //-----------------------------------------------------------------------------------------------------------------------
@@ -675,7 +695,7 @@ public class CommonRequest {
         return result;
 
     }
-    
+
     /**
      * PDF模板创建
      *
@@ -685,15 +705,15 @@ public class CommonRequest {
      */
     public String pdfCreate(DgsPdfCreateRequest kvs) throws Exception {
         String result = null;
-    	if (alled()) {
-    		result = (String) isOk(atomedApiRequest.pdfCreate(kvs));
-    	} else {
-    		result = (String) isOk(dgsApiRequest.pdfCreate(kvs));
-    	}
-    	return result;
-    	
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.pdfCreate(kvs));
+        } else {
+            result = (String) isOk(dgsApiRequest.pdfCreate(kvs));
+        }
+        return result;
+
     }
-    
+
     /**
      * 添加文本水印服务
      *
@@ -762,5 +782,109 @@ public class CommonRequest {
         }
         return result;
     }
-    
+
+    /**
+     * 新建RA证书配置
+     *
+     * @param obj
+     * @return
+     */
+    public String RaAdd(CertConfigRequest obj) throws Exception {
+        return (String) isOk(atomedApiRequest.RaAdd(obj));
+    }
+
+    /**
+     * 查询RA证书配置
+     *
+     * @param raCode
+     * @return
+     */
+    public CertConfigResponse GetByRaCode(String raCode) throws Exception {
+        return (CertConfigResponse) isOk(atomedApiRequest.GetByRaCode(raCode));
+    }
+
+    /**
+     * 更新RA证书配置
+     *
+     * @param obj
+     * @return
+     */
+    public String RaUpdate(CertConfigRequest obj) throws Exception {
+        return (String) isOk(atomedApiRequest.RaUpdate(obj));
+    }
+
+    /**
+     * 根据唯一标识删除区块链服务配置
+     *
+     * @param raCode
+     * @return
+     */
+    public String RaDelete(String raCode) throws Exception {
+        return (String) isOk(atomedApiRequest.RaDelete(raCode));
+    }
+
+    /**
+     * 查询区块链服务配置列表
+     *
+     * @param enterpriseId 必选 企业唯一标识
+     * @param productId    可选 产品唯一标识
+     * @return
+     */
+    public List<CertConfigResponse> RaGetList(String enterpriseId, String productId) throws Exception {
+        return (List<CertConfigResponse>) isOk(atomedApiRequest.RaGetList(enterpriseId, productId));
+    }
+
+    /**
+     * 新增时间戳配置
+     *
+     * @param obj
+     * @return
+     */
+    public String tsaAdd(TimeStampRequest obj) throws Exception {
+        return (String) isOk(atomedApiRequest.tsaAdd(obj));
+    }
+
+    /**
+     * 根据企业唯一标识查询时间戳配置详情，只返回最后一次添加的一条
+     *
+     * @param enterpriseId 必填 企业唯一标识
+     * @param productId    可选 产品唯一标识
+     * @return
+     */
+    public TimeStampResponse tsaGetTsaConfig(String enterpriseId, String productId) throws Exception {
+        return (TimeStampResponse) isOk(atomedApiRequest.tsaGetTsaConfig(enterpriseId, productId));
+    }
+
+
+    /**
+     * 根据tsaCode查询时间戳配置是否已存在
+     *
+     * @param tsaCode 必选 时间戳代码
+     * @return
+     */
+
+    public TimeStampResponse tsaGetByTsaCode(String tsaCode) throws Exception {
+        return (TimeStampResponse) isOk(atomedApiRequest.tsaGetByTsaCode(tsaCode));
+
+    }
+
+    /**
+     * 根据tsaCode更新时间戳配置
+     *
+     * @param obj
+     * @return
+     */
+    public String tsaUpdate(TimeStampRequest obj) throws Exception {
+        return (String) isOk(atomedApiRequest.tsaUpdate(obj));
+    }
+
+    /**
+     * 根据tsaCode删除时间戳服务配置
+     *
+     * @param tsaCode 必填 时间戳代码
+     * @return
+     */
+    public String tsaDelete(String tsaCode) throws Exception {
+        return (String) isOk(atomedApiRequest.tsaDelete(tsaCode));
+    }
 }
