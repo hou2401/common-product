@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestPart;
  * 时间戳服务配置接口
  */
 @Component
-@FeignClient(value = "${http.tsa}") //value:被调用的服务在注册中心的名称
+@FeignClient(value = "${http.atomed}") //value:被调用的服务在注册中心的名称
 public interface TsaApiRequest {
     /**
      * 新增时间戳配置

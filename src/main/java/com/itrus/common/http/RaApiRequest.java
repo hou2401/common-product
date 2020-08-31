@@ -23,7 +23,7 @@ import java.util.List;
  * 证书服务配置接口
  */
 @Component
-@FeignClient(value = "${http.ra}") //value:被调用的服务在注册中心的名称
+@FeignClient(value = "${http.atomed}") //value:被调用的服务在注册中心的名称
 public interface RaApiRequest {
     /**
      * 新建RA证书配置
