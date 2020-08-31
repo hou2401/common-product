@@ -18,7 +18,7 @@ public class ExternalAddCompanyRequest {
 	/**
              * 主企业uuid
      */
-    private String uuid;
+    private String companyUuid;
     /**
              * 要添加外部联系人关系的节点类型 必选
      * 0 企业（默认）
