@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * @author yuying
+ * 证书服务配置接口
  */
 @Component
 @FeignClient(value = "${http.ra}") //value:被调用的服务在注册中心的名称

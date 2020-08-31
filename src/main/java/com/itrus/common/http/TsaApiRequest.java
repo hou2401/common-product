@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 
 /**
  * @author yuying
+ * 时间戳服务配置接口
  */
 @Component
 @FeignClient(value = "${http.tsa}") //value:被调用的服务在注册中心的名称
