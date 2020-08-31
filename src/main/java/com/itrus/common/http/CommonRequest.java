@@ -790,7 +790,13 @@ public class CommonRequest {
      * @return
      */
     public String RaAdd(CertConfigRequest obj) throws Exception {
-        return (String) isOk(atomedApiRequest.RaAdd(obj));
+        String result = null;
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.RaAdd(obj));
+        } else {
+            result = (String) isOk(certApiRequest.RaAdd(obj));
+        }
+        return result;
     }
 
     /**
@@ -800,7 +806,13 @@ public class CommonRequest {
      * @return
      */
     public CertConfigResponse GetByRaCode(String raCode) throws Exception {
-        return (CertConfigResponse) isOk(atomedApiRequest.GetByRaCode(raCode));
+        CertConfigResponse result = null;
+        if (alled()) {
+            result = (CertConfigResponse) isOk(atomedApiRequest.GetByRaCode(raCode));
+        } else {
+            result = (CertConfigResponse) isOk(certApiRequest.GetByRaCode(raCode));
+        }
+        return result;
     }
 
     /**
@@ -810,7 +822,13 @@ public class CommonRequest {
      * @return
      */
     public String RaUpdate(CertConfigRequest obj) throws Exception {
-        return (String) isOk(atomedApiRequest.RaUpdate(obj));
+        String result = null;
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.RaUpdate(obj));
+        } else {
+            result = (String) isOk(certApiRequest.RaUpdate(obj));
+        }
+        return result;
     }
 
     /**
@@ -820,7 +838,13 @@ public class CommonRequest {
      * @return
      */
     public String RaDelete(String raCode) throws Exception {
-        return (String) isOk(atomedApiRequest.RaDelete(raCode));
+        String result = null;
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.RaDelete(raCode));
+        } else {
+            result = (String) isOk(certApiRequest.RaDelete(raCode));
+        }
+        return result;
     }
 
     /**
@@ -831,7 +855,13 @@ public class CommonRequest {
      * @return
      */
     public List<CertConfigResponse> RaGetList(String enterpriseId, String productId) throws Exception {
-        return (List<CertConfigResponse>) isOk(atomedApiRequest.RaGetList(enterpriseId, productId));
+        List<CertConfigResponse> result = null;
+        if (alled()) {
+            result = (List<CertConfigResponse>) isOk(atomedApiRequest.RaGetList(enterpriseId, productId));
+        } else {
+            result = (List<CertConfigResponse>) isOk(certApiRequest.RaGetList(enterpriseId, productId));
+        }
+        return result;
     }
 
     /**
@@ -841,7 +871,13 @@ public class CommonRequest {
      * @return
      */
     public String tsaAdd(TimeStampRequest obj) throws Exception {
-        return (String) isOk(atomedApiRequest.tsaAdd(obj));
+        String result = null;
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.tsaAdd(obj));
+        } else {
+            result = (String) isOk(certApiRequest.tsaAdd(obj));
+        }
+        return result;
     }
 
     /**
@@ -852,7 +888,13 @@ public class CommonRequest {
      * @return
      */
     public TimeStampResponse tsaGetTsaConfig(String enterpriseId, String productId) throws Exception {
-        return (TimeStampResponse) isOk(atomedApiRequest.tsaGetTsaConfig(enterpriseId, productId));
+        TimeStampResponse result = null;
+        if (alled()) {
+            result = (TimeStampResponse) isOk(atomedApiRequest.tsaGetTsaConfig(enterpriseId, productId));
+        } else {
+            result = (TimeStampResponse) isOk(certApiRequest.tsaGetTsaConfig(enterpriseId, productId));
+        }
+        return result;
     }
 
 
@@ -864,7 +906,14 @@ public class CommonRequest {
      */
 
     public TimeStampResponse tsaGetByTsaCode(String tsaCode) throws Exception {
-        return (TimeStampResponse) isOk(atomedApiRequest.tsaGetByTsaCode(tsaCode));
+
+        TimeStampResponse result = null;
+        if (alled()) {
+            result = (TimeStampResponse) isOk(atomedApiRequest.tsaGetByTsaCode(tsaCode));
+        } else {
+            result = (TimeStampResponse) isOk(certApiRequest.tsaGetByTsaCode(tsaCode));
+        }
+        return result;
 
     }
 
@@ -875,7 +924,13 @@ public class CommonRequest {
      * @return
      */
     public String tsaUpdate(TimeStampRequest obj) throws Exception {
-        return (String) isOk(atomedApiRequest.tsaUpdate(obj));
+        String result = null;
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.tsaUpdate(obj));
+        } else {
+            result = (String) isOk(certApiRequest.tsaUpdate(obj));
+        }
+        return result;
     }
 
     /**
@@ -885,6 +940,12 @@ public class CommonRequest {
      * @return
      */
     public String tsaDelete(String tsaCode) throws Exception {
-        return (String) isOk(atomedApiRequest.tsaDelete(tsaCode));
+        String result = null;
+        if (alled()) {
+            result = (String) isOk(atomedApiRequest.tsaDelete(tsaCode));
+        } else {
+            result = (String) isOk(certApiRequest.tsaDelete(tsaCode));
+        }
+        return result;
     }
 }
