@@ -81,7 +81,7 @@ public class CommonRequest {
     @Autowired
     private DgsApiRequest dgsApiRequest;
 
-    private Long okCode = 0L;
+    private Integer okCode = 0;
 
     /**
      * 是否为合并调用式
