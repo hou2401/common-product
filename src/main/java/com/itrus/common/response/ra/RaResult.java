@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpException;
 
 import java.io.Serializable;
 
@@ -24,6 +25,7 @@ public class RaResult<T> implements Serializable {
     private static final Integer GET_CODE = 0;
     public static final String DATA_KEY = "data";
     public static final String defaultMessage = "调用失败";
+    private static final Integer okCode = 0;
 
     /**
      * 返回状态
@@ -64,6 +66,14 @@ public class RaResult<T> implements Serializable {
             return defaultMessage;
         }
         return msg;
+    }
+
+    public static Object isOk(RaResult<?> result) throws HttpException {
+        Integer code = result.getCode();
+        if (code != null && code.equals(okCode)) {
+            return result.getData();
+        }
+        throw new HttpException(result.getMsg());
     }
 
 }

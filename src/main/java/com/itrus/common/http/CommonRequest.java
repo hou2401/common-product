@@ -83,8 +83,6 @@ public class CommonRequest {
     private DgsApiRequest dgsApiRequest;
 
     private Long okCode = 0L;
-    private Integer raOkCode = 0;
-
     /**
      * 是否为合并调用式
      *
@@ -103,13 +101,6 @@ public class CommonRequest {
         throw new HttpException(result.getMsg());
     }
 
-    private Object isOk(RaResult<?> result) throws HttpException {
-        Integer code = result.getCode();
-        if (code != null && code.equals(raOkCode)) {
-            return result.getData();
-        }
-        throw new HttpException(result.getMsg());
-    }
 
     /**
      *
@@ -783,9 +774,9 @@ public class CommonRequest {
     public String RaAdd(CertConfigRequest obj) throws Exception {
         String result = null;
         if (alled()) {
-            result = (String) isOk(atomedApiRequest.RaAdd(obj));
+            result = (String) RaResult.isOk(atomedApiRequest.RaAdd(obj));
         } else {
-            result = (String) isOk(certApiRequest.RaAdd(obj));
+            result = (String) RaResult.isOk(certApiRequest.RaAdd(obj));
         }
         return result;
     }
@@ -799,9 +790,9 @@ public class CommonRequest {
     public CertConfigResponse GetByRaCode(String raCode) throws Exception {
         CertConfigResponse result = null;
         if (alled()) {
-            result = (CertConfigResponse) isOk(atomedApiRequest.GetByRaCode(raCode));
+            result = (CertConfigResponse) RaResult.isOk(atomedApiRequest.GetByRaCode(raCode));
         } else {
-            result = (CertConfigResponse) isOk(certApiRequest.GetByRaCode(raCode));
+            result = (CertConfigResponse) RaResult.isOk(certApiRequest.GetByRaCode(raCode));
         }
         return result;
     }
@@ -815,9 +806,9 @@ public class CommonRequest {
     public String RaUpdate(CertConfigRequest obj) throws Exception {
         String result = null;
         if (alled()) {
-            result = (String) isOk(atomedApiRequest.RaUpdate(obj));
+            result = (String) RaResult.isOk(atomedApiRequest.RaUpdate(obj));
         } else {
-            result = (String) isOk(certApiRequest.RaUpdate(obj));
+            result = (String) RaResult.isOk(certApiRequest.RaUpdate(obj));
         }
         return result;
     }
@@ -831,9 +822,9 @@ public class CommonRequest {
     public String RaDelete(String raCode) throws Exception {
         String result = null;
         if (alled()) {
-            result = (String) isOk(atomedApiRequest.RaDelete(raCode));
+            result = (String) RaResult.isOk(atomedApiRequest.RaDelete(raCode));
         } else {
-            result = (String) isOk(certApiRequest.RaDelete(raCode));
+            result = (String) RaResult.isOk(certApiRequest.RaDelete(raCode));
         }
         return result;
     }
@@ -849,9 +840,9 @@ public class CommonRequest {
 	public List<CertConfigResponse> RaGetList(String enterpriseId, String productId) throws Exception {
         List<CertConfigResponse> result = null;
         if (alled()) {
-            result = (List<CertConfigResponse>) isOk(atomedApiRequest.RaGetList(enterpriseId, productId));
+            result = (List<CertConfigResponse>) RaResult.isOk(atomedApiRequest.RaGetList(enterpriseId, productId));
         } else {
-            result = (List<CertConfigResponse>) isOk(certApiRequest.RaGetList(enterpriseId, productId));
+            result = (List<CertConfigResponse>) RaResult.isOk(certApiRequest.RaGetList(enterpriseId, productId));
         }
         return result;
     }
@@ -865,9 +856,9 @@ public class CommonRequest {
     public String tsaAdd(TimeStampRequest obj) throws Exception {
         String result = null;
         if (alled()) {
-            result = (String) isOk(atomedApiRequest.tsaAdd(obj));
+            result = (String) RaResult.isOk(atomedApiRequest.tsaAdd(obj));
         } else {
-            result = (String) isOk(certApiRequest.tsaAdd(obj));
+            result = (String) RaResult.isOk(certApiRequest.tsaAdd(obj));
         }
         return result;
     }
@@ -882,9 +873,9 @@ public class CommonRequest {
     public TimeStampResponse tsaGetTsaConfig(String enterpriseId, String productId) throws Exception {
         TimeStampResponse result = null;
         if (alled()) {
-            result = (TimeStampResponse) isOk(atomedApiRequest.tsaGetTsaConfig(enterpriseId, productId));
+            result = (TimeStampResponse) RaResult.isOk(atomedApiRequest.tsaGetTsaConfig(enterpriseId, productId));
         } else {
-            result = (TimeStampResponse) isOk(certApiRequest.tsaGetTsaConfig(enterpriseId, productId));
+            result = (TimeStampResponse) RaResult.isOk(certApiRequest.tsaGetTsaConfig(enterpriseId, productId));
         }
         return result;
     }
@@ -901,9 +892,9 @@ public class CommonRequest {
 
         TimeStampResponse result = null;
         if (alled()) {
-            result = (TimeStampResponse) isOk(atomedApiRequest.tsaGetByTsaCode(tsaCode));
+            result = (TimeStampResponse) RaResult.isOk(atomedApiRequest.tsaGetByTsaCode(tsaCode));
         } else {
-            result = (TimeStampResponse) isOk(certApiRequest.tsaGetByTsaCode(tsaCode));
+            result = (TimeStampResponse) RaResult.isOk(certApiRequest.tsaGetByTsaCode(tsaCode));
         }
         return result;
 
@@ -918,9 +909,9 @@ public class CommonRequest {
     public String tsaUpdate(TimeStampRequest obj) throws Exception {
         String result = null;
         if (alled()) {
-            result = (String) isOk(atomedApiRequest.tsaUpdate(obj));
+            result = (String) RaResult.isOk(atomedApiRequest.tsaUpdate(obj));
         } else {
-            result = (String) isOk(certApiRequest.tsaUpdate(obj));
+            result = (String) RaResult.isOk(certApiRequest.tsaUpdate(obj));
         }
         return result;
     }
@@ -934,9 +925,9 @@ public class CommonRequest {
     public String tsaDelete(String tsaCode) throws Exception {
         String result = null;
         if (alled()) {
-            result = (String) isOk(atomedApiRequest.tsaDelete(tsaCode));
+            result = (String) RaResult.isOk(atomedApiRequest.tsaDelete(tsaCode));
         } else {
-            result = (String) isOk(certApiRequest.tsaDelete(tsaCode));
+            result = (String) RaResult.isOk(certApiRequest.tsaDelete(tsaCode));
         }
         return result;
     }
