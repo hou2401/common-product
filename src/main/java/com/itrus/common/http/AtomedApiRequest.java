@@ -345,7 +345,7 @@ public interface AtomedApiRequest {
      * @param obj
      * @return
      */
-    @RequestMapping(value = "/web/ra/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/ra/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<String> RaAdd(CertConfigRequest obj);
 
     /**
@@ -354,7 +354,7 @@ public interface AtomedApiRequest {
      * @param raCode
      * @return
      */
-    @RequestMapping(value = "/web/ra/getByRaCode", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/ra/getByRaCode", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<CertConfigResponse> GetByRaCode(@RequestPart("raCode") String raCode);
 
 
@@ -364,7 +364,7 @@ public interface AtomedApiRequest {
      * @param obj
      * @return
      */
-    @RequestMapping(value = "/web/ra/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/ra/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<String> RaUpdate(CertConfigRequest obj);
 
 
@@ -374,7 +374,7 @@ public interface AtomedApiRequest {
      * @param raCode
      * @return
      */
-    @RequestMapping(value = "/web/ra/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/ra/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<String> RaDelete(@RequestPart("raCode") String raCode);
 
     /**
@@ -384,7 +384,7 @@ public interface AtomedApiRequest {
      * @param productId    可选 产品唯一标识
      * @return
      */
-    @RequestMapping(value = "/web/ra/getList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/ra/getList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<List<CertConfigResponse>> RaGetList(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
 
 
@@ -394,7 +394,7 @@ public interface AtomedApiRequest {
      * @param obj
      * @return
      */
-    @RequestMapping(value = "/web/tsa/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/tsa/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<String> tsaAdd(TimeStampRequest obj);
 
     /**
@@ -404,7 +404,7 @@ public interface AtomedApiRequest {
      * @param productId    可选 产品唯一标识
      * @return
      */
-    @RequestMapping(value = "/web/tsa/getTsaConfig", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/tsa/getTsaConfig", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<TimeStampResponse> tsaGetTsaConfig(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
 
     /**
@@ -414,7 +414,7 @@ public interface AtomedApiRequest {
      * @return
      */
 
-    @RequestMapping(value = "/web/tsa/getByTsaCode", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/tsa/getByTsaCode", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<TimeStampResponse> tsaGetByTsaCode(@RequestPart("tsaCode") String tsaCode);
 
     /**
@@ -423,7 +423,7 @@ public interface AtomedApiRequest {
      * @param obj
      * @return
      */
-    @RequestMapping(value = "/web/tsa/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/tsa/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<String> tsaUpdate(TimeStampRequest obj);
 
     /**
@@ -432,7 +432,7 @@ public interface AtomedApiRequest {
      * @param tsaCode 必填 时间戳代码
      * @return
      */
-    @RequestMapping(value = "/web/tsa/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @RequestMapping(value = "/web/tsa/delete", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     RaResult<String> tsaDelete(@RequestPart("tsaCode") String tsaCode);
 
 }
