@@ -81,7 +81,7 @@ public class CommonRequest {
     @Autowired
     private DgsApiRequest dgsApiRequest;
 
-    private Integer okCode = 0;
+    private Long okCode = 0L;
 
     /**
      * 是否为合并调用式
@@ -100,15 +100,6 @@ public class CommonRequest {
         }
         throw new HttpException(result.getMsg());
     }
-
-    private Object isOk(RaResult<?> result) throws HttpException {
-        Integer code = result.getCode();
-        if (code != null && code.equals(okCode)) {
-            return result.getData();
-        }
-        throw new HttpException(result.getMsg());
-    }
-
     /**
      *
      * 印章服务
