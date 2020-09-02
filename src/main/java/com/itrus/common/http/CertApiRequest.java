@@ -113,7 +113,7 @@ public interface CertApiRequest {
 	 * @return
 	 */
 	@RequestMapping(value = "/web/tsa/getTsaConfig", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	RaResult<TimeStampResponse> tsaGetTsaConfig(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
+	RaResult<TimeStampRequest> tsaGetTsaConfig(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
 
 	/**
 	 * 根据tsaCode查询时间戳配置是否已存在

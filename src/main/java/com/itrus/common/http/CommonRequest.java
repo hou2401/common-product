@@ -870,12 +870,12 @@ public class CommonRequest {
      * @param productId    可选 产品唯一标识
      * @return
      */
-    public TimeStampResponse tsaGetTsaConfig(String enterpriseId, String productId) throws Exception {
-        TimeStampResponse result = null;
+    public TimeStampRequest tsaGetTsaConfig(String enterpriseId, String productId) throws Exception {
+        TimeStampRequest result = null;
         if (alled()) {
-            result = (TimeStampResponse) RaResult.isOk(atomedApiRequest.tsaGetTsaConfig(enterpriseId, productId));
+            result = (TimeStampRequest) RaResult.isOk(atomedApiRequest.tsaGetTsaConfig(enterpriseId, productId));
         } else {
-            result = (TimeStampResponse) RaResult.isOk(certApiRequest.tsaGetTsaConfig(enterpriseId, productId));
+            result = (TimeStampRequest) RaResult.isOk(certApiRequest.tsaGetTsaConfig(enterpriseId, productId));
         }
         return result;
     }
