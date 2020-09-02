@@ -37,35 +37,11 @@ public class ApigateRequest {
      * @throws HttpException
      */
     private Object isOk(Result<?> result) throws HttpException {
-        if (success(result)) {
+        Long code = result.getCode();
+        if (code != null && SUCCESSCODE.equals(code)) {
             return result.getData();
         }
         throw new HttpException(result.getMsg());
-    }
-
-    /**
-     * 成功
-     *
-     * @param result
-     * @return
-     */
-    public boolean success(Result<?> result) {
-        Long code = result.getCode();
-        if (code != null && SUCCESSCODE.equals(code)) {
-            return true;
-        }
-        return false;
-
-    }
-
-    /**
-     * 失败
-     *
-     * @param result
-     * @return
-     */
-    public boolean fail(Result<?> result) {
-        return !success(result);
     }
 
     /**
