@@ -29,7 +29,7 @@ http:
   cs: cs #证书服务拆分版注册中心名称
   dsvs: dsvs #签章验章服务拆分版注册中心名称
   dgs: dgs #文档生成服务拆分版注册中心名称
-  
+  apigate: apigate #api网关服务注册到注册中心服务
 taskExecutor:
   coreSize: 10 #核心线程数 --线程池基本大小
   maxSize: 10 #最大线程数

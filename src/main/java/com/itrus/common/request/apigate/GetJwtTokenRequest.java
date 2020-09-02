@@ -1,0 +1,30 @@
+package com.itrus.common.request.apigate;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+/**
+ * @ClassName GetJwtTokenRequest
+ * @Author: Yuliu
+ * @Description:
+ * @Date:Created in 20:47 2020/9/1
+ * @Modified By:
+ * @Version 1.0
+ **/
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class GetJwtTokenRequest implements Serializable {
+    /**
+     * 应用id
+     */
+    private String appId;
+    /**
+     * 应用秘钥
+     */
+    private String appKey;
+
+}
