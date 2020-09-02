@@ -22,28 +22,28 @@ public class TimeStampRequest implements Serializable {
      * 用户名
      */
     @NotBlank(message="用户名不允许为空")
-    @Range(min = 1, max = 100, message = "用户名在1-100位之间")
+//    @Range(min = 1, max = 100, message = "用户名在1-100位之间")
     private String userName;
 
     /**
      * 用户密码
      */
     @NotBlank(message="密码不允许为空")
-    @Range(min = 1, max = 100, message ="用户密码不允许为空")
+//    @Range(min = 1, max = 100, message ="用户密码不允许为空")
     private String password;
 
     /**
      * url
      */
     @NotBlank(message="url不允许为空")
-    @Range(min = 1, max = 255, message ="时间戳url不允许为空")
+//    @Range(min = 1, max = 255, message ="时间戳url不允许为空")
     private String serviceUrl;
 
     /**
      * 企业证件类型
      */
     @NotBlank(message="时间戳tsaCode不允许为空")
-    @Range(min = 1, max = 100, message = "时间戳编码在1-100之间")
+//    @Range(min = 1, max = 100, message = "时间戳编码在1-100之间")
     private String tsaCode;
 
     /**

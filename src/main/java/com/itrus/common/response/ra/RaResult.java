@@ -73,6 +73,7 @@ public class RaResult<T> implements Serializable {
         if (code != null && code.equals(okCode)) {
             return result.getData();
         }
+//        return result.getMsg();
         throw new HttpException(result.getMsg());
     }
 

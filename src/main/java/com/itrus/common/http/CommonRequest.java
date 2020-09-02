@@ -32,6 +32,7 @@ import com.itrus.common.response.fcs.GetTotalPagesResult;
 import com.itrus.common.response.ra.CertConfigResponse;
 import com.itrus.common.response.ra.RaResult;
 import com.itrus.common.response.ra.TimeStampResponse;
+import com.itrus.common.result.uag.response.RaGetListResult;
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -836,13 +837,12 @@ public class CommonRequest {
      * @param productId    可选 产品唯一标识
      * @return
      */
-    @SuppressWarnings("unchecked")
-	public List<CertConfigResponse> RaGetList(String enterpriseId, String productId) throws Exception {
-        List<CertConfigResponse> result = null;
+	public RaGetListResult RaGetList(String enterpriseId, String productId) throws Exception {
+        RaGetListResult result = null;
         if (alled()) {
-            result = (List<CertConfigResponse>) RaResult.isOk(atomedApiRequest.RaGetList(enterpriseId, productId));
+            result = (RaGetListResult) RaResult.isOk(atomedApiRequest.RaGetList(enterpriseId, productId));
         } else {
-            result = (List<CertConfigResponse>) RaResult.isOk(certApiRequest.RaGetList(enterpriseId, productId));
+            result = (RaGetListResult) RaResult.isOk(certApiRequest.RaGetList(enterpriseId, productId));
         }
         return result;
     }

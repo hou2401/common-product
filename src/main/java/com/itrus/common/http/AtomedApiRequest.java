@@ -25,11 +25,13 @@ import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import com.itrus.common.response.ra.CertConfigResponse;
 import com.itrus.common.response.ra.RaResult;
 import com.itrus.common.response.ra.TimeStampResponse;
+import com.itrus.common.result.uag.response.RaGetListResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -385,7 +387,7 @@ public interface AtomedApiRequest {
      * @return
      */
     @RequestMapping(value = "/web/ra/getList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    RaResult<List<CertConfigResponse>> RaGetList(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
+    RaResult<RaGetListResult> RaGetList(@RequestPart("enterpriseId") String enterpriseId, @RequestPart("productId") String productId);
 
 
     /**
