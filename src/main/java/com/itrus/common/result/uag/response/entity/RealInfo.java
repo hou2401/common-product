@@ -20,20 +20,24 @@ public class RealInfo implements Serializable {
      * 姓名
      */
     private String displayName;
+    
     /**
      * 认证时间
      */
     private String authTime;
+    
     /**
-     * 实名认证类型 0 未实名(默认) 1 已实名 2 实名中
+            * 实名认证类型 0 未实名(默认) 1 已实名 2 实名中
      */
     private String authType;
+    
     /**
-     * 手机号
+             * 实名认证类型汉字
      */
-    private String phone;
+    private String authTypeStr;
+
     /**
-     * 个人证件类型
+             * 个人证件类型
      * 1 居民身份证 （默认）
      * 2 护照
      * 3 港澳居民来往内地通行证
@@ -42,16 +46,24 @@ public class RealInfo implements Serializable {
      * 6 外籍身份证
      */
     private String idCardType;
+   
     /**
-     * 证件号码
+             * 证件号码
      */
     private String idCardNum;
+    
     /**
-     * 银行卡号
+             * 银行卡号
      */
     private String bankCardNum;
+    
     /**
-     * 实名认证结果 0 未实名(默认) 1 已实名 2 实名中
+             * 实名认证结果 0 未实名(默认) 1 已实名 2 实名中
      */
     private String authResult;
+    
+    /**
+            * 实名认证结果汉字
+     */
+    private String authResultStr;
 }

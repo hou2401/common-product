@@ -24,6 +24,10 @@ public interface UagApiRequest {
 
     @RequestMapping(value = "/user/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<UUIDResult> userRegister(UserRegisterRequest obj);
+    
+    
+    @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UagResult<UUIDResult> userRegisterAndAuth(UserRegisterAndAuthRequest obj);
 
 
     @RequestMapping(value = "/user/updateAuth", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

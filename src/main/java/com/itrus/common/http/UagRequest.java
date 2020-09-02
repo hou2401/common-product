@@ -35,6 +35,21 @@ public class UagRequest {
         return uagApiRequest.userRegister(obj);
 
     }
+    
+    /**
+     *
+     * @api {post} account/userRegister 用户注册并实名
+     * @apiVersion 2.0.0
+     * @apiParam {Object} obj 注册参数.
+     * @apiName userRegister
+     * @apiGroup 账号服务（account）
+     * @apiSuccess (Success 0x0000) {JSONObject} json.
+     */
+    public UagResult<UUIDResult> userRegisterAndAuth(UserRegisterAndAuthRequest obj) throws Exception {
+    	
+    	return uagApiRequest.userRegisterAndAuth(obj);
+    	
+    }
 
     /**
      * 用户实名
