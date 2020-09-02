@@ -1,6 +1,7 @@
 package com.itrus.common.http;
 
 import cn.com.itrus.atom.sign.common.bean.Result;
+import com.alibaba.fastjson.JSONArray;
 import com.itrus.common.request.atom.CreateCircularSealRequest;
 import com.itrus.common.request.atom.CreateDoubleRowSealRequest;
 import com.itrus.common.request.atom.CreateSingleRowSealRequest;
@@ -265,7 +266,7 @@ public interface AtomedApiRequest {
      * @throws Exception
      */
     @RequestMapping(value = "/dsvs/verifyBase64", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Result<DsvsVerifyBase64Result> verifyBase64(DsvsVerifyBase64Request obj);
+    public Result<JSONArray> verifyBase64(DsvsVerifyBase64Request obj);
 
     /**
      * 获取关键字坐标
