@@ -175,7 +175,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<LoadTreeResult> orgLoadTree(OrgLoadTreeRequest obj) throws Exception {
+    public JSONObject orgLoadTree(OrgLoadTreeRequest obj) throws Exception {
     	return uagApiRequest.orgLoadTree(obj);
     }
     

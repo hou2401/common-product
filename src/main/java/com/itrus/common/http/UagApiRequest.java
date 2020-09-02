@@ -75,7 +75,7 @@ public interface UagApiRequest {
 
 
     @RequestMapping(value = "/org/loadTree", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UagResult<LoadTreeResult>  orgLoadTree(OrgLoadTreeRequest obj);
+    public JSONObject  orgLoadTree(OrgLoadTreeRequest obj);
 
 
     @RequestMapping(value = "/user/findCompanySuperAdminList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
