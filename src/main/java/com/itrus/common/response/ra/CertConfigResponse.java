@@ -79,8 +79,8 @@ public class CertConfigResponse implements Serializable {
      * ra账号
      */
 //	@NotBlank(message = "ra账号hash不能为空")
-    @Range(min = 1, max = 255, message = "ra账号hash在1-255之间")
-    private String raAccountHash;
+//    @Range(min = 1, max = 255, message = "ra账号hash在1-255之间")
+    private String accountHash;
     /**
      * ra密码
      */
