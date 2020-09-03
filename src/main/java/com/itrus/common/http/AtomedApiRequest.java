@@ -162,7 +162,7 @@ public interface AtomedApiRequest {
      * @throws Exception
      */
     @RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> download(Object obj);
+    public ResponseEntity<byte[]> download(Object obj);
 
     /***
      * 下载文件

@@ -33,6 +33,7 @@ import com.itrus.common.response.ra.CertConfigResponse;
 import com.itrus.common.response.ra.RaResult;
 import com.itrus.common.response.ra.TimeStampResponse;
 import com.itrus.common.result.uag.response.RaGetListResult;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ import java.util.Map;
  * @author han_yanhui
  * @date 2020-2-25 12:04:04
  **/
-//@Slf4j
+@Slf4j
 @Component
 public class CommonRequest {
 
@@ -343,15 +344,13 @@ public class CommonRequest {
     public Result<DownloadResponse> downloadFile(Long fssId) throws Exception {
         Map<String, Object> params = new HashMap<>(1);
         params.put("fssId", fssId);
-        //JSONObject result = null;
-        ResponseEntity<?> response = null;
+        ResponseEntity<byte[]> response = null;
         if (alled()) {
             response = atomedApiRequest.download(params);
         } else {
             response = fssApiRequest.download(params);
         }
         Result<DownloadResponse> re = this.getResultByResponseEntity(response);
-        isOk(re);
         return re;
     }
 
@@ -377,7 +376,7 @@ public class CommonRequest {
         return Result.createSuccessResult(downloaRresponse);
     }
 
-    private Result<DownloadResponse> getResultByResponseEntity(ResponseEntity<?> response) {
+    private Result<DownloadResponse> getResultByResponseEntity(ResponseEntity<byte[]> response) {
         try {
             HttpHeaders headers = response.getHeaders();
             headers.get(FSSConstants.HEADER_DOWNLOAD_SUCCESS).get(0);
@@ -392,11 +391,10 @@ public class CommonRequest {
                 downloaRresponse.setFileName(filename);
                 return Result.createSuccessResult(downloaRresponse);
             } else {
-                return JSON.parseObject((String) response.getBody(), new TypeReference<Result<DownloadResponse>>() {
-                });
+                return JSON.parseObject(new String(response.getBody()), new TypeReference<Result<DownloadResponse>>() {});
             }
         } catch (Exception e) {
-//            log.error("download error", e);
+            log.error("download error", e);
             return Result.createFailResult("下载失败: " + e.getMessage());
         }
     }

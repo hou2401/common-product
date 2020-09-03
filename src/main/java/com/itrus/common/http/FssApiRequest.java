@@ -64,7 +64,7 @@ public interface FssApiRequest {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/fss/download", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> download(Object obj);
+	public ResponseEntity<byte[]> download(Object obj);
 
 
     /***
