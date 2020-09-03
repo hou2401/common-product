@@ -18,6 +18,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserAddRequest {
+	
+	
+	/**
+	 * uuid 操作人uuid
+	 */
+	private String uuid;
+	
     /**
      * 必选
      * 姓名

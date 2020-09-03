@@ -94,7 +94,7 @@ public class UagRequest {
      * @throws Exception 抛出异常
      */
     public UagResult<JSONObject> userAdd(UserAddRequest obj) throws Exception {
-        return uagApiRequest.userAdd(obj);
+        return uagApiRequest.userAdd(obj.getUuid(),obj);
     }
 
     /**
