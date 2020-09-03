@@ -33,7 +33,6 @@ import com.itrus.common.response.ra.CertConfigResponse;
 import com.itrus.common.response.ra.RaResult;
 import com.itrus.common.response.ra.TimeStampResponse;
 import com.itrus.common.result.uag.response.RaGetListResult;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpException;
 import org.apache.http.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
