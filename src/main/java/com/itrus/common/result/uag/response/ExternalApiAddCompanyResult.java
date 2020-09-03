@@ -1,5 +1,6 @@
 package com.itrus.common.result.uag.response;
 
+import com.itrus.common.result.uag.response.entity.BatchAddCompanyErrorResponse;
 import com.itrus.common.result.uag.response.entity.UserAndCompanyInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class ExternalApiAddCompanyResult implements Serializable {
     /**
      * 错误数据列表
      */
-    private List<String> errorData;
+    private List<BatchAddCompanyErrorResponse> errorData;
     /**
      * 成功数据列表
      */

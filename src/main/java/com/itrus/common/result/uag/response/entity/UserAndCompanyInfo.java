@@ -20,32 +20,8 @@ public class UserAndCompanyInfo {
      * 企业信息
      */
     private CompanyInfo companyInfo;
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    static class UserInfo{
-        /**
-         * 手机号
-         */
-        private String phone;
-        /**
-         * 用户唯一标识
-         */
-        private String uuid;
-    }
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    static class CompanyInfo{
-        /**
-         * 企业全称
-         */
-        private String orgName;
-        /**
-         * 企业唯一标识
-         */
-        private String uuid;
-    }
+
+
 
 
 }

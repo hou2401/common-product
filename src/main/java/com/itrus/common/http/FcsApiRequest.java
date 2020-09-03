@@ -1,5 +1,6 @@
 package com.itrus.common.http;
 
+import cn.com.itrus.atom.sign.common.bean.Result;
 import com.itrus.common.response.fcs.GetTotalPagesResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-import cn.com.itrus.atom.sign.common.bean.Result;
+import java.io.File;
 
 /**
  * 整合版公共原子服务调用方法
@@ -61,8 +62,8 @@ public interface FcsApiRequest {
 	 * @return 操作结果
 	 */
 	@RequestMapping(value = "/fcs/front/generateThumbnail", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public Result<String> generateThumbnail(@RequestPart(value = "file") MultipartFile file,@RequestPart(value = "pages")String pages,
-			@RequestPart(value = "scale")Float scale, @RequestPart(value = "dpi")Float dpi);
+	public Result<String> generateThumbnail(@RequestPart(value = "file") MultipartFile file, @RequestPart(value = "pages")String pages,
+											@RequestPart(value = "scale")Float scale, @RequestPart(value = "dpi")Integer dpi);
 	
 	/***
 	 * 获取文件总页数

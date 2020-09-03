@@ -36,5 +36,5 @@ public class GenerateThumbnailRequest extends TotalPageRequest implements Serial
     /**
      * 图片分辨率，取值越大生成的图片清晰度越高图片尺寸也越大<br/>默认值：96
      */
-    private Float dpi;
+    private Integer dpi;
 }

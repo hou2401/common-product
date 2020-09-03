@@ -181,7 +181,8 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<ExternalApiAddCompanyResult> externalApiAddCompany(ExternalApiAddCompanyRequest obj) throws Exception {
+//    public UagResult<ExternalApiAddCompanyResult> externalApiAddCompany(ExternalApiAddCompanyRequest obj) throws Exception {
+    public UagResult<JSONObject> externalApiAddCompany(ExternalApiAddCompanyRequest obj) throws Exception {
         return uagApiRequest.externalApiAddCompany(obj);
     }
 

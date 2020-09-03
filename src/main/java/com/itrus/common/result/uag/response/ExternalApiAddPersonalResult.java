@@ -1,5 +1,6 @@
 package com.itrus.common.result.uag.response;
 
+import com.itrus.common.result.uag.response.entity.BatchAddPersonalErrorResponse;
 import com.itrus.common.result.uag.response.entity.UserInfoBase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +31,7 @@ public class ExternalApiAddPersonalResult implements Serializable {
     /**
      * 失败信息列表
      */
-    private List<String> errorData;
+    private List<BatchAddPersonalErrorResponse> errorData;
     /**
      * 成功信息列表映射集
      */
