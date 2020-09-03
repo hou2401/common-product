@@ -55,6 +55,12 @@ public class DsvsSignRequest implements Serializable {
      * 是否加盖时间戳，默认false不加盖
      */
     private Boolean timeStamp;
+
+    /**
+     * 时间戳代码，用于选择使用哪个时间戳服务<br/>不填时使用默认的时间戳服务
+     */
+    private String tsaCode;
+
     /**
      * 签名策略： 1：只有第一个印章图片添加数字签名,其它印章添加水印（首次签章默认）
      *           2：所有印章图片都添加签名（非首次签章默认）

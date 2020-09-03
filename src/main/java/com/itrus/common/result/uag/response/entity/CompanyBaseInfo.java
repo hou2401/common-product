@@ -27,4 +27,9 @@ public class CompanyBaseInfo implements Serializable {
      * 企业UUID
      */
     private String uuid;
+    
+    /**
+     * 企业状态
+     */
+    private String state;
 }
