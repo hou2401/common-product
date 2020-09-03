@@ -56,7 +56,7 @@ import java.util.Map;
  * @author han_yanhui
  * @date 2020-2-25 12:04:04
  **/
-@Slf4j
+//@Slf4j
 @Component
 public class CommonRequest {
 
@@ -394,7 +394,7 @@ public class CommonRequest {
                 return JSON.parseObject(new String(response.getBody()), new TypeReference<Result<DownloadResponse>>() {});
             }
         } catch (Exception e) {
-            log.error("download error", e);
+//            log.error("download error", e);
             return Result.createFailResult("下载失败: " + e.getMessage());
         }
     }
