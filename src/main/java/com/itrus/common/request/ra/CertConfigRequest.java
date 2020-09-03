@@ -1,14 +1,13 @@
 package com.itrus.common.request.ra;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Range;
-
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author yuying
@@ -69,20 +68,17 @@ public class CertConfigRequest {
      * ra地址
      */
 //	@NotBlank(message = "ra地址不能为空")
-//    @Range(min = 1, max = 255, message = "ra地址在1-255之间")
     private String serviceUrl;
 
     /**
      * ra账号
      */
-	@NotBlank(message = "ra账号hash不能为空")
-//    @Range(min = 1, max = 255, message = "ra账号hash在1-255之间")
+//	@NotBlank(message = "ra账号hash不能为空")
     private String accountHash;
     /**
      * ra密码
      */
 //	@NotBlank(message = "RA密码不能为空")
-//    @Range(min = 1, max = 255, message = "ra密码在1-255之间")
     private String aaPassword;
 
     /**
