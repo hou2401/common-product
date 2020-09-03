@@ -54,14 +54,27 @@ public class UserInfoBase {
 	 * 短信流水号
 	 */
 	private String smsId;
+	
 	/**
-	 * 出生日期
+	 * 实名类型
 	 */
-	private String birth;
+	private String authType;
+	
 	/**
-	 * 性别
+	 * 实名认证结果
 	 */
-	private String sex;
+	private String authResult;
+	
+	/**
+	 * 实名认证类型字符串
+	 */
+	private String authTypeStr;
+	
+	/**
+	 * 实名结果字符串
+	 */
+	private String authResultStr;
+	
 	/**
 	 * 账号扩展属性JSON
 	 */

@@ -62,7 +62,7 @@ public class AuthInfo implements Serializable {
     /**
      * 银行账号
      */
-    private String bankNum;
+    private String bankCardNum;
     /**
      * 开户银行名称
      */
@@ -100,9 +100,25 @@ public class AuthInfo implements Serializable {
      */
     private String authResult;
     /**
+     * 认证类型字符串
+     */
+    private String authTypeStr;
+    /**
+     * 认证结果字符串
+     */
+    private String authResultStr;
+    /**
+     * 实名流水号
+     */
+    private String authId;
+    /**
+     * 短信流水号
+     */
+    private String smsId;
+    /**
      * 认证时间
      */
-    private String authTime;
+//    private String authTime;
     /**
      * 银行编码
      */
