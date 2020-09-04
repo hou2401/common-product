@@ -2,8 +2,6 @@ package com.itrus.common.result.uag.response.entity;
 
 import java.io.Serializable;
 
-import com.itrus.common.result.uag.entity.OrgInfo;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,9 +20,9 @@ public class BatchAddPersonalSuccessResponse implements Serializable {
 
     private String phone;
 
-    private String message;
+    private String displayName;
 
-    private OrgInfo dataInfo;
-
+    private String externalUserUuid;
+    
 
 }

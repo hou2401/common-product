@@ -1,14 +1,14 @@
 package com.itrus.common.result.uag.response;
 
+import java.io.Serializable;
+import java.util.List;
+
 import com.itrus.common.result.uag.response.entity.BatchAddPersonalErrorResponse;
-import com.itrus.common.result.uag.response.entity.UserInfoBase;
+import com.itrus.common.result.uag.response.entity.BatchAddPersonalSuccessResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author yuying
@@ -20,20 +20,13 @@ import java.util.List;
 public class ExternalApiAddPersonalResult implements Serializable {
 
     private static final long serialVersionUID = 1981676700966344877L;
-    /**
-     * 成功数目
-     */
-    private Integer successSize;
-    /**
-     * 失败数目
-     */
-    private Integer errorSize;
+
     /**
      * 失败信息列表
      */
-    private List<BatchAddPersonalErrorResponse> errorData;
+    private List<BatchAddPersonalErrorResponse> errorList;
     /**
      * 成功信息列表映射集
      */
-    private List<HashMap<String, UserInfoBase>> successList;
+    private List<BatchAddPersonalSuccessResponse> successList;
 }

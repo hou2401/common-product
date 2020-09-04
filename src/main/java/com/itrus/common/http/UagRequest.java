@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.result.uag.UagResult;
 import com.itrus.common.result.uag.request.ExternalAddCompanyRequest;
-import com.itrus.common.result.uag.request.ExternalAddPersonalRequest;
 import com.itrus.common.result.uag.request.ExternalApiAddPersonalRequest;
 import com.itrus.common.result.uag.request.ExternalApiBatchAddCompanyRequest;
 import com.itrus.common.result.uag.request.OrgLoadTreeRequest;
@@ -20,7 +19,6 @@ import com.itrus.common.result.uag.request.UserFindJoinCompanysRequest;
 import com.itrus.common.result.uag.request.UserRegisterAndAuthRequest;
 import com.itrus.common.result.uag.request.UserRegisterRequest;
 import com.itrus.common.result.uag.request.UserSearchAllRequest;
-import com.itrus.common.result.uag.request.UserSearchByUuidsRequest;
 import com.itrus.common.result.uag.request.UserShowInCompanyRequest;
 import com.itrus.common.result.uag.request.UserShowUserRequest;
 import com.itrus.common.result.uag.request.UserUpdateAuthRequest;
@@ -29,7 +27,6 @@ import com.itrus.common.result.uag.response.ExternalApiAddPersonalResult;
 import com.itrus.common.result.uag.response.FindJoinCompanysResult;
 import com.itrus.common.result.uag.response.OrgShowResult;
 import com.itrus.common.result.uag.response.SearchAllResult;
-import com.itrus.common.result.uag.response.SearchByUuidsResult;
 import com.itrus.common.result.uag.response.ShowUserResult;
 import com.itrus.common.result.uag.response.UUIDResult;
 import com.itrus.common.result.uag.response.UserFindCompanySuperAdminListResult;
@@ -202,7 +199,7 @@ public class UagRequest {
     public UagResult<BatchAddCompanySuccessResponse> externalAddCompany(ExternalAddCompanyRequest obj) throws Exception {
     	
     	ExternalApiBatchAddCompanyRequest externalApiBatchAddCompanyRequest = 
-    			new ExternalApiBatchAddCompanyRequest(obj,"abc");
+    			new ExternalApiBatchAddCompanyRequest(obj);
 
     	UagResult<ExternalApiAddCompanyResult> externalApiAddCompany = this.externalApiAddCompany(externalApiBatchAddCompanyRequest);
     	UagResult<BatchAddCompanySuccessResponse> success = new UagResult<>();

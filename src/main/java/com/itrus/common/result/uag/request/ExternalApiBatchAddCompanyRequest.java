@@ -23,11 +23,11 @@ public class ExternalApiBatchAddCompanyRequest {
      * 要添加外部联系人关系的节点唯一标识 必选
      */
     private String companyUuid;
-	public ExternalApiBatchAddCompanyRequest( ExternalAddCompanyRequest orgInfoList, String companyUuid) {
+	public ExternalApiBatchAddCompanyRequest( ExternalAddCompanyRequest orgInfoList) {
 		super();
 		this.orgInfoList = new ArrayList<>();
 		this.orgInfoList.add(orgInfoList);
-		this.companyUuid = companyUuid;
+		this.companyUuid = orgInfoList.getCompanyUuid();
 	}
     
     
