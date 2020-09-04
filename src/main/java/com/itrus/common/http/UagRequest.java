@@ -1,13 +1,42 @@
 package com.itrus.common.http;
 
-import com.itrus.common.result.uag.UagResult;
-import com.itrus.common.result.uag.request.*;
-import com.itrus.common.result.uag.response.*;
-import com.itrus.common.result.uag.response.entity.UserInfoCompany;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
+import com.itrus.common.result.uag.UagResult;
+import com.itrus.common.result.uag.request.ExternalAddCompanyRequest;
+import com.itrus.common.result.uag.request.ExternalAddPersonalRequest;
+import com.itrus.common.result.uag.request.ExternalApiAddPersonalRequest;
+import com.itrus.common.result.uag.request.ExternalApiBatchAddCompanyRequest;
+import com.itrus.common.result.uag.request.OrgLoadTreeRequest;
+import com.itrus.common.result.uag.request.OrgRegisterRequest;
+import com.itrus.common.result.uag.request.OrgShowRequest;
+import com.itrus.common.result.uag.request.UserAddRequest;
+import com.itrus.common.result.uag.request.UserFindCompanySuperAdminListRequest;
+import com.itrus.common.result.uag.request.UserFindJoinCompanysRequest;
+import com.itrus.common.result.uag.request.UserRegisterAndAuthRequest;
+import com.itrus.common.result.uag.request.UserRegisterRequest;
+import com.itrus.common.result.uag.request.UserSearchAllRequest;
+import com.itrus.common.result.uag.request.UserSearchByUuidsRequest;
+import com.itrus.common.result.uag.request.UserShowInCompanyRequest;
+import com.itrus.common.result.uag.request.UserShowUserRequest;
+import com.itrus.common.result.uag.request.UserUpdateAuthRequest;
+import com.itrus.common.result.uag.response.ExternalApiAddCompanyResult;
+import com.itrus.common.result.uag.response.ExternalApiAddPersonalResult;
+import com.itrus.common.result.uag.response.FindJoinCompanysResult;
+import com.itrus.common.result.uag.response.OrgShowResult;
+import com.itrus.common.result.uag.response.SearchAllResult;
+import com.itrus.common.result.uag.response.SearchByUuidsResult;
+import com.itrus.common.result.uag.response.ShowUserResult;
+import com.itrus.common.result.uag.response.UUIDResult;
+import com.itrus.common.result.uag.response.UserFindCompanySuperAdminListResult;
+import com.itrus.common.result.uag.response.entity.BatchAddCompanyErrorResponse;
+import com.itrus.common.result.uag.response.entity.BatchAddCompanySuccessResponse;
+import com.itrus.common.result.uag.response.entity.UserInfoCompany;
+import com.itrus.common.utils.PublicUtil;
 
 /**
  * 公共原子服务调用方法
@@ -126,9 +155,9 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<SearchByUuidsResult> userSearchByUuids(UserSearchByUuidsRequest obj) throws Exception {
-        return uagApiRequest.userSearchByUuids(obj);
-    }
+//    public UagResult<SearchByUuidsResult> userSearchByUuids(UserSearchByUuidsRequest obj) throws Exception {
+//        return uagApiRequest.userSearchByUuids(obj);
+//    }
 
     /**
      * 3.35 查询全网指定用户信息
@@ -148,20 +177,10 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-    public UagResult<JSONObject> externalAddPersonal(ExternalAddPersonalRequest obj) throws Exception {
-        return uagApiRequest.externalAddPersonal(obj);
-    }
+//    public UagResult<JSONObject> externalAddPersonal(ExternalAddPersonalRequest obj) throws Exception {
+//        return uagApiRequest.externalAddPersonal(obj);
+//    }
 
-    /**
-     * 3.37 创建外部联系人-企业
-     *
-     * @param userSearchInfoParams 请求参数
-     * @return 返回创建结果
-     * @throws Exception 抛出异常
-     */
-    public UagResult<JSONObject> externalAddCompany(ExternalAddCompanyRequest obj) throws Exception {
-        return uagApiRequest.externalAddCompany(obj);
-    }
 
     /**
      * 3.54 openApi-批量创建外部联系人-个人
@@ -173,6 +192,36 @@ public class UagRequest {
     public UagResult<ExternalApiAddPersonalResult> externalApiAddPersonal(ExternalApiAddPersonalRequest obj) throws Exception {
         return uagApiRequest.externalApiAddPersonal(obj);
     }
+    /**
+     * 3.37 创建外部联系人-企业
+     *
+     * @param userSearchInfoParams 请求参数
+     * @return 返回创建结果
+     * @throws Exception 抛出异常
+     */
+    public UagResult<BatchAddCompanySuccessResponse> externalAddCompany(ExternalAddCompanyRequest obj) throws Exception {
+    	
+    	ExternalApiBatchAddCompanyRequest externalApiBatchAddCompanyRequest = 
+    			new ExternalApiBatchAddCompanyRequest(obj,"abc");
+
+    	UagResult<ExternalApiAddCompanyResult> externalApiAddCompany = this.externalApiAddCompany(externalApiBatchAddCompanyRequest);
+    	UagResult<BatchAddCompanySuccessResponse> success = new UagResult<>();
+    	if( externalApiAddCompany.isOk() ) {
+    		ExternalApiAddCompanyResult data = externalApiAddCompany.getData();
+    		if(PublicUtil.isEmpty(data)) {
+    			throw new Exception("用户中心无data值");
+    		}
+    		List<BatchAddCompanySuccessResponse> successList = data.getSuccessList();
+    		List<BatchAddCompanyErrorResponse> errorList = data.getErrorList();
+    		if(PublicUtil.isEmpty(successList) && PublicUtil.isNotEmpty(errorList) ) {
+    			BatchAddCompanyErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
+    			success.setCode(batchAddCompanyErrorResponse.getCode());
+    			success.setMsg(batchAddCompanyErrorResponse.getMessage());
+    		}
+    		success.setData(successList.get(0));
+    	}
+    	return success;
+    }
 
     /**
      * 3.55 openApi-批量创建外部联系人-企业
@@ -181,8 +230,7 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-//    public UagResult<ExternalApiAddCompanyResult> externalApiAddCompany(ExternalApiAddCompanyRequest obj) throws Exception {
-    public UagResult<JSONObject> externalApiAddCompany(ExternalApiAddCompanyRequest obj) throws Exception {
+    public UagResult<ExternalApiAddCompanyResult> externalApiAddCompany(ExternalApiBatchAddCompanyRequest obj) throws Exception {
         return uagApiRequest.externalApiAddCompany(obj);
     }
 

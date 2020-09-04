@@ -14,6 +14,6 @@ spring:
           group: v1
           data-id: common-product.yaml
       discovery:
-        namespace: test #develop
+        namespace: develop #develop
         server-addr: 192.168.100.233:32105
         group: v1

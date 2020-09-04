@@ -1,14 +1,14 @@
 package com.itrus.common.result.uag.response;
 
+import java.io.Serializable;
+import java.util.List;
+
 import com.itrus.common.result.uag.response.entity.BatchAddCompanyErrorResponse;
-import com.itrus.common.result.uag.response.entity.UserAndCompanyInfo;
+import com.itrus.common.result.uag.response.entity.BatchAddCompanySuccessResponse;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author yuying
@@ -31,9 +31,9 @@ public class ExternalApiAddCompanyResult implements Serializable {
     /**
      * 错误数据列表
      */
-    private List<BatchAddCompanyErrorResponse> errorData;
+    private List<BatchAddCompanyErrorResponse> errorList;
     /**
      * 成功数据列表
      */
-    private List<HashMap<String, UserAndCompanyInfo>> successList;
+    private List<BatchAddCompanySuccessResponse> successList;
 }

@@ -1,17 +1,21 @@
 package com.itrus.common.result.uag;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.itrus.common.result.uag.response.entity.BatchAddCompanySuccessResponse;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 
 @Data
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class UagResult<T> implements Serializable{
 	
 	/**

@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class BatchAddCompanyErrorResponse implements Serializable {
+public class BatchAddCompanySuccessResponse implements Serializable {
     /**
      *
      */
@@ -37,14 +37,14 @@ public class BatchAddCompanyErrorResponse implements Serializable {
      */
     private String orgName;
     /**
-     * 错误消息
+     * 外部人userId
      */
-    private String message;
+    private String externalUserUuid;
     
     /**
-     * 错误码
+     * 外部企业uuId
      */
-    private Integer code;
+    private String externalCompanyUuid;
 
 
 }
