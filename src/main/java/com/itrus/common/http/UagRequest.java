@@ -203,20 +203,20 @@ public class UagRequest {
 
     	UagResult<ExternalApiAddCompanyResult> externalApiAddCompany = this.externalApiAddCompany(externalApiBatchAddCompanyRequest);
     	UagResult<BatchAddCompanySuccessResponse> success = new UagResult<>();
-    	if( externalApiAddCompany.isOk() ) {
-    		ExternalApiAddCompanyResult data = externalApiAddCompany.getData();
-    		if(PublicUtil.isEmpty(data)) {
-    			throw new Exception("用户中心无data值");
-    		}
-    		List<BatchAddCompanySuccessResponse> successList = data.getSuccessList();
-    		List<BatchAddCompanyErrorResponse> errorList = data.getErrorList();
-    		if(PublicUtil.isEmpty(successList) && PublicUtil.isNotEmpty(errorList) ) {
-    			BatchAddCompanyErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
-    			success.setCode(batchAddCompanyErrorResponse.getCode());
-    			success.setMsg(batchAddCompanyErrorResponse.getMessage());
-    		}
-    		success.setData(successList.get(0));
-    	}
+    	success.setCode(UagResult.GET_CODE);
+		ExternalApiAddCompanyResult data = externalApiAddCompany.getData();
+		if(PublicUtil.isEmpty(data)) {
+			throw new Exception("用户中心无data值");
+		}
+		List<BatchAddCompanySuccessResponse> successList = data.getSuccessList();
+		List<BatchAddCompanyErrorResponse> errorList = data.getErrorList();
+		if(PublicUtil.isEmpty(successList) && PublicUtil.isNotEmpty(errorList) ) {
+			BatchAddCompanyErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
+			success.setCode(batchAddCompanyErrorResponse.getCode());
+			success.setMsg(batchAddCompanyErrorResponse.getMessage());
+			return success;
+		}
+		success.setData(successList.get(0));
     	return success;
     }
 
