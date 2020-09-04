@@ -172,7 +172,9 @@ public class UagRequest {
     			BatchAddPersonalErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
     			success.setCode(batchAddCompanyErrorResponse.getCode());
     			success.setMsg(batchAddCompanyErrorResponse.getMessage());
-    		}
+    		}else {
+                success.setCode(0);
+            }
     		success.setData(successList.get(0));
     	}
         return success;
@@ -214,7 +216,9 @@ public class UagRequest {
     			BatchAddCompanyErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
     			success.setCode(batchAddCompanyErrorResponse.getCode());
     			success.setMsg(batchAddCompanyErrorResponse.getMessage());
-    		}
+    		}else {
+                success.setCode(0);
+            }
     		success.setData(successList.get(0));
     	}
     	return success;
