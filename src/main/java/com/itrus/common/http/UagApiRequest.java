@@ -21,9 +21,9 @@ import com.itrus.common.result.uag.response.entity.UserInfoCompany;
 @FeignClient(value = "${http.uag}") //value:被调用的服务在注册中心的名称
 public interface UagApiRequest {
 
-
-    @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj);
+// 	已经弃用
+//    @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj);
     
     
     @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)

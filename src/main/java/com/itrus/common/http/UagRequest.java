@@ -31,18 +31,18 @@ public class UagRequest {
     /**
      * 3.1 个人账号注册
      *
-     * @api {post} account/userRegister 用户注册
+     * @api {post} account/userRegister 用户注册 已经弃用
      * @apiVersion 2.0.0
      * @apiParam {Object} obj 注册参数.
      * @apiName userRegister
      * @apiGroup 账号服务（account）
      * @apiSuccess (Success 0x0000) {JSONObject} json.
      */
-    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj) throws Exception {
-
-        return uagApiRequest.userRegister(obj);
-
-    }
+//    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj) throws Exception {
+//
+//        return uagApiRequest.userRegister(obj);
+//
+//    }
 
     /**
      * 3.59 openApi-个人账号注册并实名
