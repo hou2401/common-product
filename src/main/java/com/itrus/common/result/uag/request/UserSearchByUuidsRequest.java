@@ -18,4 +18,6 @@ public class UserSearchByUuidsRequest{
      * 必选 用户唯一标识集合
      */
     private String[] uuids;
+
+    private String companyUuid;
 }

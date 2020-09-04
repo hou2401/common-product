@@ -2,35 +2,13 @@ package com.itrus.common.http;
 
 import java.util.List;
 
+import com.itrus.common.result.uag.request.*;
+import com.itrus.common.result.uag.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.result.uag.UagResult;
-import com.itrus.common.result.uag.request.ExternalAddCompanyRequest;
-import com.itrus.common.result.uag.request.ExternalAddPersonalRequest;
-import com.itrus.common.result.uag.request.ExternalApiAddPersonalRequest;
-import com.itrus.common.result.uag.request.ExternalApiBatchAddCompanyRequest;
-import com.itrus.common.result.uag.request.OrgLoadTreeRequest;
-import com.itrus.common.result.uag.request.OrgRegisterRequest;
-import com.itrus.common.result.uag.request.OrgShowRequest;
-import com.itrus.common.result.uag.request.UserAddRequest;
-import com.itrus.common.result.uag.request.UserFindCompanySuperAdminListRequest;
-import com.itrus.common.result.uag.request.UserFindJoinCompanysRequest;
-import com.itrus.common.result.uag.request.UserRegisterAndAuthRequest;
-import com.itrus.common.result.uag.request.UserRegisterRequest;
-import com.itrus.common.result.uag.request.UserSearchAllRequest;
-import com.itrus.common.result.uag.request.UserShowInCompanyRequest;
-import com.itrus.common.result.uag.request.UserShowUserRequest;
-import com.itrus.common.result.uag.request.UserUpdateAuthRequest;
-import com.itrus.common.result.uag.response.ExternalApiAddCompanyResult;
-import com.itrus.common.result.uag.response.ExternalApiAddPersonalResult;
-import com.itrus.common.result.uag.response.FindJoinCompanysResult;
-import com.itrus.common.result.uag.response.OrgShowResult;
-import com.itrus.common.result.uag.response.SearchAllResult;
-import com.itrus.common.result.uag.response.ShowUserResult;
-import com.itrus.common.result.uag.response.UUIDResult;
-import com.itrus.common.result.uag.response.UserFindCompanySuperAdminListResult;
 import com.itrus.common.result.uag.response.entity.BatchAddCompanyErrorResponse;
 import com.itrus.common.result.uag.response.entity.BatchAddCompanySuccessResponse;
 import com.itrus.common.result.uag.response.entity.BatchAddPersonalErrorResponse;
@@ -155,9 +133,9 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-//    public UagResult<SearchByUuidsResult> userSearchByUuids(UserSearchByUuidsRequest obj) throws Exception {
-//        return uagApiRequest.userSearchByUuids(obj);
-//    }
+    public UagResult<SearchByUuidsResult> userSearchByUuids(UserSearchByUuidsRequest obj) throws Exception {
+        return uagApiRequest.userSearchByUuids(obj);
+    }
 
     /**
      * 3.35 查询全网指定用户信息
@@ -287,5 +265,14 @@ public class UagRequest {
         return uagApiRequest.orgShow(obj);
     }
 
-
+    /**
+     *  openApi-通过uuid集合获取指定企业下用户信息
+     *
+     * @param userSearchInfoParams 请求参数
+     * @return 返回创建结果
+     * @throws Exception 抛出异常
+     */
+    public JSONObject searchByUuidsInCompany(UserSearchByUuidsRequest obj) throws Exception {
+        return uagApiRequest.searchByUuidsInCompany(obj);
+    }
 }

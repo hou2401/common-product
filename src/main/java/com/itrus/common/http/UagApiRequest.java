@@ -1,5 +1,7 @@
 package com.itrus.common.http;
 
+import com.itrus.common.result.uag.request.*;
+import com.itrus.common.result.uag.response.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -8,28 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.result.uag.UagResult;
-import com.itrus.common.result.uag.request.ExternalApiAddPersonalRequest;
-import com.itrus.common.result.uag.request.ExternalApiBatchAddCompanyRequest;
-import com.itrus.common.result.uag.request.OrgLoadTreeRequest;
-import com.itrus.common.result.uag.request.OrgRegisterRequest;
-import com.itrus.common.result.uag.request.OrgShowRequest;
-import com.itrus.common.result.uag.request.UserAddRequest;
-import com.itrus.common.result.uag.request.UserFindCompanySuperAdminListRequest;
-import com.itrus.common.result.uag.request.UserFindJoinCompanysRequest;
-import com.itrus.common.result.uag.request.UserRegisterAndAuthRequest;
-import com.itrus.common.result.uag.request.UserRegisterRequest;
-import com.itrus.common.result.uag.request.UserSearchAllRequest;
-import com.itrus.common.result.uag.request.UserShowInCompanyRequest;
-import com.itrus.common.result.uag.request.UserShowUserRequest;
-import com.itrus.common.result.uag.request.UserUpdateAuthRequest;
-import com.itrus.common.result.uag.response.ExternalApiAddCompanyResult;
-import com.itrus.common.result.uag.response.ExternalApiAddPersonalResult;
-import com.itrus.common.result.uag.response.FindJoinCompanysResult;
-import com.itrus.common.result.uag.response.OrgShowResult;
-import com.itrus.common.result.uag.response.SearchAllResult;
-import com.itrus.common.result.uag.response.ShowUserResult;
-import com.itrus.common.result.uag.response.UUIDResult;
-import com.itrus.common.result.uag.response.UserFindCompanySuperAdminListResult;
 import com.itrus.common.result.uag.response.entity.UserInfoCompany;
 
 /**
@@ -42,8 +22,8 @@ import com.itrus.common.result.uag.response.entity.UserInfoCompany;
 public interface UagApiRequest {
 
 
-//    @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj);
+    @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj);
     
     
     @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -74,8 +54,8 @@ public interface UagApiRequest {
     public UagResult<FindJoinCompanysResult> userFindJoinCompanys(UserFindJoinCompanysRequest obj);
 
 
-//    @RequestMapping(value = "/user/searchByUuids", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public UagResult<SearchByUuidsResult> userSearchByUuids(UserSearchByUuidsRequest obj);
+    @RequestMapping(value = "/userApi/searchByUuids", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UagResult<SearchByUuidsResult> userSearchByUuids(UserSearchByUuidsRequest obj);
 
 
     @RequestMapping(value = "/userApi/searchAll", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -108,5 +88,6 @@ public interface UagApiRequest {
     @RequestMapping(value = "/orgApi/show", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<OrgShowResult> orgShow(OrgShowRequest obj);
 
-
+    @RequestMapping(value = "/userApi/searchByUuidsInCompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public JSONObject searchByUuidsInCompany(UserSearchByUuidsRequest obj);
 }
