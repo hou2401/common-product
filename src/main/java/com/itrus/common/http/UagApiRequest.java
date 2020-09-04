@@ -42,35 +42,35 @@ import com.itrus.common.result.uag.response.entity.UserInfoCompany;
 public interface UagApiRequest {
 
 
-    @RequestMapping(value = "/user/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj);
+//    @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public UagResult<UUIDResult> userRegister(UserRegisterRequest obj);
     
     
     @RequestMapping(value = "/userApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<UUIDResult> userRegisterAndAuth(UserRegisterAndAuthRequest obj);
 
 
-    @RequestMapping(value = "/user/updateAuth", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/userApi/updateAuth", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<JSONObject> userUpdateAuth(UserUpdateAuthRequest obj);
 
 
-    @RequestMapping(value = "/user/showUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/userApi/showUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<ShowUserResult> userShowUser(UserShowUserRequest obj);
 
 
-    @RequestMapping(value = "/org/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/orgApi/register", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<UUIDResult> orgRegister(OrgRegisterRequest obj);
 
 
-    @RequestMapping(value = "/user/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/userApi/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<JSONObject> userAdd(@RequestHeader(value = "uuid")String uuid,UserAddRequest obj);
 
 
-    @RequestMapping(value = "/user/showInCompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/userApi/showInCompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<UserInfoCompany> userShowInCompany(UserShowInCompanyRequest obj);
 
 
-    @RequestMapping(value = "/user/findJoinCompanys", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/userApi/findJoinCompanys", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<FindJoinCompanysResult> userFindJoinCompanys(UserFindJoinCompanysRequest obj);
 
 
@@ -78,7 +78,7 @@ public interface UagApiRequest {
 //    public UagResult<SearchByUuidsResult> userSearchByUuids(UserSearchByUuidsRequest obj);
 
 
-    @RequestMapping(value = "/user/searchAll", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/userApi/searchAll", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<SearchAllResult> userSearchAll(UserSearchAllRequest obj);
 
 
@@ -97,15 +97,15 @@ public interface UagApiRequest {
     public UagResult<ExternalApiAddCompanyResult> externalApiAddCompany(ExternalApiBatchAddCompanyRequest obj);
 
 
-    @RequestMapping(value = "/org/loadTree", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/orgApi/loadTree", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public JSONObject  orgLoadTree(OrgLoadTreeRequest obj);
 
 
-    @RequestMapping(value = "/user/findCompanySuperAdminList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/userApi/findCompanySuperAdminList", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<UserFindCompanySuperAdminListResult> userFindCompanySuperAdminList(UserFindCompanySuperAdminListRequest obj);
 
 
-    @RequestMapping(value = "/org/show", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/orgApi/show", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<OrgShowResult> orgShow(OrgShowRequest obj);
 
 
