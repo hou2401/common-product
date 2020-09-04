@@ -1,11 +1,11 @@
 package com.itrus.common.result.uag.request;
 
-import com.itrus.common.result.uag.entity.UserInfo;
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  * @author yuying
@@ -19,7 +19,7 @@ public class ExternalApiAddPersonalRequest {
     /**
      * 用户信息集合 必选
      */
-    private List<UserInfo> userInfoList;
+    private List<ExternalAddPersonalRequest> userInfoList;
     /**
      * 要添加外部联系人关系的节点唯一标识 必选
      */
@@ -32,4 +32,12 @@ public class ExternalApiAddPersonalRequest {
      * 3 全部
      */
     private String type;
+	public ExternalApiAddPersonalRequest(ExternalAddPersonalRequest obj) {
+		super();
+		this.userInfoList = new ArrayList<>();
+		this.userInfoList.add(obj);
+		this.companyUuid = obj.getCompanyUuid();
+	}
+    
+    
 }

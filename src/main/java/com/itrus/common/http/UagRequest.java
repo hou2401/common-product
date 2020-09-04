@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.result.uag.UagResult;
 import com.itrus.common.result.uag.request.ExternalAddCompanyRequest;
+import com.itrus.common.result.uag.request.ExternalAddPersonalRequest;
 import com.itrus.common.result.uag.request.ExternalApiAddPersonalRequest;
 import com.itrus.common.result.uag.request.ExternalApiBatchAddCompanyRequest;
 import com.itrus.common.result.uag.request.OrgLoadTreeRequest;
@@ -32,6 +33,8 @@ import com.itrus.common.result.uag.response.UUIDResult;
 import com.itrus.common.result.uag.response.UserFindCompanySuperAdminListResult;
 import com.itrus.common.result.uag.response.entity.BatchAddCompanyErrorResponse;
 import com.itrus.common.result.uag.response.entity.BatchAddCompanySuccessResponse;
+import com.itrus.common.result.uag.response.entity.BatchAddPersonalErrorResponse;
+import com.itrus.common.result.uag.response.entity.BatchAddPersonalSuccessResponse;
 import com.itrus.common.result.uag.response.entity.UserInfoCompany;
 import com.itrus.common.utils.PublicUtil;
 
@@ -174,9 +177,28 @@ public class UagRequest {
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
-//    public UagResult<JSONObject> externalAddPersonal(ExternalAddPersonalRequest obj) throws Exception {
-//        return uagApiRequest.externalAddPersonal(obj);
-//    }
+    public UagResult<BatchAddPersonalSuccessResponse> externalAddPersonal(ExternalAddPersonalRequest obj) throws Exception {
+    	
+    	ExternalApiAddPersonalRequest externalApiAddPersonalRequest = new ExternalApiAddPersonalRequest(obj);
+    	UagResult<ExternalApiAddPersonalResult> externalApiAddPersonal = this.externalApiAddPersonal(externalApiAddPersonalRequest);
+    	UagResult<BatchAddPersonalSuccessResponse> success = new UagResult<>();
+    	if( externalApiAddPersonal.isOk() ) {
+    		
+    		ExternalApiAddPersonalResult data = externalApiAddPersonal.getData();
+    		if(PublicUtil.isEmpty(data)) {
+    			throw new Exception("用户中心无data值");
+    		}
+    		List<BatchAddPersonalSuccessResponse> successList = data.getSuccessList();
+    		List<BatchAddPersonalErrorResponse> errorList = data.getErrorList();
+    		if(PublicUtil.isEmpty(successList) && PublicUtil.isNotEmpty(errorList) ) {
+    			BatchAddPersonalErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
+    			success.setCode(batchAddCompanyErrorResponse.getCode());
+    			success.setMsg(batchAddCompanyErrorResponse.getMessage());
+    		}
+    		success.setData(successList.get(0));
+    	}
+        return success;
+    }
 
 
     /**
