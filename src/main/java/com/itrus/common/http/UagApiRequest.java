@@ -87,6 +87,9 @@ public interface UagApiRequest {
 
     @RequestMapping(value = "/orgApi/show", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public UagResult<OrgShowResult> orgShow(OrgShowRequest obj);
+    
+    @RequestMapping(value = "/org/show", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UagResult<OrgShowResult> orgShowWeb(OrgShowRequest obj);
 
     @RequestMapping(value = "/userApi/searchByUuidsInCompany", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public JSONObject searchByUuidsInCompany(UserSearchByUuidsRequest obj);

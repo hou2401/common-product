@@ -266,6 +266,18 @@ public class UagRequest {
     public UagResult<OrgShowResult> orgShow(OrgShowRequest obj) throws Exception {
         return uagApiRequest.orgShow(obj);
     }
+    
+    /**
+     * 企业详情
+     *  3.53 企业平台-企业详情适用
+     *
+     * @param userSearchInfoParams 请求参数
+     * @return 返回创建结果
+     * @throws Exception 抛出异常
+     */
+    public UagResult<OrgShowResult> orgShowWeb(OrgShowRequest obj) throws Exception {
+    	return uagApiRequest.orgShowWeb(obj);
+    }
 
     /**
      *  openApi-通过uuid集合获取指定企业下用户信息

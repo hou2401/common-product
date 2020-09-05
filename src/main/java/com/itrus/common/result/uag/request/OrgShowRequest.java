@@ -17,7 +17,12 @@ public class OrgShowRequest {
      */
     private String companyUuid;
     /**
-     * 当前登录人员唯一标识 必选
+     * 当前登录人员唯一标识 可选
      */
     private String uuid;
+    
+    /**
+     * 参数来源
+     */
+    private String formHeader = "false";
 }
