@@ -1,5 +1,7 @@
 package com.itrus.common.request.dgs.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,10 +28,14 @@ public class Param {
     /**
      * 相对百分比横坐标，0.5代表填充在pdf的横向中部位置
      */
+    @JsonProperty("xPercent")
+    @JSONField(name = "xPercent")
     private Float xPercent;
     /**
      * 相对百分比纵坐标，0.5代表填充在pdf的纵向中部位置
      */
+    @JsonProperty("yPercent")
+    @JSONField(name = "yPercent")
     private Float yPercent;
     /**
      * 图片宽度，默认值为图片本身宽度
