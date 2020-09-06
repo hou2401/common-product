@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.itrus.common.result.uag.request.*;
 import com.itrus.common.result.uag.response.*;
+import org.apache.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -204,6 +205,9 @@ public class UagRequest {
     			new ExternalApiBatchAddCompanyRequest(obj);
 
     	UagResult<ExternalApiAddCompanyResult> externalApiAddCompany = this.externalApiAddCompany(externalApiBatchAddCompanyRequest);
+        if(externalApiAddCompany.isNotOk()){
+            throw new HttpException(externalApiAddCompany.getMsg());
+        }
     	UagResult<BatchAddCompanySuccessResponse> success = new UagResult<>();
     	success.setCode(UagResult.GET_CODE);
 		ExternalApiAddCompanyResult data = externalApiAddCompany.getData();
