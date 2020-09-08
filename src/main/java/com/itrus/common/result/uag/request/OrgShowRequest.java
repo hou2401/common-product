@@ -22,7 +22,7 @@ public class OrgShowRequest {
     /**
      * 参数来源
      */
-    private String formHeader = "false";
+    private String fromHeader = "false";
 
 	public OrgShowRequest(String companyUuid, String uuid) {
 		super();
