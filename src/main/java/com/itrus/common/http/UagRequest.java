@@ -102,7 +102,7 @@ public class UagRequest {
      * @throws Exception 抛出异常
      */
     public UagResult<JSONObject> userAdd(UserAddRequest obj) throws Exception {
-        return uagApiRequest.userAdd(obj.getUuid(),obj);
+        return uagApiRequest.userAdd(obj.getUuid(), obj);
     }
 
     /**
@@ -157,27 +157,29 @@ public class UagRequest {
      * @throws Exception 抛出异常
      */
     public UagResult<BatchAddPersonalSuccessResponse> externalAddPersonal(ExternalAddPersonalRequest obj) throws Exception {
-    	
-    	ExternalApiAddPersonalRequest externalApiAddPersonalRequest = new ExternalApiAddPersonalRequest(obj);
-    	UagResult<ExternalApiAddPersonalResult> externalApiAddPersonal = this.externalApiAddPersonal(externalApiAddPersonalRequest);
-    	UagResult<BatchAddPersonalSuccessResponse> success = new UagResult<>();
-    	if( externalApiAddPersonal.isOk() ) {
-    		
-    		ExternalApiAddPersonalResult data = externalApiAddPersonal.getData();
-    		if(PublicUtil.isEmpty(data)) {
-    			throw new Exception("用户中心无data值");
-    		}
-    		List<BatchAddPersonalSuccessResponse> successList = data.getSuccessList();
-    		List<BatchAddPersonalErrorResponse> errorList = data.getErrorList();
-    		if(PublicUtil.isEmpty(successList) && PublicUtil.isNotEmpty(errorList) ) {
-    			BatchAddPersonalErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
-    			success.setCode(batchAddCompanyErrorResponse.getCode());
-    			success.setMsg(batchAddCompanyErrorResponse.getMessage());
-    		}else {
-                success.setCode(0);
-            }
-    		success.setData(successList.get(0));
-    	}
+
+        ExternalApiAddPersonalRequest externalApiAddPersonalRequest = new ExternalApiAddPersonalRequest(obj);
+        UagResult<ExternalApiAddPersonalResult> externalApiAddPersonal = this.externalApiAddPersonal(externalApiAddPersonalRequest);
+
+        if (externalApiAddPersonal.isNotOk()) {
+            throw new HttpException(externalApiAddPersonal.getMsg());
+        }
+
+        UagResult<BatchAddPersonalSuccessResponse> success = new UagResult<>();
+        success.setCode(UagResult.GET_CODE);
+
+        ExternalApiAddPersonalResult data = externalApiAddPersonal.getData();
+        if (PublicUtil.isEmpty(data)) {
+            throw new Exception("用户中心无data值");
+        }
+        List<BatchAddPersonalSuccessResponse> successList = data.getSuccessList();
+        List<BatchAddPersonalErrorResponse> errorList = data.getErrorList();
+        if (PublicUtil.isEmpty(successList) && PublicUtil.isNotEmpty(errorList)) {
+            BatchAddPersonalErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
+            success.setCode(batchAddCompanyErrorResponse.getCode());
+            success.setMsg(batchAddCompanyErrorResponse.getMessage());
+        }
+        success.setData(successList.get(0));
         return success;
     }
 
@@ -192,6 +194,7 @@ public class UagRequest {
     public UagResult<ExternalApiAddPersonalResult> externalApiAddPersonal(ExternalApiAddPersonalRequest obj) throws Exception {
         return uagApiRequest.externalApiAddPersonal(obj);
     }
+
     /**
      * 3.37 创建外部联系人-企业
      *
@@ -200,30 +203,30 @@ public class UagRequest {
      * @throws Exception 抛出异常
      */
     public UagResult<BatchAddCompanySuccessResponse> externalAddCompany(ExternalAddCompanyRequest obj) throws Exception {
-    	
-    	ExternalApiBatchAddCompanyRequest externalApiBatchAddCompanyRequest = 
-    			new ExternalApiBatchAddCompanyRequest(obj);
 
-    	UagResult<ExternalApiAddCompanyResult> externalApiAddCompany = this.externalApiAddCompany(externalApiBatchAddCompanyRequest);
-        if(externalApiAddCompany.isNotOk()){
+        ExternalApiBatchAddCompanyRequest externalApiBatchAddCompanyRequest =
+                new ExternalApiBatchAddCompanyRequest(obj);
+
+        UagResult<ExternalApiAddCompanyResult> externalApiAddCompany = this.externalApiAddCompany(externalApiBatchAddCompanyRequest);
+        if (externalApiAddCompany.isNotOk()) {
             throw new HttpException(externalApiAddCompany.getMsg());
         }
-    	UagResult<BatchAddCompanySuccessResponse> success = new UagResult<>();
-    	success.setCode(UagResult.GET_CODE);
-		ExternalApiAddCompanyResult data = externalApiAddCompany.getData();
-		if(PublicUtil.isEmpty(data)) {
-			throw new Exception("用户中心无data值");
-		}
-		List<BatchAddCompanySuccessResponse> successList = data.getSuccessList();
-		List<BatchAddCompanyErrorResponse> errorList = data.getErrorList();
-		if(PublicUtil.isEmpty(successList) && PublicUtil.isNotEmpty(errorList) ) {
-			BatchAddCompanyErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
-			success.setCode(batchAddCompanyErrorResponse.getCode());
-			success.setMsg(batchAddCompanyErrorResponse.getMessage());
-			return success;
-		}
-		success.setData(successList.get(0));
-    	return success;
+        UagResult<BatchAddCompanySuccessResponse> success = new UagResult<>();
+        success.setCode(UagResult.GET_CODE);
+        ExternalApiAddCompanyResult data = externalApiAddCompany.getData();
+        if (PublicUtil.isEmpty(data)) {
+            throw new Exception("用户中心无data值");
+        }
+        List<BatchAddCompanySuccessResponse> successList = data.getSuccessList();
+        List<BatchAddCompanyErrorResponse> errorList = data.getErrorList();
+        if (PublicUtil.isEmpty(successList) && PublicUtil.isNotEmpty(errorList)) {
+            BatchAddCompanyErrorResponse batchAddCompanyErrorResponse = errorList.get(0);
+            success.setCode(batchAddCompanyErrorResponse.getCode());
+            success.setMsg(batchAddCompanyErrorResponse.getMessage());
+            return success;
+        }
+        success.setData(successList.get(0));
+        return success;
     }
 
     /**
@@ -261,7 +264,7 @@ public class UagRequest {
 
     /**
      * 企业详情
-     *  3.53 企业平台-企业详情适用
+     * 3.53 企业平台-企业详情适用
      *
      * @param userSearchInfoParams 请求参数
      * @return 返回创建结果
@@ -270,21 +273,21 @@ public class UagRequest {
     public UagResult<OrgShowResult> orgShow(OrgShowRequest obj) throws Exception {
         return uagApiRequest.orgShow(obj);
     }
-    
+
     /**
      * 企业详情
-     *  3.53 企业平台-企业详情适用
+     * 3.53 企业平台-企业详情适用
      *
      * @param userSearchInfoParams 请求参数
      * @return 返回创建结果
      * @throws Exception 抛出异常
      */
     public UagResult<OrgShowResult> orgShowWeb(OrgShowRequest obj) throws Exception {
-    	return uagApiRequest.orgShowWeb(obj);
+        return uagApiRequest.orgShowWeb(obj);
     }
 
     /**
-     *  openApi-通过uuid集合获取指定企业下用户信息
+     * openApi-通过uuid集合获取指定企业下用户信息
      *
      * @param userSearchInfoParams 请求参数
      * @return 返回创建结果
