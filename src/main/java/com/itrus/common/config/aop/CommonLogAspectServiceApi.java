@@ -63,7 +63,7 @@ public class CommonLogAspectServiceApi {
 		List<Object> arguments = new ArrayList<>(args.length);
 		if( args != null ) {
 			for (Object arg : args) {
-				if (arg instanceof ServletRequest || arg instanceof ServletResponse || arg instanceof MultipartFile) {
+				if (arg instanceof ServletRequest || arg instanceof ServletResponse || arg instanceof MultipartFile || arg instanceof byte[] ) {
 					//ServletRequest不能序列化，从入参里排除，否则报异常：java.lang.IllegalStateException: It is illegal to call this method if the current request is not in asynchronous mode (i.e. isAsyncStarted() returns false)
 					//ServletResponse不能序列化 从入参里排除，否则报异常：java.lang.IllegalStateException: getOutputStream() has already been called for this response
 					continue;
