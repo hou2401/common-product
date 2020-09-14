@@ -1,7 +1,5 @@
 package com.itrus.common.http;
 
-import cn.com.itrus.atom.sign.common.bean.Result;
-import com.itrus.common.response.fcs.GetTotalPagesResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
+import com.itrus.common.response.fcs.GetTotalPagesResult;
+
+import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
  * 整合版公共原子服务调用方法

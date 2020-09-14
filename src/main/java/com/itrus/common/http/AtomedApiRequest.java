@@ -1,13 +1,25 @@
 package com.itrus.common.http;
 
-import cn.com.itrus.atom.sign.common.bean.Result;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.alibaba.fastjson.JSONArray;
 import com.itrus.common.request.atom.CreateCircularSealRequest;
 import com.itrus.common.request.atom.CreateDoubleRowSealRequest;
 import com.itrus.common.request.atom.CreateSingleRowSealRequest;
 import com.itrus.common.request.atom.SealLimpidRequest;
 import com.itrus.common.request.cert.CertUpdateRequest;
-import com.itrus.common.request.dgs.*;
+import com.itrus.common.request.dgs.DgsPdfCreateRequest;
+import com.itrus.common.request.dgs.DgsPdfFillRequest;
+import com.itrus.common.request.dgs.DgsPdfImageMarkRequest;
+import com.itrus.common.request.dgs.DgsPdfQrCodeMarkRequest;
+import com.itrus.common.request.dgs.DgsPdfTextAndQrCodeMarkRequest;
+import com.itrus.common.request.dgs.DgsPdfTextMarkRequest;
 import com.itrus.common.request.dsvs.DsvsBatchSignRequest;
 import com.itrus.common.request.dsvs.DsvsKeywordCoordinateRequest;
 import com.itrus.common.request.dsvs.DsvsSignRequest;
@@ -22,21 +34,12 @@ import com.itrus.common.response.cert.CertUpdateResult;
 import com.itrus.common.response.dgs.DgsPdfFillResult;
 import com.itrus.common.response.dsvs.DsvsKeywordCoordinatesResult;
 import com.itrus.common.response.dsvs.DsvsSignResult;
-import com.itrus.common.response.dsvs.DsvsVerifyBase64Result;
 import com.itrus.common.response.ra.CertConfigResponse;
 import com.itrus.common.response.ra.RaResult;
 import com.itrus.common.response.ra.TimeStampResponse;
 import com.itrus.common.result.uag.response.RaGetListResult;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
  * 整合版公共原子服务调用方法

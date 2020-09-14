@@ -19,6 +19,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class RefreshTokenResult implements Serializable {
 
-    private String jwtToken;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String jwtToken;
 
 }

@@ -1,5 +1,11 @@
 package com.itrus.common.http;
 
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
+
 import com.itrus.common.request.cert.CertUpdateRequest;
 import com.itrus.common.request.ra.CertConfigRequest;
 import com.itrus.common.request.ra.TimeStampRequest;
@@ -9,14 +15,8 @@ import com.itrus.common.response.ra.CertConfigResponse;
 import com.itrus.common.response.ra.RaResult;
 import com.itrus.common.response.ra.TimeStampResponse;
 import com.itrus.common.result.uag.response.RaGetListResult;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import cn.com.itrus.atom.sign.common.bean.Result;
-import org.springframework.web.bind.annotation.RequestPart;
 
-import java.util.List;
+import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
  * 证书原子服务调用方法

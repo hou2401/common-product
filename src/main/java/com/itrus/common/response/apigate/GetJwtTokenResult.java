@@ -20,7 +20,12 @@ import java.io.Serializable;
 public class GetJwtTokenResult implements Serializable {
 
 
-    private boolean auth;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private boolean auth;
 
     private String jwtToken;
 

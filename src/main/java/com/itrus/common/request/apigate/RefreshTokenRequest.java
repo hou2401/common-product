@@ -20,6 +20,10 @@ import java.io.Serializable;
 public class RefreshTokenRequest implements Serializable {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * token串
      */
     private String jwtToken;

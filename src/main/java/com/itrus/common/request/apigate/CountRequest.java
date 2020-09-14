@@ -20,6 +20,10 @@ import java.io.Serializable;
 public class CountRequest implements Serializable {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      *  应用ID
      */
     private String appId;

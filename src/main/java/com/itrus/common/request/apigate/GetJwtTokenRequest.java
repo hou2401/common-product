@@ -19,6 +19,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class GetJwtTokenRequest implements Serializable {
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 应用id
      */
     private String appId;

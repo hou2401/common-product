@@ -1,11 +1,10 @@
 package com.itrus.common.result.uag.response;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.aspectj.lang.annotation.DeclareAnnotation;
-
-import java.io.Serializable;
 
 /**
  * @author yuying
@@ -15,7 +14,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CertNameResponse implements Serializable {
 
-    private String RaCode;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private String RaCode;
 
     private String RaName;
 }

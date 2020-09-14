@@ -1,16 +1,17 @@
 package com.itrus.common.http;
 
-import cn.com.itrus.atom.sign.common.bean.Result;
+import org.apache.http.HttpException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.alibaba.fastjson.JSONObject;
 import com.itrus.common.request.apigate.CountRequest;
 import com.itrus.common.request.apigate.GetJwtTokenRequest;
 import com.itrus.common.request.apigate.RefreshTokenRequest;
 import com.itrus.common.response.apigate.GetJwtTokenResult;
 import com.itrus.common.response.apigate.PrecountResult;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
+import cn.com.itrus.atom.sign.common.bean.Result;
 
 /**
  * @ClassName ApigateRequest
@@ -20,7 +21,6 @@ import org.springframework.stereotype.Component;
  * @Modified By:
  * @Version 1.0
  **/
-@Slf4j
 @Component
 public class ApigateRequest {
 

@@ -1,13 +1,13 @@
 package com.itrus.common.request.ra;
 
+import java.io.Serializable;
+
+import javax.validation.constraints.NotBlank;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.experimental.Accessors;
-import org.hibernate.validator.constraints.Range;
-
-import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
 /**
  * @author yuying

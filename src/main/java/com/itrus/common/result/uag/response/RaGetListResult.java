@@ -15,5 +15,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RaGetListResult implements Serializable {
-    private List<CertConfigResponse> result;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private List<CertConfigResponse> result;
 }
