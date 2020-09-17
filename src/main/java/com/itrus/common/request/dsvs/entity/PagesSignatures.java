@@ -52,4 +52,14 @@ public class PagesSignatures {
      */
     private String sealScale;
 
+    /**
+     * 签章模式 0:图片签、1:文本签，默认:0
+     */
+    private Integer signatureMode;
+
+    /**
+     * 文本域参数，signatureMode为1时必填
+     */
+    private TextareaItem textareaItem;
+
 }

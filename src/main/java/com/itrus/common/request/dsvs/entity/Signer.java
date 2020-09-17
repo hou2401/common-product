@@ -50,7 +50,7 @@ public class Signer implements Serializable {
     /**
      *多页签签章列表，三个签章列表中至少有一项
      */
-    private List<PagesSignItem> pagesSignatures;
+    private List<PagesSignatures> pagesSignatures;
     /**
      * 关键字签签章列表，三个签章列表中至少有一项
      */
