@@ -22,4 +22,6 @@ public class CertNameResponse implements Serializable {
 	private String RaCode;
 
     private String RaName;
+
+    private Integer certType;
 }
