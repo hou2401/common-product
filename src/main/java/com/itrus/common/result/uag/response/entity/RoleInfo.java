@@ -19,9 +19,11 @@ public class RoleInfo {
     /**
      * 角色名称
      */
-    private String name;
+    private String roleName;
     /**
-     * 角色类型 0 未加入 1 在职 2 已拒绝 3 异常 4 离职
+     *            是否是主管理员
+     * 1 是
+     * 0 否
      */
     private String type;
 }
