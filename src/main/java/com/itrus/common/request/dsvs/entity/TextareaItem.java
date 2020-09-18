@@ -30,7 +30,7 @@ public class TextareaItem implements Serializable {
     /**
      * 文字字体 1:宋体、2:楷体、3:黑体，默认:1
      */
-    private Integer fontText;
+    private Integer fontType;
 
     /**
      * 字体大小，默认：12
