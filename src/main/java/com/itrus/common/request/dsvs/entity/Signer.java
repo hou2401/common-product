@@ -46,7 +46,7 @@ public class Signer implements Serializable {
     /**
      * 签名策略： <br/>1：只有第一个印章图片添加数字签名，<br />      其它印章添加水印（首次签章默认）<br/>2：所有印章图片都添加签名（非首次签章默认） <br/>3：所有印章图片都不添加数字签名，无
      */
-    private String signaturePolicy;
+    private Long signaturePolicy;
     /**
      *多页签签章列表，三个签章列表中至少有一项
      */
