@@ -48,14 +48,14 @@ public class TextareaItem implements Serializable {
     private Integer alignment;
 
     /**
-     * 文本域宽度，单位:px
+     * 文本域宽度，单位:cm
      */
-    private Integer textareaWidth;
+    private Float textareaWidth;
 
     /**
-     * 文本域高度，单位:px
+     * 文本域宽度，单位:cm
      */
-    private Integer textareaHeight;
+    private Float textareaHeight;
 
     /**
      * 百分比X横坐标，0.5代表在横向中部位置，左上角为起点，默认:0
