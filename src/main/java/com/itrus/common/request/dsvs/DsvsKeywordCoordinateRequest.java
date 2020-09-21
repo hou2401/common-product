@@ -33,5 +33,13 @@ public class DsvsKeywordCoordinateRequest implements Serializable {
      * 关键字
      */
     private String keyword;
+    /**
+     * 页码
+     */
+    private String pages;
 
+    public DsvsKeywordCoordinateRequest(String pdfURI, String keyword) {
+        this.pdfURI = pdfURI;
+        this.keyword = keyword;
+    }
 }
