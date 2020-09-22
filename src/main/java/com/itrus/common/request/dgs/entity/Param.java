@@ -48,7 +48,7 @@ public class Param {
     /**
      * 字体大小，默认：12
      */
-    private Integer fontSize;
+    private Float fontSize;
     /**
      * 字体颜色，十六进制颜色代码，默认：#333333
      */
@@ -57,5 +57,23 @@ public class Param {
      * 图片缩放比例，默认：1
      */
     private Float scale;
+    /**
+     * 文本域宽度，单位:px
+     */
+    private Integer textareaWidth;
+    /**
+     * 文本域高度，单位:px
+     */
+    private Integer textareaHeight;
+    /**
+     * 文字字体 1:宋体、2:楷体、3:黑体，默认:1
+     * 仅文本域支持
+     */
+    private Integer fontType;
+    /**
+     * 文本对齐方式 0:左对齐、1:居中对齐、2:右对齐，默认:0
+     * 仅文本域支持
+     */
+    private Integer alignment;
 
 }
