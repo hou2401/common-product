@@ -1,5 +1,7 @@
 package com.itrus.common.request.dsvs.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -60,11 +62,15 @@ public class TextareaItem implements Serializable {
     /**
      * 百分比X横坐标，0.5代表在横向中部位置，左上角为起点，默认:0
      */
+    @JsonProperty("xPercent")
+    @JSONField(name = "xPercent")
     private Float xPercent;
 
     /**
      *百分比Y纵坐标，0.5代表在纵向中部位置，左上角为起点，默认:0
      */
+    @JsonProperty("yPercent")
+    @JSONField(name = "yPercent")
     private Float yPercent;
 
 
