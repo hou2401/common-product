@@ -54,7 +54,7 @@ public class DsvsSignRequest implements Serializable {
     /**
      * 是否加盖时间戳，默认false不加盖
      */
-    private Boolean timeStamp;
+    private Boolean timestamp;
 
     /**
      * 时间戳代码，用于选择使用哪个时间戳服务<br/>不填时使用默认的时间戳服务
