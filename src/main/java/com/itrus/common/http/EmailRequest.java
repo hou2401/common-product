@@ -1,7 +1,6 @@
 package com.itrus.common.http;
 
 import java.io.File;
-import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
@@ -31,15 +30,10 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @Component
 @Slf4j
-public class EmailRequest implements Serializable {
+public class EmailRequest {
 
     @Resource(name = "taskExecutor")
     private TaskExecutor taskExecutor; //sping 2.0最新线程池功能
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
 
     public EmailRequest() {
         super();
