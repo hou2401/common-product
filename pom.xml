@@ -1,156 +1,276 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-   <!-- <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.4.RELEASE</version>
-        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-    </parent>-->
-    <!-- springboot依赖的父工程，使用的 springboot2.0.3.RELEASE版本 -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
-    </parent>
-    <groupId>com.itrus</groupId>
-    <artifactId>common-product</artifactId>
-    <version>1.0.0</version>
-    <name>common-product</name>
-    <description>Demo project for Spring Boot</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <httpclient.version>4.5.6</httpclient.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>2.1.4.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.1.4.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.15</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.6</version>
-            <optional>true</optional>
-        </dependency>
-
-      <!--  <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>-->
-
-        <!--rocketmq-->
-        <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-spring-boot-starter</artifactId>
-            <version>2.0.2</version>
-        </dependency>
-
-        <!--分页工具-->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.2.10</version>
-        </dependency>
-
-        <!--通用mapper-->
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>2.1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper</artifactId>
-            <version>4.1.4</version>
-        </dependency>
-        <!--接口文档生成工具-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-        <!-- 解决FluentIterable.class找不到问题 -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>26.0-jre</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.16</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.9</version>
-        </dependency>
-
-        <!-- json -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.56</version>
-        </dependency>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- springboot依赖的父工程，使用的 springboot2.0.3.RELEASE版本 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.5.RELEASE</version>
+	</parent>
+	<groupId>com.itrus</groupId>
+	<artifactId>common-product</artifactId>
+	<version>3.1.13</version>
+	<name>common-product</name>
+	<description>common-product</description>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source> <!--指明源码用的Jdk版本 -->
+					<target>${java.version}</target> <!--指明打包后的Jdk版本 -->
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<excludes>
+						<exclude>application.yml</exclude>
+						<exclude>bootstrap.yml</exclude>
+						<exclude>com/itrus/common/WebApplication.class</exclude>
+					</excludes>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-surefire-plugin</artifactId> 
+				<configuration> 开关单元测试 <skipTests>false</skipTests> <forkMode>never</forkMode> 
+				<argLine>-Dfile.encoding=UTF-8</argLine> <properties> <property> <name>usedefaultlisteners</name> 
+				<value>false</value> </property> <property> <name>listener</name> <value> 
+				注意替换,该类可以参考BeautyReporter编写 com.itrus.common.reporter.BeautyReporter </value> 
+				</property> </properties> </configuration> </plugin> -->
+		</plugins>
+	</build>
+	<properties>
+		<java.version>1.8</java.version>
+		<httpclient.version>4.5.6</httpclient.version>
+		<okhttp.version>3.10.0</okhttp.version>
+		<apphome.version>5.0.5</apphome.version>
+		<apiservice.version>4.0.9</apiservice.version>
+		<jave.version>1.6.5</jave.version>
+		<poi.version>3.17</poi.version>
+		<atom-sign-api.version>1.1.4</atom-sign-api.version>
+		<springfox-swagger.version>2.9.2</springfox-swagger.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-beanutils.version>1.8.3</commons-beanutils.version>
+		<commons-io.version>2.4</commons-io.version>
+		<mail.version>1.6.2</mail.version>
+	</properties>
+	<!-- 私有化服务上传jar -->
+	<distributionManagement>
+		<repository>
+			<id>maven-itrus-releases</id>
+			<name>maven-itrus-releases</name>
+			<url>http://mv.6rencn.com:9191/repository/maven-itrus-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>maven-itrus-snapshots</id>
+			<name>maven-itrus-snapshots</name>
+			<url>http://mv.6rencn.com:9191/repository/maven-itrus-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<dependencyManagement>
+		<dependencies>
+			<!--整合spring cloud -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR3</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--整合spring cloud alibaba -->
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>2.1.0.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<!--整合spring cloud start -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+			<!--<scope>compile</scope>-->
+			<!--<optional>true</optional>-->
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+			<!--<scope>compile</scope>-->
+			<!--<optional>true</optional>-->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<!--<scope>compile</scope>-->
+			<!--<optional>true</optional>-->
+		</dependency>
+		<!--整合spring cloud end -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>${okhttp.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+			<scope>compile</scope>
+		</dependency>
+		<!-- testNG start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.vimalselvam</groupId>
+			<artifactId>testng-extentsreport</artifactId>
+			<version>1.3.1</version>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>3.0.6</version>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+		<!-- testNG end -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${commons-collections.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils.version}</version>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>cn.com.itrus.atom.sign</groupId>
+			<artifactId>atom-sign-api</artifactId>
+			<scope>compile</scope>
+			<version>${atom-sign-api.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.itrus</groupId>
+			<artifactId>jave</artifactId>
+			<scope>compile</scope>
+			<version>${jave.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>compile</scope>
+			<optional>true</optional>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>${httpclient.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpmime</artifactId>
-			<version>${httpclient.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- 发送邮件 -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>${mail.version}</version>
+			<scope>compile</scope>
 		</dependency>
 
-    </dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+	</dependencies>
 </project>

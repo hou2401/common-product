@@ -17,11 +17,17 @@ public class DateTools {
     public static final String DAY_FORMAT = "yyyy-MM-dd";
     public static final String DAY_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
-    /***
-     * 日期类型转换，默认支持两种格式：2017-03-23 或 2017-03-23 23:23:23
-     * @param text 日期字符串
-     * @return 日期对象
-     */
+    /**
+    *
+    * @api DateTools.parse String转化Date
+    * @apiVersion 2.2.0
+    * @apiParam {String} text 日期字符串 
+    * @apiName parse
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {date} date yyyy-MM-dd或yyyy-MM-dd HH:mm:ss
+    * @apiSuccessExample Success-Response:
+    *     {"data":2020-11-11 or 2020-11-11 12:12:12}
+	*/
     public static Date parse(String text) {
         if(text == null || text.length() == 0) {
             return null;
@@ -38,12 +44,19 @@ public class DateTools {
         return null;
     }
 
-    /***
-     * 日期类型转换
-     * @param text 日期字符串
-     * @param partten 格式
-     * @return 日期对象
-     */
+    
+    /**
+    *
+    * @api DateTools.parse String转化Date
+    * @apiVersion 2.2.0
+    * @apiParam {String} text 日期字符串
+    * @apiParam {String} partten 日期格式 
+    * @apiName parse
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {Date} date 相应格式日期
+    * @apiSuccessExample Success-Response:
+    *     {"data":2020-11-11 or 2020-11-11 12:12:12...}
+	*/
     public static Date parse(String text, String partten) {
         if(text == null || text.length() == 0) {
             return null;
@@ -57,13 +70,19 @@ public class DateTools {
         }
     }
 
-    /***
-     * 日期格式化
-     *     如果时分秒都为0，格式化为：2017-03-23
-     *     如果时分秒有值， 格式化为：2017-03-23 23:23:23
-     * @param date  日期对象
-     * @return  日期字符串
-     */
+    /**
+    *
+    * @api DateTools.format Date转化String
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期 
+    * @apiName format
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {String} string 日期字符串
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":"2020-11-11 or 2020-11-11 12:12:12"
+    *     }
+	*/
     public static String format(Date date) {
         if(date == null)  {
             return null;
@@ -78,12 +97,20 @@ public class DateTools {
             return format(date, DAY_TIME_FORMAT);
         }
     }
-    /***
-     * 日期格式化
-     *     格式化为：二○一八年十二月二拾日
-     * @param date  日期对象
-     * @return  日期字符串
-     */
+
+    /**
+    *
+    * @api DateTools.formatChinese Date转化String
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期 
+    * @apiName formatChinese
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {String} string 日期字符串
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":"二○一八年十二月二拾日"
+    *     }
+	*/
     public static String formatChinese(Date date) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
@@ -102,13 +129,20 @@ public class DateTools {
         return yearChinese + "年" + monthChinese + "月" + dayChinese + "日";
     }
     
-    
-    /***
-     * 日期格式化
-     * @param date  日期对象
-     * @param pattern 格式
-     * @return  日期字符串
-     */
+    /**
+    *
+    * @api DateTools.format Date转化String
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期
+    * @apiParam {String} pattern 格式
+    * @apiName format
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {String} string 相应格式日期字符串
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":"2020-12-12 or 2020-12-12 12:12:12..."
+    *     }
+	*/
     public static String format(Date date, String pattern) {
         if(date == null ||  pattern == null)  {
             return null;
@@ -118,6 +152,20 @@ public class DateTools {
         return df.format(date);
     }
     
+    /**
+    *
+    * @api DateTools.addYear 添加或减去年
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期 
+    * @apiParam {int} year 年数
+    * @apiName addYear
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {Date} date 日期格式
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":2020-12-12 12:12:12
+    *     }
+	*/
     public static Date addYear(Date date, int year) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
@@ -125,6 +173,20 @@ public class DateTools {
         return c.getTime();
     }
     
+    /**
+    *
+    * @api DateTools.addMonth 添加或减去月
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期 
+    * @apiParam {int} month 月数
+    * @apiName addMonth
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {Date} date 日期格式
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":2020-12-12 12:12:12
+    *     }
+	*/
     public static Date addMonth(Date date, int month) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
@@ -132,6 +194,20 @@ public class DateTools {
         return c.getTime();
     }
     
+    /**
+    *
+    * @api DateTools.addDay 添加或减去天
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期 
+    * @apiParam {int} day 天数
+    * @apiName addDay
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {Date} date 日期格式
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":2020-12-12 12:12:12
+    *     }
+	*/
     public static Date addDay(Date date, int day) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
@@ -139,6 +215,20 @@ public class DateTools {
         return c.getTime();
     }
     
+    /**
+    *
+    * @api DateTools.addHour 添加或减去小时
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期 
+    * @apiParam {int} hour 小时数
+    * @apiName addHour
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {Date} date 日期格式
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":2020-12-12 12:12:12
+    *     }
+	*/
     public static Date addHour(Date date, int hour) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
@@ -146,6 +236,20 @@ public class DateTools {
         return c.getTime();
     }
     
+    /**
+    *
+    * @api DateTools.addMinute 添加或减去分钟
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期 
+    * @apiParam {int} minute 分钟数
+    * @apiName addMinute
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {Date} date 日期格式
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":2020-12-12 12:12:12
+    *     }
+	*/
     public static Date addMinute(Date date, int minute) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
@@ -153,6 +257,20 @@ public class DateTools {
         return c.getTime();
     }
     
+    /**
+    *
+    * @api DateTools.addSecond 添加或减去秒
+    * @apiVersion 2.2.0
+    * @apiParam {Date} date 日期 
+    * @apiParam {int} second 秒数
+    * @apiName addSecond
+    * @apiGroup DateTools工具类
+    * @apiSuccess (Success) {Date} date 日期格式
+    * @apiSuccessExample Success-Response:
+    *     {
+    *     "data":2020-12-12 12:12:12
+    *     }
+	*/
     public static Date addSecond(Date date, int second) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);

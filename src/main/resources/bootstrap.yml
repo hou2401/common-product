@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: common-product
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      config:
+        namespace: test #develop
+        server-addr: 192.168.100.233:32105
+        group: v1
+        file-extension: yaml
+        extension-configs[0]:
+          group: v1
+          data-id: common-product.yaml
+      discovery:
+        namespace: develop #develop
+        server-addr: 192.168.100.233:32105
+        group: v1

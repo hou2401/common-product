@@ -1,0 +1,77 @@
+package com.itrus.common.request.dsvs.entity;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+/**
+ * <p>
+ *
+ * </p>
+ *
+ * @author hzq
+ * @since 2020/9/17
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class TextareaItem implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     * 文本
+     */
+    private String text;
+
+    /**
+     * 文字字体 1:宋体、2:楷体、3:黑体，默认:1
+     */
+    private Integer fontType;
+
+    /**
+     * 字体大小，默认：12
+     */
+    private Float fontSize;
+
+    /**
+     * 字体颜色，十六进制颜色代码，默认：#333333
+     */
+    private String fontColor;
+
+    /**
+     *文本对齐方式 0:左对齐、1:居中对齐、2:右对齐，默认:0
+     */
+    private Integer alignment;
+
+    /**
+     * 文本域宽度，单位:cm
+     */
+    private Float textareaWidth;
+
+    /**
+     * 文本域宽度，单位:cm
+     */
+    private Float textareaHeight;
+
+    /**
+     * 百分比X横坐标，0.5代表在横向中部位置，左上角为起点，默认:0
+     */
+    @JsonProperty("xPercent")
+    @JSONField(name = "xPercent")
+    private Float xPercent;
+
+    /**
+     *百分比Y纵坐标，0.5代表在纵向中部位置，左上角为起点，默认:0
+     */
+    @JsonProperty("yPercent")
+    @JSONField(name = "yPercent")
+    private Float yPercent;
+
+
+}
